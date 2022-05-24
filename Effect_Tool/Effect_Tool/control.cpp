@@ -428,6 +428,7 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 				fprintf(pFile, "	DISTANCE = %.1f						//発生距離\n", CControl::GetDistance());
 				fprintf(pFile, "	TYPE = %d					//出現位置のパターン\n", CControl::GetType());
 				fprintf(pFile, "	SECONDTYPE = %d					//ランダム移動のパターン\n", CControl::GetSecondType());
+				fprintf(pFile, "	PARTICLETIME = %d						//粒発生間隔\n", CControl::GetParticleTime());
 
 				break;
 			case(2):

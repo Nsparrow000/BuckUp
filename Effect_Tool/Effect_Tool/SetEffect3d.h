@@ -25,7 +25,8 @@ public:
 private:
 	static bool bOne;
 	CKeyboard *m_pKeyboard;
-
+	bool m_bOne;
+	int m_ParticleTime;
 };
 
 #endif

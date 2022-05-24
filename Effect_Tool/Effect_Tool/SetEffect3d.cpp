@@ -97,19 +97,32 @@ void CSetEffect3D::Update()
 
 				break;
 			case(1):
-				CStraight3D::Create(pos,
-					D3DXVECTOR3(CControl::GetSize(), CControl::GetSize(), 0.0f),
-					D3DXVECTOR3(CControl::GetChangeSize(), CControl::GetChangeSize(), 0.0f),
-					CControl::Getmove3d(),
-					D3DXCOLOR((float)CControl::GetControlCoror(1), (float)CControl::GetControlCoror(2), (float)CControl::GetControlCoror(3), (float)CControl::GetControlCoror(4)),
-					D3DXCOLOR((float)CControl::GetChangeCol(1), (float)CControl::GetChangeCol(2), (float)CControl::GetChangeCol(3), (float)CControl::GetChangeCol(4)),
-					CControl::GetTex(), CControl::GetLife(), CStraight3D::STRAIGHT, {},CControl::GetSynthetic(),
-					CControl::GetDistance(),
-					(CStraight3D::RAND_PATTEN)CControl::GetType(),
-					(CStraight3D::POS_PATTERN)CControl::GetSecondType(),
-					D3DXVECTOR2(CControl::GetTexMoveU(), CControl::GetTexMoveV()),
-					CControl::GetTexNum());
-				bOne = false;
+				if (m_bOne == false)
+				{
+					m_ParticleTime = CControl::GetParticleTime();
+					m_bOne = true;
+				}
+				else if (m_bOne == true)
+				{
+					m_ParticleTime--;
+					if (m_ParticleTime < 0)
+					{
+						CStraight3D::Create(pos,
+							D3DXVECTOR3(CControl::GetSize(), CControl::GetSize(), 0.0f),
+							D3DXVECTOR3(CControl::GetChangeSize(), CControl::GetChangeSize(), 0.0f),
+							CControl::Getmove3d(),
+							D3DXCOLOR((float)CControl::GetControlCoror(1), (float)CControl::GetControlCoror(2), (float)CControl::GetControlCoror(3), (float)CControl::GetControlCoror(4)),
+							D3DXCOLOR((float)CControl::GetChangeCol(1), (float)CControl::GetChangeCol(2), (float)CControl::GetChangeCol(3), (float)CControl::GetChangeCol(4)),
+							CControl::GetTex(), CControl::GetLife(), CStraight3D::STRAIGHT, {}, CControl::GetSynthetic(),
+							CControl::GetDistance(),
+							(CStraight3D::RAND_PATTEN)CControl::GetType(),
+							(CStraight3D::POS_PATTERN)CControl::GetSecondType(),
+							D3DXVECTOR2(CControl::GetTexMoveU(), CControl::GetTexMoveV()),
+							CControl::GetTexNum());
+						bOne = false;
+						m_bOne = false;
+					}
+				}
 
 				break;
 			case(2):

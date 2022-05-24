@@ -343,6 +343,7 @@ void CRenderer::DrawText()
 				nNum += sprintf(&str[nNum], "出現位置の距離 [+][-]：%.1f\n", CControl::GetDistance());
 				nNum += sprintf(&str[nNum], "出現位置パターン [+][-]：%d\n", CControl::GetSecondType());
 				nNum += sprintf(&str[nNum], "ランダム移動パターン [+][-]：%d\n", CControl::GetType());
+				nNum += sprintf(&str[nNum], "粒発生間隔 [+][-]：%d\n", CControl::GetParticleTime());
 
 				break;
 			case(2)://纏わせ

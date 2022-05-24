@@ -199,6 +199,7 @@ private:
 	static int m_nEffectPattern;	//複数のやつ読み込めるようにするやつ
 
 	static int m_nMaxOrderCount;	//呼び出す最大数カウント
+	static int m_PrticleCreateTime;	//パーティクル生成間隔計算
 
 	D3DXVECTOR3 m_pos;
 	D3DXVECTOR3 m_EndPos;

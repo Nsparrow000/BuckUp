@@ -144,9 +144,6 @@
     <ClCompile Include="billeffect.cpp">
       <Filter>ソース ファイル\3D\Effect</Filter>
     </ClCompile>
-    <ClCompile Include="SetEffect3d.cpp">
-      <Filter>ソース ファイル\3D\Effect</Filter>
-    </ClCompile>
     <ClCompile Include="MouseTracking.cpp">
       <Filter>ソース ファイル\2D\Effect</Filter>
     </ClCompile>
@@ -179,6 +176,9 @@
     </ClCompile>
     <ClCompile Include="SphereEffect.cpp">
       <Filter>ソース ファイル\3D\Effect\Sphere</Filter>
+    </ClCompile>
+    <ClCompile Include="SetEffect3d.cpp">
+      <Filter>ソース ファイル\3D</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -269,9 +269,6 @@
     <ClInclude Include="straight3d.h">
       <Filter>ヘッダー ファイル\3D\Effect</Filter>
     </ClInclude>
-    <ClInclude Include="SetEffect3d.h">
-      <Filter>ヘッダー ファイル\3D\Effect</Filter>
-    </ClInclude>
     <ClInclude Include="MouseTracking.h">
       <Filter>ヘッダー ファイル\2D\Effect</Filter>
     </ClInclude>
@@ -304,6 +301,9 @@
     </ClInclude>
     <ClInclude Include="SphereEffect.h">
       <Filter>ヘッダー ファイル\3D\Effect\Sphere</Filter>
+    </ClInclude>
+    <ClInclude Include="SetEffect3d.h">
+      <Filter>ヘッダー ファイル\3D</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
