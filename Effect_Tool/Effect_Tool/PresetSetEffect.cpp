@@ -33,8 +33,6 @@
 int CPresetEffect::m_nEffectPattern = 0;
 int CPresetEffect::m_nMaxOrderCount = 0;	//呼び出す最大数カウント
 
-int CPresetEffect::m_PrticleCreateTime = 0;	//パーティクル生成間隔計算
-
 CPresetEffect::EFFECT_STATE2D CPresetEffect::m_EffectState2D[MAX_EFFECTPATTERN_2D] = {};
 CPresetEffect::EFFECT_STATE3D CPresetEffect::m_EffectState3D[MAX_EFFECTPATTERN_3D] = {};
 
@@ -374,32 +372,23 @@ void CPresetEffect::SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 		break;
 	case(1):	//パーティクル
 
-		m_PrticleCreateTime = m_EffectState3D[nPattern].ParticleTime;
-
-		m_PrticleCreateTime--;
-		if (m_PrticleCreateTime < 0)
+		for (int nCnt = 0; nCnt < m_EffectState3D[nPattern].m_nDensity; nCnt++)
 		{
-
-
-			for (int nCnt = 0; nCnt < m_EffectState3D[nPattern].m_nDensity; nCnt++)
-			{
-				CStraight3D::Create(pos,
-					D3DXVECTOR3(m_EffectState3D[nPattern].m_fSize, m_EffectState3D[nPattern].m_fSize, 0.0f),
-					D3DXVECTOR3(m_EffectState3D[nPattern].m_fAddSize, m_EffectState3D[nPattern].m_fAddSize, 0.0f),
-					move,
-					m_EffectState3D[nPattern].m_Col,
-					m_EffectState3D[nPattern].m_Changecolor,
-					m_EffectState3D[nPattern].nTexture,
-					m_EffectState3D[nPattern].m_nLife,
-					CStraight3D::STRAIGHT, {},
-					m_EffectState3D[nPattern].Synthetic,
-					m_EffectState3D[nPattern].m_nDistance,
-					(CStraight3D::RAND_PATTEN)m_EffectState3D[nPattern].m_nType,
-					(CStraight3D::POS_PATTERN)m_EffectState3D[nPattern].m_nSecondTime,
-					m_EffectState3D[nPattern].m_TexMove,
-					m_EffectState3D[nPattern].m_TexNum);
-			}
-			m_PrticleCreateTime = 0;
+			CStraight3D::Create(pos,
+				D3DXVECTOR3(m_EffectState3D[nPattern].m_fSize, m_EffectState3D[nPattern].m_fSize, 0.0f),
+				D3DXVECTOR3(m_EffectState3D[nPattern].m_fAddSize, m_EffectState3D[nPattern].m_fAddSize, 0.0f),
+				move,
+				m_EffectState3D[nPattern].m_Col,
+				m_EffectState3D[nPattern].m_Changecolor,
+				m_EffectState3D[nPattern].nTexture,
+				m_EffectState3D[nPattern].m_nLife,
+				CStraight3D::STRAIGHT, {},
+				m_EffectState3D[nPattern].Synthetic,
+				m_EffectState3D[nPattern].m_nDistance,
+				(CStraight3D::RAND_PATTEN)m_EffectState3D[nPattern].m_nType,
+				(CStraight3D::POS_PATTERN)m_EffectState3D[nPattern].m_nSecondTime,
+				m_EffectState3D[nPattern].m_TexMove,
+				m_EffectState3D[nPattern].m_TexNum);
 		}
 		break;
 	case(2):	//纏わせ
