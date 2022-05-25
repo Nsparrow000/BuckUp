@@ -1,0 +1,11 @@
+﻿  UISet.cpp
+  UI.cpp
+  main.cpp
+c:\users\student\desktop\プログラム\ツール\uisettool2\main.cpp(411): warning C4473: 'sprintf': 書式文字列として渡された引数が不足しています
+  c:\users\student\desktop\プログラム\ツール\uisettool2\main.cpp(411): note: プレースホルダーとそのパラメーターには 3 の可変個引数が必要ですが、2 が指定されています。
+  c:\users\student\desktop\プログラム\ツール\uisettool2\main.cpp(411): note: 不足している可変個引数 3 が書式文字列 '%.1f' に必要です
+  input.cpp
+  コードを生成中...
+  LINK : 前回のインクリメンタル リンクで C:\Users\student\Desktop\プログラム\ツール\UISetTool2\Debug\UISetTool2.exe が見つからなかったか、ビルドされませんでした。フル リンクを行います。
+  UISetTool2.vcxproj -> C:\Users\student\Desktop\プログラム\ツール\UISetTool2\Debug\UISetTool2.exe
+  UISetTool2.vcxproj -> C:\Users\student\Desktop\プログラム\ツール\UISetTool2\Debug\UISetTool2.pdb (Full PDB)

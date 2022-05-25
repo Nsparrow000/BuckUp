@@ -8,3 +8,9 @@
 /Effect_Tool/Effect_Tool/data/IntermeidiateText3D.txt
 /Effect_Tool/Effect_Tool/data/SaveText.txt
 /Effect_Tool/Effect_Tool/data/IntermeidiateText2D.txt
+/Effect/Debug
+/Effect/Release
+/Effect/Effect.VC.db
+/UISet/Debug
+/UISet/Release
+/UISet/UISet.VC.db

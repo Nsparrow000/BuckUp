@@ -1,0 +1,14 @@
+﻿  input.cpp
+  main.cpp
+main.cpp(411): warning C4473: 'sprintf': 書式文字列として渡された引数が不足しています
+  main.cpp(411): note: プレースホルダーとそのパラメーターには 3 の可変個引数が必要ですが、2 が指定されています。
+  main.cpp(411): note: 不足している可変個引数 3 が書式文字列 '%.1f' に必要です
+  UI.cpp
+  UISet.cpp
+  コード生成しています。
+  31 of 50 functions (62.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  コード生成が終了しました。
+  UISetTool2.vcxproj -> C:\Users\student\Desktop\Visual Studio 2015\Projects\ツール\UISetTool2\Release\UISetTool2.exe
+  UISetTool2.vcxproj -> C:\Users\student\Desktop\Visual Studio 2015\Projects\ツール\UISetTool2\Release\UISetTool2.pdb (Full PDB)
