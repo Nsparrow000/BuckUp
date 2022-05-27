@@ -11,6 +11,7 @@
 #include "ActiveBillboard.h"
 #include "Rotate3d.h"
 #include "SphereEffect.h"
+#include "ThunderBill.h"
 
 #include <assert.h>
 //*****************************************************************************
@@ -204,6 +205,20 @@ void CSetEffect3D::Update()
 						D3DXVECTOR2(CControl::GetSplitU(), CControl::GetSplitV()));
 				}
 				break;
+			case(7):
+					CThunderBill::Create(D3DXVECTOR3(0.0f, 0.0f, 0.0f),
+						D3DXVECTOR3(CControl::GetSize(), CControl::GetSize(), 0.0f),
+						D3DXVECTOR3(CControl::GetChangeSize(), CControl::GetChangeSize(), 0.0f),
+						D3DXCOLOR((float)CControl::GetControlCoror(1), (float)CControl::GetControlCoror(2), (float)CControl::GetControlCoror(3), (float)CControl::GetControlCoror(4)),
+						D3DXCOLOR((float)CControl::GetChangeCol(1), (float)CControl::GetChangeCol(2), (float)CControl::GetChangeCol(3), (float)CControl::GetChangeCol(4)),
+						CControl::GetTex(), CControl::GetLife(),
+						CControl::GetDistance(),
+						D3DXVECTOR2(CControl::GetTexMoveU(), CControl::GetTexMoveV()), CControl::GetTexNum(),
+						CControl::GetAnimCont(),
+						D3DXVECTOR2(CControl::GetSplitU(), CControl::GetSplitV()),
+						CControl::GetHigth());
+				break;
+
 			default:
 				assert(false);
 				break;

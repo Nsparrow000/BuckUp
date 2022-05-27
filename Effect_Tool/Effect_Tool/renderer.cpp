@@ -391,8 +391,12 @@ void CRenderer::DrawText()
 				nNum += sprintf(&str[nNum], "回転 [+][-]：%.2f\n", CControl::GetRotate());
 				nNum += sprintf(&str[nNum], "頂点数 [+][-]：%d\n", CControl::GetVtx());
 				nNum += sprintf(&str[nNum], "生成タイプ [+][-]：%d\n", CControl::GetType());
-
 				break;
+			case(7):
+				nNum += sprintf(&str[nNum], "距離 [+][-]：%.1f\n", CControl::GetDistance());
+				nNum += sprintf(&str[nNum], "高さ [+][-]：%.1f\n", CControl::GetHigth());
+				break;
+
 			default:
 				assert(false);
 				break;

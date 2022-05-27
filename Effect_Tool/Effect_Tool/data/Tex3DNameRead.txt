@@ -28,5 +28,6 @@ TEXTURE_FILENAME = data/TEXTURE/3DEffect/Target0.png			//１４ターゲット
 TEXTURE_FILENAME = data/TEXTURE/3DEffect/Thunder3.png			//１５斜めサンダー
 TEXTURE_FILENAME = data/TEXTURE/3DEffect/Crater.png			//１６クレーター
 TEXTURE_FILENAME = data/TEXTURE/3DEffect/ExplosionRing.png		//１７爆発リング
+TEXTURE_FILENAME = data/TEXTURE/3DEffect/Thunder4.png			//１５斜めサンダー
 
 END_SCRIPT

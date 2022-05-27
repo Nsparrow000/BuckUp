@@ -342,6 +342,9 @@ void CButten::Set(OPERATION Operation, float nIndeNum)
 	case(TEXNUMV):
 		CControl::AddTexNumV(nIndeNum);
 		break;
+	case(HIGTH):
+		CControl::AddHigth(nIndeNum);
+		break;
 
 	default:
 		assert(false);

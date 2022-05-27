@@ -88,6 +88,7 @@ public:
 		int m_SecondType;	
 		D3DXVECTOR2 m_TexSplit;	//分割数
 		int AnimCnt;	//アニメーションカウント
+		float m_fHigth;	//高さ
 	} EFFECT_STATE3D;
 
 
@@ -159,7 +160,8 @@ public:
 		D3DXVECTOR2 m_TexNum,
 		int m_nSecondType,
 		D3DXVECTOR2 m_TexSplit,
-		int AnimCnt);
+		int AnimCnt,
+		float fHigth);
 
 	typedef struct
 	{

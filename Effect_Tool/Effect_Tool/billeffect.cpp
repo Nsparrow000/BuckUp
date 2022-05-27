@@ -91,7 +91,6 @@ void CBillEffect::Update()
 	m_Color.a += m_MinColor.a;
 
 
-
 	//ƒJƒ‰[’l‚ª0‚ğ‰º‰ñ‚è‚»‚¤
 	if (m_Color.r <= 0)
 	{

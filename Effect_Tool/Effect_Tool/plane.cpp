@@ -214,7 +214,7 @@ void CPlane::CreateTextureFiled()
 	// 頂点情報を設定
 	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();//デバイスの取得
 
-																	 //ファイル読み込み
+	//ファイル読み込み
 	char aFile[256];
 	FILE *pFile = fopen(TEXTURE_FILENAME_3D, "r");
 
@@ -281,10 +281,10 @@ void CPlane::ChangeSize(D3DXVECTOR3 size)
 	m_pVtxBuff->Lock(0, 0, (void**)&pVtx, 0);
 
 	//頂点座標の設定
-	pVtx[0].pos = D3DXVECTOR3(-size.x, size.y, size.z);
-	pVtx[1].pos = D3DXVECTOR3(size.x, size.y, size.z);
-	pVtx[2].pos = D3DXVECTOR3(-size.x, -size.y, -size.z);
-	pVtx[3].pos = D3DXVECTOR3(size.x, -size.y, -size.z);
+	pVtx[0].pos = D3DXVECTOR3(-size.x, size.y	, size.z);
+	pVtx[1].pos = D3DXVECTOR3(size.x, size.y	, size.z);
+	pVtx[2].pos = D3DXVECTOR3(-size.x, -size.y	, -size.z);
+	pVtx[3].pos = D3DXVECTOR3(size.x, -size.y	, -size.z);
 
 	//頂点バッファをアンロック
 	m_pVtxBuff->Unlock();
@@ -319,7 +319,7 @@ void CPlane::BillboardSize(float size)
 {
 	VERTEX_3D*pVtx;//頂点情報へのポインタ
 
-				   //頂点バッファをロックし、頂点データへのポインタを取得
+	//頂点バッファをロックし、頂点データへのポインタを取得
 	m_pVtxBuff->Lock(0, 0, (void**)&pVtx, 0);
 
 	//頂点座標の設定
@@ -369,6 +369,26 @@ void CPlane::SetTexAnim(D3DXVECTOR2 TexPattern, D3DXVECTOR2 TexAnimSize)
 	pVtx[1].tex = D3DXVECTOR2(m_TexNum.x + m_nSplit.x * TexAnimSize.x + TexAnimSize.x + m_TexMove.x	, m_TexNum.y + m_nSplit.y * TexAnimSize.y + m_TexMove.y);
 	pVtx[2].tex = D3DXVECTOR2(m_TexNum.x + m_nSplit.x * TexAnimSize.x + m_TexMove.x					, m_TexNum.y + m_nSplit.y *  + TexAnimSize.y + TexAnimSize.y + m_TexMove.y);
 	pVtx[3].tex = D3DXVECTOR2(m_TexNum.x + m_nSplit.x * TexAnimSize.x + TexAnimSize.x + m_TexMove.x	, m_TexNum.y + m_nSplit.y *  +TexAnimSize.y + TexAnimSize.y + m_TexMove.y);
+
+	//頂点バッファをアンロック
+	m_pVtxBuff->Unlock();
+
+}
+
+//=============================================================================
+//ビルボード座標いじり
+//=============================================================================
+void CPlane::SetPosBill(D3DXVECTOR3 pos, D3DXVECTOR3 pos2, D3DXVECTOR3 size, float Rotate)
+{
+	VERTEX_3D*pVtx;//頂点情報へのポインタ
+	//頂点バッファをロックし、頂点データへのポインタを取得
+	m_pVtxBuff->Lock(0, 0, (void**)&pVtx, 0);
+
+	//頂点座標の設定
+	pVtx[0].pos = D3DXVECTOR3(+ size.x + (cosf(Rotate)), pos.y	,- size.x + (sinf(Rotate)));
+	pVtx[1].pos = D3DXVECTOR3(- size.x + (sinf(Rotate)), pos.y	,+ size.x + (cosf(Rotate)));
+	pVtx[2].pos = D3DXVECTOR3(+ size.x + (cosf(Rotate)), pos2.y	, - size.x + (sinf(Rotate)));
+	pVtx[3].pos = D3DXVECTOR3(- size.x + (sinf(Rotate)), pos2.y	, + size.x + (cosf(Rotate)));
 
 	//頂点バッファをアンロック
 	m_pVtxBuff->Unlock();

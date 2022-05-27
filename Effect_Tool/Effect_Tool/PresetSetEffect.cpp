@@ -17,6 +17,7 @@
 #include "FieldEffect.h"
 #include "Rotate3d.h"
 #include "sphereEffect.h"
+#include "ThunderBill.h"
 #include "LoadEffect.h"
 
 #include <assert.h>
@@ -146,7 +147,8 @@ void CPresetEffect::SetEffectState3D(
 	D3DXVECTOR2 m_TexNum,
 	int m_nSecondType,
 	D3DXVECTOR2 m_TexSplit,
-	int AnimCnt)
+	int AnimCnt,
+	float fHigth)
 {
 	m_EffectState3D[m_nEffectPattern].m_nPattern = nPattern;
 	m_EffectState3D[m_nEffectPattern].m_fRotate = m_fRotate;
@@ -190,6 +192,7 @@ void CPresetEffect::SetEffectState3D(
 	m_EffectState3D[m_nEffectPattern].m_SecondType = m_nSecondType;
 	m_EffectState3D[m_nEffectPattern].m_TexSplit = m_TexSplit;
 	m_EffectState3D[m_nEffectPattern].AnimCnt = AnimCnt;
+	m_EffectState3D[m_nEffectPattern].m_fHigth = fHigth;
 
 
 
@@ -553,6 +556,26 @@ void CPresetEffect::SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 			m_EffectState3D[nPattern].AnimCnt,
 			m_EffectState3D[nPattern].m_TexSplit);
 		break;
+	case(7):
+		for (int nCnt = 0; nCnt < m_EffectState3D[nPattern].m_nDensity; nCnt++)
+		{
+			CThunderBill::Create(
+				D3DXVECTOR3(0.0f, 0.0f, 0.0f),
+				D3DXVECTOR3(m_EffectState3D[nPattern].m_fSize, m_EffectState3D[nPattern].m_fSize, 0.0f),
+				D3DXVECTOR3(m_EffectState3D[nPattern].m_fAddSize, m_EffectState3D[nPattern].m_fAddSize, 0.0f),
+				m_EffectState3D[nPattern].m_Col,
+				m_EffectState3D[nPattern].m_Changecolor,
+				m_EffectState3D[nPattern].nTexture,
+				m_EffectState3D[nPattern].m_nLife,
+				m_EffectState3D[nPattern].m_nDistance,
+				m_EffectState3D[nPattern].m_TexMove,
+				m_EffectState3D[nPattern].m_TexNum,
+				m_EffectState3D[nPattern].AnimCnt,
+				m_EffectState3D[nPattern].m_TexSplit,
+				m_EffectState3D[nPattern].m_fHigth
+			);
+		}
+		break;
 	}
 }
 
@@ -680,11 +703,4 @@ CPresetEffect *CPresetEffect::CreateOrderMenu(int nDeley, int nPresetNum, int nO
 void CPresetEffect::SetOrder(int nOrder, int nPattern)
 {
 	m_Order3D[CLoadEffect::GetFullOrder()][CLoadEffect::GetOrderTotal()].m_nOrder[nPattern] = nOrder;
-}
-
-//=============================================================================
-// ŽžŠÔ·î•ñ‚ÌƒZƒbƒg
-//=============================================================================
-void CPresetEffect::DeleySet(int nPattern)
-{
 }

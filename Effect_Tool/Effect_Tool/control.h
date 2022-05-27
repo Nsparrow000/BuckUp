@@ -10,7 +10,7 @@
 //=============================================================================
 //マクロ
 //=============================================================================
-#define MAX_PATTERN (7)	//最大パターン
+#define MAX_PATTERN (8)	//最大パターン
 #define MAX_DENSITY (10)		//最大密度
 #define MAX_LIFE (300)			//最大寿命
 
@@ -88,6 +88,7 @@ public:
 	static int GetAnimCont() { return m_nAnimCont; }
 	static float GetSplitU() { return m_nSplit.x; }
 	static float GetSplitV() { return m_nSplit.y; }
+	static float GetHigth() { return m_fHigth; }
 
 	//テキストセーブ
 	static void SaveEffect(CManager::MODE mode, int nPattern);
@@ -133,6 +134,7 @@ public:
 	static void SetTexPattern(D3DXVECTOR2 TexPattern) { m_TexPattern = TexPattern; }	//テクスチャ
 	static void SetnAnimCont(int nAnimCont) { m_nAnimCont = nAnimCont; }	//テクスチャ
 	static void SetnSplit(D3DXVECTOR2 nSplit) { m_nSplit = nSplit; }	//テクスチャ
+	static void SetHigth(float Higth) { m_fHigth = Higth; }	//高さ
 
 	//増減関係
 	static void AddPattern(int nPattern) {
@@ -268,6 +270,7 @@ public:
 	static void AddAnimCont(int AnimCont) { m_nAnimCont += AnimCont; }	//テクスチャV
 	static void AddSplitU(float SplitU) { m_nSplit.x += SplitU; }	//テクスチャV
 	static void AddSplitV(float SplitU) { m_nSplit.y += SplitU; }	//テクスチャV
+	static void AddHigth(float Higth) { m_fHigth += Higth; }	//高さ
 
 
 private:
@@ -337,6 +340,7 @@ private:
 	static D3DXVECTOR2 m_TexPattern;
 	static int m_nAnimCont;	//アニメーションカウント
 	static D3DXVECTOR2 m_nSplit;	//分割数
+	static float m_fHigth;	//高さ
 
 };
 

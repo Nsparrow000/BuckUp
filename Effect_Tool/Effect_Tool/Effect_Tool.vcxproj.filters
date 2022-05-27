@@ -55,6 +55,12 @@
     <Filter Include="ヘッダー ファイル\3D\Effect\Sphere">
       <UniqueIdentifier>{56081f61-94f0-4b4a-94b9-1ed51d25c99c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\3D\Effect\BillBoard">
+      <UniqueIdentifier>{9449df48-f878-4432-bd60-c9d79a360006}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\3D\Effect\BillBoard">
+      <UniqueIdentifier>{1f3f9d6f-5b53-4916-abf1-e34d23a5980b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="control.cpp">
@@ -138,9 +144,6 @@
     <ClCompile Include="SetMesh.cpp">
       <Filter>ソース ファイル\3D\Effect</Filter>
     </ClCompile>
-    <ClCompile Include="straight3d.cpp">
-      <Filter>ソース ファイル\3D\Effect</Filter>
-    </ClCompile>
     <ClCompile Include="billeffect.cpp">
       <Filter>ソース ファイル\3D\Effect</Filter>
     </ClCompile>
@@ -165,12 +168,6 @@
     <ClCompile Include="PresetSetEffect.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="ActiveBillboard.cpp">
-      <Filter>ソース ファイル\3D\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="Rotate3d.cpp">
-      <Filter>ソース ファイル\3D\Effect</Filter>
-    </ClCompile>
     <ClCompile Include="Sphere.cpp">
       <Filter>ソース ファイル\3D\Effect\Sphere</Filter>
     </ClCompile>
@@ -179,6 +176,18 @@
     </ClCompile>
     <ClCompile Include="SetEffect3d.cpp">
       <Filter>ソース ファイル\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="ActiveBillboard.cpp">
+      <Filter>ソース ファイル\3D\Effect\BillBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="Rotate3d.cpp">
+      <Filter>ソース ファイル\3D\Effect\BillBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="straight3d.cpp">
+      <Filter>ソース ファイル\3D\Effect\BillBoard</Filter>
+    </ClCompile>
+    <ClCompile Include="ThunderBill.cpp">
+      <Filter>ソース ファイル\3D\Effect\BillBoard</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -263,12 +272,6 @@
     <ClInclude Include="SetMesh.h">
       <Filter>ヘッダー ファイル\3D\Effect</Filter>
     </ClInclude>
-    <ClInclude Include="billeffect.h">
-      <Filter>ヘッダー ファイル\3D\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="straight3d.h">
-      <Filter>ヘッダー ファイル\3D\Effect</Filter>
-    </ClInclude>
     <ClInclude Include="MouseTracking.h">
       <Filter>ヘッダー ファイル\2D\Effect</Filter>
     </ClInclude>
@@ -290,12 +293,6 @@
     <ClInclude Include="PresetSetEffect.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="ActiveBillboard.h">
-      <Filter>ヘッダー ファイル\3D\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="Rotate3d.h">
-      <Filter>ヘッダー ファイル\3D\Effect</Filter>
-    </ClInclude>
     <ClInclude Include="Sphere.h">
       <Filter>ヘッダー ファイル\3D\Effect\Sphere</Filter>
     </ClInclude>
@@ -304,6 +301,21 @@
     </ClInclude>
     <ClInclude Include="SetEffect3d.h">
       <Filter>ヘッダー ファイル\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="straight3d.h">
+      <Filter>ヘッダー ファイル\3D\Effect\BillBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="Rotate3d.h">
+      <Filter>ヘッダー ファイル\3D\Effect\BillBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="ActiveBillboard.h">
+      <Filter>ヘッダー ファイル\3D\Effect\BillBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="billeffect.h">
+      <Filter>ヘッダー ファイル\3D\Effect\BillBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="ThunderBill.h">
+      <Filter>ヘッダー ファイル\3D\Effect\BillBoard</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

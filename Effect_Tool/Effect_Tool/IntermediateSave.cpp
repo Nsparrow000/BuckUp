@@ -104,10 +104,7 @@ void CIntermeiateSave::IntermeiateSave(CManager::MODE mode, int nPattern, const 
 			fprintf(pFile, "	TYPE = %d					//出現位置のパターン\n", CControl::GetType());
 			fprintf(pFile, "	SECONDTYPE = %d					//ランダム移動のパターン\n", CControl::GetSecondType());
 			fprintf(pFile, "	PARTICLETIME = %d						//粒発生間隔\n", CControl::GetParticleTime());
-
-
 			break;
-
 			case(2):
 				fprintf(pFile, "	SIZE = %.1f						//大きさ\n", CControl::GetSize());
 				fprintf(pFile, "	ADDSIZE = %.1f					//大きさ変動\n", CControl::GetChangeSize());
@@ -165,6 +162,13 @@ void CIntermeiateSave::IntermeiateSave(CManager::MODE mode, int nPattern, const 
 				fprintf(pFile, "	VTX = %d						//頂点数\n", CControl::GetVtx());
 				fprintf(pFile, "	TYPE = %d					//球(0)or半球(1)\n", CControl::GetType());
 
+				break;
+			case(7):
+				fprintf(pFile, "	SIZE = %.1f						//大きさ\n", CControl::GetSize());
+				fprintf(pFile, "	ADDSIZE = %.1f					//大きさ変動\n", CControl::GetChangeSize());
+
+				fprintf(pFile, "	DISTANCE = %.1f						//上発生距離\n", CControl::GetDistance());
+				fprintf(pFile, "	HIGTH = %.1f						//上距離\n", CControl::GetHigth());
 				break;
 			default:
 				break;
@@ -245,7 +249,7 @@ void CIntermeiateSave::IntermeiateLoad(CManager::MODE mode, const char *aModelNa
 	int nSecondType = 0;
 	D3DXVECTOR2 TexSplit = D3DXVECTOR2(1.0f, 1.0f);
 	int AnimCont = -1;
-
+	float fHigth = 30.0f;
 #endif
 	if (pFile != NULL)
 	{
@@ -520,10 +524,15 @@ void CIntermeiateSave::IntermeiateLoad(CManager::MODE mode, const char *aModelNa
 						fscanf(pFile, "%s", &aFile[0]);
 						fscanf(pFile, "%f %f", &TexSplit.x, &TexSplit.y);
 					}
-					if (strcmp(&aFile[0], "TEXANIMCOUNT") == 0)	//頂点数
+					if (strcmp(&aFile[0], "TEXANIMCOUNT") == 0)	//テクスチャカウント
 					{
 						fscanf(pFile, "%s", &aFile[0]);
 						fscanf(pFile, "%d", &AnimCont);
+					}
+					if (strcmp(&aFile[0], "HIGTH") == 0)	//高さ
+					{
+						fscanf(pFile, "%s", &aFile[0]);
+						fscanf(pFile, "%f", &fHigth);
 					}
 
 				}
@@ -569,6 +578,8 @@ void CIntermeiateSave::IntermeiateLoad(CManager::MODE mode, const char *aModelNa
 					CControl::SetSecondType(nSecondType);
 					CControl::SetnAnimCont(AnimCont);
 					CControl::SetnSplit(TexSplit);
+					CControl::SetHigth(fHigth);
+
 				}
 				if (strcmp(&aFile[0], "EFFECTSTATE3D") == 0)
 				{

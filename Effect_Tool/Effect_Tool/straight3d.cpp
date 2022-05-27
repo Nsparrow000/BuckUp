@@ -5,7 +5,6 @@
 #include "Straight3D.h"
 
 #include "renderer.h"
-#include "Camera.h"
 #include "manager.h"
 
 //=============================================================================
@@ -46,11 +45,9 @@ HRESULT CStraight3D::Init(D3DXVECTOR3 pos,
 	int nAnimCounter,
 	D3DXVECTOR2 nSplit)
 {
-
 	CBillEffect::Init(Size, MinSize, color, Mincolor, nType, nLife, TexNum, TexMove, nAnimCounter, nSplit);
 
 	m_nSynthenic = Synsetic;
-	m_pCamera = CManager::GetRenderer()->GetCamera();
 	m_Pattern = Pattrn;
 	m_Target = Target;
 	m_MinSize = MinSize;

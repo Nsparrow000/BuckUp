@@ -8,10 +8,6 @@
 #include "main.h"
 #include "billEffect.h"
 
-//*****************************************************************************
-//前方宣言
-//*****************************************************************************
-class CCamera;
 
 class CStraight3D : public CBillEffect
 {
@@ -94,7 +90,6 @@ private:
 	D3DXVECTOR3 m_move;	//移動値
 	D3DXVECTOR3 m_rot;	//移動値
 
-	CCamera *m_pCamera;	//カメラ
 
 	MOVE_PATTERN m_Pattern;	//動きのパターン
 	RAND_PATTEN m_RandPattern;	//動きランダムパターン

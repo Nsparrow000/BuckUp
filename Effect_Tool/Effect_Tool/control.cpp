@@ -96,6 +96,7 @@ int CControl::m_SecndType = 0;
 D3DXVECTOR2 CControl::m_TexPattern = D3DXVECTOR2(1.0f, 1.0f);
 int CControl::m_nAnimCont = -1;
 D3DXVECTOR2 CControl::m_nSplit = D3DXVECTOR2(1.0f, 1.0f);
+float CControl::m_fHigth = 30.0f;
 
 
 
@@ -494,6 +495,13 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 				fprintf(pFile, "	TYPE = %d					//ãÖ(0)orîºãÖ(1)\n", CControl::GetType());
 
 
+				break;
+			case(7):
+				fprintf(pFile, "	SIZE = %.1f						//ëÂÇ´Ç≥\n", CControl::GetSize());
+				fprintf(pFile, "	ADDSIZE = %.1f					//ëÂÇ´Ç≥ïœìÆ\n", CControl::GetChangeSize());
+
+				fprintf(pFile, "	DISTANCE = %.1f						//è„î≠ê∂ãóó£\n", CControl::GetDistance());
+				fprintf(pFile, "	HIGTH = %.1f						//è„ãóó£\n", CControl::GetHigth());
 				break;
 
 			default:

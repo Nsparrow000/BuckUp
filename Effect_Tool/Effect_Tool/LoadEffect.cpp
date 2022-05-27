@@ -95,6 +95,7 @@ void CLoadEffect::EffectStateLoad(const char *aFileName)
 	int nSecondType = 0;
 	D3DXVECTOR2 TexSplit = D3DXVECTOR2(1.0f, 1.0f);
 	int nAnimCont = -1;
+	float fHigth = 30.0f;
 
 #endif
 
@@ -421,6 +422,11 @@ void CLoadEffect::EffectStateLoad(const char *aFileName)
 					fscanf(pFile, "%s", &aFile[0]);
 					fscanf(pFile, "%d", &nAnimCont);
 				}
+				if (strcmp(&aFile[0], "HIGTH") == 0)	//高さ
+				{
+					fscanf(pFile, "%s", &aFile[0]);
+					fscanf(pFile, "%f", &fHigth);
+				}
 
 			}
 			//エフェクト情報セット
@@ -449,7 +455,7 @@ void CLoadEffect::EffectStateLoad(const char *aFileName)
 					nSynthetic, nTexture, Distance, ParticleTime, pos, fActiveAddSize,
 					FieldTime, (bool)FieldCreate, CreatePreset,
 					nSecondTime, nVtx, nType, TexMove, TexNum, nSecondType, TexSplit,
-					nAnimCont);
+					nAnimCont, fHigth);
 
 				m_Total++;
 			}

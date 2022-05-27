@@ -35,9 +35,9 @@ public:
 	void TexturMove(D3DXVECTOR2 MoveTex);
 
 	void SetTexAnim(D3DXVECTOR2 TexPattern, D3DXVECTOR2 TexAnimSize);
-
-
 	void SetPosField(D3DXVECTOR3 pos, D3DXVECTOR3 Size, float Rotate,float Rotate2);
+
+	void SetPosBill(D3DXVECTOR3 pos, D3DXVECTOR3 pos2, D3DXVECTOR3 size, float Rotate);
 
 	static CPlane *Create(D3DXVECTOR3 size, D3DXVECTOR3 pos, D3DXVECTOR2 Tex);
 	static void CreateTextureFiled();
@@ -50,7 +50,7 @@ private:
 	LPDIRECT3DVERTEXBUFFER9 m_pVtxBuff = NULL; //頂点バッファへのポインタ
 	D3DXVECTOR3 m_size;
 	static int m_nMaxTex;					   //使用する最大テクスチャ
-
+	static int m_Synthetic;
 protected:
 	static LPDIRECT3DTEXTURE9 m_pTexture[MAX_TEXTURE_FILED];	//テクスチャへのポインタ
 

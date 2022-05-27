@@ -59,6 +59,7 @@
     <ClCompile Include="SphereEffect.cpp" />
     <ClCompile Include="straight3d.cpp" />
     <ClCompile Include="MouseTracking.cpp" />
+    <ClCompile Include="ThunderBill.cpp" />
     <ClCompile Include="Trajectory.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -102,6 +103,7 @@
     <ClInclude Include="SphereEffect.h" />
     <ClInclude Include="straight3d.h" />
     <ClInclude Include="MouseTracking.h" />
+    <ClInclude Include="ThunderBill.h" />
     <ClInclude Include="Trajectory.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
