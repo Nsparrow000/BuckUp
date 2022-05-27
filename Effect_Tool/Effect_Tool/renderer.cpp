@@ -441,7 +441,9 @@ void CRenderer::DrawTextLeft()
 	{
 		nNum += sprintf(&str[nNum], "テクスチャ移動 U [+][-]：%.3f\n", CControl::GetTexMoveU());
 		nNum += sprintf(&str[nNum], "テクスチャ移動 V [+][-]：%.3f\n", CControl::GetTexMoveV());
-		nNum += sprintf(&str[nNum], "テクスチャ枚数  [+][-]：%.1f\n", CControl::GetTexNum());
+		nNum += sprintf(&str[nNum], "テクスチャ枚数 U [+][-]：%.1f\n", CControl::GetTexNum().x);
+		nNum += sprintf(&str[nNum], "テクスチャ枚数 V [+][-]：%.1f\n", CControl::GetTexNum().y);
+
 		nNum += sprintf(&str[nNum], "テクスチャ分割数 U [+][-]：%.0f\n", CControl::GetSplitU());
 		nNum += sprintf(&str[nNum], "テクスチャ分割数 V [+][-]：%.0f\n", CControl::GetSplitV());
 		nNum += sprintf(&str[nNum], "パターンカウント  [+][-]：%d\n", CControl::GetAnimCont());

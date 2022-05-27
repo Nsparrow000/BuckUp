@@ -42,10 +42,12 @@ HRESULT CStraight3D::Init(D3DXVECTOR3 pos,
 	CStraight3D::RAND_PATTEN RandPattern,
 	CStraight3D::POS_PATTERN PosPattern,
 	D3DXVECTOR2 TexMove,
-	float TexNum)
+	D3DXVECTOR2 TexNum,
+	int nAnimCounter,
+	D3DXVECTOR2 nSplit)
 {
 
-	CBillEffect::Init(Size, MinSize, color, Mincolor, nType, nLife, TexNum);
+	CBillEffect::Init(Size, MinSize, color, Mincolor, nType, nLife, TexNum, TexMove, nAnimCounter, nSplit);
 
 	m_nSynthenic = Synsetic;
 	m_pCamera = CManager::GetRenderer()->GetCamera();
@@ -168,9 +170,6 @@ HRESULT CStraight3D::Init(D3DXVECTOR3 pos,
 		break;
 	}
 
-	m_TexMove = TexMove;
-	m_fTexNum = TexNum;
-
 	SetPos(m_pos);
 
 	return S_OK;
@@ -226,7 +225,6 @@ void CStraight3D::Update()
 
 	SetPos(pos);
 	ChangeSize(m_Size);
-	TexturMove(m_TexMove);
 	CBillEffect::Update();
 }
 
@@ -256,14 +254,16 @@ CStraight3D *CStraight3D::Create(D3DXVECTOR3 pos,
 	CStraight3D::RAND_PATTEN RandPattern,
 	CStraight3D::POS_PATTERN PosPattern,
 	D3DXVECTOR2 TexMove,
-	float TexNum)
+	D3DXVECTOR2 TexNum,
+	int nAnimCounter,
+	D3DXVECTOR2 nSplit)
 {
 	CStraight3D *pStraight3D = new CStraight3D(CManager::PRIORITY_EFFECT);
 
 	if (pStraight3D != NULL)
 	{
 		pStraight3D->Init(pos, Size, MinSize, move, color, Mincolor, nType, nLife, Pattrn, Target, Synsetic, Destance, RandPattern, PosPattern, TexMove,
-			TexNum);
+			TexNum, nAnimCounter, nSplit);
 	}
 
 	return pStraight3D;

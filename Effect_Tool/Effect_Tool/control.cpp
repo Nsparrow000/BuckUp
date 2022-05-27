@@ -90,7 +90,7 @@ int CControl::m_nSecondTime = 0;
 int CControl::m_nVtx = 4;
 int CControl::m_nType = 0;
 D3DXVECTOR2 CControl::m_TexMove = D3DXVECTOR2(0.0f, 0.0f);
-float CControl::m_TexNum = 1.0f;
+D3DXVECTOR2 CControl::m_TexNum = D3DXVECTOR2(1.0f, 1.0f);
 int CControl::m_SecndType = 0;
 
 D3DXVECTOR2 CControl::m_TexPattern = D3DXVECTOR2(1.0f, 1.0f);
@@ -508,7 +508,7 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 			fprintf(pFile, "	TEXTURE = %d						//テクスチャ\n", CControl::GetTex());
 			fprintf(pFile, "	SYNTHETIC = %d						//合成\n", CControl::GetSynthetic());
 			fprintf(pFile, "	TEXMOVE = %.3f %.3f					//テクスチャ移動\n", CControl::GetTexMoveU(), CControl::GetTexMoveV());
-			fprintf(pFile, "	TEXNUM = %.1f 					//テクスチャ枚数\n", CControl::GetTexNum());
+			fprintf(pFile, "	TEXNUM = %.1f %.1f					//テクスチャ枚数\n", CControl::GetTexNum().x, CControl::GetTexNum().y);
 
 			fprintf(pFile, "	TEXANIMCOUNT = %d					//テクスチャアニメーションカウント\n", CControl::GetAnimCont());
 			fprintf(pFile, "	TEXSPLIT = %.0f %.0f					//テクスチャ分割数\n", CControl::GetSplitU(), CControl::GetSplitV());

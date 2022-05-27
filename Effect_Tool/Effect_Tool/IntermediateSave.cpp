@@ -176,7 +176,7 @@ void CIntermeiateSave::IntermeiateSave(CManager::MODE mode, int nPattern, const 
 			fprintf(pFile, "	SYNTHETIC = %d						//合成\n", CControl::GetSynthetic());
 
 			fprintf(pFile, "	TEXMOVE = %.3f %.3f					//テクスチャ移動\n", CControl::GetTexMoveU(), CControl::GetTexMoveV());
-			fprintf(pFile, "	TEXNUM = %.1f					//テクスチャ枚数\n", CControl::GetTexNum());
+			fprintf(pFile, "	TEXNUM = %.1f %.1f					//テクスチャ枚数\n", CControl::GetTexNum().x, CControl::GetTexNum().y);
 
 			fprintf(pFile, "	TEXMOVE = %.3f %.3f					//テクスチャ移動\n", CControl::GetTexMoveU(), CControl::GetTexMoveV());
 
@@ -241,7 +241,7 @@ void CIntermeiateSave::IntermeiateLoad(CManager::MODE mode, const char *aModelNa
 	int nVtx = 0;
 	int nType = 0;
 	D3DXVECTOR2 TexMove = D3DXVECTOR2(0.0f,0.0f);
-	float TexNum = 1.0f;
+	D3DXVECTOR2 TexNum = D3DXVECTOR2(1.0f, 1.0f);
 	int nSecondType = 0;
 	D3DXVECTOR2 TexSplit = D3DXVECTOR2(1.0f, 1.0f);
 	int AnimCont = -1;
@@ -508,7 +508,7 @@ void CIntermeiateSave::IntermeiateLoad(CManager::MODE mode, const char *aModelNa
 					if (strcmp(&aFile[0], "TEXNUM") == 0)	//テクスチャ枚数
 					{
 						fscanf(pFile, "%s", &aFile[0]);
-						fscanf(pFile, "%f", &TexNum);
+						fscanf(pFile, "%f %f", &TexNum.x , &TexNum.y);
 					}
 					if (strcmp(&aFile[0], "SECONDTYPE") == 0)	//頂点数
 					{

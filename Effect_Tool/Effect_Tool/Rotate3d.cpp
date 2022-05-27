@@ -140,7 +140,9 @@ void CRotate3D::Update()
 		(CStraight3D::RAND_PATTEN)0,
 		(CStraight3D::POS_PATTERN)3,
 		D3DXVECTOR2(0.0f, 0.0f),
-		1.0f);
+		D3DXVECTOR2(1.0f, 1.0f),
+		0,
+		D3DXVECTOR2(1.0f, 1.0f));
 	m_nLife--;
 
 	if (m_nLife < 0)

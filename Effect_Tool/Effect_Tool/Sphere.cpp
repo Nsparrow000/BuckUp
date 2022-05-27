@@ -40,7 +40,7 @@ CSphere::~CSphere(void)
 //=============================================================================
 // 初期化
 //=============================================================================
-HRESULT CSphere::Init(D3DXVECTOR3 pos, float rot, float fSize, int Vertical, int Line, int nTex, int Synthetic, float TexNum)
+HRESULT CSphere::Init(D3DXVECTOR3 pos, float rot, float fSize, int Vertical, int Line, int nTex, int Synthetic, D3DXVECTOR2 TexNum)
 {
 	LPDIRECT3DDEVICE9 pDevice; //デバイスのポインタ
 	pDevice = CManager::GetRenderer()->GetDevice();     //デバイスを取得する
@@ -51,7 +51,7 @@ HRESULT CSphere::Init(D3DXVECTOR3 pos, float rot, float fSize, int Vertical, int
 	m_nVertical = Vertical;
 	m_nLine = Line;
 	m_nTex = nTex;
-	m_TexUV = D3DXVECTOR2(TexNum, TexNum);
+	m_TexUV = TexNum;
 
 	m_Synthetic = Synthetic;
 

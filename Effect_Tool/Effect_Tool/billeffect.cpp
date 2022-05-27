@@ -33,17 +33,33 @@ CBillEffect::~CBillEffect()
 //=============================================================================
 // 初期化
 //=============================================================================
-HRESULT CBillEffect::Init(D3DXVECTOR3 Size, D3DXVECTOR3 MinSize, D3DCOLORVALUE color, D3DCOLORVALUE Mincolor, int nTex, int nLife,float TexNum)
+HRESULT CBillEffect::Init(D3DXVECTOR3 Size,
+	D3DXVECTOR3 MinSize,
+	D3DCOLORVALUE color,
+	D3DCOLORVALUE Mincolor,
+	int nTex, int nLife,
+	D3DXVECTOR2 TexNum,
+	D3DXVECTOR2 TexMove,
+	int nAnimCounter,
+	D3DXVECTOR2 nSplit)
 {
-	CPlane::Init(Size, D3DXVECTOR3(0.0f, 0.0f, 0.0f), D3DXVECTOR2(TexNum, TexNum));
+	CPlane::Init(Size, D3DXVECTOR3(0.0f, 0.0f, 0.0f), TexNum);
 	SetTexture(nTex);
 
 
 	m_Size = Size;			//大きさ
 	m_MinSize = MinSize;	//大きさ変動
 
-							//カラー
+	m_TexSize = TexMove;
+
+	//カラー
 	m_Color = color;
+
+	m_MaxSplit = nSplit;
+	m_PatternSize = D3DXVECTOR2(1.0f / m_MaxSplit.x, 1.0f / m_MaxSplit.y);
+	m_nAnimCount = nAnimCounter;
+	m_nSetAnimCnt = nAnimCounter;
+
 
 	//カラー変動
 	m_MinColor = Mincolor;
@@ -112,8 +128,29 @@ void CBillEffect::Update()
 		m_Color.a = MAX_COLOR;
 	}
 
+	//テクスチャアニメーション
+	if (m_nAnimCount >= 0)
+	{
+		m_nAnimCount--;
+		if (m_nAnimCount < 0)
+		{
+			m_nAnimCount = m_nSetAnimCnt;
+			m_nSplit.x++;
+			m_nSplit.y++;
+		}
+		if (m_MaxSplit > m_MaxSplit)
+		{
+			m_nSplit.x = 0;
+			m_nSplit.y = 0;
+		}
+	}
+
+
+
 	//それぞれ適応
 	CPlane::ColorChange(m_Color);
+	CPlane::TexturMove(m_TexSize);
+	CPlane::SetTexAnim(m_nSplit, m_PatternSize);
 
 	//寿命減少
 	m_nLife--;
@@ -127,7 +164,6 @@ void CBillEffect::Update()
 	{
 		Uninit();
 	}
-
 }
 
 //=============================================================================

@@ -34,7 +34,7 @@ HRESULT CSphereEffect::Init(
 	float fAddSize, int Vtx,
 	SPHERE_TYPE SphereType,
 	D3DXVECTOR2 TexMove,
-	float TexNum,
+	D3DXVECTOR2 TexNum,
 	int nAnimCounter,
 	D3DXVECTOR2 nSplit)
 {
@@ -58,6 +58,7 @@ HRESULT CSphereEffect::Init(
 	m_fSize = fSize;
 	m_fAddSize = fAddSize;
 	m_nLife = nLife;
+
 	m_MaxSplit = nSplit;
 	m_PatternSize = D3DXVECTOR2(1.0f / m_MaxSplit.x, 1.0f / m_MaxSplit.y);
 	m_nAnimCount = nAnimCounter;
@@ -132,7 +133,6 @@ void CSphereEffect::Update()
 	}
 
 	//テクスチャアニメーション
-
 	if (m_nAnimCount >= 0)
 	{
 		m_nAnimCount--;
@@ -142,7 +142,7 @@ void CSphereEffect::Update()
 			m_nSplit.x++;
 			m_nSplit.y++;
 		}
-		if (m_MaxSplit > m_MaxSplit)
+		if (m_nSplit > m_MaxSplit)
 		{
 			m_nSplit.x = 0;
 			m_nSplit.y = 0;
@@ -152,10 +152,10 @@ void CSphereEffect::Update()
 	{
 
 	}
-	SetSize(pos,m_fSize);
-	SetColor(m_Color);
-	SetTexUV(m_TexMove);
-	SetAnimTexUV(D3DXVECTOR2(m_nSplit.x * m_PatternSize.x, m_nSplit.y * m_PatternSize.y));
+	CSphere::SetSize(pos,m_fSize);
+	CSphere::SetColor(m_Color);
+	CSphere::SetTexUV(m_TexMove);
+	CSphere::SetAnimTexUV(D3DXVECTOR2(m_nSplit.x * m_PatternSize.x, m_nSplit.y * m_PatternSize.y));
 
 	CSphere::Update();
 }
@@ -181,7 +181,7 @@ CSphereEffect *CSphereEffect::Create(
 	float fAddSize, int Vtx,
 	SPHERE_TYPE SphereType,
 	D3DXVECTOR2 TexMove,
-	float TexNum,
+	D3DXVECTOR2 TexNum,
 	int nAnimCounter,
 	D3DXVECTOR2 nSplit)
 {

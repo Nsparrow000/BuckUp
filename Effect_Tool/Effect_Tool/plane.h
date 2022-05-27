@@ -34,6 +34,9 @@ public:
 
 	void TexturMove(D3DXVECTOR2 MoveTex);
 
+	void SetTexAnim(D3DXVECTOR2 TexPattern, D3DXVECTOR2 TexAnimSize);
+
+
 	void SetPosField(D3DXVECTOR3 pos, D3DXVECTOR3 Size, float Rotate,float Rotate2);
 
 	static CPlane *Create(D3DXVECTOR3 size, D3DXVECTOR3 pos, D3DXVECTOR2 Tex);
@@ -50,9 +53,17 @@ private:
 
 protected:
 	static LPDIRECT3DTEXTURE9 m_pTexture[MAX_TEXTURE_FILED];	//テクスチャへのポインタ
+
 	int m_nTexType;												//貼るテクスチャ
 	D3DXVECTOR2 m_TexNum;
 	D3DXVECTOR2 m_TexMove;
+	D3DXVECTOR2 m_TexSize;
+	D3DXVECTOR2 m_PatternSize;
+
+	int m_nAnimCount;
+	int m_nSetAnimCnt;
+	D3DXVECTOR2 m_nSplit;
+	D3DXVECTOR2 m_MaxSplit;
 
 };
 

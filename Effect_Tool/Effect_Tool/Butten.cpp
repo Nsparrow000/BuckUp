@@ -325,7 +325,7 @@ void CButten::Set(OPERATION Operation, float nIndeNum)
 		CControl::AddTexMoveV(nIndeNum);
 		break;
 	case(TEXNUM):
-		CControl::AddTexNum(nIndeNum);
+		CControl::AddTexNumU(nIndeNum);
 		break;
 	case(SECONDTYPE):
 		CControl::AddSecondType(nIndeNum);
@@ -338,6 +338,9 @@ void CButten::Set(OPERATION Operation, float nIndeNum)
 		break;
 	case(ANIMCONT):
 		CControl::AddAnimCont(nIndeNum);
+		break;
+	case(TEXNUMV):
+		CControl::AddTexNumV(nIndeNum);
 		break;
 
 	default:

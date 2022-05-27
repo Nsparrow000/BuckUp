@@ -417,7 +417,9 @@ void CPlayer::CreateEffect(int nPattern)
 				(CStraight3D::RAND_PATTEN)0,
 				(CStraight3D::POS_PATTERN)3,
 				D3DXVECTOR2(CControl::GetTexMoveU(),CControl::GetTexMoveV()),
-				CControl::GetTexNum());
+				CControl::GetTexNum(),
+				CControl::GetAnimCont(),
+				D3DXVECTOR2(CControl::GetSplitU(), CControl::GetSplitV()));
 		}
 		break;
 	default:

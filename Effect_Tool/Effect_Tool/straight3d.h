@@ -63,7 +63,9 @@ public:
 		CStraight3D::RAND_PATTEN RandPattern,
 		CStraight3D::POS_PATTERN PosPattern,
 		D3DXVECTOR2 TexMove,
-		float TexNum);
+		D3DXVECTOR2 TexNum,
+		int nAnimCounter,
+		D3DXVECTOR2 nSplit);
 
 	void Uninit();
 	void Update();
@@ -84,7 +86,9 @@ public:
 		CStraight3D::RAND_PATTEN RandPattern,
 		CStraight3D::POS_PATTERN PosPattern,
 		D3DXVECTOR2 TexMove,
-		float TexNum);
+		D3DXVECTOR2 TexNum,
+		int nAnimCounter,
+		D3DXVECTOR2 nSplit);
 private:
 	D3DXVECTOR3 m_pos;	//èoåªà íu
 	D3DXVECTOR3 m_move;	//à⁄ìÆíl

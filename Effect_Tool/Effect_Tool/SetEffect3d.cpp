@@ -118,7 +118,9 @@ void CSetEffect3D::Update()
 							(CStraight3D::RAND_PATTEN)CControl::GetType(),
 							(CStraight3D::POS_PATTERN)CControl::GetSecondType(),
 							D3DXVECTOR2(CControl::GetTexMoveU(), CControl::GetTexMoveV()),
-							CControl::GetTexNum());
+							CControl::GetTexNum(),
+							CControl::GetAnimCont(),
+							D3DXVECTOR2(CControl::GetSplitU(), CControl::GetSplitV()));
 						bOne = false;
 						m_bOne = false;
 					}
@@ -164,7 +166,9 @@ void CSetEffect3D::Update()
 						CControl::GetSynthetic(), CControl::GetActiveTime(),
 						CControl::GetMaxSize(), CControl::GetChangeSize(), 0, 0,
 						D3DXVECTOR2(CControl::GetTexMoveU(), CControl::GetTexMoveV()),
-						CControl::GetTexNum());
+						D3DXVECTOR2(CControl::GetTexNum().x, CControl::GetTexNum().y),
+						CControl::GetAnimCont(),
+						D3DXVECTOR2(CControl::GetSplitU(), CControl::GetSplitV()));
 				}
 				break;
 			case(5):

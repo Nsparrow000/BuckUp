@@ -81,7 +81,7 @@ public:
 	static int GetTrajectCol(int nSerectcolor);	//色取得
 	static float GetTexMoveU() { return m_TexMove.x; }	
 	static float GetTexMoveV() { return m_TexMove.y; }
-	static float GetTexNum() { return m_TexNum; }	//テクスチャ枚数
+	static D3DXVECTOR2 GetTexNum() { return m_TexNum; }	//テクスチャ枚数
 	static int GetSecondType() { return m_nSecondTime; }
 	static float GetTexPatternU() { return m_TexPattern.x; }
 	static float GetTexPatternV() { return m_TexPattern.y; }
@@ -128,7 +128,7 @@ public:
 	static void SetVtx(int Vtx) { m_nVtx = Vtx; }
 	static void SetType(int nType) { m_nType = nType;}	//球タイプ
 	static void SetTexMoveUV(D3DXVECTOR2 TexMove) { m_TexMove = TexMove; }	//テクスチャ
-	static void SetTexNum(float Num) { m_TexNum = Num; }	//テクスチャ
+	static void SetTexNum(D3DXVECTOR2 Num) { m_TexNum = Num; }	//テクスチャ
 	static void SetSecondType(int SecondType) { m_nSecondTime = SecondType; }
 	static void SetTexPattern(D3DXVECTOR2 TexPattern) { m_TexPattern = TexPattern; }	//テクスチャ
 	static void SetnAnimCont(int nAnimCont) { m_nAnimCont = nAnimCont; }	//テクスチャ
@@ -258,7 +258,9 @@ public:
 
 	static void AddTexMoveU(float MoveU) { m_TexMove.x += MoveU; }	//テクスチャU
 	static void AddTexMoveV(float MoveV) { m_TexMove.y += MoveV; }	//テクスチャV
-	static void AddTexNum(float Num) { m_TexNum += Num; }	//テクスチャ枚数
+	static void AddTexNumU(float NumU) { m_TexNum.x += NumU; }	//テクスチャ枚数
+	static void AddTexNumV(float NumV) { m_TexNum.y += NumV; }	//テクスチャ枚数
+
 	static void AddSecondType(int SecondType) { m_nSecondTime += SecondType; }
 
 	static void AddTexPatternU(float PatternU) {m_TexPattern.x += PatternU;}	//テクスチャU
@@ -325,7 +327,7 @@ private:
 	static int m_nVtx;	//球頂点数
 	static int m_nType;	//タイプ
 
-	static float m_TexNum;	//テクスチャ枚数
+	static D3DXVECTOR2 m_TexNum;	//テクスチャ枚数
 
 	//軌跡
 	static int m_ModelTrajecNum;	//軌跡先端

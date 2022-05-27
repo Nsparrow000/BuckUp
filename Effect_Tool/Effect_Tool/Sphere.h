@@ -19,7 +19,7 @@ public:
 	HRESULT Init(D3DXVECTOR3 pos, float rot,
 		float fSize, int Vertical,
 		int Line, int nTex,
-		int Synthetic, float TexNum);
+		int Synthetic, D3DXVECTOR2 TexNum);
 	void Uninit();
 	void Update();
 	void Draw();
@@ -31,7 +31,7 @@ public:
 	void Rotate(float Rotate);
 
 	void SetTexUV(D3DXVECTOR2 TexUV);
-	void SetAnimTexUV( D3DXVECTOR2 TexPattern);
+	void SetAnimTexUV(D3DXVECTOR2 TexPattern);
 
 
 	static  void CreateTextureSphere(void);

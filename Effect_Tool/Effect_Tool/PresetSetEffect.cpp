@@ -143,7 +143,7 @@ void CPresetEffect::SetEffectState3D(
 	int m_nVtx,
 	int m_nType,
 	D3DXVECTOR2 m_TexMove,
-	float m_TexNum,
+	D3DXVECTOR2 m_TexNum,
 	int m_nSecondType,
 	D3DXVECTOR2 m_TexSplit,
 	int AnimCnt)
@@ -388,7 +388,9 @@ void CPresetEffect::SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 				(CStraight3D::RAND_PATTEN)m_EffectState3D[nPattern].m_nType,
 				(CStraight3D::POS_PATTERN)m_EffectState3D[nPattern].m_nSecondTime,
 				m_EffectState3D[nPattern].m_TexMove,
-				m_EffectState3D[nPattern].m_TexNum);
+				m_EffectState3D[nPattern].m_TexNum,
+				m_EffectState3D[nPattern].AnimCnt,
+				m_EffectState3D[nPattern].m_TexSplit);
 		}
 		break;
 	case(2):	//纏わせ
@@ -471,7 +473,9 @@ void CPresetEffect::SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 				(CStraight3D::RAND_PATTEN)0,
 				(CStraight3D::POS_PATTERN)3,
 				m_EffectState3D[nPattern].m_TexMove,
-				m_EffectState3D[nPattern].m_TexNum);
+				m_EffectState3D[nPattern].m_TexNum,
+				m_EffectState3D[nPattern].AnimCnt,
+				m_EffectState3D[nPattern].m_TexSplit);
 		}
 		break;
 	case(3):	//フィールド
@@ -560,7 +564,6 @@ void CPresetEffect::SetOrderPreset(int nDeley, int nPresetNum)
 	m_Order3D[CLoadEffect::GetFullOrder()][CLoadEffect::GetOrderTotal()].nDeley = nDeley;
 	m_Order3D[CLoadEffect::GetFullOrder()][CLoadEffect::GetOrderTotal()].nPresetNum = nPresetNum;
 
-	int n = CLoadEffect::GetOrderTotal();
 	m_nMaxOrderCount++;
 
 }

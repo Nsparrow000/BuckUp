@@ -44,7 +44,9 @@ public:
 		bool PresetCreate,
 		int nPattern,
 		D3DXVECTOR2 TexMove,
-		float TexNum);
+		D3DXVECTOR2 TexNum,
+		int nAnimCounter,
+		D3DXVECTOR2 nSplit);
 
 		void Uninit();
 	void Update();
@@ -65,7 +67,9 @@ public:
 		bool PresetCreate,
 		int nPattern,
 		D3DXVECTOR2 TexMove,
-		float TexNum);
+		D3DXVECTOR2 TexNum,
+		int nAnimCounter,
+		D3DXVECTOR2 nSplit);
 
 private:
 	EFFECT_TIME EffectTime;	//エフェクトの今の状態

@@ -91,6 +91,7 @@ public:
 		TEXSPLITU,
 		TEXSPLITV,
 		ANIMCONT,
+		TEXNUMV,
 		MAX,
 	} OPERATION;
 

@@ -91,7 +91,7 @@ void CLoadEffect::EffectStateLoad(const char *aFileName)
 	int nVtx = 0;
 	int nType = 0;
 	D3DXVECTOR2 TexMove = D3DXVECTOR2(0.0f, 0.0f);
-	float TexNum = 1.0f;
+	D3DXVECTOR2 TexNum = D3DXVECTOR2(1.0f, 1.0f);
 	int nSecondType = 0;
 	D3DXVECTOR2 TexSplit = D3DXVECTOR2(1.0f, 1.0f);
 	int nAnimCont = -1;
