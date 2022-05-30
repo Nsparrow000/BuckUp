@@ -169,6 +169,8 @@ void CIntermeiateSave::IntermeiateSave(CManager::MODE mode, int nPattern, const 
 
 				fprintf(pFile, "	DISTANCE = %.1f						//ã”­¶‹——£\n", CControl::GetDistance());
 				fprintf(pFile, "	HIGTH = %.1f						//ã‹——£\n", CControl::GetHigth());
+				fprintf(pFile, "	PARTICLEADDSIZE = %.1f						//‰º•”•ª‚Ì•\n", CControl::GetParticleAddSize());
+
 				break;
 			default:
 				break;

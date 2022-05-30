@@ -206,6 +206,8 @@ void CSetEffect3D::Update()
 				}
 				break;
 			case(7):
+				if (m_pKeyboard->GetKey(DIK_SPACE) == true)
+				{
 					CThunderBill::Create(D3DXVECTOR3(0.0f, 0.0f, 0.0f),
 						D3DXVECTOR3(CControl::GetSize(), CControl::GetSize(), 0.0f),
 						D3DXVECTOR3(CControl::GetChangeSize(), CControl::GetChangeSize(), 0.0f),
@@ -216,7 +218,10 @@ void CSetEffect3D::Update()
 						D3DXVECTOR2(CControl::GetTexMoveU(), CControl::GetTexMoveV()), CControl::GetTexNum(),
 						CControl::GetAnimCont(),
 						D3DXVECTOR2(CControl::GetSplitU(), CControl::GetSplitV()),
-						CControl::GetHigth());
+						CControl::GetHigth(),
+						D3DXVECTOR3(CControl::GetParticleSize(), CControl::GetParticleSize(), {})
+						);
+				}
 				break;
 
 			default:

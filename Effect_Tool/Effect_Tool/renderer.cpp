@@ -395,6 +395,8 @@ void CRenderer::DrawText()
 			case(7):
 				nNum += sprintf(&str[nNum], "‹——£ [+][-]F%.1f\n", CControl::GetDistance());
 				nNum += sprintf(&str[nNum], "‚‚³ [+][-]F%.1f\n", CControl::GetHigth());
+				nNum += sprintf(&str[nNum], "‰º•”•ª• [+][-]F%.1f\n", CControl::GetParticleSize());
+
 				break;
 
 			default:

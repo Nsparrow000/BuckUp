@@ -12,7 +12,7 @@
 //=============================================================================
 CThunderBill::CThunderBill(int nPriority) : CBillEffect(nPriority)
 {
-
+	m_orizinSize = {};
 }
 
 //=============================================================================
@@ -38,25 +38,38 @@ HRESULT CThunderBill::Init(D3DXVECTOR3 pos,
 	D3DXVECTOR2 TexNum,
 	int nAnimCounter,
 	D3DXVECTOR2 nSplit,
-	float fHigth)
+	float fHigth,
+	D3DXVECTOR3 orizinSize)
 {
 	CBillEffect::Init(Size, MinSize, color, Mincolor, nTex, nLife, TexNum, TexMove, nAnimCounter, nSplit);
-	//int fDistance = (int)Destance;
+	int fDistance = (int)Destance;
 	float fRandAngle = CIRCLE2;
 	float fRandAngle2 = CIRCLE2;
-	//float fRandDistance = float(rand() % fDistance) / 10.0f - float(rand() % fDistance) / 10.0f;
-	m_Rot = CIRCLE2;
-	m_Rot * 100;
-
+	float fRandDistance = float(rand() % fDistance) - float(rand() % fDistance);
+	m_orizinSize = orizinSize;
 
 	m_pCamera = CManager::GetRenderer()->GetCamera();
 
 	m_Size = Size;
-	m_pos = pos;
-	m_pos2 = D3DXVECTOR3(
-		pos.x + Destance * sinf(fRandAngle) * cosf(fRandAngle2),
+	m_posorizin1 = D3DXVECTOR3(
+		pos.x * sinf(fRandAngle)  * cosf(fRandAngle2) + m_orizinSize.x,
+		0.0f,
+		{});
+	m_posorizin2 = D3DXVECTOR3(
+		pos.x * sinf(fRandAngle) * cosf(fRandAngle2) - m_orizinSize.x,
+		0.0f,
+		{});
+	m_posHigth1 = D3DXVECTOR3(
+		pos.x + fRandDistance * sinf(fRandAngle) * cosf(fRandAngle2) + m_Size.x,
 		fHigth,
-		pos.z + Destance * sinf(fRandAngle) * sinf(fRandAngle2));
+		{});
+	m_posHigth2 = D3DXVECTOR3(
+		pos.x + fRandDistance * sinf(fRandAngle) * cosf(fRandAngle2) - m_Size.x,
+		fHigth,
+		{});
+
+	CPlane::SetPosBill(m_posHigth1, m_posHigth2, m_posorizin1, m_posorizin2);
+
 	return S_OK;
 }
 
@@ -73,7 +86,7 @@ void CThunderBill::Uninit()
 //=============================================================================
 void CThunderBill::Update()
 {
-	CPlane::SetPosBill(m_pos, m_pos2, m_Size, m_pCamera->GetRotY());
+	CPlane::SetPosBill(m_posHigth1, m_posHigth2, m_posorizin1, m_posorizin2);
 	CBillEffect::Update();
 }
 
@@ -87,8 +100,9 @@ void CThunderBill::Draw()
 	D3DXMATRIX mtxTrans, mtxWorld; //計算用マトリックス
 	pDevice = CManager::GetRenderer()->GetDevice();     //デバイスを取得する
 
+	D3DXMatrixIdentity(&mtxWorld);
 
-														//Zテスト関係
+	//Zテスト関係
 	pDevice->SetRenderState(D3DRS_ZFUNC, D3DCMP_ALWAYS);
 	pDevice->SetRenderState(D3DRS_ZWRITEENABLE, FALSE);
 	pDevice->SetRenderState(D3DRS_ZFUNC, D3DCMP_LESSEQUAL);
@@ -97,6 +111,8 @@ void CThunderBill::Draw()
 	pDevice->SetRenderState(D3DRS_ALPHATESTENABLE, TRUE);
 	pDevice->SetRenderState(D3DRS_ALPHAFUNC, D3DCMP_GREATER);
 	pDevice->SetRenderState(D3DRS_ALPHAREF, 0);
+	//カリングオフ
+	pDevice->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 
 	if (m_nSynthenic == 0)
 	{
@@ -129,6 +145,7 @@ void CThunderBill::Draw()
 	////ポリゴンをカメラに対して正面に向ける
 	//D3DXMatrixInverse(&mtxWorld, NULL, &mtxView); //逆行列を求める
 
+	//x軸以外のビルボード化
 	mtxWorld._11 = mtxView._11;
 	mtxWorld._12 = mtxView._21;
 	mtxWorld._13 = mtxView._31;
@@ -139,14 +156,15 @@ void CThunderBill::Draw()
 	mtxWorld._32 = mtxView._23;
 	mtxWorld._33 = mtxView._33;
 
-
-
+	//座標
 	mtxWorld._41 = 0.0f;
 	mtxWorld._42 = 0.0f;
 	mtxWorld._43 = 0.0f;
 
+	D3DXVECTOR3 pos = GetPos();
+
 	//位置を反映
-	D3DXMatrixTranslation(&mtxTrans, GetPos().x, GetPos().y, GetPos().z);
+	D3DXMatrixTranslation(&mtxTrans, pos.x, pos.y, pos.z);
 	D3DXMatrixMultiply(&mtxWorld, &mtxWorld, &mtxTrans);
 
 	//ワールドマトリックスの設定
@@ -163,6 +181,8 @@ void CThunderBill::Draw()
 	pDevice->DrawPrimitive(D3DPT_TRIANGLESTRIP,
 		0,  //開始する始点のインデックス
 		2); //描画するプリミティブ数
+			//カリングオン
+	pDevice->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
 
 			//Zテスト関係
 	pDevice->SetRenderState(D3DRS_ZWRITEENABLE, TRUE);
@@ -200,14 +220,16 @@ CThunderBill *CThunderBill::Create(D3DXVECTOR3 pos,
 	D3DXVECTOR2 TexNum,
 	int nAnimCounter,
 	D3DXVECTOR2 nSplit,
-	float fHigth)
+	float fHigth,
+	D3DXVECTOR3 orizinSize)
 {
 	CThunderBill *pThunderBill = new CThunderBill(CManager::PRIORITY_EFFECT);
 
 	if (pThunderBill != NULL)
 	{
 		pThunderBill->Init(pos, Size, MinSize, color, Mincolor, nTex, nLife, Destance, TexMove,
-			TexNum, nAnimCounter, nSplit, fHigth);
+			TexNum, nAnimCounter, nSplit, fHigth,
+			orizinSize);
 	}
 
 	return pThunderBill;

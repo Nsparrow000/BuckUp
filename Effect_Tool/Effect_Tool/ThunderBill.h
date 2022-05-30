@@ -25,7 +25,8 @@ public:
 		D3DXVECTOR2 TexNum,
 		int nAnimCounter,
 		D3DXVECTOR2 nSplit,
-		float fHigth);
+		float fHigth,
+		D3DXVECTOR3 orizinSize);
 
 	void Uninit();
 	void Update();
@@ -43,12 +44,20 @@ public:
 		D3DXVECTOR2 TexNum,
 		int nAnimCounter,
 		D3DXVECTOR2 nSplit,
-		float fHigth);
+		float fHigth,
+		D3DXVECTOR3 orizinSize
+		);
 private:
 	CCamera *m_pCamera;
 
-	D3DXVECTOR3 m_pos;	//出現位置
-	D3DXVECTOR3 m_pos2;	//出現位置上
+	D3DXVECTOR3 m_posorizin1;	//出現位置
+	D3DXVECTOR3 m_posorizin2;	//出現位置
+
+	D3DXVECTOR3 m_posHigth1;	//出現位置上
+	D3DXVECTOR3 m_posHigth2;	//出現位置上
+
+	D3DXVECTOR3 m_orizinSize;	//サイズ（下部分）
+
 	float m_Rot;	//出現位置上
 
 	float m_fHigth;

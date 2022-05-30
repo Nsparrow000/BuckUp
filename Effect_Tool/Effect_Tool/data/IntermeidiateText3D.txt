@@ -6,22 +6,23 @@
 
 EFFECTSTATE3D
 	PATTERN = 7				//動きのパターン
-	COLOR = 255 255 255 255			//カラー
+	COLOR = 255 255 115 255			//カラー
 	CHANGECOLOR = 0 0 0 0			//カラー変動値
-	LIFE = 100						//寿命
-	SIZE = 20.0						//大きさ
+	LIFE = 12						//寿命
+	SIZE = 70.0						//大きさ
 	ADDSIZE = 0.0					//大きさ変動
-	DISTANCE = 1.0						//上発生距離
-	HIGTH = 30.0						//上距離
-	COLOR = 255 255 255 255			//カラー
+	DISTANCE = 321.0						//上発生距離
+	HIGTH = 630.0						//上距離
+	PARTICLEADDSIZE = 0.0						//下部分の幅
+	COLOR = 255 255 115 255			//カラー
 	CHANGECOLOR = 0 0 0 0			//カラー変動値
-	TEXTURE = 1						//テクスチャ
+	TEXTURE = 19						//テクスチャ
 	SYNTHETIC = 0						//合成
 	TEXMOVE = 0.000 0.000					//テクスチャ移動
 	TEXNUM = 1.0 1.0					//テクスチャ枚数
 	TEXMOVE = 0.000 0.000					//テクスチャ移動
-	TEXANIMCOUNT = -1					//テクスチャアニメーションカウント
-	TEXSPLIT = 1 1					//テクスチャ分割数
+	TEXANIMCOUNT = 4					//テクスチャアニメーションカウント
+	TEXSPLIT = 3 1					//テクスチャ分割数
 END_EFFECTSTATE3D
 END_SCRIPT
 

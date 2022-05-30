@@ -378,19 +378,18 @@ void CPlane::SetTexAnim(D3DXVECTOR2 TexPattern, D3DXVECTOR2 TexAnimSize)
 //=============================================================================
 //ビルボード座標いじり
 //=============================================================================
-void CPlane::SetPosBill(D3DXVECTOR3 pos, D3DXVECTOR3 pos2, D3DXVECTOR3 size, float Rotate)
+void CPlane::SetPosBill(D3DXVECTOR3 pos, D3DXVECTOR3 pos2, D3DXVECTOR3 pos3, D3DXVECTOR3 pos4)
 {
 	VERTEX_3D*pVtx;//頂点情報へのポインタ
 	//頂点バッファをロックし、頂点データへのポインタを取得
 	m_pVtxBuff->Lock(0, 0, (void**)&pVtx, 0);
 
 	//頂点座標の設定
-	pVtx[0].pos = D3DXVECTOR3(+ size.x + (cosf(Rotate)), pos.y	,- size.x + (sinf(Rotate)));
-	pVtx[1].pos = D3DXVECTOR3(- size.x + (sinf(Rotate)), pos.y	,+ size.x + (cosf(Rotate)));
-	pVtx[2].pos = D3DXVECTOR3(+ size.x + (cosf(Rotate)), pos2.y	, - size.x + (sinf(Rotate)));
-	pVtx[3].pos = D3DXVECTOR3(- size.x + (sinf(Rotate)), pos2.y	, + size.x + (cosf(Rotate)));
+	pVtx[0].pos = pos;
+	pVtx[1].pos = pos2;
+	pVtx[2].pos = pos3;
+	pVtx[3].pos = pos4;
 
 	//頂点バッファをアンロック
 	m_pVtxBuff->Unlock();
-
 }
