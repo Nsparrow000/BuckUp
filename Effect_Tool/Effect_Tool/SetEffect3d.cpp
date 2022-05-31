@@ -219,8 +219,8 @@ void CSetEffect3D::Update()
 						CControl::GetAnimCont(),
 						D3DXVECTOR2(CControl::GetSplitU(), CControl::GetSplitV()),
 						CControl::GetHigth(),
-						D3DXVECTOR3(CControl::GetParticleSize(), CControl::GetParticleSize(), {})
-						);
+						D3DXVECTOR3(CControl::GetParticleSize(), CControl::GetParticleSize(), {}),
+						CControl::GetSynthetic());
 				}
 				break;
 

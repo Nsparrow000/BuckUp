@@ -155,6 +155,12 @@ private:
 	static int m_nPatten;	//個々のステータス
 	static int m_nButtenTotal;	//そのパターンのボタン総数
 	static int m_nTotal[MAX_BUTTENPATTERN];	//ループ用
+	static bool m_MouseButtenPush;	//ボタン押してるか
+	static int m_MousePushTime;	//押してる時間
+
+	static bool m_PushDeley;	//ボタン押してるか
+	static int m_DeleyTime;	//押してる時間
+
 
 	CMouse *m_pMouse;
 	CKeyboard *m_pKeyboard;

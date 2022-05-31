@@ -5,7 +5,6 @@
 #include "ThunderBill.h"
 #include "renderer.h"
 #include "manager.h"
-#include "camera.h"
 
 //=============================================================================
 // コンストラクタ
@@ -39,7 +38,8 @@ HRESULT CThunderBill::Init(D3DXVECTOR3 pos,
 	int nAnimCounter,
 	D3DXVECTOR2 nSplit,
 	float fHigth,
-	D3DXVECTOR3 orizinSize)
+	D3DXVECTOR3 orizinSize,
+	int Synthetic)
 {
 	CBillEffect::Init(Size, MinSize, color, Mincolor, nTex, nLife, TexNum, TexMove, nAnimCounter, nSplit);
 	int fDistance = (int)Destance;
@@ -48,8 +48,7 @@ HRESULT CThunderBill::Init(D3DXVECTOR3 pos,
 	float fRandDistance = float(rand() % fDistance) - float(rand() % fDistance);
 	m_orizinSize = orizinSize;
 
-	m_pCamera = CManager::GetRenderer()->GetCamera();
-
+	m_nSynthenic = Synthetic;
 	m_Size = Size;
 	m_posorizin1 = D3DXVECTOR3(
 		pos.x * sinf(fRandAngle)  * cosf(fRandAngle2) + m_orizinSize.x,
@@ -221,7 +220,8 @@ CThunderBill *CThunderBill::Create(D3DXVECTOR3 pos,
 	int nAnimCounter,
 	D3DXVECTOR2 nSplit,
 	float fHigth,
-	D3DXVECTOR3 orizinSize)
+	D3DXVECTOR3 orizinSize,
+	int Synthetic)
 {
 	CThunderBill *pThunderBill = new CThunderBill(CManager::PRIORITY_EFFECT);
 
@@ -229,7 +229,8 @@ CThunderBill *CThunderBill::Create(D3DXVECTOR3 pos,
 	{
 		pThunderBill->Init(pos, Size, MinSize, color, Mincolor, nTex, nLife, Destance, TexMove,
 			TexNum, nAnimCounter, nSplit, fHigth,
-			orizinSize);
+			orizinSize,
+			Synthetic);
 	}
 
 	return pThunderBill;

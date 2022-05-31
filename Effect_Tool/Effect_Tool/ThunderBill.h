@@ -5,8 +5,6 @@
 #include "main.h"
 #include "billEffect.h"
 
-class CCamera;
-
 class CThunderBill : public CBillEffect
 {
 public:
@@ -26,7 +24,8 @@ public:
 		int nAnimCounter,
 		D3DXVECTOR2 nSplit,
 		float fHigth,
-		D3DXVECTOR3 orizinSize);
+		D3DXVECTOR3 orizinSize,
+		int Synthetic);
 
 	void Uninit();
 	void Update();
@@ -45,10 +44,10 @@ public:
 		int nAnimCounter,
 		D3DXVECTOR2 nSplit,
 		float fHigth,
-		D3DXVECTOR3 orizinSize
+		D3DXVECTOR3 orizinSize,
+		int Synthetic
 		);
 private:
-	CCamera *m_pCamera;
 
 	D3DXVECTOR3 m_posorizin1;	//出現位置
 	D3DXVECTOR3 m_posorizin2;	//出現位置

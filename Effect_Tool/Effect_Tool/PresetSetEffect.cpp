@@ -573,8 +573,8 @@ void CPresetEffect::SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 				m_EffectState3D[nPattern].AnimCnt,
 				m_EffectState3D[nPattern].m_TexSplit,
 				m_EffectState3D[nPattern].m_fHigth,
-				D3DXVECTOR3(m_EffectState3D[nPattern].m_fParticleSize, m_EffectState3D[nPattern].m_fParticleSize, {})
-				);
+				D3DXVECTOR3(m_EffectState3D[nPattern].m_fParticleSize, m_EffectState3D[nPattern].m_fParticleSize, {}),
+				m_EffectState3D[nPattern].Synthetic);
 		}
 		break;
 	}

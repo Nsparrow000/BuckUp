@@ -21,6 +21,11 @@ D3DXVECTOR2 CButten::m_Mousepos = {};
 int CButten::m_nPatten = {};
 int CButten::m_nButtenTotal = 0;
 int CButten::m_nTotal[MAX_BUTTENPATTERN] = {};
+bool CButten::m_MouseButtenPush = false;
+int CButten::m_MousePushTime = 0.0f;
+
+bool CButten::m_PushDeley = false;
+int CButten::m_DeleyTime = 0.0f;
 
 CButten::BUTTEN_STATE CButten::ButtenState[MAX_BUTTENPATTERN][MAX_BUTTEN] = {};
 //*****************************************************************************
@@ -115,6 +120,28 @@ void CButten::Update()
 			{
 				m_fAlpha = 150.0f;
 				Set(m_aOperation, m_nIndeNum);
+
+				m_MouseButtenPush = true;
+			}
+			if (m_MouseButtenPush == true)
+			{
+				m_MousePushTime++;
+
+				if (m_MousePushTime >= 20)
+				{
+					m_PushDeley = true;
+				}
+				if (m_PushDeley == true)
+				{
+					m_DeleyTime++;
+					if (m_DeleyTime > 5)
+					{
+						m_DeleyTime = 0;
+						m_fAlpha = 150.0f;
+						Set(m_aOperation, m_nIndeNum);
+
+					}
+				}
 			}
 		}
 		else
@@ -127,6 +154,12 @@ void CButten::Update()
 		m_fAlpha = 0.0f;
 	}
 
+	if (m_pMouse->GetRelease(CMouse::DIM_L) == true)
+	{
+		m_PushDeley = false;
+		m_MouseButtenPush = false;
+		m_MousePushTime = 0;
+	}
 
 	if (aDisplay == CHANGE)
 	{
