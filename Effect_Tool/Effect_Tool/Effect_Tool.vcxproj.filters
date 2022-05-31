@@ -61,6 +61,12 @@
     <Filter Include="ソース ファイル\3D\Effect\BillBoard">
       <UniqueIdentifier>{1f3f9d6f-5b53-4916-abf1-e34d23a5980b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\3D\Effect\Cylinder">
+      <UniqueIdentifier>{7d00ee19-68be-4cb1-96a6-4ed2dc0c2e60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\3D\Effect\Cylinder">
+      <UniqueIdentifier>{4673f44a-7498-41d8-8b6c-c99605bb0b74}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="control.cpp">

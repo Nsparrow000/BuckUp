@@ -27,7 +27,7 @@ CBillEffect::CBillEffect(int nPriority) : CPlane::CPlane(nPriority)
 //=============================================================================
 CBillEffect::~CBillEffect()
 {
-
+	
 }
 
 //=============================================================================
@@ -108,6 +108,8 @@ void CBillEffect::Update()
 	{
 		m_Color.a = 0;
 	}
+
+	
 
 	//ƒJƒ‰[’l‚ªMAX_COLOR‚ðã‰ñ‚è‚»‚¤
 	if (m_Color.r >= MAX_COLOR)
