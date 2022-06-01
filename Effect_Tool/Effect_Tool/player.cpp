@@ -13,6 +13,7 @@
 
 #include "Trajectory.h"
 #include "straight3d.h"
+#include "BezierBillh.h"
 
 #include "control.h"
 
@@ -291,8 +292,8 @@ void CPlayer::Update()
 	}
 	if (CControl::GetPattern() == 2)
 	{
-		CreateEffect(CControl::GetPattern());
 	}
+	CreateEffect(CControl::GetPattern());
 
 	Motion();	//ƒ‚ƒfƒ‹“®‚©‚µ
 	SetRot(rot);	//‰ñ“]
@@ -318,6 +319,8 @@ void CPlayer::CreateEffect(int nPattern)
 	float x;
 
 	float fA;
+
+	D3DXVECTOR3 pos = GetPos();
 
 	switch (nPattern)
 	{
@@ -422,8 +425,22 @@ void CPlayer::CreateEffect(int nPattern)
 				D3DXVECTOR2(CControl::GetSplitU(), CControl::GetSplitV()));
 		}
 		break;
+	case(8):
+		CBezierBill::Create(
+			D3DXVECTOR3(CControl::GetSize(), CControl::GetSize(), 0.0f),
+			D3DXVECTOR3(CControl::GetChangeSize(), CControl::GetChangeSize(), 0.0f),
+			D3DXCOLOR((float)CControl::GetControlCoror(1), (float)CControl::GetControlCoror(2), (float)CControl::GetControlCoror(3), (float)CControl::GetControlCoror(4)),
+			D3DXCOLOR((float)CControl::GetChangeCol(1), (float)CControl::GetChangeCol(2), (float)CControl::GetChangeCol(3), (float)CControl::GetChangeCol(4)),
+			CControl::GetTex(), CControl::GetLife(),
+			CControl::GetTexNum(),
+			D3DXVECTOR2(CControl::GetTexMoveU(), CControl::GetTexMoveV()),
+			CControl::GetAnimCont(),
+			D3DXVECTOR2(CControl::GetSplitU(), CControl::GetSplitV()),
+			pos
+			);
+
+		break;
 	default:
-		assert(false);
 		break;
 	}
 }

@@ -223,7 +223,8 @@ void CSetEffect3D::Update()
 						CControl::GetSynthetic());
 				}
 				break;
-
+			case(8):
+				break;
 			default:
 				assert(false);
 				break;

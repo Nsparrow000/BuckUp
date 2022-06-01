@@ -145,11 +145,6 @@ void CRotate3D::Update()
 		D3DXVECTOR2(1.0f, 1.0f));
 	m_nLife--;
 
-	if (m_nLife < 0)
-	{
-		m_bUninit = true;
-	}
-
 
 	if (m_bUninit == true)
 	{

@@ -400,7 +400,6 @@ void CRenderer::DrawText()
 				break;
 
 			default:
-				assert(false);
 				break;
 			}
 			nNum += sprintf(&str[nNum], "\n");

@@ -22,6 +22,7 @@
     <ClCompile Include="2DScene.cpp" />
     <ClCompile Include="3DScene.cpp" />
     <ClCompile Include="ActiveBillboard.cpp" />
+    <ClCompile Include="BezierBill.cpp" />
     <ClCompile Include="billeffect.cpp" />
     <ClCompile Include="Butten.cpp" />
     <ClCompile Include="camera.cpp" />
@@ -66,6 +67,7 @@
     <ClInclude Include="2DScene.h" />
     <ClInclude Include="3DScene.h" />
     <ClInclude Include="ActiveBillboard.h" />
+    <ClInclude Include="BezierBillh.h" />
     <ClInclude Include="billeffect.h" />
     <ClInclude Include="Butten.h" />
     <ClInclude Include="camera.h" />
