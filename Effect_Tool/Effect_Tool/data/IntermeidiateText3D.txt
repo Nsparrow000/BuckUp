@@ -8,7 +8,7 @@ EFFECTSTATE3D
 	PATTERN = 8				//動きのパターン
 	COLOR = 255 255 255 255			//カラー
 	CHANGECOLOR = 0 0 0 0			//カラー変動値
-	LIFE = 100						//寿命
+	LIFE = 204						//寿命
 	COLOR = 255 255 255 255			//カラー
 	CHANGECOLOR = 0 0 0 0			//カラー変動値
 	TEXTURE = 1						//テクスチャ

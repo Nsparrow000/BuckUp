@@ -396,9 +396,14 @@ void CRenderer::DrawText()
 				nNum += sprintf(&str[nNum], "距離 [+][-]：%.1f\n", CControl::GetDistance());
 				nNum += sprintf(&str[nNum], "高さ [+][-]：%.1f\n", CControl::GetHigth());
 				nNum += sprintf(&str[nNum], "下部分幅 [+][-]：%.1f\n", CControl::GetParticleSize());
+				break;
+			case(8):
+				nNum += sprintf(&str[nNum], "制御点 X[+][-]：%.1f\n", CControl::GetContorolBezierX());
+				nNum += sprintf(&str[nNum], "制御点 Y[+][-]：%.1f\n", CControl::GetContorolBezierY());
+				nNum += sprintf(&str[nNum], "制御点 Z[+][-]：%.1f\n", CControl::GetContorolBezierZ());
+				nNum += sprintf(&str[nNum], "移動(通過点の数) [+][-]：%.0f\n", CControl::Getmove3d().x);
 
 				break;
-
 			default:
 				break;
 			}

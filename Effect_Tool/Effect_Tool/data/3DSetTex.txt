@@ -2237,8 +2237,8 @@ BUTTENPATTENSET
 		SIZE = 18.0 18.0	//サイズ
 		TEXTURE = -1		//テクスチャ
 		OPERATION = 4		//設定内容
-		INDENUM = 10	//増減する数値
-		PATTERN = 8
+		INDENUM = 1	//増減する数値
+		PATTERN = 9
 	END_BUTTENSTATE
 	
 	BUTTENSTATE
@@ -2246,8 +2246,8 @@ BUTTENPATTENSET
 		SIZE = 18.0 18.0	//サイズ
 		TEXTURE = -1		//テクスチャ
 		OPERATION = 4		//設定内容
-		INDENUM = -10	//増減する数値
-		PATTERN = 8
+		INDENUM = -1	//増減する数値
+		PATTERN = 9
 	END_BUTTENSTATE
 
 	//サイズ増減
@@ -2257,7 +2257,7 @@ BUTTENPATTENSET
 		TEXTURE = -1		//テクスチャ
 		OPERATION = 5		//設定内容
 		INDENUM = 1	//増減する数値
-		PATTERN = 8
+		PATTERN = 9
 	END_BUTTENSTATE
 	
 	BUTTENSTATE
@@ -2266,7 +2266,7 @@ BUTTENPATTENSET
 		TEXTURE = -1		//テクスチャ
 		OPERATION = 5		//設定内容
 		INDENUM = -1	//増減する数値
-		PATTERN = 8
+		PATTERN = 9
 	END_BUTTENSTATE
 
 	//密度
@@ -2276,7 +2276,7 @@ BUTTENPATTENSET
 		TEXTURE = -1		//テクスチャ
 		OPERATION = 11		//設定内容
 		INDENUM = 1	//増減する数値
-		PATTERN = 8
+		PATTERN = 9
 	END_BUTTENSTATE
 	
 	BUTTENSTATE
@@ -2285,7 +2285,7 @@ BUTTENPATTENSET
 		TEXTURE = -1		//テクスチャ
 		OPERATION = 11		//設定内容
 		INDENUM = -1	//増減する数値
-		PATTERN = 8
+		PATTERN = 9
 	END_BUTTENSTATE
 
 	//テクスチャ
@@ -2295,7 +2295,7 @@ BUTTENPATTENSET
 		TEXTURE = -1		//テクスチャ
 		OPERATION = 13		//設定内容
 		INDENUM = -1	//増減する数値
-		PATTERN = 8
+		PATTERN = 9
 	END_BUTTENSTATE
 	
 	BUTTENSTATE
@@ -2304,7 +2304,83 @@ BUTTENPATTENSET
 		TEXTURE = -1		//テクスチャ
 		OPERATION = 13		//設定内容
 		INDENUM = 1	//増減する数値
-		PATTERN = 8
+		PATTERN = 9
+	END_BUTTENSTATE
+	
+	//制御点X
+	BUTTENSTATE
+		POS = 76.0 307.0 0.0	//座標
+		SIZE = 18.0 18.0	//サイズ
+		TEXTURE = -1		//テクスチャ
+		OPERATION = 50		//設定内容
+		INDENUM = 10	//増減する数値
+		PATTERN = 9
+	END_BUTTENSTATE
+	
+	BUTTENSTATE
+		POS = 102.0 307.0 0.0	//座標
+		SIZE = 18.0 18.0	//サイズ
+		TEXTURE = -1		//テクスチャ
+		OPERATION = 50		//設定内容
+		INDENUM = -10	//増減する数値
+		PATTERN = 9
+	END_BUTTENSTATE
+	
+	//制御点Y
+	BUTTENSTATE
+		POS = 76.0 327.0 0.0	//座標
+		SIZE = 18.0 18.0	//サイズ
+		TEXTURE = -1		//テクスチャ
+		OPERATION = 51		//設定内容
+		INDENUM = 10	//増減する数値
+		PATTERN = 9
+	END_BUTTENSTATE
+	
+	BUTTENSTATE
+		POS = 102.0 327.0 0.0	//座標
+		SIZE = 18.0 18.0	//サイズ
+		TEXTURE = -1		//テクスチャ
+		OPERATION = 51		//設定内容
+		INDENUM = -10	//増減する数値
+		PATTERN = 9
+	END_BUTTENSTATE
+	
+	//制御点Z
+	BUTTENSTATE
+		POS = 76.0 343.0 0.0	//座標
+		SIZE = 18.0 18.0	//サイズ
+		TEXTURE = -1		//テクスチャ
+		OPERATION = 52		//設定内容
+		INDENUM = 10	//増減する数値
+		PATTERN = 9
+	END_BUTTENSTATE
+	
+	BUTTENSTATE
+		POS = 102.0 343.0 0.0	//座標
+		SIZE = 18.0 18.0	//サイズ
+		TEXTURE = -1		//テクスチャ
+		OPERATION = 52		//設定内容
+		INDENUM = -10	//増減する数値
+		PATTERN = 9
+	END_BUTTENSTATE
+	
+	//移動X
+	BUTTENSTATE
+		POS = 149.0 363.0 0.0	//座標
+		SIZE = 18.0 18.0	//サイズ
+		TEXTURE = -1		//テクスチャ
+		OPERATION = 22		//設定内容
+		INDENUM = 5	//増減する数値
+		PATTERN = 9
+	END_BUTTENSTATE
+	
+	BUTTENSTATE
+		POS = 175.0 363.0 0.0	//座標
+		SIZE = 18.0 18.0	//サイズ
+		TEXTURE = -1		//テクスチャ
+		OPERATION = 22		//設定内容
+		INDENUM = -5	//増減する数値
+		PATTERN = 9
 	END_BUTTENSTATE
 END_BUTTENPATTENSET
 #*********************************************************

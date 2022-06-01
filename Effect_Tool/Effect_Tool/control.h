@@ -11,8 +11,8 @@
 //マクロ
 //=============================================================================
 #define MAX_PATTERN (9)	//最大パターン
-#define MAX_DENSITY (10)		//最大密度
-#define MAX_LIFE (300)			//最大寿命
+#define MAX_DENSITY (30)		//最大密度
+#define MAX_LIFE (1000)			//最大寿命
 
 //前方宣言
 class CKeyboard;
@@ -90,6 +90,10 @@ public:
 	static float GetSplitV() { return m_nSplit.y; }
 	static float GetHigth() { return m_fHigth; }
 
+	static float GetContorolBezierX() {return m_ContorolBezier.x; }	//制御点
+	static float GetContorolBezierY() {return m_ContorolBezier.y; }	//制御点
+	static float GetContorolBezierZ() {return m_ContorolBezier.z; }	//制御点
+
 	//テキストセーブ
 	static void SaveEffect(CManager::MODE mode, int nPattern);
 	static void SetButten(int nPattern);
@@ -135,6 +139,7 @@ public:
 	static void SetnAnimCont(int nAnimCont) { m_nAnimCont = nAnimCont; }	//テクスチャ
 	static void SetnSplit(D3DXVECTOR2 nSplit) { m_nSplit = nSplit; }	//テクスチャ
 	static void SetHigth(float Higth) { m_fHigth = Higth; }	//高さ
+	static void SetControlBezier(D3DXVECTOR3 ControlBezier) { m_ContorolBezier = ControlBezier; }	//ベジェ制御点
 
 	//増減関係
 	static void AddPattern(int nPattern) {
@@ -271,7 +276,10 @@ public:
 	static void AddSplitU(float SplitU) { m_nSplit.x += SplitU; }	//テクスチャV
 	static void AddSplitV(float SplitU) { m_nSplit.y += SplitU; }	//テクスチャV
 	static void AddHigth(float Higth) { m_fHigth += Higth; }	//高さ
-
+	
+	static void AddContorolBezierX(float NumX) { m_ContorolBezier.x += NumX;}	//制御点
+	static void AddContorolBezierY(float NumY) { m_ContorolBezier.y += NumY;}	//制御点
+	static void AddContorolBezierZ(float NumZ) { m_ContorolBezier.z += NumZ;}	//制御点
 
 private:
 	static CKeyboard *m_pKeyboard;
@@ -341,6 +349,7 @@ private:
 	static int m_nAnimCont;	//アニメーションカウント
 	static D3DXVECTOR2 m_nSplit;	//分割数
 	static float m_fHigth;	//高さ
+	static D3DXVECTOR3 m_ContorolBezier;	//ベジェ制御点
 
 };
 

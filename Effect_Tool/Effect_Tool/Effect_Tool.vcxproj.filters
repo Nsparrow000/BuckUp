@@ -67,12 +67,6 @@
     <Filter Include="ヘッダー ファイル\3D\Effect\Cylinder">
       <UniqueIdentifier>{4673f44a-7498-41d8-8b6c-c99605bb0b74}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\3D\Effect\Bezier">
-      <UniqueIdentifier>{3ccffc29-19a6-4660-ae44-c93bdddb170f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\3D\Effect\Bezier">
-      <UniqueIdentifier>{41a0b97c-878f-4f38-a8ec-36a32e846912}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="control.cpp">

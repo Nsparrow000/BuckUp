@@ -436,8 +436,9 @@ void CPlayer::CreateEffect(int nPattern)
 			D3DXVECTOR2(CControl::GetTexMoveU(), CControl::GetTexMoveV()),
 			CControl::GetAnimCont(),
 			D3DXVECTOR2(CControl::GetSplitU(), CControl::GetSplitV()),
-			pos
-			);
+			pos,
+			D3DXVECTOR3(0.0f,50.0f,0.0f),CControl::Getmove3d().x,
+			D3DXVECTOR3(CControl::GetContorolBezierX(), CControl::GetContorolBezierY(), CControl::GetContorolBezierZ()));
 
 		break;
 	default:

@@ -93,6 +93,9 @@ public:
 		ANIMCONT,
 		TEXNUMV,
 		HIGTH,
+		CONTROLBEZIERX,	//ベジェ制御点
+		CONTROLBEZIERY,	//ベジェ制御点
+		CONTROLBEZIERZ,	//ベジェ制御点
 		MAX,
 	} OPERATION;
 

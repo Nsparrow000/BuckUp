@@ -33,35 +33,51 @@ HRESULT CBezierBill::Init(D3DXVECTOR3 Size,
 	D3DXVECTOR2 TexMove,
 	int nAnimCounter,
 	D3DXVECTOR2 nSplit,
-	D3DXVECTOR3 pos)
+	D3DXVECTOR3 pos,
+	D3DXVECTOR3 Target,
+	int Speed,
+	D3DXVECTOR3 ControlBezier)
 {
 	CBillEffect::Init(Size, MinSize, color, Mincolor, nTex, nLife, TexNum, TexMove, nAnimCounter, nSplit);
 
+	m_Size = Size;
+	m_Target = Target;
+	m_ControlBezier = ControlBezier;
+	m_Speed = Speed;
+	m_fRandAngle = CIRCLE2;
+	m_fRandAngle2 = CIRCLE2;
+	m_nDistanse = 200;
+	float randCont = float(rand() % (int)m_ControlBezier.x) - float(rand() % (int)m_ControlBezier.x);
+
 	//ベジェ計算
 	//制御点
-	double P01[3], P12[3];
-	double P02[3];
-	//
+	double P01[3], P12[3], P02[3];
 
 		m_Bezier.x = 0;
 		m_Bezier.y = 0;
 		m_Bezier.u = 0;
+
+		//通過点カウンター
 		m_Bezier.Counter = 0;
 		m_Bezier.Counter2 = 0;
-		m_Bezier.DivNum = 50;
+
+		//通過点
+		m_Bezier.DivNum = m_Speed;
+
+		//発生点
 		m_Bezier.P0[0] = pos.x;
 		m_Bezier.P0[1] = pos.y;
 		m_Bezier.P0[2] = pos.z;
 
 		//制御点
-		m_Bezier.P1[0] = float(rand() % 320);
-		m_Bezier.P1[1] = 320;
-		m_Bezier.P1[2] = float(rand() % 320);
+		m_Bezier.P1[0] = pos.x - randCont * sinf(m_fRandAngle) * cosf(m_fRandAngle2);
+		m_Bezier.P1[1] = pos.y - m_ControlBezier.y * cosf(m_fRandAngle);
+		m_Bezier.P1[2] = pos.z - randCont * sinf(m_fRandAngle) * sinf(m_fRandAngle2);
 
 		//目標地点
-		m_Bezier.P2[0] = 0;
-		m_Bezier.P2[1] = 50;
-		m_Bezier.P2[2] = 0;
+		m_Bezier.P2[0] = m_Target.x;
+		m_Bezier.P2[1] = m_Target.y;
+		m_Bezier.P2[2] = m_Target.z;
 
 		m_Bezier.f = true;
 
@@ -96,10 +112,10 @@ HRESULT CBezierBill::Init(D3DXVECTOR3 Size,
 		{
 			m_Bezier.Counter = 0;
 			m_Bezier.f = false;//削除
+			m_bUninit = true;
 		}
 	}
 
-	m_Size = Size;
 
 	SetPos(m_pos);
 	return S_OK;
@@ -118,8 +134,7 @@ void CBezierBill::Uninit()
 //*****************************************************************************
 void CBezierBill::Update()
 {
-	double P01[3], P12[3];
-	double P02[3];
+	double P01[3], P12[3], P02[3];
 
 	if (m_Bezier.f == true)
 	{
@@ -152,23 +167,14 @@ void CBezierBill::Update()
 		{
 			m_Bezier.Counter = 0;
 			m_Bezier.f = false;//削除
+			m_bUninit = true;
 		}
 	}
 
 
 	SetPos(m_pos);
-	//SetPosBill(
-	//D3DXVECTOR3(m_pos.x - m_Size.x / 2, m_pos.y - m_Size.y / 2, m_pos.z - m_Size.x / 2),
-	//	D3DXVECTOR3(m_pos.x + m_Size.x / 2, m_pos.y - m_Size.y / 2, m_pos.z + m_Size.x / 2),
-	//	D3DXVECTOR3(m_pos.x - m_Size.x / 2, m_pos.y + m_Size.y / 2, m_pos.z - m_Size.x / 2),
-	//	D3DXVECTOR3(m_pos.x + m_Size.x / 2, m_pos.y + m_Size.y / 2, m_pos.z + m_Size.x / 2));
-
 
 	CBillEffect::Update();
-	if (m_Bezier.f == false)
-	{
-		Uninit();
-	}
 }
 
 //*****************************************************************************
@@ -191,13 +197,22 @@ CBezierBill *CBezierBill::Create(D3DXVECTOR3 Size,
 	D3DXVECTOR2 TexMove,
 	int nAnimCounter,
 	D3DXVECTOR2 nSplit,
-	D3DXVECTOR3 pos)
+	D3DXVECTOR3 pos,
+	D3DXVECTOR3 Target,
+	int Speed,
+	D3DXVECTOR3 ControlBezier)
 {
 	CBezierBill * pBezierBill = NULL;
 	pBezierBill = new CBezierBill(CManager::PRIORITY_EFFECT);
 	if (pBezierBill != NULL)
 	{
-		pBezierBill->Init(Size, MinSize, color, Mincolor, nTex, nLife, TexNum, TexMove, nAnimCounter, nSplit,pos);
+		pBezierBill->Init(Size, MinSize, color, Mincolor,
+			nTex, nLife, TexNum, TexMove,
+			nAnimCounter, nSplit,
+			pos,
+			Target,
+			Speed,
+			ControlBezier);
 	}
 	return pBezierBill;
 

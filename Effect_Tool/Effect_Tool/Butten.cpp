@@ -378,6 +378,15 @@ void CButten::Set(OPERATION Operation, float nIndeNum)
 	case(HIGTH):
 		CControl::AddHigth(nIndeNum);
 		break;
+	case(CONTROLBEZIERX):
+		CControl::AddContorolBezierX(nIndeNum);
+		break;
+	case(CONTROLBEZIERY):
+		CControl::AddContorolBezierY(nIndeNum);
+		break;
+	case(CONTROLBEZIERZ):
+		CControl::AddContorolBezierZ(nIndeNum);
+		break;
 
 	default:
 		assert(false);

@@ -146,8 +146,6 @@ void CBillEffect::Update()
 		}
 	}
 
-
-
 	//‚»‚ê‚¼‚ê“K‰ž
 	CPlane::ColorChange(m_Color);
 	CPlane::TexturMove(m_TexSize);

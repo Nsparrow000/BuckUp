@@ -97,6 +97,7 @@ D3DXVECTOR2 CControl::m_TexPattern = D3DXVECTOR2(1.0f, 1.0f);
 int CControl::m_nAnimCont = -1;
 D3DXVECTOR2 CControl::m_nSplit = D3DXVECTOR2(1.0f, 1.0f);
 float CControl::m_fHigth = 30.0f;
+D3DXVECTOR3 CControl::m_ContorolBezier = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
 
 
 
@@ -504,7 +505,14 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 				fprintf(pFile, "	HIGTH = %.1f						//上距離\n", CControl::GetHigth());
 				fprintf(pFile, "	PARTICLESIZE = %.1f						//下部分の幅\n", CControl::GetParticleSize());
 				break;
+			case(8):
+				fprintf(pFile, "	SIZE = %.1f						//大きさ\n", CControl::GetSize());
+				fprintf(pFile, "	ADDSIZE = %.1f					//大きさ変動\n", CControl::GetChangeSize());
 
+				fprintf(pFile, "	CONTROLBEZIE = %.1f %.1f %.1f	//ベジェ制御点\n", CControl::GetContorolBezierX(), CControl::GetContorolBezierY(), CControl::GetContorolBezierZ());
+				fprintf(pFile, "	SPEED = %.0f					//ベジェ通過点\n", CControl::Getmove3d().x);
+
+				break;
 			default:
 				assert(false);
 				break;
