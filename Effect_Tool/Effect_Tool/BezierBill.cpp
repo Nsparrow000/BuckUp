@@ -5,6 +5,8 @@
 #include "BezierBillh.h"
 #include "manager.h"
 
+#include "Trajectory.h"
+#include "control.h"
 //*****************************************************************************
 //コンストラクタ
 //*****************************************************************************
@@ -65,19 +67,19 @@ HRESULT CBezierBill::Init(D3DXVECTOR3 Size,
 		m_Bezier.DivNum = m_Speed;
 
 		//発生点
-		m_Bezier.P0[0] = pos.x;
-		m_Bezier.P0[1] = pos.y;
-		m_Bezier.P0[2] = pos.z;
+		m_Bezier.P0[0] = m_Target.x;
+		m_Bezier.P0[1] = m_Target.y;
+		m_Bezier.P0[2] = m_Target.z;
 
 		//制御点
-		m_Bezier.P1[0] = pos.x - randCont * sinf(m_fRandAngle) * cosf(m_fRandAngle2);
-		m_Bezier.P1[1] = pos.y - m_ControlBezier.y * cosf(m_fRandAngle);
-		m_Bezier.P1[2] = pos.z - randCont * sinf(m_fRandAngle) * sinf(m_fRandAngle2);
+		m_Bezier.P1[0] = pos.x + m_ControlBezier.z + randCont * sinf(m_fRandAngle) * cosf(m_fRandAngle2);
+		m_Bezier.P1[1] = pos.y + m_ControlBezier.y/* * cosf(m_fRandAngle)*/;
+		m_Bezier.P1[2] = pos.z + m_ControlBezier.z + randCont * sinf(m_fRandAngle) * sinf(m_fRandAngle2);
 
 		//目標地点
-		m_Bezier.P2[0] = m_Target.x;
-		m_Bezier.P2[1] = m_Target.y;
-		m_Bezier.P2[2] = m_Target.z;
+		m_Bezier.P2[0] = pos.x;
+		m_Bezier.P2[1] = pos.y;
+		m_Bezier.P2[2] = pos.z;
 
 		m_Bezier.f = true;
 
@@ -116,7 +118,7 @@ HRESULT CBezierBill::Init(D3DXVECTOR3 Size,
 		}
 	}
 
-
+	m_Oldpos = m_pos;
 	SetPos(m_pos);
 	return S_OK;
 }
@@ -134,6 +136,20 @@ void CBezierBill::Uninit()
 //*****************************************************************************
 void CBezierBill::Update()
 {
+	D3DXVECTOR3 pos;
+
+	//プレイヤー追従がON
+	CScene *pScene = GetScene(CManager::PRIORITY_SET);
+	while (pScene)
+	{
+		CScene *pSceneNext;
+		pSceneNext = pScene->GetNext();
+		if (pScene->GetObjType() == CScene::OBJECTTYPE_PLAYER)
+		{
+			pos = pScene->GetPos();
+		}
+		pScene = pSceneNext;
+	}
 	double P01[3], P12[3], P02[3];
 
 	if (m_Bezier.f == true)
@@ -144,9 +160,9 @@ void CBezierBill::Update()
 		P01[1] = (1.0 - m_Bezier.u) * m_Bezier.P0[1] + m_Bezier.u * m_Bezier.P1[1];
 		P01[2] = (1.0 - m_Bezier.u) * m_Bezier.P0[2] + m_Bezier.u * m_Bezier.P1[2];
 
-		P12[0] = (1.0 - m_Bezier.u) * m_Bezier.P1[0] + m_Bezier.u * m_Bezier.P2[0];
-		P12[1] = (1.0 - m_Bezier.u) * m_Bezier.P1[1] + m_Bezier.u * m_Bezier.P2[1];
-		P12[2] = (1.0 - m_Bezier.u) * m_Bezier.P1[2] + m_Bezier.u * m_Bezier.P2[2];
+		P12[0] = (1.0 - m_Bezier.u) * m_Bezier.P1[0] + m_Bezier.u * pos.x;
+		P12[1] = (1.0 - m_Bezier.u) * m_Bezier.P1[1] + m_Bezier.u * pos.y;
+		P12[2] = (1.0 - m_Bezier.u) * m_Bezier.P1[2] + m_Bezier.u * pos.z;
 
 
 		P02[0] = (1.0 - m_Bezier.u) * P01[0] + m_Bezier.u * P12[0];
@@ -172,8 +188,23 @@ void CBezierBill::Update()
 	}
 
 
-	SetPos(m_pos);
+	CTrajectory::Create(
+		D3DXVECTOR3(m_pos.x, m_pos.y + CControl::GetSize(), m_pos.z),
+		D3DXVECTOR3(m_pos.x, m_pos.y - CControl::GetSize(), m_pos.z),
+		D3DXVECTOR3(m_Oldpos.x, m_Oldpos.y + CControl::GetSize(), m_Oldpos.z),
+		D3DXVECTOR3(m_Oldpos.x, m_Oldpos.y - CControl::GetSize(), m_Oldpos.z),
+		D3DXCOLOR((float)CControl::GetControlCoror(1), (float)CControl::GetControlCoror(2), (float)CControl::GetControlCoror(3), (float)CControl::GetControlCoror(4)),
+		D3DXCOLOR((float)CControl::GetChangeCol(1), (float)CControl::GetChangeCol(2), (float)CControl::GetChangeCol(3), (float)CControl::GetChangeCol(4)),
+		D3DXCOLOR((float)CControl::GetTrajectColor(1), (float)CControl::GetTrajectColor(2), (float)CControl::GetTrajectColor(3), (float)CControl::GetTrajectColor(4)),
+		D3DXCOLOR((float)CControl::GetTrajectCol(1), (float)CControl::GetTrajectCol(2), (float)CControl::GetTrajectCol(3), (float)CControl::GetTrajectCol(4)),
+		D3DXVECTOR3(0.0, CControl::GetSize(), 0.0),
+		D3DXVECTOR3(0.0, CControl::GetChangeSize(), 0.0),
+		CControl::GetTex(), 30);
 
+
+
+	SetPos(m_pos);
+	m_Oldpos = m_pos;
 	CBillEffect::Update();
 }
 
@@ -215,5 +246,67 @@ CBezierBill *CBezierBill::Create(D3DXVECTOR3 Size,
 			ControlBezier);
 	}
 	return pBezierBill;
+
+}
+
+//*****************************************************************************
+//予測線
+//*****************************************************************************
+void CBezierBill::PredictTraject()
+{
+	double P01[3], P12[3], P02[3];
+	m_Oldpos = m_pos;
+
+	for (int i = 0; i < m_Bezier.DivNum; i++)
+	{
+		if (m_Bezier.f == true)
+		{
+			m_Bezier.u = (1.0 / m_Bezier.DivNum) * m_Bezier.Counter;
+
+			//計算式
+			P01[0] = (1.0 - m_Bezier.u) * m_Bezier.P0[0] + m_Bezier.u * m_Bezier.P1[0];
+			P01[1] = (1.0 - m_Bezier.u) * m_Bezier.P0[1] + m_Bezier.u * m_Bezier.P1[1];
+			P01[2] = (1.0 - m_Bezier.u) * m_Bezier.P0[2] + m_Bezier.u * m_Bezier.P1[2];
+
+			P12[0] = (1.0 - m_Bezier.u) * m_Bezier.P1[0] + m_Bezier.u * m_Bezier.P2[0];
+			P12[1] = (1.0 - m_Bezier.u) * m_Bezier.P1[1] + m_Bezier.u * m_Bezier.P2[1];
+			P12[2] = (1.0 - m_Bezier.u) * m_Bezier.P1[2] + m_Bezier.u * m_Bezier.P2[2];
+
+			//位置
+			P02[0] = (1.0 - m_Bezier.u) * P01[0] + m_Bezier.u * P12[0];
+			P02[1] = (1.0 - m_Bezier.u) * P01[1] + m_Bezier.u * P12[1];
+			P02[2] = (1.0 - m_Bezier.u) * P01[2] + m_Bezier.u * P12[2];
+
+			m_Bezier.x = (int)P02[0];
+			m_Bezier.y = (int)P02[1];
+			m_Bezier.z = (int)P02[2];
+
+
+			m_Bezier.Counter++;
+			m_pos = D3DXVECTOR3(m_Bezier.x, m_Bezier.y, m_Bezier.z);
+
+			CTrajectory::Create(
+				D3DXVECTOR3(m_Bezier.x, m_Bezier.y + 10, m_Bezier.z),
+				D3DXVECTOR3(m_Bezier.x, m_Bezier.y - 10, m_Bezier.z),
+				D3DXVECTOR3(m_Oldpos.x, m_Oldpos.y + 10, m_Oldpos.z),
+				D3DXVECTOR3(m_Oldpos.x, m_Oldpos.y - 10, m_Oldpos.z),
+				D3DXCOLOR((float)CControl::GetControlCoror(1), (float)CControl::GetControlCoror(2), (float)CControl::GetControlCoror(3), (float)CControl::GetControlCoror(4)),
+				D3DXCOLOR((float)CControl::GetChangeCol(1), (float)CControl::GetChangeCol(2), (float)CControl::GetChangeCol(3), (float)CControl::GetChangeCol(4)),
+				D3DXCOLOR((float)CControl::GetTrajectColor(1), (float)CControl::GetTrajectColor(2), (float)CControl::GetTrajectColor(3), (float)CControl::GetTrajectColor(4)),
+				D3DXCOLOR((float)CControl::GetTrajectCol(1), (float)CControl::GetTrajectCol(2), (float)CControl::GetTrajectCol(3), (float)CControl::GetTrajectCol(4)),
+				D3DXVECTOR3(0.0, CControl::GetSize(), 0.0),
+				D3DXVECTOR3(0.0, CControl::GetChangeSize(), 0.0),
+				CControl::GetTex(), 10
+			);
+			m_Oldpos = D3DXVECTOR3(m_Bezier.x, m_Bezier.y, m_Bezier.z);
+			// もしカウンターが分割数に達していたら０に戻す
+			if (m_Bezier.Counter == m_Bezier.DivNum)
+			{
+				m_Bezier.Counter = 0;
+				m_Bezier.f = false;//削除
+			}
+		}
+	}
+
 
 }

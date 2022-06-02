@@ -21,6 +21,7 @@ D3DXVECTOR2 CButten::m_Mousepos = {};
 int CButten::m_nPatten = {};
 int CButten::m_nButtenTotal = 0;
 int CButten::m_nTotal[MAX_BUTTENPATTERN] = {};
+
 bool CButten::m_MouseButtenPush = false;
 int CButten::m_MousePushTime = 0.0f;
 

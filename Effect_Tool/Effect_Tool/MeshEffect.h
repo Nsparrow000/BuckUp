@@ -7,7 +7,7 @@
 
 #include "main.h"
 #include "plane.h"
-#define MAX_TEX (16)
+#define MAX_TEX (32)
 
 class CMeshEffect : public CScene3D
 {

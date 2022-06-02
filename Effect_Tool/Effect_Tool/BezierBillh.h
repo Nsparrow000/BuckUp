@@ -63,10 +63,13 @@ public:
 		int Speed,
 		D3DXVECTOR3 ControlBezier);
 
+	void PredictTraject();
+
 private:
 	HOMING_BEZIER m_Bezier;
 	D3DXVECTOR3 m_pos;
 	D3DXVECTOR3 m_Size;
+	D3DXVECTOR3 m_Oldpos;
 
 	D3DXVECTOR3 m_Target;	//目標地点
 	D3DXVECTOR3 m_ControlBezier;	//制御点

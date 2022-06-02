@@ -129,5 +129,11 @@ private:
 	D3DXVECTOR3 m_SwordTrajectOldPos;	//1フレーム前の先端の場所
 	D3DXVECTOR3 m_SwordTrajectOldPos2;	//1フレーム前の手元の場所
 
+	static bool m_MouseButtenPush;	//ボタン押してるか
+	static int m_MousePushTime;	//押してる時間
+
+	static bool m_PushDeley;	//ボタン押してるか
+	static int m_DeleyTime;	//押してる時間
+
 };
 #endif

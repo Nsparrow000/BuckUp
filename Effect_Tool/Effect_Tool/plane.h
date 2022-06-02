@@ -9,7 +9,7 @@
 #include "scene3d.h"
 
 //É}ÉNÉçíËã`
-#define MAX_TEXTURE_FILED (16)
+#define MAX_TEXTURE_FILED (24)
 
 class CPlane : public CScene3D
 {
