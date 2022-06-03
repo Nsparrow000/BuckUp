@@ -2351,7 +2351,7 @@ BUTTENPATTENSET
 		SIZE = 18.0 18.0	//サイズ
 		TEXTURE = -1		//テクスチャ
 		OPERATION = 52		//設定内容
-		INDENUM = 10	//増減する数値
+		INDENUM = 0.1	//増減する数値
 		PATTERN = 9
 	END_BUTTENSTATE
 	
@@ -2360,7 +2360,7 @@ BUTTENPATTENSET
 		SIZE = 18.0 18.0	//サイズ
 		TEXTURE = -1		//テクスチャ
 		OPERATION = 52		//設定内容
-		INDENUM = -10	//増減する数値
+		INDENUM = -0.1	//増減する数値
 		PATTERN = 9
 	END_BUTTENSTATE
 	

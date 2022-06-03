@@ -27,6 +27,7 @@ public:
 		double P0[3];
 		double P1[3];
 		double P2[3];
+		double P3[3];// êßå‰ì_
 
 		bool f;
 	} HOMING_BEZIER;
@@ -43,7 +44,8 @@ public:
 		D3DXVECTOR3 pos,
 		D3DXVECTOR3 Target,
 		int Speed,
-		D3DXVECTOR3 ControlBezier);
+		D3DXVECTOR3 ControlBezier,
+		D3DXVECTOR3 rot);
 
 	void Uninit();
 	void Update();
@@ -61,7 +63,8 @@ public:
 		D3DXVECTOR3 pos,
 		D3DXVECTOR3 Target,
 		int Speed,
-		D3DXVECTOR3 ControlBezier);
+		D3DXVECTOR3 ControlBezier,
+		D3DXVECTOR3 rot);
 
 	void PredictTraject();
 
@@ -78,6 +81,7 @@ private:
 	float m_fRandAngle;
 	float m_fRandAngle2;
 	float m_nDistanse;
+	float m_XZr;	//äpìxxz
 
 };
 

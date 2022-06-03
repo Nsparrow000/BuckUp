@@ -38,7 +38,8 @@ HRESULT CBezierBill::Init(D3DXVECTOR3 Size,
 	D3DXVECTOR3 pos,
 	D3DXVECTOR3 Target,
 	int Speed,
-	D3DXVECTOR3 ControlBezier)
+	D3DXVECTOR3 ControlBezier,
+	D3DXVECTOR3 rot)
 {
 	CBillEffect::Init(Size, MinSize, color, Mincolor, nTex, nLife, TexNum, TexMove, nAnimCounter, nSplit);
 
@@ -49,11 +50,22 @@ HRESULT CBezierBill::Init(D3DXVECTOR3 Size,
 	m_fRandAngle = CIRCLE2;
 	m_fRandAngle2 = CIRCLE2;
 	m_nDistanse = 200;
+
 	float randCont = float(rand() % (int)m_ControlBezier.x) - float(rand() % (int)m_ControlBezier.x);
+	float randCont2 = float(rand() % (int)m_ControlBezier.x) - float(rand() % (int)m_ControlBezier.x);
+
+	D3DXVECTOR3 a = m_Target - pos;
+
+	m_XZr = (float)atan2(a.x, a.z);		//角度ｘｚ
+
+	float sx = (1.0 - m_ControlBezier.z) * pos.x + m_ControlBezier.z * m_Target.x;
+	float sz = (1.0 - m_ControlBezier.z) * pos.z + m_ControlBezier.z * m_Target.z;
 
 	//ベジェ計算
 	//制御点
-	double P01[3], P12[3], P02[3];
+	double P01[3], P12[3], P23[3];
+	double P02[3], P13[3];
+	double P03[3];
 
 		m_Bezier.x = 0;
 		m_Bezier.y = 0;
@@ -67,19 +79,27 @@ HRESULT CBezierBill::Init(D3DXVECTOR3 Size,
 		m_Bezier.DivNum = m_Speed;
 
 		//発生点
-		m_Bezier.P0[0] = m_Target.x;
-		m_Bezier.P0[1] = m_Target.y;
-		m_Bezier.P0[2] = m_Target.z;
+		m_Bezier.P0[0] = pos.x;
+		m_Bezier.P0[1] = pos.y;
+		m_Bezier.P0[2] = pos.z;
 
 		//制御点
-		m_Bezier.P1[0] = pos.x + m_ControlBezier.z + randCont * sinf(m_fRandAngle) * cosf(m_fRandAngle2);
-		m_Bezier.P1[1] = pos.y + m_ControlBezier.y/* * cosf(m_fRandAngle)*/;
-		m_Bezier.P1[2] = pos.z + m_ControlBezier.z + randCont * sinf(m_fRandAngle) * sinf(m_fRandAngle2);
+		//m_Bezier.P1[0] = pos.x + sinf(m_XZr) * m_ControlBezier.z + randCont;
+		//m_Bezier.P1[1] = pos.y + m_ControlBezier.y;
+		//m_Bezier.P1[2] = pos.z + cosf(m_XZr) * m_ControlBezier.z - randCont;
+
+		m_Bezier.P1[0] = (sx + randCont * sinf(m_XZr + D3DX_PI / 2));
+		m_Bezier.P1[1] = pos.y + m_ControlBezier.y;
+		m_Bezier.P1[2] = (sz + randCont * cosf(m_XZr + D3DX_PI / 2));
+
+		m_Bezier.P2[0] = (sx + randCont * sinf(m_XZr - D3DX_PI / 2));
+		m_Bezier.P2[1] = pos.y + m_ControlBezier.y;
+		m_Bezier.P2[2] = (sz + randCont * cosf(m_XZr - D3DX_PI / 2));
 
 		//目標地点
-		m_Bezier.P2[0] = pos.x;
-		m_Bezier.P2[1] = pos.y;
-		m_Bezier.P2[2] = pos.z;
+		m_Bezier.P3[0] = m_Target.x;
+		m_Bezier.P3[1] = m_Target.y;
+		m_Bezier.P3[2] = m_Target.z;
 
 		m_Bezier.f = true;
 
@@ -96,19 +116,32 @@ HRESULT CBezierBill::Init(D3DXVECTOR3 Size,
 		P12[1] = (1.0 - m_Bezier.u) * m_Bezier.P1[1] + m_Bezier.u * m_Bezier.P2[1];
 		P12[2] = (1.0 - m_Bezier.u) * m_Bezier.P1[2] + m_Bezier.u * m_Bezier.P2[2];
 
+		P23[0] = (1.0 - m_Bezier.u) * m_Bezier.P2[0] + m_Bezier.u * m_Bezier.P3[0];
+		P23[1] = (1.0 - m_Bezier.u) * m_Bezier.P2[1] + m_Bezier.u * m_Bezier.P3[1];
+		P23[2] = (1.0 - m_Bezier.u) * m_Bezier.P2[1] + m_Bezier.u * m_Bezier.P3[1];
+
+
 		//位置
 		P02[0] = (1.0 - m_Bezier.u) * P01[0] + m_Bezier.u * P12[0];
 		P02[1] = (1.0 - m_Bezier.u) * P01[1] + m_Bezier.u * P12[1];
 		P02[2] = (1.0 - m_Bezier.u) * P01[2] + m_Bezier.u * P12[2];
 
-		m_Bezier.x = (int)P02[0];
-		m_Bezier.y = (int)P02[1];
-		m_Bezier.z = (int)P02[2];
+		P13[0] = (1.0 - m_Bezier.u) * P12[0] + m_Bezier.u * P23[0];
+		P13[1] = (1.0 - m_Bezier.u) * P12[1] + m_Bezier.u * P23[1];
+		P13[2] = (1.0 - m_Bezier.u) * P12[2] + m_Bezier.u * P23[2];
+
+		P03[0] = (1.0 - m_Bezier.u) * P02[0] + m_Bezier.u * P13[0];
+		P03[1] = (1.0 - m_Bezier.u) * P02[1] + m_Bezier.u * P13[1];
+		P03[2] = (1.0 - m_Bezier.u) * P02[2] + m_Bezier.u * P13[2];
+
+
+		m_Bezier.x = (int)P03[0];
+		m_Bezier.y = (int)P03[1];
+		m_Bezier.z = (int)P03[2];
 
 		m_pos = D3DXVECTOR3(m_Bezier.x, m_Bezier.y, m_Bezier.z);
 
 		m_Bezier.Counter++;
-
 		// もしカウンターが分割数に達していたら０に戻す
 		if (m_Bezier.Counter == m_Bezier.DivNum)
 		{
@@ -117,7 +150,7 @@ HRESULT CBezierBill::Init(D3DXVECTOR3 Size,
 			m_bUninit = true;
 		}
 	}
-
+	//PredictTraject();
 	m_Oldpos = m_pos;
 	SetPos(m_pos);
 	return S_OK;
@@ -138,46 +171,61 @@ void CBezierBill::Update()
 {
 	D3DXVECTOR3 pos;
 
-	//プレイヤー追従がON
-	CScene *pScene = GetScene(CManager::PRIORITY_SET);
-	while (pScene)
-	{
-		CScene *pSceneNext;
-		pSceneNext = pScene->GetNext();
-		if (pScene->GetObjType() == CScene::OBJECTTYPE_PLAYER)
-		{
-			pos = pScene->GetPos();
-		}
-		pScene = pSceneNext;
-	}
-	double P01[3], P12[3], P02[3];
+	//CScene *pScene = GetScene(CManager::PRIORITY_SET);
+	//while (pScene)
+	//{
+	//	CScene *pSceneNext;
+	//	pSceneNext = pScene->GetNext();
+	//	if (pScene->GetObjType() == CScene::OBJECTTYPE_PLAYER)
+	//	{
+	//		pos = pScene->GetPos();
+	//	}
+	//	pScene = pSceneNext;
+	//}
+
+	double P01[3], P12[3], P23[3];
+	double P02[3], P13[3];
+	double P03[3];
 
 	if (m_Bezier.f == true)
 	{
 		m_Bezier.u = (1.0 / m_Bezier.DivNum) * m_Bezier.Counter;
 
+		//計算式
 		P01[0] = (1.0 - m_Bezier.u) * m_Bezier.P0[0] + m_Bezier.u * m_Bezier.P1[0];
 		P01[1] = (1.0 - m_Bezier.u) * m_Bezier.P0[1] + m_Bezier.u * m_Bezier.P1[1];
 		P01[2] = (1.0 - m_Bezier.u) * m_Bezier.P0[2] + m_Bezier.u * m_Bezier.P1[2];
 
-		P12[0] = (1.0 - m_Bezier.u) * m_Bezier.P1[0] + m_Bezier.u * pos.x;
-		P12[1] = (1.0 - m_Bezier.u) * m_Bezier.P1[1] + m_Bezier.u * pos.y;
-		P12[2] = (1.0 - m_Bezier.u) * m_Bezier.P1[2] + m_Bezier.u * pos.z;
+		P12[0] = (1.0 - m_Bezier.u) * m_Bezier.P1[0] + m_Bezier.u * m_Bezier.P2[0];
+		P12[1] = (1.0 - m_Bezier.u) * m_Bezier.P1[1] + m_Bezier.u * m_Bezier.P2[1];
+		P12[2] = (1.0 - m_Bezier.u) * m_Bezier.P1[2] + m_Bezier.u * m_Bezier.P2[2];
+
+		P23[0] = (1.0 - m_Bezier.u) * m_Bezier.P2[0] + m_Bezier.u * m_Bezier.P3[0];
+		P23[1] = (1.0 - m_Bezier.u) * m_Bezier.P2[1] + m_Bezier.u * m_Bezier.P3[1];
+		P23[2] = (1.0 - m_Bezier.u) * m_Bezier.P2[1] + m_Bezier.u * m_Bezier.P3[1];
 
 
+		//位置
 		P02[0] = (1.0 - m_Bezier.u) * P01[0] + m_Bezier.u * P12[0];
 		P02[1] = (1.0 - m_Bezier.u) * P01[1] + m_Bezier.u * P12[1];
 		P02[2] = (1.0 - m_Bezier.u) * P01[2] + m_Bezier.u * P12[2];
 
+		P13[0] = (1.0 - m_Bezier.u) * P12[0] + m_Bezier.u * P23[0];
+		P13[1] = (1.0 - m_Bezier.u) * P12[1] + m_Bezier.u * P23[1];
+		P13[2] = (1.0 - m_Bezier.u) * P12[2] + m_Bezier.u * P23[2];
 
-		m_Bezier.x = (int)P02[0];
-		m_Bezier.y = (int)P02[1];
-		m_Bezier.z = (int)P02[2];
+		P03[0] = (1.0 - m_Bezier.u) * P02[0] + m_Bezier.u * P13[0];
+		P03[1] = (1.0 - m_Bezier.u) * P02[1] + m_Bezier.u * P13[1];
+		P03[2] = (1.0 - m_Bezier.u) * P02[2] + m_Bezier.u * P13[2];
+
+
+		m_Bezier.x = (int)P03[0];
+		m_Bezier.y = (int)P03[1];
+		m_Bezier.z = (int)P03[2];
 
 		m_pos = D3DXVECTOR3(m_Bezier.x, m_Bezier.y, m_Bezier.z);
 
 		m_Bezier.Counter++;
-
 		// もしカウンターが分割数に達していたら０に戻す
 		if (m_Bezier.Counter == m_Bezier.DivNum)
 		{
@@ -231,7 +279,8 @@ CBezierBill *CBezierBill::Create(D3DXVECTOR3 Size,
 	D3DXVECTOR3 pos,
 	D3DXVECTOR3 Target,
 	int Speed,
-	D3DXVECTOR3 ControlBezier)
+	D3DXVECTOR3 ControlBezier,
+	D3DXVECTOR3 rot)
 {
 	CBezierBill * pBezierBill = NULL;
 	pBezierBill = new CBezierBill(CManager::PRIORITY_EFFECT);
@@ -243,7 +292,8 @@ CBezierBill *CBezierBill::Create(D3DXVECTOR3 Size,
 			pos,
 			Target,
 			Speed,
-			ControlBezier);
+			ControlBezier,
+			rot);
 	}
 	return pBezierBill;
 

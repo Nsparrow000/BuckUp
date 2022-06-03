@@ -337,6 +337,8 @@ void CPlayer::Update()
 //エフェクト作成
 void CPlayer::CreateEffect(int nPattern)
 {
+	D3DXVECTOR3 rot = GetRot();
+
 	D3DXVECTOR3 Vectl;
 	int Vectlx;
 	int Vectly;
@@ -474,8 +476,9 @@ void CPlayer::CreateEffect(int nPattern)
 				CControl::GetAnimCont(),
 				D3DXVECTOR2(CControl::GetSplitU(), CControl::GetSplitV()),
 				D3DXVECTOR3(pos.x, pos.y + 30, pos.z),
-				D3DXVECTOR3(0.0f, 50.0f, 0.0f), CControl::Getmove3d().x,
-				D3DXVECTOR3(CControl::GetContorolBezierX(), CControl::GetContorolBezierY(), CControl::GetContorolBezierZ()));
+				D3DXVECTOR3(0.0f, 0.0f, 0.0f), CControl::Getmove3d().x,
+				D3DXVECTOR3(CControl::GetContorolBezierX(), CControl::GetContorolBezierY(), CControl::GetContorolBezierZ()),
+				rot);
 		}
 		break;
 	default:
