@@ -373,7 +373,7 @@ void CPlayer::CreateEffect(int nPattern)
 			D3DXCOLOR((float)CControl::GetTrajectCol(1), (float)CControl::GetTrajectCol(2), (float)CControl::GetTrajectCol(3), (float)CControl::GetTrajectCol(4)),
 			D3DXVECTOR3(0.0, CControl::GetSize(), 0.0),
 			D3DXVECTOR3(0.0, CControl::GetChangeSize(), 0.0),
-			CControl::GetTex(), CControl::GetLife());
+			CControl::GetTex(), CControl::GetLife(),CControl::GetSynthetic());
 		break;
 	case(1):
 		break;
@@ -478,7 +478,14 @@ void CPlayer::CreateEffect(int nPattern)
 				D3DXVECTOR3(pos.x, pos.y + 30, pos.z),
 				D3DXVECTOR3(0.0f, 0.0f, 0.0f), CControl::Getmove3d().x,
 				D3DXVECTOR3(CControl::GetContorolBezierX(), CControl::GetContorolBezierY(), CControl::GetContorolBezierZ()),
-				rot);
+				rot,
+				CControl::GetMaxSize(),
+				D3DXCOLOR((float)CControl::GetParticleColor(1), (float)CControl::GetParticleColor(2), (float)CControl::GetParticleColor(3), (float)CControl::GetParticleColor(4)),
+				D3DXCOLOR((float)CControl::GetParticleAddCol(1), (float)CControl::GetParticleAddCol(2), (float)CControl::GetParticleAddCol(3), (float)CControl::GetParticleAddCol(4)),
+				D3DXCOLOR((float)CControl::GetTrajectColor(1), (float)CControl::GetTrajectColor(2), (float)CControl::GetTrajectColor(3), (float)CControl::GetTrajectColor(4)),
+				D3DXCOLOR((float)CControl::GetTrajectCol(1), (float)CControl::GetTrajectCol(2), (float)CControl::GetTrajectCol(3), (float)CControl::GetTrajectCol(4)),
+				0.0f,CControl::GetSecondTex(),CControl::GetParticleTime(),CControl::GetDistance(),CControl::GetSynthetic(),
+				CControl::GetParticleSynthetic()); 
 		}
 		break;
 	default:

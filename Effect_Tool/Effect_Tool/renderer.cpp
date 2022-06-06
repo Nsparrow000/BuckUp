@@ -403,6 +403,17 @@ void CRenderer::DrawText()
 				nNum += sprintf(&str[nNum], "制御点 Z[+][-]：%.1f\n", CControl::GetContorolBezierZ());
 				nNum += sprintf(&str[nNum], "移動(通過点の数) [+][-]：%.0f\n", CControl::Getmove3d().x);
 
+				nNum += sprintf(&str[nNum], "軌跡１色 [+][-]：(%d %d %d %d)\n", CControl::GetParticleColor(1), CControl::GetParticleColor(2), CControl::GetParticleColor(3), CControl::GetParticleColor(4));
+				nNum += sprintf(&str[nNum], "軌跡１増減 [+][-]：(%d %d %d %d)\n", CControl::GetParticleAddCol(1), CControl::GetParticleAddCol(2), CControl::GetParticleAddCol(3), CControl::GetParticleAddCol(4));
+
+				nNum += sprintf(&str[nNum], "軌跡２色 [+][-]：(%d %d %d %d)\n", CControl::GetTrajectColor(1), CControl::GetTrajectColor(2), CControl::GetTrajectColor(3), CControl::GetTrajectColor(4));
+				nNum += sprintf(&str[nNum], "軌跡２増減 [+][-]：(%d %d %d %d)\n", CControl::GetTrajectCol(1), CControl::GetTrajectCol(2), CControl::GetTrajectCol(3), CControl::GetTrajectCol(4));
+				nNum += sprintf(&str[nNum], "軌跡サイズ [+][-]：%.1f\n", CControl::GetMaxSize());
+				nNum += sprintf(&str[nNum], "軌跡テクスチャ [+][-]：%d\n", CControl::GetSecondTex());
+				nNum += sprintf(&str[nNum], "軌跡寿命 [+][-]：%d\n", CControl::GetParticleTime());
+				nNum += sprintf(&str[nNum], "ターゲットランダム距離 [+][-]：%.1f\n", CControl::GetDistance());
+				nNum += sprintf(&str[nNum], "軌跡合成 [+][-]：%d\n", CControl::GetParticleSynthetic());
+
 				break;
 			default:
 				break;

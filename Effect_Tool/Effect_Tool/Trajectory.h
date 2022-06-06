@@ -19,10 +19,11 @@ public:
 		D3DCOLORVALUE Mincolor,
 		D3DCOLORVALUE Trajectcolor,
 		D3DCOLORVALUE TrajectMincolor,
-		D3DXVECTOR3 Size, D3DXVECTOR3
-		MinSize,
+		D3DXVECTOR3 Size,
+		D3DXVECTOR3 MinSize,
 		int nTex,
-		int nLife);
+		int nLife,
+		int Synthetic);
 
 	void Uninit();
 	void Update();
@@ -39,7 +40,8 @@ public:
 		D3DXVECTOR3 Size, 
 		D3DXVECTOR3 MinSize,
 		int nTex,
-		int nLife);
+		int nLife,
+		int Synthetic);
 private:
 
 };

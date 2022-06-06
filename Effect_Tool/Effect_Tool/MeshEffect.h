@@ -36,6 +36,8 @@ public:
 	static void UninitTextureMesh();
 protected:
 	bool m_bUninit;	//抹消フラグ
+	int m_Synthetic;
+
 private:
 	static LPDIRECT3DTEXTURE9 m_pTexture[MAX_TEX];
 	LPDIRECT3DVERTEXBUFFER9 m_pVtxBuff = NULL;	//頂点バッファへのポインタ

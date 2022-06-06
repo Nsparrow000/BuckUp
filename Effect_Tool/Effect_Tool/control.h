@@ -93,6 +93,7 @@ public:
 	static float GetContorolBezierX() {return m_ContorolBezier.x; }	//制御点
 	static float GetContorolBezierY() {return m_ContorolBezier.y; }	//制御点
 	static float GetContorolBezierZ() {return m_ContorolBezier.z; }	//制御点
+	static int GetSecondTex() { return m_SecondTex; }
 
 	//テキストセーブ
 	static void SaveEffect(CManager::MODE mode, int nPattern);
@@ -140,6 +141,7 @@ public:
 	static void SetnSplit(D3DXVECTOR2 nSplit) { m_nSplit = nSplit; }	//テクスチャ
 	static void SetHigth(float Higth) { m_fHigth = Higth; }	//高さ
 	static void SetControlBezier(D3DXVECTOR3 ControlBezier) { m_ContorolBezier = ControlBezier; }	//ベジェ制御点
+	static void SetSecondTex(int SecondTex) { m_SecondTex = SecondTex; }
 
 	//増減関係
 	static void AddPattern(int nPattern) {
@@ -281,6 +283,8 @@ public:
 	static void AddContorolBezierY(float NumY) { m_ContorolBezier.y += NumY;}	//制御点
 	static void AddContorolBezierZ(float NumZ) { m_ContorolBezier.z += NumZ;}	//制御点
 
+	static void AddSecondTex(int SecondTex) { m_SecondTex += SecondTex; }	//制御点
+
 private:
 	static CKeyboard *m_pKeyboard;
 	static int m_SerectColor;		//色選択
@@ -350,7 +354,7 @@ private:
 	static D3DXVECTOR2 m_nSplit;	//分割数
 	static float m_fHigth;	//高さ
 	static D3DXVECTOR3 m_ContorolBezier;	//ベジェ制御点
-
+	static int m_SecondTex;
 };
 
 #endif

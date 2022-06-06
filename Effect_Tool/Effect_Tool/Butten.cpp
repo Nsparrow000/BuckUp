@@ -388,7 +388,9 @@ void CButten::Set(OPERATION Operation, float nIndeNum)
 	case(CONTROLBEZIERZ):
 		CControl::AddContorolBezierZ(nIndeNum);
 		break;
-
+	case(SECONDTEX):
+		CControl::AddSecondTex(nIndeNum);
+		break;
 	default:
 		assert(false);
 		break;

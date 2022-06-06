@@ -13,7 +13,15 @@ public:
 	CSetMesh(int nPriority = 3);
 	virtual ~CSetMesh();
 
-	virtual HRESULT Init(D3DXVECTOR3 Vtxpos1, D3DXVECTOR3 Vtxpos2, D3DXVECTOR3 VtxOldpos1, D3DXVECTOR3 VtxOldpos2, D3DCOLORVALUE color,D3DCOLORVALUE Mincolor, D3DCOLORVALUE Trajectcolor, D3DCOLORVALUE TrajectMincolor, D3DXVECTOR3 Size, D3DXVECTOR3 MinSize, int nTex, int nLife, EFFECT_TYPE nType);
+	virtual HRESULT Init(D3DXVECTOR3 Vtxpos1, D3DXVECTOR3 Vtxpos2,
+		D3DXVECTOR3 VtxOldpos1, D3DXVECTOR3 VtxOldpos2,
+		D3DCOLORVALUE color,D3DCOLORVALUE Mincolor,
+		D3DCOLORVALUE Trajectcolor, D3DCOLORVALUE TrajectMincolor,
+		D3DXVECTOR3 Size, D3DXVECTOR3 MinSize,
+		int nTex, int nLife,
+		EFFECT_TYPE nType,
+		int Synthetic);
+
 	virtual void Uninit();
 	virtual void Update();
 	virtual void Draw();

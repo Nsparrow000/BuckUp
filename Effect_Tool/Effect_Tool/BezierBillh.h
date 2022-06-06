@@ -24,6 +24,7 @@ public:
 		int Counter;
 		int Counter2;
 		int DivNum;
+
 		double P0[3];
 		double P1[3];
 		double P2[3];
@@ -45,7 +46,18 @@ public:
 		D3DXVECTOR3 Target,
 		int Speed,
 		D3DXVECTOR3 ControlBezier,
-		D3DXVECTOR3 rot);
+		D3DXVECTOR3 rot,
+		float TrajectSize,
+		D3DCOLORVALUE FastTrajecttcolor,
+		D3DCOLORVALUE FastTrajectMincolor,
+		D3DCOLORVALUE SecondTrajecttcolor,
+		D3DCOLORVALUE SecondTrajectMincolor,
+		float TrajectMinSize,
+		int TrajectTex,
+		int TrajectLife,
+		float DistanceTarget,
+		int Synthetic,
+		int TrajectSynthetic);
 
 	void Uninit();
 	void Update();
@@ -64,12 +76,35 @@ public:
 		D3DXVECTOR3 Target,
 		int Speed,
 		D3DXVECTOR3 ControlBezier,
-		D3DXVECTOR3 rot);
+		D3DXVECTOR3 rot,
+		float TrajectSize,
+		D3DCOLORVALUE FastTrajecttcolor,
+		D3DCOLORVALUE FastTrajectMincolor,
+		D3DCOLORVALUE SecondTrajecttcolor,
+		D3DCOLORVALUE SecondTrajectMincolor,
+		float TrajectMinSize,
+		int TrajectTex,
+		int TrajectLife,
+		float DistanceTarget,
+		int Synthetic,
+		int TrajectSynthetic);
 
 	void PredictTraject();
 
 private:
 	HOMING_BEZIER m_Bezier;
+
+	D3DCOLORVALUE m_TrajectColor;
+	D3DCOLORVALUE m_AddTrajectColor;
+	D3DCOLORVALUE m_TrajectColor1;
+	D3DCOLORVALUE m_AddTrajectColor1;
+
+	float m_TrajectSize;
+	float m_TrajectAddSize;
+
+	int m_TjajectTex;
+	int m_TrajectLife;
+
 	D3DXVECTOR3 m_pos;
 	D3DXVECTOR3 m_Size;
 	D3DXVECTOR3 m_Oldpos;
@@ -83,6 +118,7 @@ private:
 	float m_nDistanse;
 	float m_XZr;	//Šp“xxz
 
+	int m_TrajectSynthetic;
 };
 
 #endif // !_BEZIERBILL_H_

@@ -24,9 +24,10 @@ CTrajectory::~CTrajectory(void)
 //=============================================================================
 // 初期化
 //=============================================================================
-HRESULT CTrajectory::Init(D3DXVECTOR3 Vtxpos1, D3DXVECTOR3 Vtxpos2, D3DXVECTOR3 VtxOldpos1, D3DXVECTOR3 VtxOldpos2, D3DCOLORVALUE color, D3DCOLORVALUE Mincolor, D3DCOLORVALUE Trajectcolor,D3DCOLORVALUE TrajectMincolor,D3DXVECTOR3 Size, D3DXVECTOR3 MinSize, int nTex, int nLife)
+HRESULT CTrajectory::Init(D3DXVECTOR3 Vtxpos1, D3DXVECTOR3 Vtxpos2, D3DXVECTOR3 VtxOldpos1, D3DXVECTOR3 VtxOldpos2, D3DCOLORVALUE color, D3DCOLORVALUE Mincolor, D3DCOLORVALUE Trajectcolor,D3DCOLORVALUE TrajectMincolor,D3DXVECTOR3 Size, D3DXVECTOR3 MinSize, int nTex, int nLife,
+	int Synthetic)
 {
-	CSetMesh::Init(Vtxpos1, Vtxpos2, VtxOldpos1, VtxOldpos2, color, Mincolor, Trajectcolor, TrajectMincolor, Size, MinSize, nTex, nLife, CMeshEffect::TYPE_TRAJECTORY);
+	CSetMesh::Init(Vtxpos1, Vtxpos2, VtxOldpos1, VtxOldpos2, color, Mincolor, Trajectcolor, TrajectMincolor, Size, MinSize, nTex, nLife, CMeshEffect::TYPE_TRAJECTORY, Synthetic);
 	return S_OK;
 }
 
@@ -57,7 +58,8 @@ void CTrajectory::Draw(void)
 //=============================================================================
 // 作成
 //=============================================================================
-CTrajectory *CTrajectory::Create(D3DXVECTOR3 Vtxpos1, D3DXVECTOR3 Vtxpos2, D3DXVECTOR3 VtxOldpos1, D3DXVECTOR3 VtxOldpos2, D3DCOLORVALUE color, D3DCOLORVALUE Mincolor, D3DCOLORVALUE Trajectcolor,D3DCOLORVALUE TrajectMincolor,D3DXVECTOR3 Size, D3DXVECTOR3 MinSize, int nTex, int nLife)
+CTrajectory *CTrajectory::Create(D3DXVECTOR3 Vtxpos1, D3DXVECTOR3 Vtxpos2, D3DXVECTOR3 VtxOldpos1, D3DXVECTOR3 VtxOldpos2, D3DCOLORVALUE color, D3DCOLORVALUE Mincolor, D3DCOLORVALUE Trajectcolor, D3DCOLORVALUE TrajectMincolor, D3DXVECTOR3 Size, D3DXVECTOR3 MinSize, int nTex, int nLife,
+	int Synthetic)
 {
 	CTrajectory *pTrajectory = NULL;
 	pTrajectory = new CTrajectory(CManager::PRIORITY_EFFECT);	//メモリ確保
@@ -65,7 +67,7 @@ CTrajectory *CTrajectory::Create(D3DXVECTOR3 Vtxpos1, D3DXVECTOR3 Vtxpos2, D3DXV
 	//NULLチェック
 	if (pTrajectory != NULL)
 	{
-		pTrajectory->Init(Vtxpos1, Vtxpos2, VtxOldpos1, VtxOldpos2, color, Mincolor, Trajectcolor, TrajectMincolor, Size, MinSize, nTex, nLife);
+		pTrajectory->Init(Vtxpos1, Vtxpos2, VtxOldpos1, VtxOldpos2, color, Mincolor, Trajectcolor, TrajectMincolor, Size, MinSize, nTex, nLife, Synthetic);
 	}
 
 	return pTrajectory;

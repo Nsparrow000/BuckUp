@@ -9,21 +9,20 @@
 #メモ：(このエフェクトの使い道等、書いてください)
 #========================================================================
 EFFECTSTATE3D
-	PATTERN = 7				//動きのパターン
-	SIZE = 40.0						//大きさ
+	PATTERN = 8				//動きのパターン
+	SIZE = 1.0						//大きさ
 	ADDSIZE = 0.0					//大きさ変動
-	DISTANCE = 1.0						//上発生距離
-	HIGTH = 670.0						//上距離
-	PARTICLESIZE = 40.0						//下部分の幅
+	CONTROLBEZIE = 251.0 1901.0 0.5	//ベジェ制御点
+	SPEED = 131					//ベジェ通過点
 	POS = 0.0 0.0 0.0			//出現位置
-	COLOR = 105 255 255 255			//カラー
+	COLOR = 255 255 255 255			//カラー
 	CHANGECOLOR = 0 0 0 0			//カラー変動値
-	LIFE = 8						//ライフ
-	TEXTURE = 19						//テクスチャ
-	SYNTHETIC = 0						//合成
+	LIFE = 136						//ライフ
+	TEXTURE = 1						//テクスチャ
+	SYNTHETIC = 1						//合成
 	TEXMOVE = 0.000 0.000					//テクスチャ移動
 	TEXNUM = 1.0 1.0					//テクスチャ枚数
-	TEXANIMCOUNT = 3					//テクスチャアニメーションカウント
-	TEXSPLIT = 3 1					//テクスチャ分割数
+	TEXANIMCOUNT = -1					//テクスチャアニメーションカウント
+	TEXSPLIT = 1 1					//テクスチャ分割数
 END_EFFECTSTATE3D
 

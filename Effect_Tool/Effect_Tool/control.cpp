@@ -98,7 +98,7 @@ int CControl::m_nAnimCont = -1;
 D3DXVECTOR2 CControl::m_nSplit = D3DXVECTOR2(1.0f, 1.0f);
 float CControl::m_fHigth = 30.0f;
 D3DXVECTOR3 CControl::m_ContorolBezier = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
-
+int CControl::m_SecondTex = 1;
 
 
 //*****************************************************************************
@@ -508,9 +508,22 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 			case(8):
 				fprintf(pFile, "	SIZE = %.1f						//大きさ\n", CControl::GetSize());
 				fprintf(pFile, "	ADDSIZE = %.1f					//大きさ変動\n", CControl::GetChangeSize());
+				fprintf(pFile, "	DENSITY = %d						//密度\n", CControl::GetDensity());
 
-				fprintf(pFile, "	CONTROLBEZIE = %.1f %.1f %.1f	//ベジェ制御点\n", CControl::GetContorolBezierX(), CControl::GetContorolBezierY(), CControl::GetContorolBezierZ());
-				fprintf(pFile, "	SPEED = %.0f					//ベジェ通過点\n", CControl::Getmove3d().x);
+				fprintf(pFile, "	CONTROLBEZIER = %.1f %.1f %.1f						//ベジェ制御点\n", CControl::GetContorolBezierX(), CControl::GetContorolBezierY(), CControl::GetContorolBezierZ());
+				fprintf(pFile, "	MOVE = %.1f						//移動（制御点の数）\n", CControl::Getmove3d().x);
+
+				fprintf(pFile, "	SECONDCOLOR = %d %d %d %d			//軌跡の色１\n", (int)CControl::GetParticleColor(1), (int)CControl::GetParticleColor(2), (int)CControl::GetParticleColor(3), (int)CControl::GetParticleColor(4));
+				fprintf(pFile, "	SECONDADDCOLOR = %d %d %d %d			//軌跡の色１増減\n", (int)CControl::GetParticleAddCol(1), (int)CControl::GetParticleAddCol(2), (int)CControl::GetParticleAddCol(3), (int)CControl::GetParticleAddCol(4));
+
+				fprintf(pFile, "	THERDCOLOR = %d %d %d %d				//軌跡の色２\n", (int)CControl::GetTrajectColor(1), (int)CControl::GetTrajectColor(2), (int)CControl::GetTrajectColor(3), (int)CControl::GetTrajectColor(4));
+				fprintf(pFile, "	THERDADDCOLOR = %d %d %d %d				//軌跡の色２増減\n", (int)CControl::GetTrajectCol(1), (int)CControl::GetTrajectCol(2), (int)CControl::GetTrajectCol(3), (int)CControl::GetTrajectCol(4));
+
+				fprintf(pFile, "	MAXSIZE = %.1f						//軌跡サイズ\n", CControl::GetMaxSize());
+				fprintf(pFile, "	SECONDTEX = %d						//軌跡テクスチャ\n", CControl::GetSecondTex());
+				fprintf(pFile, "	PARTICLETIME = %d						//軌跡寿命\n", CControl::GetParticleTime());
+
+				fprintf(pFile, "	DISTANCE = %.1f						//ターゲットからのランダム距離\n", CControl::GetDistance());
 
 				break;
 			default:
@@ -1029,9 +1042,9 @@ void CControl::AddParticleColor(int nColor, int nSerect)
 		{
 			m_ParticleColor.r = MAX_COLOR;
 		}
-		else if (m_ParticleColor.r < 0)
+		else if (m_ParticleColor.r < -MAX_COLOR)
 		{
-			m_ParticleColor.r = 0;
+			m_ParticleColor.r = -MAX_COLOR;
 		}
 		break;
 	case(2):
@@ -1040,9 +1053,9 @@ void CControl::AddParticleColor(int nColor, int nSerect)
 		{
 			m_ParticleColor.g = MAX_COLOR;
 		}
-		else if (m_ParticleColor.g < 0)
+		else if (m_ParticleColor.g < -MAX_COLOR)
 		{
-			m_ParticleColor.g = 0;
+			m_ParticleColor.g = -MAX_COLOR;
 		}
 		break;
 	case(3):
@@ -1051,9 +1064,9 @@ void CControl::AddParticleColor(int nColor, int nSerect)
 		{
 			m_ParticleColor.b = MAX_COLOR;
 		}
-		else if (m_ParticleColor.b < 0)
+		else if (m_ParticleColor.b < -MAX_COLOR)
 		{
-			m_ParticleColor.b = 0;
+			m_ParticleColor.b = -MAX_COLOR;
 		}
 		break;
 	case(4):
@@ -1062,9 +1075,9 @@ void CControl::AddParticleColor(int nColor, int nSerect)
 		{
 			m_ParticleColor.a = MAX_COLOR;
 		}
-		else if (m_ParticleColor.a < 0)
+		else if (m_ParticleColor.a < -MAX_COLOR)
 		{
-			m_ParticleColor.a = 0;
+			m_ParticleColor.a = -MAX_COLOR;
 		}
 		break;
 	default:
@@ -1086,9 +1099,9 @@ void CControl::AddParticleAddCol(int nColor, int nSerect)
 		{
 			m_ParticleAddCol.r = MAX_COLOR;
 		}
-		else if (m_ParticleAddCol.r < 0)
+		else if (m_ParticleAddCol.r < -MAX_COLOR)
 		{
-			m_ParticleAddCol.r = 0;
+			m_ParticleAddCol.r = -MAX_COLOR;
 		}
 		break;
 	case(2):
@@ -1097,9 +1110,9 @@ void CControl::AddParticleAddCol(int nColor, int nSerect)
 		{
 			m_ParticleAddCol.g = MAX_COLOR;
 		}
-		else if (m_ParticleAddCol.g < 0)
+		else if (m_ParticleAddCol.g < -MAX_COLOR)
 		{
-			m_ParticleAddCol.g = 0;
+			m_ParticleAddCol.g = -MAX_COLOR;
 		}
 		break;
 	case(3):
@@ -1108,9 +1121,9 @@ void CControl::AddParticleAddCol(int nColor, int nSerect)
 		{
 			m_ParticleAddCol.b = MAX_COLOR;
 		}
-		else if (m_ParticleAddCol.b < 0)
+		else if (m_ParticleAddCol.b < -MAX_COLOR)
 		{
-			m_ParticleAddCol.b = 0;
+			m_ParticleAddCol.b = -MAX_COLOR;
 		}
 		break;
 	case(4):
@@ -1119,9 +1132,9 @@ void CControl::AddParticleAddCol(int nColor, int nSerect)
 		{
 			m_ParticleAddCol.a = MAX_COLOR;
 		}
-		else if (m_ParticleAddCol.a < 0)
+		else if (m_ParticleAddCol.a < -MAX_COLOR)
 		{
-			m_ParticleAddCol.a = 0;
+			m_ParticleAddCol.a = -MAX_COLOR;
 		}
 		break;
 	default:

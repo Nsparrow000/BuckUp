@@ -96,6 +96,7 @@ public:
 		CONTROLBEZIERX,	//ベジェ制御点
 		CONTROLBEZIERY,	//ベジェ制御点
 		CONTROLBEZIERZ,	//ベジェ制御点
+		SECONDTEX,
 		MAX,
 	} OPERATION;
 
