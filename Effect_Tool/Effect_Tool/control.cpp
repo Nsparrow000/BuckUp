@@ -524,6 +524,7 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 				fprintf(pFile, "	PARTICLETIME = %d						//軌跡寿命\n", CControl::GetParticleTime());
 
 				fprintf(pFile, "	DISTANCE = %.1f						//ターゲットからのランダム距離\n", CControl::GetDistance());
+				fprintf(pFile, "	SECONDSYNTHETIC = %d			//軌跡合成\n", (int)CControl::GetParticleSynthetic());
 
 				break;
 			default:

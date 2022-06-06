@@ -175,14 +175,6 @@ HRESULT CBezierBill::Init(D3DXVECTOR3 Size,
 
 		m_pos = D3DXVECTOR3(m_Bezier.x, m_Bezier.y, m_Bezier.z);
 
-		m_Bezier.Counter++;
-		// もしカウンターが分割数に達していたら０に戻す
-		if (m_Bezier.Counter == m_Bezier.DivNum)
-		{
-			m_Bezier.Counter = 0;
-			m_Bezier.f = false;//削除
-			m_bUninit = true;
-		}
 	}
 	//PredictTraject();
 	m_Oldpos = m_pos;
@@ -262,7 +254,7 @@ void CBezierBill::Update()
 
 		m_Bezier.Counter++;
 		// もしカウンターが分割数に達していたら０に戻す
-		if (m_Bezier.Counter == m_Bezier.DivNum)
+		if (m_Bezier.Counter == m_Bezier.DivNum + 3)
 		{
 			m_Bezier.Counter = 0;
 			m_Bezier.f = false;//削除

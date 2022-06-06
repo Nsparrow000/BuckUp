@@ -191,6 +191,7 @@ void CIntermeiateSave::IntermeiateSave(CManager::MODE mode, int nPattern, const 
 				fprintf(pFile, "	PARTICLETIME = %d						//軌跡寿命\n", CControl::GetParticleTime());
 
 				fprintf(pFile, "	DISTANCE = %.1f						//ターゲットからのランダム距離\n", CControl::GetDistance());
+				fprintf(pFile, "	SECONDSYNTHETIC = %d			//軌跡合成\n", (int)CControl::GetParticleSynthetic());
 
 				break;
 			default:
@@ -278,6 +279,7 @@ void CIntermeiateSave::IntermeiateLoad(CManager::MODE mode, const char *aModelNa
 	int AnimCont = -1;
 	float fHigth = 30.0f;
 
+	D3DXVECTOR3 ControlBezier = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
 	int SecondTex = 1;
 #endif
 	if (pFile != NULL)
@@ -513,7 +515,7 @@ void CIntermeiateSave::IntermeiateLoad(CManager::MODE mode, const char *aModelNa
 						fscanf(pFile, "%s", &aFile[0]);
 						fscanf(pFile, "%f %f %f %f", &ParticleAddColor.r, &ParticleAddColor.g, &ParticleAddColor.b, &ParticleAddColor.a);
 					}
-					if (strcmp(&aFile[0], "PARTICLESYNTHETIC") == 0)	//パーティクル合成
+					if (strcmp(&aFile[0], "SECONDSYNTHETIC") == 0)	//パーティクル合成
 					{
 						fscanf(pFile, "%s", &aFile[0]);
 						fscanf(pFile, "%d", &nParticleSynthetic);
@@ -578,6 +580,11 @@ void CIntermeiateSave::IntermeiateLoad(CManager::MODE mode, const char *aModelNa
 						fscanf(pFile, "%s", &aFile[0]);
 						fscanf(pFile, "%d", &SecondTex);
 					}
+					if (strcmp(&aFile[0], "CONTROLBEZIER") == 0)	//パーティクルカラー
+					{
+						fscanf(pFile, "%s", &aFile[0]);
+						fscanf(pFile, "%f %f %f", &ControlBezier.x, &ControlBezier.y, &ControlBezier.z);
+					}
 
 				}
 
@@ -593,8 +600,8 @@ void CIntermeiateSave::IntermeiateLoad(CManager::MODE mode, const char *aModelNa
 					CControl::SetPattern(nPattern);
 					CControl::SetColor(col);
 					CControl::SetChangeColor(ChangeColor);
-					CControl::SetTrajectColor(TherdAddColor);
-					CControl::SetTrajectChangeColor(ParticleAddColor);
+					CControl::SetTrajectColor(Therdcol);
+					CControl::SetTrajectChangeColor(TherdAddColor);
 					CControl::SetLife(nLife);
 					CControl::SetTrajectTop(TrajectTop);
 					CControl::SetTrajectCur(TrajectCur);
@@ -624,6 +631,8 @@ void CIntermeiateSave::IntermeiateLoad(CManager::MODE mode, const char *aModelNa
 					CControl::SetnSplit(TexSplit);
 					CControl::SetHigth(fHigth);
 					CControl::SetSecondTex(SecondTex);
+					CControl::SetControlBezier(ControlBezier);
+
 				}
 				if (strcmp(&aFile[0], "EFFECTSTATE3D") == 0)
 				{
