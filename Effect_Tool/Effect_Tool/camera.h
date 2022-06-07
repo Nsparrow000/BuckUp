@@ -44,6 +44,7 @@ public:
 	void AddRotY(float fRotY) { m_camera.rot.y += fRotY; }
 	void AddRotX(float fRotX) { m_camera.rot.x += fRotX; }
 	void ResetRot() { m_camera.rot = D3DXVECTOR3(0.0f, 0.0f, 0.0f); }
+	void AddLength(float Length) { m_camera.fLength += Length; }
 
 	static CCamera *Create(D3DXVECTOR3 ref, float fDistance, D3DXVECTOR3 pos);
 

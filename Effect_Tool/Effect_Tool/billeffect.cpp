@@ -41,7 +41,8 @@ HRESULT CBillEffect::Init(D3DXVECTOR3 Size,
 	D3DXVECTOR2 TexNum,
 	D3DXVECTOR2 TexMove,
 	int nAnimCounter,
-	D3DXVECTOR2 nSplit)
+	D3DXVECTOR2 nSplit,
+	ANIMPATTERN AnimPattern)
 {
 	CPlane::Init(Size, D3DXVECTOR3(0.0f, 0.0f, 0.0f), TexNum);
 	SetTexture(nTex);
@@ -59,6 +60,17 @@ HRESULT CBillEffect::Init(D3DXVECTOR3 Size,
 	m_PatternSize = D3DXVECTOR2(1.0f / m_MaxSplit.x, 1.0f / m_MaxSplit.y);
 	m_nAnimCount = nAnimCounter;
 	m_nSetAnimCnt = nAnimCounter;
+	m_AnimPattern = AnimPattern;
+
+	float SplitU = float(rand() % (int)m_MaxSplit.x) + 1;
+	float SplitV = float(rand() % (int)m_MaxSplit.y) + 1;
+
+
+	if (m_AnimPattern == ANIMPATTERN_RAND)
+	{
+		m_nSplit.x = SplitU;
+		m_nSplit.y = SplitV;
+	}
 
 
 	//カラー変動
@@ -129,21 +141,63 @@ void CBillEffect::Update()
 		m_Color.a = MAX_COLOR;
 	}
 
-	//テクスチャアニメーション
-	if (m_nAnimCount >= 0)
+	switch (m_AnimPattern)
 	{
-		m_nAnimCount--;
-		if (m_nAnimCount < 0)
+	case(ANIMPATTERN_NOMAL):
+		//テクスチャアニメーション
+		if (m_nAnimCount >= 0)
 		{
-			m_nAnimCount = m_nSetAnimCnt;
-			m_nSplit.x++;
-			m_nSplit.y++;
+			m_nAnimCount--;
+			if (m_nAnimCount < 0)
+			{
+				m_nAnimCount = m_nSetAnimCnt;
+				m_nSplit.x++;
+				m_nSplit.y++;
+			}
+			if (m_MaxSplit > m_MaxSplit)
+			{
+				m_nSplit.x = 0;
+				m_nSplit.y = 0;
+			}
 		}
-		if (m_MaxSplit > m_MaxSplit)
+		break;
+	case(ANIMPATTERN_RAND):
+		////テクスチャアニメーション
+		//if (m_nAnimCount >= 0)
+		//{
+		//	m_nAnimCount--;
+		//	if (m_nAnimCount < 0)
+		//	{
+		//		m_nAnimCount = m_nSetAnimCnt;
+		//		m_nSplit.x++;
+		//		m_nSplit.y++;
+		//	}
+		//	if (m_MaxSplit > m_MaxSplit)
+		//	{
+		//		m_nSplit.x = 0;
+		//		m_nSplit.y = 0;
+		//	}
+		//}
+
+		break;
+	default:
+		//テクスチャアニメーション
+		if (m_nAnimCount >= 0)
 		{
-			m_nSplit.x = 0;
-			m_nSplit.y = 0;
+			m_nAnimCount--;
+			if (m_nAnimCount < 0)
+			{
+				m_nAnimCount = m_nSetAnimCnt;
+				m_nSplit.x++;
+				m_nSplit.y++;
+			}
+			if (m_MaxSplit > m_MaxSplit)
+			{
+				m_nSplit.x = 0;
+				m_nSplit.y = 0;
+			}
 		}
+		break;
 	}
 
 	//それぞれ適応

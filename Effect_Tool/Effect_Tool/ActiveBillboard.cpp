@@ -42,9 +42,10 @@ HRESULT CActiveBillBoard::Init(D3DXVECTOR3 pos,
 	D3DXVECTOR2 TexMove,
 	D3DXVECTOR2 TexNum,
 	int nAnimCounter,
-	D3DXVECTOR2 nSplit)
+	D3DXVECTOR2 nSplit,
+	ANIMPATTERN AnimPattern)
 {
-	CBillEffect::Init(Size, MinSize, color, Mincolor, nType, nLife, TexNum, TexMove, nAnimCounter, nSplit);
+	CBillEffect::Init(Size, MinSize, color, Mincolor, nType, nLife, TexNum, TexMove, nAnimCounter, nSplit, AnimPattern);
 	m_nSynthenic = Synsetic;
 	m_CreatePreset = nPattern;
 	m_MinSize = MinSize;
@@ -149,13 +150,24 @@ CActiveBillBoard *CActiveBillBoard::Create(D3DXVECTOR3 pos,
 	D3DXVECTOR2 TexMove,
 	D3DXVECTOR2 TexNum,
 	int nAnimCounter,
-	D3DXVECTOR2 nSplit)
+	D3DXVECTOR2 nSplit,
+	ANIMPATTERN AnimPattern)
 {
 	CActiveBillBoard *pStraight3D = new CActiveBillBoard(CManager::PRIORITY_EFFECT);
 
 	if (pStraight3D != NULL)
 	{
-		pStraight3D->Init(pos, Size, MinSize, move, color, Mincolor, nType, nLife, Synsetic, FieldTime, MaxSize, AddSize, PresetCreate, nPattern, TexMove, TexNum, nAnimCounter, nSplit);
+		pStraight3D->Init(pos, Size, MinSize, move, color, Mincolor, nType,
+			nLife, Synsetic,
+			FieldTime, MaxSize,
+			AddSize,
+			PresetCreate,
+			nPattern,
+			TexMove,
+			TexNum,
+			nAnimCounter,
+			nSplit,
+			AnimPattern);
 	}
 
 	return pStraight3D;

@@ -11,6 +11,15 @@
 class CBillEffect : public CPlane
 {
 public:
+	typedef enum
+	{
+		ANIMPATTERN_NOMAL,
+		ANIMPATTERN_RAND,
+		ANIMPATTERN_MAX,
+	} ANIMPATTERN;
+
+
+
 	CBillEffect(int nPriority);
 	virtual ~CBillEffect();
 
@@ -22,7 +31,8 @@ public:
 		D3DXVECTOR2 TexNum,
 		D3DXVECTOR2 TexMove,
 		int nAnimCounter,
-		D3DXVECTOR2 nSplit);
+		D3DXVECTOR2 nSplit,
+		ANIMPATTERN AnimPattern);
 
 	virtual void Uninit();
 	virtual void Update();
@@ -36,7 +46,7 @@ protected:
 	int m_nSynthenic;	//合成
 	D3DXVECTOR3 m_MinSize;		//大きさ変動値
 	D3DXVECTOR3 m_Size;			//サイズ
-
+	ANIMPATTERN m_AnimPattern;	//アニメーションパターンの動き
 private:
 
 	//カラー

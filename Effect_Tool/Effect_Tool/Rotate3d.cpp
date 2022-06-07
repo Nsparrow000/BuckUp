@@ -44,7 +44,8 @@ HRESULT CRotate3D::Init(D3DXVECTOR3 SetSize,
 	int nLife,
 	int nParticleLife,
 	int nBuckTime,
-	float fActive)
+	float fActive,
+	int AnimPattern)
 {
 	CPlane::Init(SetSize, pos, Tex);
 
@@ -68,6 +69,8 @@ HRESULT CRotate3D::Init(D3DXVECTOR3 SetSize,
 
 	m_fRandAngle = CIRCLE2;
 	m_fRandAngle2 = CIRCLE2;
+
+	m_PatternAnim = AnimPattern;
 	SetPos(m_pos);
 	return S_OK;
 }
@@ -142,7 +145,8 @@ void CRotate3D::Update()
 		D3DXVECTOR2(0.0f, 0.0f),
 		D3DXVECTOR2(1.0f, 1.0f),
 		0,
-		D3DXVECTOR2(1.0f, 1.0f));
+		D3DXVECTOR2(1.0f, 1.0f),
+		(CBillEffect::ANIMPATTERN)m_PatternAnim);
 	m_nLife--;
 
 
@@ -172,7 +176,8 @@ CRotate3D *CRotate3D::Create(D3DXVECTOR3 SetSize,
 	int nLife,
 	int nParticleLife,
 	int nBuckTime,
-	float fActive)
+	float fActive,
+	int AnimPattern)
 {
 	CRotate3D * pRotate3D = NULL;
 	pRotate3D = new CRotate3D(CManager::PRIORITY_EFFECT);
@@ -191,7 +196,8 @@ CRotate3D *CRotate3D::Create(D3DXVECTOR3 SetSize,
 			nTex, Synthetic, nLife,
 			nParticleLife,
 			nBuckTime,
-			fActive);
+			fActive,
+			AnimPattern);
 	}
 	return pRotate3D;
 }

@@ -61,7 +61,8 @@ public:
 		D3DXVECTOR2 TexMove,
 		D3DXVECTOR2 TexNum,
 		int nAnimCounter,
-		D3DXVECTOR2 nSplit);
+		D3DXVECTOR2 nSplit,
+		ANIMPATTERN AnimPattern);
 
 	void Uninit();
 	void Update();
@@ -84,7 +85,8 @@ public:
 		D3DXVECTOR2 TexMove,
 		D3DXVECTOR2 TexNum,
 		int nAnimCounter,
-		D3DXVECTOR2 nSplit);
+		D3DXVECTOR2 nSplit,
+		ANIMPATTERN AnimPattern);
 private:
 	D3DXVECTOR3 m_pos;	//èoåªà íu
 	D3DXVECTOR3 m_move;	//à⁄ìÆíl

@@ -94,6 +94,8 @@ public:
 	static float GetContorolBezierY() {return m_ContorolBezier.y; }	//制御点
 	static float GetContorolBezierZ() {return m_ContorolBezier.z; }	//制御点
 	static int GetSecondTex() { return m_SecondTex; }
+	static int GetAnimPatternType() { return m_AnimPatternType; }
+
 
 	//テキストセーブ
 	static void SaveEffect(CManager::MODE mode, int nPattern);
@@ -142,6 +144,7 @@ public:
 	static void SetHigth(float Higth) { m_fHigth = Higth; }	//高さ
 	static void SetControlBezier(D3DXVECTOR3 ControlBezier) { m_ContorolBezier = ControlBezier; }	//ベジェ制御点
 	static void SetSecondTex(int SecondTex) { m_SecondTex = SecondTex; }
+	static void SetAnimPatternType(int AnimPatternType) { m_AnimPatternType = AnimPatternType; }
 
 	//増減関係
 	static void AddPattern(int nPattern) {
@@ -285,6 +288,8 @@ public:
 
 	static void AddSecondTex(int SecondTex) { m_SecondTex += SecondTex; }	//制御点
 
+	static void AddAnimPatternType(int AnimPatternType) { m_AnimPatternType += AnimPatternType; }	//制御点
+
 private:
 	static CKeyboard *m_pKeyboard;
 	static int m_SerectColor;		//色選択
@@ -355,6 +360,8 @@ private:
 	static float m_fHigth;	//高さ
 	static D3DXVECTOR3 m_ContorolBezier;	//ベジェ制御点
 	static int m_SecondTex;
+
+	static int m_AnimPatternType;
 };
 
 #endif

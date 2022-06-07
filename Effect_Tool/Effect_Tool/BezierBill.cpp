@@ -50,9 +50,10 @@ HRESULT CBezierBill::Init(D3DXVECTOR3 Size,
 	int TrajectLife,
 	float DistanceTarget,
 	int Synthetic,
-	int TrajectSynthetic)
+	int TrajectSynthetic,
+	ANIMPATTERN AnimPattern)
 {
-	CBillEffect::Init(Size, MinSize, color, Mincolor, nTex, nLife, TexNum, TexMove, nAnimCounter, nSplit);
+	CBillEffect::Init(Size, MinSize, color, Mincolor, nTex, nLife, TexNum, TexMove, nAnimCounter, nSplit, AnimPattern);
 
 	m_nSynthenic = Synthetic;
 	m_TrajectSynthetic = TrajectSynthetic;
@@ -318,7 +319,8 @@ CBezierBill *CBezierBill::Create(D3DXVECTOR3 Size,
 	int TrajectLife,
 	float DistanceTarget,
 	int Synthetic,
-	int TrajectSynthetic)
+	int TrajectSynthetic,
+	ANIMPATTERN AnimPattern)
 {
 	CBezierBill * pBezierBill = NULL;
 	pBezierBill = new CBezierBill(CManager::PRIORITY_EFFECT);
@@ -342,7 +344,8 @@ CBezierBill *CBezierBill::Create(D3DXVECTOR3 Size,
 			TrajectLife,
 			DistanceTarget,
 			Synthetic,
-			TrajectSynthetic);
+			TrajectSynthetic,
+			AnimPattern);
 	}
 	return pBezierBill;
 

@@ -32,7 +32,7 @@ HRESULT CCamera::Init(D3DXVECTOR3 ref, float fDistance, D3DXVECTOR3 pos)
 	//プロジェクションマトリックスの初期化
 	D3DXMatrixIdentity(&m_camera.mtxProjection);
 	//プロジェクションマトリックス作成
-	D3DXMatrixPerspectiveFovLH(&m_camera.mtxProjection, D3DXToRadian(45.0f), (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 10.0f, 2500.0f);
+	D3DXMatrixPerspectiveFovLH(&m_camera.mtxProjection, D3DXToRadian(45.0f), (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 10.0f, 5000.0f);
 	//プロジェクションマトリックスの設定
 	pDevice->SetTransform(D3DTS_PROJECTION, &m_camera.mtxProjection);
 	//ビューマトリックスの初期化

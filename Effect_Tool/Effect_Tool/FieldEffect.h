@@ -45,7 +45,8 @@ public:
 		float ActiveAddSize,
 		int FieldTime,
 		bool FieldCreate,
-		int CreatePreset);
+		int CreatePreset,
+		int AnimPatternType);
 
 	void Uninit();
 	void Update();
@@ -74,7 +75,8 @@ public:
 		float ActiveAddSize,
 		int FieldTime,
 		bool FieldCreate,
-		int CreatePreset);
+		int CreatePreset,
+		int AnimPatternType);
 
 private:
 	EFFECT_TIME EffectTime;	//エフェクトの今の状態
@@ -115,7 +117,7 @@ private:
 
 	bool m_FieldCreate;	//フィールド生成するか
 	int m_CreatePreset;	//どのプリセットを生成するか
-
+	int m_AnimPatternType;
 	bool bUninit;
 };
 

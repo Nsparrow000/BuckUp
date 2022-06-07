@@ -97,6 +97,7 @@ public:
 		CONTROLBEZIERY,	//ベジェ制御点
 		CONTROLBEZIERZ,	//ベジェ制御点
 		SECONDTEX,
+		ANIMPATTERNTYPE,
 		MAX,
 	} OPERATION;
 

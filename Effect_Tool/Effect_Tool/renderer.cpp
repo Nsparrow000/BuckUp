@@ -114,7 +114,7 @@ HRESULT CRenderer::Init(HWND hWnd, bool bWindow)
 	D3DXCreateFont(m_pD3DDevice, 20, 0, 0, 0, FALSE, SHIFTJIS_CHARSET,
 		OUT_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH, "Terminal", &m_pFont);		//文字の大きさ
 
-	m_pCamera = CCamera::Create(D3DXVECTOR3(0.0f, 200.0f, -300.0f), 400.0f, D3DXVECTOR3(0.0f, 0.0f, 0.0f));
+	m_pCamera = CCamera::Create(D3DXVECTOR3(0.0f, 200.0f, -300.0f), 700.0f, D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 	
 
 	return S_OK;
@@ -468,6 +468,7 @@ void CRenderer::DrawTextLeft()
 		nNum += sprintf(&str[nNum], "テクスチャ分割数 U [+][-]：%.0f\n", CControl::GetSplitU());
 		nNum += sprintf(&str[nNum], "テクスチャ分割数 V [+][-]：%.0f\n", CControl::GetSplitV());
 		nNum += sprintf(&str[nNum], "パターンカウント  [+][-]：%d\n", CControl::GetAnimCont());
+		nNum += sprintf(&str[nNum], "ランダム化  [+][-]：%d\n", CControl::GetAnimPatternType());
 
 
 		nNum += sprintf(&str[nNum], "プリセット再生[F1]\n");

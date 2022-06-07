@@ -38,7 +38,8 @@ public:
 		int nLife,
 		int nParticleLife,
 		int nBuckTime,
-		float fActive);
+		float fActive,
+		int AnimPattern);
 
 	void Uninit();
 	void Update();
@@ -59,7 +60,8 @@ public:
 		int nLife,
 		int nParticleLife,
 		int nBuckTime,
-		float m_fActive);
+		float m_fActive,
+		int AnimPattern);
 
 private:
 	EFFECT_TIME m_EffectTime;
@@ -87,7 +89,7 @@ private:
 	int m_nSynthetic;
 	int m_nLife;
 	int m_ParticleLife;
-
+	int m_PatternAnim;
 };
 
 #endif

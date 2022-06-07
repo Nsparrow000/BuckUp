@@ -25,7 +25,8 @@ public:
 		D3DXVECTOR2 nSplit,
 		float fHigth,
 		D3DXVECTOR3 orizinSize,
-		int Synthetic);
+		int Synthetic,
+		ANIMPATTERN AnimPattern);
 
 	void Uninit();
 	void Update();
@@ -45,7 +46,8 @@ public:
 		D3DXVECTOR2 nSplit,
 		float fHigth,
 		D3DXVECTOR3 orizinSize,
-		int Synthetic
+		int Synthetic,
+		ANIMPATTERN AnimPattern
 		);
 private:
 

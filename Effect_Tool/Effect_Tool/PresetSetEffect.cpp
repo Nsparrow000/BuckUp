@@ -148,7 +148,8 @@ void CPresetEffect::SetEffectState3D(
 	int m_nSecondType,
 	D3DXVECTOR2 m_TexSplit,
 	int AnimCnt,
-	float fHigth)
+	float fHigth,
+	int AnimPatternType)
 {
 	m_EffectState3D[m_nEffectPattern].m_nPattern = nPattern;
 	m_EffectState3D[m_nEffectPattern].m_fRotate = m_fRotate;
@@ -193,6 +194,7 @@ void CPresetEffect::SetEffectState3D(
 	m_EffectState3D[m_nEffectPattern].m_TexSplit = m_TexSplit;
 	m_EffectState3D[m_nEffectPattern].AnimCnt = AnimCnt;
 	m_EffectState3D[m_nEffectPattern].m_fHigth = fHigth;
+	m_EffectState3D[m_nEffectPattern].m_AnimPatternType = AnimPatternType;
 
 
 
@@ -393,7 +395,8 @@ void CPresetEffect::SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 				m_EffectState3D[nPattern].m_TexMove,
 				m_EffectState3D[nPattern].m_TexNum,
 				m_EffectState3D[nPattern].AnimCnt,
-				m_EffectState3D[nPattern].m_TexSplit);
+				m_EffectState3D[nPattern].m_TexSplit,
+				(CBillEffect::ANIMPATTERN)m_EffectState3D[nPattern].m_AnimPatternType);
 		}
 		break;
 	case(2):	//纏わせ
@@ -478,7 +481,8 @@ void CPresetEffect::SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 				m_EffectState3D[nPattern].m_TexMove,
 				m_EffectState3D[nPattern].m_TexNum,
 				m_EffectState3D[nPattern].AnimCnt,
-				m_EffectState3D[nPattern].m_TexSplit);
+				m_EffectState3D[nPattern].m_TexSplit,
+				(CBillEffect::ANIMPATTERN)m_EffectState3D[nPattern].m_AnimPatternType);
 		}
 		break;
 	case(3):	//フィールド
@@ -506,7 +510,8 @@ void CPresetEffect::SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 			m_EffectState3D[nPattern].m_fActiveAddSize,
 			m_EffectState3D[nPattern].m_FieldTime,
 			m_EffectState3D[nPattern].m_fieldCreate,
-			m_EffectState3D[nPattern].mCreatePreset);
+			m_EffectState3D[nPattern].mCreatePreset,
+			(CBillEffect::ANIMPATTERN)m_EffectState3D[nPattern].m_AnimPatternType);
 
 		break;
 	case(4):
@@ -534,7 +539,8 @@ void CPresetEffect::SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 				m_EffectState3D[nPattern].m_nLife,
 				m_EffectState3D[nPattern].ParticleTime,
 				m_EffectState3D[nPattern].m_nSecondTime,
-				m_EffectState3D[nPattern].m_MaxSize
+				m_EffectState3D[nPattern].m_MaxSize,
+				(CBillEffect::ANIMPATTERN)m_EffectState3D[nPattern].m_AnimPatternType
 			);
 		}
 		break;
@@ -574,7 +580,8 @@ void CPresetEffect::SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 				m_EffectState3D[nPattern].m_TexSplit,
 				m_EffectState3D[nPattern].m_fHigth,
 				D3DXVECTOR3(m_EffectState3D[nPattern].m_fParticleSize, m_EffectState3D[nPattern].m_fParticleSize, {}),
-				m_EffectState3D[nPattern].Synthetic);
+				m_EffectState3D[nPattern].Synthetic,
+				(CBillEffect::ANIMPATTERN)m_EffectState3D[nPattern].m_AnimPatternType);
 		}
 		break;
 	}

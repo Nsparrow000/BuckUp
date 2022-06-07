@@ -257,6 +257,28 @@ BUTTENSET
 	DISPLAY = 0	//表示
 	PATTERN = 0
 END_BUTTENSET
+
+
+//テクスチャパターン
+BUTTENSET
+	POS = 1010.0 181.0 0.0	//座標
+	SIZE = 18.0 18.0	//サイズ
+	TEXTURE = -1		//テクスチャ
+	OPERATION = 54		//設定内容
+	INDENUM = 1	//増減する数値
+	DISPLAY = 0	//表示
+	PATTERN = 0
+END_BUTTENSET
+
+BUTTENSET
+	POS = 1032.0 181.0 0.0	//座標
+	SIZE = 18.0 18.0	//サイズ
+	TEXTURE = -1		//テクスチャ
+	OPERATION = 54		//設定内容
+	INDENUM = -1	//増減する数値
+	DISPLAY = 0	//表示
+	PATTERN = 0
+END_BUTTENSET
 #*********************************************************
 //テクスチャ
 BUTTENSET

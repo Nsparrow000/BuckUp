@@ -46,7 +46,8 @@ public:
 		D3DXVECTOR2 TexMove,
 		D3DXVECTOR2 TexNum,
 		int nAnimCounter,
-		D3DXVECTOR2 nSplit);
+		D3DXVECTOR2 nSplit,
+		ANIMPATTERN AnimPattern);
 
 		void Uninit();
 	void Update();
@@ -69,7 +70,8 @@ public:
 		D3DXVECTOR2 TexMove,
 		D3DXVECTOR2 TexNum,
 		int nAnimCounter,
-		D3DXVECTOR2 nSplit);
+		D3DXVECTOR2 nSplit,
+		ANIMPATTERN AnimPattern);
 
 private:
 	EFFECT_TIME EffectTime;	//エフェクトの今の状態

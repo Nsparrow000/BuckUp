@@ -57,7 +57,8 @@ public:
 		int TrajectLife,
 		float DistanceTarget,
 		int Synthetic,
-		int TrajectSynthetic);
+		int TrajectSynthetic,
+		ANIMPATTERN AnimPattern);
 
 	void Uninit();
 	void Update();
@@ -87,7 +88,8 @@ public:
 		int TrajectLife,
 		float DistanceTarget,
 		int Synthetic,
-		int TrajectSynthetic);
+		int TrajectSynthetic,
+		ANIMPATTERN AnimPattern);
 
 	void PredictTraject();
 

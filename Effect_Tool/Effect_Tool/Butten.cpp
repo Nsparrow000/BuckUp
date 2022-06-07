@@ -391,6 +391,10 @@ void CButten::Set(OPERATION Operation, float nIndeNum)
 	case(SECONDTEX):
 		CControl::AddSecondTex(nIndeNum);
 		break;
+	case(ANIMPATTERNTYPE):
+		CControl::AddAnimPatternType(nIndeNum);
+		break;
+
 	default:
 		assert(false);
 		break;

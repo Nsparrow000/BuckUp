@@ -211,6 +211,7 @@ void CIntermeiateSave::IntermeiateSave(CManager::MODE mode, int nPattern, const 
 
 			fprintf(pFile, "	TEXANIMCOUNT = %d					//テクスチャアニメーションカウント\n", CControl::GetAnimCont());
 			fprintf(pFile, "	TEXSPLIT = %.0f %.0f					//テクスチャ分割数\n", CControl::GetSplitU(), CControl::GetSplitV());
+			fprintf(pFile, "	ANIMPATTERNTYPE = %d					//アニメーションパターンタイプ\n", CControl::GetAnimPatternType());
 
 
 			fprintf(pFile, "END_EFFECTSTATE3D\n");
@@ -281,6 +282,7 @@ void CIntermeiateSave::IntermeiateLoad(CManager::MODE mode, const char *aModelNa
 
 	D3DXVECTOR3 ControlBezier = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
 	int SecondTex = 1;
+	int AnimPatternType = 0;
 #endif
 	if (pFile != NULL)
 	{
@@ -585,6 +587,12 @@ void CIntermeiateSave::IntermeiateLoad(CManager::MODE mode, const char *aModelNa
 						fscanf(pFile, "%s", &aFile[0]);
 						fscanf(pFile, "%f %f %f", &ControlBezier.x, &ControlBezier.y, &ControlBezier.z);
 					}
+					if (strcmp(&aFile[0], "ANIMPATTERNTYPE") == 0)	//アニメーションパターンタイプ
+					{
+						fscanf(pFile, "%s", &aFile[0]);
+						fscanf(pFile, "%d", &AnimPatternType);
+					}
+
 
 				}
 

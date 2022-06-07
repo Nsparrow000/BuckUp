@@ -96,6 +96,7 @@ void CLoadEffect::EffectStateLoad(const char *aFileName)
 	D3DXVECTOR2 TexSplit = D3DXVECTOR2(1.0f, 1.0f);
 	int nAnimCont = -1;
 	float fHigth = 30.0f;
+	int AnimPatternType = 0;
 
 #endif
 
@@ -427,6 +428,11 @@ void CLoadEffect::EffectStateLoad(const char *aFileName)
 					fscanf(pFile, "%s", &aFile[0]);
 					fscanf(pFile, "%f", &fHigth);
 				}
+				if (strcmp(&aFile[0], "ANIMPATTERNTYPE") == 0)	//アニメーションパターンタイプ
+				{
+					fscanf(pFile, "%s", &aFile[0]);
+					fscanf(pFile, "%d", &AnimPatternType);
+				}
 
 			}
 			//エフェクト情報セット
@@ -455,7 +461,7 @@ void CLoadEffect::EffectStateLoad(const char *aFileName)
 					nSynthetic, nTexture, Distance, ParticleTime, pos, fActiveAddSize,
 					FieldTime, (bool)FieldCreate, CreatePreset,
 					nSecondTime, nVtx, nType, TexMove, TexNum, nSecondType, TexSplit,
-					nAnimCont, fHigth);
+					nAnimCont, fHigth, AnimPatternType);
 
 				m_Total++;
 			}

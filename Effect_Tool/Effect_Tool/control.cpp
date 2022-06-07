@@ -99,6 +99,7 @@ D3DXVECTOR2 CControl::m_nSplit = D3DXVECTOR2(1.0f, 1.0f);
 float CControl::m_fHigth = 30.0f;
 D3DXVECTOR3 CControl::m_ContorolBezier = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
 int CControl::m_SecondTex = 1;
+int CControl::m_AnimPatternType = 0;
 
 
 //*****************************************************************************
@@ -177,7 +178,7 @@ HRESULT CControl::Init()
 	m_bPlayerMode = false;
 
 	nSynthetic = 0;
-
+	m_AnimPatternType = 0;
 	return S_OK;
 }
 
@@ -543,6 +544,7 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 
 			fprintf(pFile, "	TEXANIMCOUNT = %d					//テクスチャアニメーションカウント\n", CControl::GetAnimCont());
 			fprintf(pFile, "	TEXSPLIT = %.0f %.0f					//テクスチャ分割数\n", CControl::GetSplitU(), CControl::GetSplitV());
+			fprintf(pFile, "	ANIMPATTERNTYPE = %d					//アニメーションパターンタイプ\n", CControl::GetAnimPatternType());
 
 			fprintf(pFile, "END_EFFECTSTATE3D\n\n");
 		}
