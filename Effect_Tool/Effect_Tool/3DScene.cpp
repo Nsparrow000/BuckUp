@@ -75,7 +75,7 @@ HRESULT C3DScene::Init(D3DXVECTOR3 /*pos*/)
 	m_nDirey = 0;
 	//エフェクト出すやつ
 	CSetEffect3D::Create(D3DXVECTOR3(0.0f, 0.0f, 0.0f),
-		D3DXVECTOR3(0.0f, +15.0f, 0.0f),
+		D3DXVECTOR3(0.0f, +30.0f, 0.0f),
 		D3DXVECTOR2(0.0f, 0.0f));
 
 	return S_OK;
@@ -113,7 +113,7 @@ void C3DScene::Update()
 		{
 			for (int nCnt = 0; nCnt < CLoadEffect::GetPresetTotal(); nCnt++)
 			{
-				CPresetEffect::SetEffect3D(nCnt, D3DXVECTOR3(0.0f, 50.0f, 0.0f), {});
+				CPresetEffect::SetEffect3D(nCnt, D3DXVECTOR3(0.0f, 50.0f, 0.0f), D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 			}
 		}
 		if (m_pKeyboard->GetKey(DIK_F3) == true)

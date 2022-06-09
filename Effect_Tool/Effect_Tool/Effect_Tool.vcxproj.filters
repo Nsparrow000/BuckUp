@@ -70,6 +70,9 @@
     <Filter Include="ソース ファイル\3D\Effect\Traject">
       <UniqueIdentifier>{33cfcaf9-d920-4e0e-92cf-16f5a6654d71}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\3D\Effect\Traject">
+      <UniqueIdentifier>{36dcda4a-6473-44d4-8c8c-8eadcb4bb790}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="control.cpp">
@@ -263,12 +266,6 @@
     <ClInclude Include="Movement.h">
       <Filter>ヘッダー ファイル\2D\Effect</Filter>
     </ClInclude>
-    <ClInclude Include="MeshEffect.h">
-      <Filter>ヘッダー ファイル\3D\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="Trajectory.h">
-      <Filter>ヘッダー ファイル\3D\Effect</Filter>
-    </ClInclude>
     <ClInclude Include="3DScene.h">
       <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
@@ -331,6 +328,12 @@
     </ClInclude>
     <ClInclude Include="BezierBillh.h">
       <Filter>ヘッダー ファイル\3D\Effect\BillBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="Trajectory.h">
+      <Filter>ヘッダー ファイル\3D\Effect\Traject</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshEffect.h">
+      <Filter>ヘッダー ファイル\3D\Effect\Traject</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

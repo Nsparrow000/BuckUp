@@ -18,6 +18,8 @@
 #include "Rotate3d.h"
 #include "sphereEffect.h"
 #include "ThunderBill.h"
+#include "BezierBillh.h"
+
 #include "LoadEffect.h"
 
 #include <assert.h>
@@ -149,7 +151,11 @@ void CPresetEffect::SetEffectState3D(
 	D3DXVECTOR2 m_TexSplit,
 	int AnimCnt,
 	float fHigth,
-	int AnimPatternType)
+	int AnimPatternType,
+	D3DXVECTOR3 ControlBezier,
+	D3DCOLORVALUE TherdCol,
+	D3DCOLORVALUE TherdChangecolor,
+	int SecondTex)
 {
 	m_EffectState3D[m_nEffectPattern].m_nPattern = nPattern;
 	m_EffectState3D[m_nEffectPattern].m_fRotate = m_fRotate;
@@ -195,6 +201,10 @@ void CPresetEffect::SetEffectState3D(
 	m_EffectState3D[m_nEffectPattern].AnimCnt = AnimCnt;
 	m_EffectState3D[m_nEffectPattern].m_fHigth = fHigth;
 	m_EffectState3D[m_nEffectPattern].m_AnimPatternType = AnimPatternType;
+	m_EffectState3D[m_nEffectPattern].m_ControlBezier = ControlBezier;
+	m_EffectState3D[m_nEffectPattern].m_TherdCol = TherdCol;
+	m_EffectState3D[m_nEffectPattern].m_TherdChangecolor = TherdChangecolor;
+	m_EffectState3D[m_nEffectPattern].m_SecondTex = SecondTex;
 
 
 
@@ -540,8 +550,8 @@ void CPresetEffect::SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 				m_EffectState3D[nPattern].ParticleTime,
 				m_EffectState3D[nPattern].m_nSecondTime,
 				m_EffectState3D[nPattern].m_MaxSize,
-				(CBillEffect::ANIMPATTERN)m_EffectState3D[nPattern].m_AnimPatternType
-			);
+				(CBillEffect::ANIMPATTERN)m_EffectState3D[nPattern].m_AnimPatternType,
+				(CRotate3D::EFFECT_TYPE)m_EffectState3D[nPattern].m_nType);
 		}
 		break;
 	case(6):
@@ -581,6 +591,39 @@ void CPresetEffect::SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 				m_EffectState3D[nPattern].m_fHigth,
 				D3DXVECTOR3(m_EffectState3D[nPattern].m_fParticleSize, m_EffectState3D[nPattern].m_fParticleSize, {}),
 				m_EffectState3D[nPattern].Synthetic,
+				(CBillEffect::ANIMPATTERN)m_EffectState3D[nPattern].m_AnimPatternType);
+		}
+		break;
+	case(8):
+		for (int nCnt = 0; nCnt < m_EffectState3D[nPattern].m_nDensity; nCnt++)
+		{
+			CBezierBill::Create(
+				D3DXVECTOR3(m_EffectState3D[nPattern].m_fSize, m_EffectState3D[nPattern].m_fSize, 0.0f),
+				D3DXVECTOR3(m_EffectState3D[nPattern].m_fAddSize, m_EffectState3D[nPattern].m_fAddSize, 0.0f),
+				m_EffectState3D[nPattern].m_Col,
+				m_EffectState3D[nPattern].m_Changecolor,
+				m_EffectState3D[nPattern].nTexture,
+				m_EffectState3D[nPattern].m_nLife,
+				m_EffectState3D[nPattern].m_TexNum,
+				m_EffectState3D[nPattern].m_TexMove,
+				m_EffectState3D[nPattern].AnimCnt,
+				m_EffectState3D[nPattern].m_TexSplit,
+				pos,
+				Endpos,
+				m_EffectState3D[nPattern].m_move,
+				m_EffectState3D[nPattern].m_ControlBezier,
+				{},
+				m_EffectState3D[nPattern].m_MaxSize,
+				m_EffectState3D[nPattern].m_SecondCol,
+				m_EffectState3D[nPattern].m_SecondChangecolor,
+				m_EffectState3D[nPattern].m_TherdCol,
+				m_EffectState3D[nPattern].m_TherdChangecolor,
+				0.0f,
+				m_EffectState3D[nPattern].m_SecondTex,
+				m_EffectState3D[nPattern].ParticleTime,
+				m_EffectState3D[nPattern].m_nDistance,
+				m_EffectState3D[nPattern].Synthetic,
+				m_EffectState3D[nPattern].m_ParticleSynthetic,
 				(CBillEffect::ANIMPATTERN)m_EffectState3D[nPattern].m_AnimPatternType);
 		}
 		break;

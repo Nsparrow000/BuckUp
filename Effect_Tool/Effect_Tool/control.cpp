@@ -486,6 +486,7 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 				fprintf(pFile, "	SECONDTIME = %d						//近づくまでの時間\n", CControl::GetSecondTime());
 				fprintf(pFile, "	MAXSIZE = %.1f						//アクティブサイズ\n", CControl::GetMaxSize());
 				fprintf(pFile, "	MOVE = %.1f						//距離加算\n", CControl::Getmove3d().x);
+				fprintf(pFile, "	TYPE = %d					//パーティクル(0)or軌跡(1)\n", CControl::GetType());
 
 				break;
 			case(6):

@@ -255,7 +255,7 @@ void CBezierBill::Update()
 
 		m_Bezier.Counter++;
 		// もしカウンターが分割数に達していたら０に戻す
-		if (m_Bezier.Counter == m_Bezier.DivNum + 3)
+		if (m_Bezier.Counter == m_Bezier.DivNum + 2)
 		{
 			m_Bezier.Counter = 0;
 			m_Bezier.f = false;//削除

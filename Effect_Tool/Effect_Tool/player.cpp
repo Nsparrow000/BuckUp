@@ -479,17 +479,23 @@ void CPlayer::CreateEffect(int nPattern)
 					pos.x + sinf(m_pCamera->GetRotY()) * 1200.0f,
 					0.0f,
 					pos.z + cosf(m_pCamera->GetRotY()) * 1200.0f),
+
 				CControl::Getmove3d().x,
+
 				D3DXVECTOR3(CControl::GetContorolBezierX(),
 					CControl::GetContorolBezierY(),
 					CControl::GetContorolBezierZ()),
-				rot,
+					{},
 				CControl::GetMaxSize(),
 				D3DXCOLOR((float)CControl::GetParticleColor(1), (float)CControl::GetParticleColor(2), (float)CControl::GetParticleColor(3), (float)CControl::GetParticleColor(4)),
 				D3DXCOLOR((float)CControl::GetParticleAddCol(1), (float)CControl::GetParticleAddCol(2), (float)CControl::GetParticleAddCol(3), (float)CControl::GetParticleAddCol(4)),
 				D3DXCOLOR((float)CControl::GetTrajectColor(1), (float)CControl::GetTrajectColor(2), (float)CControl::GetTrajectColor(3), (float)CControl::GetTrajectColor(4)),
 				D3DXCOLOR((float)CControl::GetTrajectCol(1), (float)CControl::GetTrajectCol(2), (float)CControl::GetTrajectCol(3), (float)CControl::GetTrajectCol(4)),
-				0.0f,CControl::GetSecondTex(),CControl::GetParticleTime(),CControl::GetDistance(),CControl::GetSynthetic(),
+				0.0f,
+				CControl::GetSecondTex(),
+				CControl::GetParticleTime(),
+				CControl::GetDistance(),
+				CControl::GetSynthetic(),
 				CControl::GetParticleSynthetic(),
 				(CBillEffect::ANIMPATTERN)CControl::GetAnimPatternType()); 
 		}

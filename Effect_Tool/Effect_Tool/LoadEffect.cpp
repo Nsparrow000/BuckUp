@@ -97,7 +97,10 @@ void CLoadEffect::EffectStateLoad(const char *aFileName)
 	int nAnimCont = -1;
 	float fHigth = 30.0f;
 	int AnimPatternType = 0;
-
+	D3DXVECTOR3 ControlBezier = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	D3DCOLORVALUE Therdcol;
+	D3DCOLORVALUE TherdChangeColor;
+	int SecondTex = 0;
 #endif
 
 	if (pFile != NULL)
@@ -433,6 +436,26 @@ void CLoadEffect::EffectStateLoad(const char *aFileName)
 					fscanf(pFile, "%s", &aFile[0]);
 					fscanf(pFile, "%d", &AnimPatternType);
 				}
+				if (strcmp(&aFile[0], "THERDCOLOR") == 0)	//パーティクルカラー
+				{
+					fscanf(pFile, "%s", &aFile[0]);
+					fscanf(pFile, "%f %f %f %f", &Therdcol.r, &Therdcol.g, &Therdcol.b, &Therdcol.a);
+				}
+				if (strcmp(&aFile[0], "THERDADDCOLOR") == 0)	//パーティクルカラー
+				{
+					fscanf(pFile, "%s", &aFile[0]);
+					fscanf(pFile, "%f %f %f %f", &TherdChangeColor.r, &TherdChangeColor.g, &TherdChangeColor.b, &TherdChangeColor.a);
+				}
+				if (strcmp(&aFile[0], "SECONDTEX") == 0)	//パーティクルカラー
+				{
+					fscanf(pFile, "%s", &aFile[0]);
+					fscanf(pFile, "%d", &SecondTex);
+				}
+				if (strcmp(&aFile[0], "CONTROLBEZIER") == 0)	//パーティクルカラー
+				{
+					fscanf(pFile, "%s", &aFile[0]);
+					fscanf(pFile, "%f %f %f", &ControlBezier.x, &ControlBezier.y, &ControlBezier.z);
+				}
 
 			}
 			//エフェクト情報セット
@@ -461,7 +484,10 @@ void CLoadEffect::EffectStateLoad(const char *aFileName)
 					nSynthetic, nTexture, Distance, ParticleTime, pos, fActiveAddSize,
 					FieldTime, (bool)FieldCreate, CreatePreset,
 					nSecondTime, nVtx, nType, TexMove, TexNum, nSecondType, TexSplit,
-					nAnimCont, fHigth, AnimPatternType);
+					nAnimCont, fHigth, AnimPatternType,
+					ControlBezier,Therdcol,
+					TherdChangeColor,
+					SecondTex);
 
 				m_Total++;
 			}

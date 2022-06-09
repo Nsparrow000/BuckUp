@@ -62,6 +62,15 @@ HRESULT CBillEffect::Init(D3DXVECTOR3 Size,
 	m_nSetAnimCnt = nAnimCounter;
 	m_AnimPattern = AnimPattern;
 
+	if (m_MaxSplit.x <= 0)
+	{
+		m_MaxSplit.x = 1;
+	}
+	if (m_MaxSplit.y <= 0)
+	{
+		m_MaxSplit.y = 1;
+	}
+
 	float SplitU = float(rand() % (int)m_MaxSplit.x) + 1;
 	float SplitV = float(rand() % (int)m_MaxSplit.y) + 1;
 
@@ -78,6 +87,10 @@ HRESULT CBillEffect::Init(D3DXVECTOR3 Size,
 
 	m_nLife = nLife;
 	m_bUninit = false;
+
+	CPlane::ColorChange(m_Color);
+	CPlane::TexturMove(m_TexSize);
+	CPlane::SetTexAnim(m_nSplit, m_PatternSize);
 
 	return S_OK;
 }

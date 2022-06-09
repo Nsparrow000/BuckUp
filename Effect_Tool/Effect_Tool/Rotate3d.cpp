@@ -7,7 +7,7 @@
 
 #include "control.h"
 #include "straight3d.h"
-
+#include "Trajectory.h"
 
 //*****************************************************************************
 //コンストラクタ
@@ -45,12 +45,13 @@ HRESULT CRotate3D::Init(D3DXVECTOR3 SetSize,
 	int nParticleLife,
 	int nBuckTime,
 	float fActive,
-	int AnimPattern)
+	int AnimPattern,
+	EFFECT_TYPE EffectType,
+	MOVE_TYPE MoveType)
 {
 	CPlane::Init(SetSize, pos, Tex);
 
 	m_EffectTime = START;
-	m_pos = pos;
 	m_Size = Size;
 	m_AddSize = AddSize;
 	m_Color = Color;
@@ -69,8 +70,16 @@ HRESULT CRotate3D::Init(D3DXVECTOR3 SetSize,
 
 	m_fRandAngle = CIRCLE2;
 	m_fRandAngle2 = CIRCLE2;
-
+	m_EffectType = EffectType;
 	m_PatternAnim = AnimPattern;
+
+	m_pos = D3DXVECTOR3(
+		pos.x + m_nDistanse * sinf(m_fRandAngle + m_fAngle) * cosf(m_fRandAngle2 + m_fAngle),
+		pos.y + m_nDistanse * cosf(m_fRandAngle + m_fAngle),
+		pos.z + m_nDistanse * sinf(m_fRandAngle + m_fAngle) * sinf(m_fRandAngle2 + m_fAngle));;
+
+	m_Oldpos = m_pos;
+
 	SetPos(m_pos);
 	return S_OK;
 }
@@ -130,25 +139,51 @@ void CRotate3D::Update()
 	{
 		m_bUninit = true;
 	}
+	switch(m_EffectType)
+	{
+	case(TYPE_PARTICLE):
+		CStraight3D::Create(m_pos,
+			m_Size,
+			m_AddSize,
+			D3DXVECTOR3(0.0f, 0.0f, 0.0f),
+			m_Color,
+			m_MinColor,
+			m_nTex, m_ParticleLife,
+			CStraight3D::STRAIGHT, {}, m_nSynthetic,
+			0.0f,
+			(CStraight3D::RAND_PATTEN)0,
+			(CStraight3D::POS_PATTERN)3,
+			D3DXVECTOR2(0.0f, 0.0f),
+			D3DXVECTOR2(1.0f, 1.0f),
+			0,
+			D3DXVECTOR2(1.0f, 1.0f),
+			(CBillEffect::ANIMPATTERN)m_PatternAnim);
+		break;
+	case(TYPE_TRAJECT):
+		CTrajectory::Create(
+			D3DXVECTOR3(m_pos.x, m_pos.y + m_Size.x, m_pos.z),
+			D3DXVECTOR3(m_pos.x, m_pos.y - m_Size.x, m_pos.z),
+			D3DXVECTOR3(m_Oldpos.x, m_Oldpos.y + m_Size.x, m_Oldpos.z),
+			D3DXVECTOR3(m_Oldpos.x, m_Oldpos.y - m_Size.x, m_Oldpos.z),
+			m_Color,
+			m_MinColor,
+			m_Color,
+			m_MinColor,
+			m_Size,
+			D3DXVECTOR3(0.0f, 0.0f, 0.0f),
+			m_nTex,
+			m_ParticleLife,
+			m_nSynthetic
+		);
+		break;
+	}
 
-	CStraight3D::Create(m_pos,
-		m_Size,
-		m_AddSize,
-		D3DXVECTOR3(0.0f, 0.0f, 0.0f),
-		m_Color,
-		m_MinColor,
-		m_nTex, m_ParticleLife,
-		CStraight3D::STRAIGHT, {}, m_nSynthetic,
-		0.0f,
-		(CStraight3D::RAND_PATTEN)0,
-		(CStraight3D::POS_PATTERN)3,
-		D3DXVECTOR2(0.0f, 0.0f),
-		D3DXVECTOR2(1.0f, 1.0f),
-		0,
-		D3DXVECTOR2(1.0f, 1.0f),
-		(CBillEffect::ANIMPATTERN)m_PatternAnim);
+	m_Oldpos = m_pos;
 	m_nLife--;
-
+	if (m_nLife < 0)
+	{
+		m_bUninit = true;
+	}
 
 	if (m_bUninit == true)
 	{
@@ -177,7 +212,9 @@ CRotate3D *CRotate3D::Create(D3DXVECTOR3 SetSize,
 	int nParticleLife,
 	int nBuckTime,
 	float fActive,
-	int AnimPattern)
+	int AnimPattern,
+	EFFECT_TYPE EffectType,
+	MOVE_TYPE MoveType)
 {
 	CRotate3D * pRotate3D = NULL;
 	pRotate3D = new CRotate3D(CManager::PRIORITY_EFFECT);
@@ -197,7 +234,9 @@ CRotate3D *CRotate3D::Create(D3DXVECTOR3 SetSize,
 			nParticleLife,
 			nBuckTime,
 			fActive,
-			AnimPattern);
+			AnimPattern,
+			EffectType,
+			MoveType);
 	}
 	return pRotate3D;
 }

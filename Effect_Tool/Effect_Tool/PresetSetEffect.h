@@ -90,6 +90,10 @@ public:
 		int AnimCnt;	//アニメーションカウント
 		float m_fHigth;	//高さ
 		int m_AnimPatternType;
+		D3DXVECTOR3 m_ControlBezier;
+		D3DCOLORVALUE m_TherdCol;			//3番目カラー
+		D3DCOLORVALUE m_TherdChangecolor;	//3番目カラー加算
+		int m_SecondTex;
 	} EFFECT_STATE3D;
 
 
@@ -163,7 +167,11 @@ public:
 		D3DXVECTOR2 m_TexSplit,
 		int AnimCnt,
 		float fHigth,
-		int AnimPatternType);
+		int AnimPatternType,
+		D3DXVECTOR3 ControlBezier,
+		D3DCOLORVALUE TherdCol,
+		D3DCOLORVALUE TherdChangecolor,
+		int SecondTex);
 
 	typedef struct
 	{
@@ -178,9 +186,11 @@ public:
 	static void SetEffect2D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpos);
 	static void SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpos);
 
+
+	//ディレイ付き再生
 	void SetOrderPreset(int nDeley, int nPresetNum);
 	static void CallOrder3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpos);
-	void DeleySet(int nPattern);
+	//void DeleySet(int nPattern);
 
 	void CPresetEffect::SetOrder(int nOrder, int nPattern);
 

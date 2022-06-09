@@ -385,6 +385,7 @@ void CRenderer::DrawText()
 				nNum += sprintf(&str[nNum], "近づくまでの時間 [+][-]：%d\n", CControl::GetSecondTime());
 				nNum += sprintf(&str[nNum], "アクティブになるまでの大きさ [+][-]：%.1f\n", CControl::GetMaxSize());
 				nNum += sprintf(&str[nNum], "移動値[+][-]：%.1f\n", CControl::Getmove3d().x);
+				nNum += sprintf(&str[nNum], "エフェクトタイプ[+][-]：%d\n", CControl::GetType());
 
 				break;
 			case(6):
