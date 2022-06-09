@@ -58,7 +58,19 @@ HRESULT CRotate3D::Init(D3DXVECTOR3 SetSize,
 	m_MinColor = AddColor;
 	m_nDistanse = Distance;
 	m_nBuckDistanse = -Distance;
-	m_nAddDistance = AddDistance;
+
+	switch (MoveType)
+	{
+	case(TYPE_NOMAL):
+		m_nAddDistance = AddDistance;
+		break;
+	case(TYPE_MOVERAND):
+		m_nAddDistance = float(rand() % (int)AddDistance) + 1.0f;
+		break;
+	default:
+		m_nAddDistance = AddDistance;
+		break;
+	}
 	m_fAngle = fAngle;
 	m_fAddAngle = fAddAngle;
 	m_nTex = nTex;

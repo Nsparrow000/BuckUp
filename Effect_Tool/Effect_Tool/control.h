@@ -362,6 +362,7 @@ private:
 	static int m_SecondTex;
 
 	static int m_AnimPatternType;
+
 };
 
 #endif

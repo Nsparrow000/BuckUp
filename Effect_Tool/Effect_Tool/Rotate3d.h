@@ -29,7 +29,7 @@ public:
 	{
 		TYPE_NOMAL,
 		TYPE_MOVERAND,
-		TYPE_MAX,
+		MOVETYPE_MAX,
 	} MOVE_TYPE;
 
 	CRotate3D(int nPriority);
