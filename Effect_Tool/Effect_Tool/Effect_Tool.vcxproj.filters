@@ -135,9 +135,6 @@
     <ClCompile Include="effect.cpp">
       <Filter>ソース ファイル\2D\Effect</Filter>
     </ClCompile>
-    <ClCompile Include="MeshEffect.cpp">
-      <Filter>ソース ファイル\3D\Effect</Filter>
-    </ClCompile>
     <ClCompile Include="3DScene.cpp">
       <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
@@ -202,6 +199,9 @@
       <Filter>ソース ファイル\3D\Effect\Traject</Filter>
     </ClCompile>
     <ClCompile Include="SetMesh.cpp">
+      <Filter>ソース ファイル\3D\Effect\Traject</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshEffect.cpp">
       <Filter>ソース ファイル\3D\Effect\Traject</Filter>
     </ClCompile>
   </ItemGroup>
