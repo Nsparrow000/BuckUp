@@ -49,7 +49,7 @@ HRESULT CPlayer::Init(D3DXVECTOR3 pos, D3DXVECTOR3 rot, const char *aFileName)
 	Load(aFileName);
 	SetObjType(CScene::OBJECTTYPE_PLAYER);
 	SetPos(pos);
-	SetRot(rot);
+	//SetRot(rot);
 	m_rotDesh = rot;
 	m_move = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_PosOld = pos;

@@ -103,7 +103,8 @@ public:
 
 
 	//読み込んだエフェクトの情報を格納するやつ
-	static void SetEffectState2D(int nPattern,
+	static void SetEffectState2D(
+		int nPattern,
 		D3DXVECTOR3 pos,
 		float fRotate,
 		D3DXVECTOR2 move,
@@ -175,6 +176,7 @@ public:
 		D3DCOLORVALUE TherdChangecolor,
 		int SecondTex);
 
+	//オーダー処理
 	typedef struct
 	{
 		int nDeley;
@@ -185,7 +187,7 @@ public:
 		bool bOne[MAX_ORDER_3D];
 	} ORDER_PRESET;
 
-	static void SetEffect2D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpos);
+	static void SetEffect2D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpos, D3DXVECTOR3 PlayerPos);	//パターン番号、出現位置、比較位置、位置
 	static void SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpos);
 
 

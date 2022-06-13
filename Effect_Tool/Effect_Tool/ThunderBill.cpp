@@ -169,7 +169,6 @@ void CThunderBill::Draw()
 
 	//ワールドマトリックスの設定
 	pDevice->SetTransform(D3DTS_WORLD, &mtxWorld);
-	SetMatrix(mtxWorld);
 	//頂点バッファをデータストリームに設定
 	pDevice->SetStreamSource(0, GetVtx(), 0, sizeof(VERTEX_3D));
 

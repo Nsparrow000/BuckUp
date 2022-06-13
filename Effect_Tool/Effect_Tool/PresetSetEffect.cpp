@@ -217,7 +217,7 @@ void CPresetEffect::SetEffectState3D(
 //=============================================================================
 // åƒÇŒÇÍÇΩï®ÇåƒÇ—èoÇ∑Ç‚Ç¬2D
 //=============================================================================
-void CPresetEffect::SetEffect2D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpos)
+	void CPresetEffect::SetEffect2D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpos, D3DXVECTOR3 PlayerPos)
 {
 	switch (m_EffectState2D[nPattern].m_nPattern)
 	{
@@ -288,7 +288,8 @@ void CPresetEffect::SetEffect2D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 				Endpos, m_EffectState2D[nPattern].m_nDiffusion,
 				m_EffectState2D[nPattern].m_nDestroyvec,
 				m_EffectState2D[nPattern].Synthetic,
-				m_EffectState2D[nPattern].m_Distance);
+				m_EffectState2D[nPattern].m_Distance,
+				PlayerPos);
 		}
 		break;
 	case(3):

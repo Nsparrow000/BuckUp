@@ -35,13 +35,15 @@ HRESULT CMouseTracking::Init(D3DXVECTOR3 pos,
 	int Diffusion,
 	int UninitVectl,
 	int Synthetic,
-	int Distance)
+	int Distance,
+	D3DXVECTOR3 Playerpos)
 {
 
 	CEffect::Init(pos, color, Mincolor, Size, MinSize, nLife, nType, Synthetic);
 	m_Endpos = pos;
-	m_Vec = pos - Endpos;
+	m_Vec = Playerpos - Endpos;
 	m_move = move;
+	m_PlayerPos = Playerpos;
 
 	m_UninitVectl = UninitVectl;
 
@@ -79,7 +81,7 @@ void CMouseTracking::Uninit()
 void CMouseTracking::Update()
 {
 
-	m_Vec = m_pos - m_Endpos;
+	m_Vec = m_PlayerPos - m_Endpos;
 
 	m_Vectl = sqrtf(m_Vec.x * m_Vec.x + m_Vec.y *  m_Vec.y);
 
@@ -120,14 +122,15 @@ CMouseTracking *CMouseTracking::Create(D3DXVECTOR3 pos,
 	int Diffusion,
 	int UninitVectl,
 	int Synthetic,
-	int Distance)
+	int Distance,
+	D3DXVECTOR3 Playerpos)
 {
 	CMouseTracking *pMouseTracking = NULL;
 	pMouseTracking = new CMouseTracking(CManager::PRIORITY_EFFECT);		//メモリ確保
 										//NULLチェック
 	if (pMouseTracking != NULL)
 	{
-		pMouseTracking->Init(pos, move, color, Mincolor, Size, MinSize, nLife, nType, Endpos,Diffusion, UninitVectl,Synthetic, Distance);
+		pMouseTracking->Init(pos, move, color, Mincolor, Size, MinSize, nLife, nType, Endpos, Diffusion, UninitVectl, Synthetic, Distance, Playerpos);
 	}
 
 	return pMouseTracking;
