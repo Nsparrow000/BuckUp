@@ -10,13 +10,13 @@ EFFECTSTATE2D
 	MOVE = 0.0					//スピード
 	DIFFUSION = 1					//拡散率
 	DESTROYVEC = 300					//消えるベクトル
-	DISTANCE = 221.0					//距離
+	DISTANCE = 251.0					//距離
 	ROTATE = 0.00					//回転
-	SIZE = 54.0						//大きさ
+	SIZE = 46.0						//大きさ
 	ADDSIZE = 0.0					//大きさ変動
 	COLOR = 255 0 0 255			//カラー
-	CHANGECOLOR = 0 0 0 0			//カラー変動値
-	LIFE = 100						//ライフ
+	CHANGECOLOR = 0 0 0 -2			//カラー変動値
+	LIFE = 80						//ライフ
 	DENSITY = 1						//密度
 	TEXTURE = 5						//テクスチャ
 	SYNTHETIC = 0						//合成
