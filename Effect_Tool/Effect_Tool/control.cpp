@@ -374,9 +374,11 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 				fprintf(pFile, "	MOVE = %.1f					//スピード\n", m_move.x);
 				fprintf(pFile, "	DIFFUSION = %d					//拡散率\n", m_Diffusion);
 				fprintf(pFile, "	DESTROYVEC = %d					//消えるベクトル\n", m_nUninitVectl);
+				fprintf(pFile, "	DISTANCE = %.1f					//距離\n", CControl::GetDistance());
+				break;
+
 			case(2):
 				fprintf(pFile, "	ROTATE = %.2f					//回転\n", m_fAddRotate);
-				break;
 				break;
 			default:
 				assert(false);

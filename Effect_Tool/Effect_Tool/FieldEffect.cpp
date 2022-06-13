@@ -102,7 +102,6 @@ void CFieldEffect::Uninit()
 //XVˆ—
 void CFieldEffect::Update()
 {
-	m_pos = GetPos();
 
 	float fAngle;
 	float fAngle2;

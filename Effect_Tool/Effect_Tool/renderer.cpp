@@ -273,6 +273,8 @@ void CRenderer::DrawText()
 			nNum += sprintf(&str[nNum], "移動値 [+][-]：(%.1f)\n", CControl::GetMove().x);
 			nNum += sprintf(&str[nNum], "拡散率 [+][-]：(%.2f)\n", (float)CControl::GetDiffusion() / 100);
 			nNum += sprintf(&str[nNum], "消える距離 [+][-]：(%d)\n", CControl::GetUninitVectl());
+			nNum += sprintf(&str[nNum], "出現距離 [+][-]：(%.1f)\n", CControl::GetDistance());
+
 			nNum += sprintf(&str[nNum], "\n");
 			break;
 		case(2):

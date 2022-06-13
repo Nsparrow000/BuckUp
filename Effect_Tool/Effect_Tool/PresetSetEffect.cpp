@@ -79,7 +79,8 @@ void CPresetEffect::SetEffectState2D(int nPattern,
 	bool bColorRandB,
 	bool bMousePos,
 	int Synthetic,
-	int Texture)
+	int Texture,
+	float Distance)
 {
 	m_EffectState2D[m_nEffectPattern].m_nPattern = nPattern;
 	m_EffectState2D[m_nEffectPattern].m_pos = pos;
@@ -100,6 +101,7 @@ void CPresetEffect::SetEffectState2D(int nPattern,
 	m_EffectState2D[m_nEffectPattern].m_bMousePos = bMousePos;
 	m_EffectState2D[m_nEffectPattern].Synthetic = Synthetic;
 	m_EffectState2D[m_nEffectPattern].nTexture = Texture;
+	m_EffectState2D[m_nEffectPattern].m_Distance = Distance;
 
 	m_nEffectPattern++;
 }
@@ -285,7 +287,8 @@ void CPresetEffect::SetEffect2D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 				m_EffectState2D[nPattern].m_nLife, m_EffectState2D[nPattern].nTexture,
 				Endpos, m_EffectState2D[nPattern].m_nDiffusion,
 				m_EffectState2D[nPattern].m_nDestroyvec,
-				m_EffectState2D[nPattern].Synthetic);
+				m_EffectState2D[nPattern].Synthetic,
+				m_EffectState2D[nPattern].m_Distance);
 		}
 		break;
 	case(3):
@@ -557,7 +560,7 @@ void CPresetEffect::SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 		break;
 	case(6):
 		CSphereEffect::Create(
-			D3DXVECTOR3(0.0f, 0.0f, 0.0f),
+			pos,
 			0.0f,
 			m_EffectState3D[nPattern].m_fSize,
 			m_EffectState3D[nPattern].nTexture,

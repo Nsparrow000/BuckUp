@@ -15,5 +15,6 @@ TEXTURE_FILENAME = data/Texture/2D/Effect000.jpg			//ÇPÉGÉtÉFÉNÉg
 TEXTURE_FILENAME = data/Texture/2D/CycleEffect00.png		//ÇQÇÌÇ¡Ç©
 TEXTURE_FILENAME = data/Texture/2D/squea.png				//ÇRéläp
 TEXTURE_FILENAME = data/Texture/2D/star.png					//ÇSêØ
+TEXTURE_FILENAME = data/Texture/2D/HitDamage.png					//ÇSêØ
 
 END_SCRIPT

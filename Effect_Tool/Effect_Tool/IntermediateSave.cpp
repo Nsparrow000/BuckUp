@@ -59,6 +59,8 @@ void CIntermeiateSave::IntermeiateSave(CManager::MODE mode, int nPattern, const 
 				fprintf(pFile, "	MOVE = %.1f					//スピード\n", CControl::GetMove().x);
 				fprintf(pFile, "	DIFFUSION = %d					//拡散率\n", CControl::GetDiffusion());
 				fprintf(pFile, "	DESTROYVEC = %d					//消えるベクトル\n", CControl::GetUninitVectl());
+				fprintf(pFile, "	DISTANCE = %.1f					//距離\n", CControl::GetDistance());
+
 			case(2):
 				fprintf(pFile, "	ROTATE = %.2f					//回転\n", CControl::GetRotate());
 				break;
@@ -372,6 +374,12 @@ void CIntermeiateSave::IntermeiateLoad(CManager::MODE mode, const char *aModelNa
 						fscanf(pFile, "%s", &aFile[0]);
 						fscanf(pFile, "%d", &nSynthetic);
 					}
+					if (strcmp(&aFile[0], "DISTANCE") == 0)	//粒発生地点
+					{
+						fscanf(pFile, "%s", &aFile[0]);
+						fscanf(pFile, "%f", &fDistance);
+					}
+
 				}
 
 				//エフェクト情報セット
@@ -403,6 +411,8 @@ void CIntermeiateSave::IntermeiateLoad(CManager::MODE mode, const char *aModelNa
 					CControl::SetUninitVectl(Destroyvec);
 					CControl::SetTexture(nTexture);
 					CControl::SetSynthetic(nSynthetic);
+					CControl::SetDistance(fDistance);
+
 				}
 			}
 			else if (mode == CManager::MODE_3D)

@@ -170,18 +170,18 @@ void CSetEffect::SetEffect(int nPatern)
 
 	for (int nCnt = 0; nCnt < CControl::GetDensity(); nCnt++)
 	{
-		if (CControl::GetPattern() == 1)
-		{
-			move.x = (float(rand() % (int)move.x));
-			move.x /= 10;
-		}
-		else
-		{
-			move.x = (float(rand() % (int)CControl::GetMove().x)) - (float(rand() % (int)CControl::GetMove().x));
-			move.x /= 10;
-			move.y = (float(rand() % (int)CControl::GetMove().y)) - (float(rand() % (int)CControl::GetMove().y));
-			move.y /= 10;
-		}
+		//if (CControl::GetPattern() == 1)
+		//{
+		//	move.x = (float(rand() % (int)move.x));
+		//	move.x /= 10;
+		//}
+		//else
+		//{
+		//	move.x = (float(rand() % (int)CControl::GetMove().x)) - (float(rand() % (int)CControl::GetMove().x));
+		//	move.x /= 10;
+		//	move.y = (float(rand() % (int)CControl::GetMove().y)) - (float(rand() % (int)CControl::GetMove().y));
+		//	move.y /= 10;
+		//}
 		switch (nPatern)
 		{
 		case(0):
@@ -204,7 +204,7 @@ void CSetEffect::SetEffect(int nPatern)
 				CControl::GetLife(), CControl::GetTex(),
 				D3DXVECTOR3(CManager::GetRenderer()->GetMousePos().x, CManager::GetRenderer()->GetMousePos().y,0.0f),
 				CControl::GetDiffusion(),
-				CControl::GetUninitVectl(),CControl::GetSynthetic());
+				CControl::GetUninitVectl(),CControl::GetSynthetic(),CControl::GetDistance());
 			break;
 		case(2):
 			CRotate::Create(D3DXVECTOR3(m_pos.x, m_pos.y, 0.0f),

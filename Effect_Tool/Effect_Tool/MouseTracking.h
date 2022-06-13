@@ -23,7 +23,8 @@ public:
 		D3DXVECTOR3 Endpos,
 		int Diffusion,
 		int UninitVectl,
-		int Synthetic);
+		int Synthetic,
+		int Distance);
 
 	void Uninit();
 	void Update();
@@ -39,9 +40,11 @@ public:
 		D3DXVECTOR3 Endpos,
 		int Diffusion,
 		int UninitVectl,
-		int Synthetic);
+		int Synthetic,
+		int Distance);
 
 private:
+	D3DXVECTOR3 m_pos;
 	D3DXVECTOR2 m_move;
 	D3DXVECTOR3 m_Vec;
 	D3DXVECTOR3 m_Endpos;

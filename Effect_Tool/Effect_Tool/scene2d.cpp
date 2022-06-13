@@ -334,10 +334,10 @@ void CScene2D::SetRotate(D3DXVECTOR3 pos, float Rotate, float Rotate2, float Vec
 	m_pVtxBuff->Lock(0, 0, (void**)&pVtx, 0);
 
 	//頂点の座標
-	pVtx[0].pos = D3DXVECTOR3(pos.x - (sinf(Rotate2)) * Vectol, pos.y - (cosf(Rotate2))* Vectol, 0.0f);
-	pVtx[1].pos = D3DXVECTOR3(pos.x + (cosf(Rotate)) * Vectol, pos.y + (sinf(Rotate))* Vectol, 0.0f);
-	pVtx[2].pos = D3DXVECTOR3(pos.x - (cosf(Rotate)) * Vectol, pos.y - (sinf(Rotate))* Vectol, 0.0f);
-	pVtx[3].pos = D3DXVECTOR3(pos.x + (sinf(Rotate2)) * Vectol, pos.y + (cosf(Rotate2))* Vectol, 0.0f);
+	pVtx[0].pos = D3DXVECTOR3(pos.x - (sinf(Rotate)) * Vectol, pos.y - (cosf(Rotate))* Vectol, 0.0f);
+	pVtx[2].pos = D3DXVECTOR3(pos.x - (cosf(-Rotate)) * Vectol, pos.y - (sinf(-Rotate))* Vectol, 0.0f);
+	pVtx[1].pos = D3DXVECTOR3(pos.x + (cosf(-Rotate)) * Vectol, pos.y + (sinf(-Rotate))* Vectol, 0.0f);
+	pVtx[3].pos = D3DXVECTOR3(pos.x + (sinf(Rotate)) * Vectol, pos.y + (cosf(Rotate))* Vectol, 0.0f);
 
 	//頂点バッファをアンロック
 	m_pVtxBuff->Unlock();

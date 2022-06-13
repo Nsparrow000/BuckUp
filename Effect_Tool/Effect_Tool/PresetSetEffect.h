@@ -41,6 +41,7 @@ public:
 		bool m_bMousePos;
 		int Synthetic;	//合成
 		int nTexture;	//テクスチャ
+		float m_Distance;	//距離
 	} EFFECT_STATE2D;
 
 	//3Dの情報
@@ -120,7 +121,8 @@ public:
 		bool bColorRandB,
 		bool bMousePos,
 		int Synthetic,
-		int Texture);
+		int Texture,
+		float Distance);
 
 	//読み込んだエフェクトの情報を格納するやつ3D
 	static void SetEffectState3D(

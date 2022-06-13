@@ -5,14 +5,24 @@
 
 
 EFFECTSTATE3D
-	PATTERN = 0				//動きのパターン
+	PATTERN = 8				//動きのパターン
 	COLOR = 255 255 255 255			//カラー
 	CHANGECOLOR = 0 0 0 0			//カラー変動値
-	LIFE = 100						//寿命
-	SECONDCOLOR = 255 255 255 255				//モデル１の色
-	SECONDADDCOLOR = 0 0 0 0				//モデル１の色増減
-	TRAJECTTOP = 0				//発生モデル１
-	TRAJECTCUR = 0				//発生モデル２
+	LIFE = 136						//寿命
+	SIZE = 2.0						//大きさ
+	ADDSIZE = 0.0					//大きさ変動
+	DENSITY = 1						//密度
+	CONTROLBEZIER = 661.0 1.0 0.5						//ベジェ制御点
+	MOVE = 116.0						//移動（制御点の数）
+	SECONDCOLOR = 255 255 255 255			//軌跡の色１
+	SECONDADDCOLOR = 0 0 0 0			//軌跡の色１増減
+	THERDCOLOR = 240 255 255 255				//軌跡の色２
+	THERDADDCOLOR = 0 0 0 0				//軌跡の色２増減
+	MAXSIZE = 4.0						//軌跡サイズ
+	SECONDTEX = 1						//軌跡テクスチャ
+	PARTICLETIME = 6						//軌跡寿命
+	DISTANCE = 1541.0						//ターゲットからのランダム距離
+	SECONDSYNTHETIC = 0			//軌跡合成
 	COLOR = 255 255 255 255			//カラー
 	CHANGECOLOR = 0 0 0 0			//カラー変動値
 	TEXTURE = 1						//テクスチャ
