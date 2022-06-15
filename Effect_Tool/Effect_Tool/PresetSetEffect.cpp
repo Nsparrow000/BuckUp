@@ -82,7 +82,7 @@ void CPresetEffect::SetEffectState2D(int nPattern,
 	int Texture,
 	float Distance)
 {
-	m_EffectState2D[m_nEffectPattern].m_nPattern = nPattern;
+	m_EffectState2D[m_nEffectPattern].m_nPattern = nPattern + 1;
 	m_EffectState2D[m_nEffectPattern].m_pos = pos;
 	m_EffectState2D[m_nEffectPattern].m_fRotate = fRotate;
 	m_EffectState2D[m_nEffectPattern].m_move = move;
@@ -217,7 +217,7 @@ void CPresetEffect::SetEffectState3D(
 //=============================================================================
 // åƒÇŒÇÍÇΩï®ÇåƒÇ—èoÇ∑Ç‚Ç¬2D
 //=============================================================================
-	void CPresetEffect::SetEffect2D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpos, D3DXVECTOR3 PlayerPos)
+void CPresetEffect::SetEffect2D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpos, D3DXVECTOR3 PlayerPos, D3DXVECTOR3 rot)
 {
 	switch (m_EffectState2D[nPattern].m_nPattern)
 	{
@@ -289,7 +289,8 @@ void CPresetEffect::SetEffectState3D(
 				m_EffectState2D[nPattern].m_nDestroyvec,
 				m_EffectState2D[nPattern].Synthetic,
 				m_EffectState2D[nPattern].m_Distance,
-				PlayerPos);
+				PlayerPos,
+				rot);
 		}
 		break;
 	case(3):

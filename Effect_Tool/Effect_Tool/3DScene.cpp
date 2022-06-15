@@ -10,14 +10,19 @@
 #include "Fade.h"
 #include "load.h"
 #include "control.h"
+#include "manager.h"
+#include "camera.h"
 
 #include "keyboard.h"
+#include "renderer.h"
 
 #include "SetEffect3d.h"
 
 #include "LoadEffect.h"
 #include "PresetSetEffect.h"
 #include "Butten.h"
+
+#include "Player.h"
 
 #endif
 
@@ -69,6 +74,7 @@ HRESULT C3DScene::Init(D3DXVECTOR3 /*pos*/)
 	CControl::SetPlayerMode(true);
 	//フェード
 	CFade::Create(D3DXVECTOR3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0), SCREEN_WIDTH, SCREEN_HEIGHT, 0);
+	m_pCamera = CManager::GetRenderer()->GetCamera();
 
 	m_bPresetStart = false;
 
@@ -94,6 +100,20 @@ void C3DScene::Uninit()
 //***************************************************************************** 
 void C3DScene::Update()
 {
+	D3DXVECTOR3 pos;
+
+	CScene *pScene = GetScene(CManager::PRIORITY_SET);
+	while (pScene)
+	{
+		CScene *pSceneNext;
+		pSceneNext = pScene->GetNext();
+		if (pScene->GetObjType() == CScene::OBJECTTYPE_PLAYER)
+		{
+			pos = pScene->GetPos();
+		}
+		pScene = pSceneNext;
+	}
+
 	if (m_pKeyboard != NULL)
 	{
 		if (m_pKeyboard->GetKey(DIK_RETURN) == true)
@@ -113,6 +133,7 @@ void C3DScene::Update()
 		{
 			for (int nCnt = 0; nCnt < CLoadEffect::GetPresetTotal(); nCnt++)
 			{
+
 				CPresetEffect::SetEffect3D(nCnt, D3DXVECTOR3(0.0f, 50.0f, 0.0f), D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 			}
 		}
@@ -120,6 +141,12 @@ void C3DScene::Update()
 		{
 			CPresetEffect::CallOrder3D(0, D3DXVECTOR3(0.0f, 50.0f, 0.0f), {});
 		}
+		if (m_pKeyboard->GetKey(DIK_F4) == true)
+		{
+			CPresetEffect::SetEffect2D(0, D3DXVECTOR3(640.0f, 360.0f, 0.0f), D3DXVECTOR3(1000.0f, 1000.0f, 0.0f), D3DXVECTOR3(pos.x, pos.z, {}), D3DXVECTOR3(0.0f, m_pCamera->GetRotY(), 0.0f));
+
+		}
+
 
 	}
 

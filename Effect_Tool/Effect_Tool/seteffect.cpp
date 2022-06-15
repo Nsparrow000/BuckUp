@@ -204,7 +204,7 @@ void CSetEffect::SetEffect(int nPatern)
 				CControl::GetLife(), CControl::GetTex(),
 				D3DXVECTOR3(CManager::GetRenderer()->GetMousePos().x, CManager::GetRenderer()->GetMousePos().y,0.0f),
 				CControl::GetDiffusion(),
-				CControl::GetUninitVectl(),CControl::GetSynthetic(),CControl::GetDistance(), D3DXVECTOR3(m_pos.x, m_pos.y, 0.0f));
+				CControl::GetUninitVectl(), CControl::GetSynthetic(), CControl::GetDistance(), D3DXVECTOR3(m_pos.x, m_pos.y, 0.0f), {});
 			break;
 		case(2):
 			CRotate::Create(D3DXVECTOR3(m_pos.x, m_pos.y, 0.0f),

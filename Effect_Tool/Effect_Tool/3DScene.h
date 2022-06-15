@@ -12,6 +12,7 @@
 //‘O•ûéŒ¾
 //*****************************************************************************
 class CGamePad;
+class CCamera;
 
 class C3DScene : public CScene
 {
@@ -37,6 +38,7 @@ private:
 
 	CKeyboard *m_pKeyboard;
 	CGamePad *m_pGamePad;
+	CCamera *m_pCamera;
 
 };
 

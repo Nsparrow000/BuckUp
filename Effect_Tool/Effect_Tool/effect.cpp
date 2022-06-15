@@ -42,6 +42,8 @@ HRESULT CEffect::Init(D3DXVECTOR3 pos, D3DCOLORVALUE color, D3DCOLORVALUE Mincol
 	m_bUninit = false;
 	
 	nSynthetic = Synthetic;
+	ColorChange(m_Color);
+
 	CScene2D::SetTexture(nType);	//選択した番号のテクスチャを貼る
 	CScene2D::SetWhidth(m_Size.x);
 	CScene2D::SetHight(m_Size.y);
