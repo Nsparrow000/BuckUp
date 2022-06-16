@@ -112,7 +112,7 @@ void CPlane::Draw()
 	//ワールドマトリックスの初期化
 	D3DXMatrixIdentity(&mtxWorld);
 	//向きを反映
-	D3DXMatrixRotationYawPitchRoll(&mtxRot, 0.0f, 0.0f, 0.0f);
+	D3DXMatrixRotationYawPitchRoll(&mtxRot, GetRot().y, GetRot().x, GetRot().z);
 	D3DXMatrixMultiply(&mtxWorld, &mtxWorld, &mtxRot);
 
 	//位置を反映

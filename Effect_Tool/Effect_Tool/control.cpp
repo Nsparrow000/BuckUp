@@ -530,7 +530,8 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 
 				fprintf(pFile, "	DISTANCE = %.1f						//ターゲットからのランダム距離\n", CControl::GetDistance());
 				fprintf(pFile, "	SECONDSYNTHETIC = %d			//軌跡合成\n", (int)CControl::GetParticleSynthetic());
-
+				break;
+			case(9):
 				break;
 			default:
 				assert(false);

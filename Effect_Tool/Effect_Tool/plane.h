@@ -46,11 +46,15 @@ public:
 
 	//テクスチャ破棄
 	static void UninitTexture();
+
+	void SetRot(D3DXVECTOR3 rot) { m_rot = rot; }
 private:
 	LPDIRECT3DVERTEXBUFFER9 m_pVtxBuff = NULL; //頂点バッファへのポインタ
 	D3DXVECTOR3 m_size;
 	static int m_nMaxTex;					   //使用する最大テクスチャ
 	static int m_Synthetic;
+	D3DXVECTOR3 m_rot;
+
 protected:
 	static LPDIRECT3DTEXTURE9 m_pTexture[MAX_TEXTURE_FILED];	//テクスチャへのポインタ
 

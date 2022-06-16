@@ -126,7 +126,7 @@ void C3DScene::Update()
 
 		if (m_pKeyboard->GetKey(DIK_F1) == true)
 		{
-			CPresetEffect::SetEffect3D(m_nPattarn, D3DXVECTOR3(0.0f, 0.0f, 0.0f), {});
+			CPresetEffect::SetEffect3D(m_nPattarn, D3DXVECTOR3(0.0f, 0.0f, 0.0f), {}, {});
 		}
 
 		if (m_pKeyboard->GetKey(DIK_F2) == true)
@@ -134,7 +134,7 @@ void C3DScene::Update()
 			for (int nCnt = 0; nCnt < CLoadEffect::GetPresetTotal(); nCnt++)
 			{
 
-				CPresetEffect::SetEffect3D(nCnt, D3DXVECTOR3(0.0f, 50.0f, 0.0f), D3DXVECTOR3(0.0f, 0.0f, 0.0f));
+				CPresetEffect::SetEffect3D(nCnt, D3DXVECTOR3(0.0f, 50.0f, 0.0f), D3DXVECTOR3(0.0f, 0.0f, 0.0f), {});
 			}
 		}
 		if (m_pKeyboard->GetKey(DIK_F3) == true)

@@ -263,7 +263,7 @@ void CSetEffect3D::SetEffect()
 				CControl::GetTexNum(),
 				CControl::GetAnimCont(),
 				D3DXVECTOR2(CControl::GetSplitU(), CControl::GetSplitV()),
-				D3DXVECTOR3(D3DX_PI, m_pCamera->GetRotY(), {}),
+				D3DXVECTOR3(m_pCamera->GetRotX(), m_pCamera->GetRotY(), {}),
 				CControl::GetSynthetic(),
 				(CBillEffect::ANIMPATTERN)CControl::GetAnimPatternType()
 			);

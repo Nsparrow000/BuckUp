@@ -417,7 +417,8 @@ void CRenderer::DrawText()
 				nNum += sprintf(&str[nNum], "軌跡寿命 [+][-]：%d\n", CControl::GetParticleTime());
 				nNum += sprintf(&str[nNum], "ターゲットランダム距離 [+][-]：%.1f\n", CControl::GetDistance());
 				nNum += sprintf(&str[nNum], "軌跡合成 [+][-]：%d\n", CControl::GetParticleSynthetic());
-
+				break;
+			case(9):
 				break;
 			default:
 				break;

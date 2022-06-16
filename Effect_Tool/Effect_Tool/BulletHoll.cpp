@@ -6,6 +6,7 @@
 #include "renderer.h"
 #include "manager.h"
 
+
 //=============================================================================
 // コンストラクタ
 //=============================================================================
@@ -45,22 +46,57 @@ HRESULT CBulletHoll::Init(D3DXVECTOR3 size,
 	m_Size = size;
 	m_Rot = rot;
 
+	//m_pos1 = D3DXVECTOR3(
+	//	pos.x + size.x * (cosf(m_Rot.y)),
+	//	pos.y /*+ size.x / 2*/,
+	//	pos.z + size.x * (sinf(-m_Rot.y)));
+	//m_pos2 = D3DXVECTOR3(
+	//	pos.x + (sinf(-m_Rot.y))  * size.x,
+	//	pos.y /*- size.x / 2*/,
+	//	pos.z - (cosf(m_Rot.y))* size.x);
+	//m_pos3 = D3DXVECTOR3(
+	//	pos.x - (sinf(-m_Rot.y))  * size.x,
+	//	pos.y /*- size.x / 2*/,
+	//	pos.z + (cosf(m_Rot.y))* size.x);
+	//m_pos4 = D3DXVECTOR3(
+	//	pos.x - (cosf(m_Rot.y)) * size.x,
+	//	pos.y /*- size.x / 2*/,
+	//	pos.z - (sinf(-m_Rot.y))* size.x);
+
 	m_pos1 = D3DXVECTOR3(
-		pos.x + size.x * cosf(m_Rot.y),
-		pos.y + size.x,
-		pos.z + size.x * cosf(m_Rot.y));
+		pos.x - (cosf(-m_Rot.y) * size.x / 2),
+		pos.y + size.x / 2,
+		pos.z - (sinf(-m_Rot.y) * size.x / 2));
 	m_pos2 = D3DXVECTOR3(
-		pos.x + size.x * sinf(-m_Rot.y),
-		pos.y - size.x,
-		pos.z - size.x * sinf(-m_Rot.y));
+		pos.x + (cosf(-m_Rot.y)) * size.x / 2,
+		pos.y + size.x / 2,
+		pos.z + (sinf(-m_Rot.y)) * size.x / 2);
 	m_pos3 = D3DXVECTOR3(
-		pos.x - size.x * sinf(-m_Rot.y),
-		pos.y - size.x,
-		pos.z + size.x * sinf(-m_Rot.y));
+		pos.x - (cosf(-m_Rot.y) * size.x / 2),
+		pos.y - size.x / 2,
+		pos.z - (sinf(-m_Rot.y) * size.x / 2));
 	m_pos4 = D3DXVECTOR3(
-		pos.x - size.x * cosf(m_Rot.y),
-		pos.y - size.x,
-		pos.z - size.x * cosf(m_Rot.y));
+		pos.x + (cosf(-m_Rot.y)) * size.x / 2,
+		pos.y - size.x / 2,
+		pos.z + (sinf(-m_Rot.y)) * size.x / 2);
+
+	//m_pos1 = D3DXVECTOR3(
+	//	pos.x + size.x,
+	//	pos.y /*+ size.x / 2*/,
+	//	pos.z + size.x);
+	//m_pos2 = D3DXVECTOR3(
+	//	pos.x + size.x,
+	//	pos.y /*- size.x / 2*/,
+	//	pos.z - size.x);
+	//m_pos3 = D3DXVECTOR3(
+	//	pos.x - size.x,
+	//	pos.y /*- size.x / 2*/,
+	//	pos.z + size.x);
+	//m_pos4 = D3DXVECTOR3(
+	//	pos.x - size.x,
+	//	pos.y /*- size.x / 2*/,
+	//	pos.z - size.x);
+	//CScene3d::SetRot(m_Rot);
 
 
 	CPlane::SetPosBill(m_pos1, m_pos2, m_pos3, m_pos4);
