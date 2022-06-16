@@ -10,6 +10,7 @@
 
 class CKeyboard;
 class CMouse;
+class CCamera;
 
 class CSetEffect3D : public CPlane
 {
@@ -27,6 +28,7 @@ public:
 
 private:
 	CMouse *m_pMouse;
+	CCamera *m_pCamera;
 
 	static bool bOne;
 	CKeyboard *m_pKeyboard;

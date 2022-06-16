@@ -204,6 +204,9 @@
     <ClCompile Include="MeshEffect.cpp">
       <Filter>ソース ファイル\3D\Effect\Traject</Filter>
     </ClCompile>
+    <ClCompile Include="BulletHoll.cpp">
+      <Filter>ソース ファイル\3D\Effect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="control.h">
@@ -278,9 +281,6 @@
     <ClInclude Include="object.h">
       <Filter>ヘッダー ファイル\3D</Filter>
     </ClInclude>
-    <ClInclude Include="SetMesh.h">
-      <Filter>ヘッダー ファイル\3D\Effect</Filter>
-    </ClInclude>
     <ClInclude Include="MouseTracking.h">
       <Filter>ヘッダー ファイル\2D\Effect</Filter>
     </ClInclude>
@@ -334,6 +334,12 @@
     </ClInclude>
     <ClInclude Include="MeshEffect.h">
       <Filter>ヘッダー ファイル\3D\Effect\Traject</Filter>
+    </ClInclude>
+    <ClInclude Include="SetMesh.h">
+      <Filter>ヘッダー ファイル\3D\Effect\Traject</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletHoll.h">
+      <Filter>ヘッダー ファイル\3D\Effect</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

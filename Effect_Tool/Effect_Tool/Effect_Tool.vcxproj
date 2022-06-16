@@ -24,6 +24,7 @@
     <ClCompile Include="ActiveBillboard.cpp" />
     <ClCompile Include="BezierBill.cpp" />
     <ClCompile Include="billeffect.cpp" />
+    <ClCompile Include="BulletHoll.cpp" />
     <ClCompile Include="Butten.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="control.cpp" />
@@ -69,6 +70,7 @@
     <ClInclude Include="ActiveBillboard.h" />
     <ClInclude Include="BezierBillh.h" />
     <ClInclude Include="billeffect.h" />
+    <ClInclude Include="BulletHoll.h" />
     <ClInclude Include="Butten.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="control.h" />

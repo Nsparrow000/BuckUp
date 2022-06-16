@@ -377,7 +377,7 @@ void CPlane::SetTexAnim(D3DXVECTOR2 TexPattern, D3DXVECTOR2 TexAnimSize)
 }
 
 //=============================================================================
-//ビルボード座標いじり
+//座標
 //=============================================================================
 void CPlane::SetPosBill(D3DXVECTOR3 pos, D3DXVECTOR3 pos2, D3DXVECTOR3 pos3, D3DXVECTOR3 pos4)
 {

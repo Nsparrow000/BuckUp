@@ -6,6 +6,9 @@
 #include "control.h"
 #include "keyboard.h"
 #include "mouse.h"
+#include "camera.h"
+#include "manager.h"
+#include "renderer.h"
 
 #include "straight3d.h"
 #include "FieldEffect.h"
@@ -13,6 +16,7 @@
 #include "Rotate3d.h"
 #include "SphereEffect.h"
 #include "ThunderBill.h"
+#include "BulletHoll.h"
 
 #include <assert.h>
 //*****************************************************************************
@@ -55,6 +59,7 @@ HRESULT CSetEffect3D::Init(D3DXVECTOR3 Size, D3DXVECTOR3 pos, D3DXVECTOR2 Tex)
 	CPlane::Init(Size, pos, Tex);
 	m_pKeyboard = CManager::GetKeyboard();
 	m_pMouse = CManager::GetMouse();
+	m_pCamera = CManager::GetRenderer()->GetCamera();
 
 	bOne = false;
 	return S_OK;
@@ -245,6 +250,23 @@ void CSetEffect3D::SetEffect()
 					(CBillEffect::ANIMPATTERN)CControl::GetAnimPatternType());
 			break;
 		case(8):
+			break;
+		case(9):
+			CBulletHoll::Create(D3DXVECTOR3(CControl::GetSize(), CControl::GetHigth(), 0.0f),
+				D3DXVECTOR3(CControl::GetChangeSize(), CControl::GetChangeSize(), 0.0f),
+				D3DXVECTOR3(100.0f, 100.0f, 100.0f),
+				D3DXCOLOR((float)CControl::GetControlCoror(1), (float)CControl::GetControlCoror(2), (float)CControl::GetControlCoror(3), (float)CControl::GetControlCoror(4)),
+				D3DXCOLOR((float)CControl::GetChangeCol(1), (float)CControl::GetChangeCol(2), (float)CControl::GetChangeCol(3), (float)CControl::GetChangeCol(4)),
+				CControl::GetLife(),
+				CControl::GetTex(),
+				D3DXVECTOR2(CControl::GetTexMoveU(), CControl::GetTexMoveV()),
+				CControl::GetTexNum(),
+				CControl::GetAnimCont(),
+				D3DXVECTOR2(CControl::GetSplitU(), CControl::GetSplitV()),
+				D3DXVECTOR3(D3DX_PI, m_pCamera->GetRotY(), {}),
+				CControl::GetSynthetic(),
+				(CBillEffect::ANIMPATTERN)CControl::GetAnimPatternType()
+			);
 			break;
 		default:
 			assert(false);
