@@ -532,6 +532,10 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 				fprintf(pFile, "	SECONDSYNTHETIC = %d			//‹OÕ‡¬\n", (int)CControl::GetParticleSynthetic());
 				break;
 			case(9):
+				fprintf(pFile, "	SIZE = %.1f						//‘å‚«‚³\n", CControl::GetSize());
+				fprintf(pFile, "	ADDSIZE = %.1f					//‘å‚«‚³•Ï“®\n", CControl::GetChangeSize());
+				fprintf(pFile, "	DENSITY = %d						//–§“x\n", CControl::GetDensity());
+
 				break;
 			default:
 				assert(false);
