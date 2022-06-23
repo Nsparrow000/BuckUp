@@ -80,7 +80,6 @@ HRESULT CBezierBill::Init(D3DXVECTOR3 Size,
 	m_TrajectLife = TrajectLife;
 
 	float randCont = float(rand() % (int)m_ControlBezier.x) - float(rand() % (int)m_ControlBezier.x);
-	float randCont2 = float(rand() % (int)m_ControlBezier.x) - float(rand() % (int)m_ControlBezier.x);
 
 	if (DistanceTarget <= 0)
 	{
@@ -98,6 +97,7 @@ HRESULT CBezierBill::Init(D3DXVECTOR3 Size,
 
 	float sx = (1.0 - m_ControlBezier.z) * pos.x + m_ControlBezier.z * m_Target.x;
 	float sz = (1.0 - m_ControlBezier.z) * pos.z + m_ControlBezier.z * m_Target.z;
+	float Angle = CIRCLE;
 
 	//ベジェ計算
 	//制御点
@@ -126,14 +126,23 @@ HRESULT CBezierBill::Init(D3DXVECTOR3 Size,
 		//m_Bezier.P1[1] = pos.y + m_ControlBezier.y;
 		//m_Bezier.P1[2] = pos.z + cosf(m_XZr) * m_ControlBezier.z - randCont;
 
-		//3次元制御らしいっすよこの処理
-		m_Bezier.P1[0] = (sx + randCont * sinf(m_XZr + D3DX_PI / 2));
-		m_Bezier.P1[1] = pos.y + m_ControlBezier.y;
-		m_Bezier.P1[2] = (sz + randCont * cosf(m_XZr + D3DX_PI / 2));
+		//3次元制御らしい
+		m_Bezier.P1[0] = (sx + randCont + m_ControlBezier.y * sinf(m_XZr + (Angle) + D3DX_PI * 2) * cosf(m_XZr + (Angle) + D3DX_PI * 2));
+		m_Bezier.P1[1] = pos.y + m_ControlBezier.y * sinf((Angle) + D3DX_PI / 2);
+		m_Bezier.P1[2] = (sz + randCont + m_ControlBezier.y * sinf(m_XZr + (Angle) + D3DX_PI * 2)* cosf(m_XZr + (Angle) + D3DX_PI * 2));
 
-		m_Bezier.P2[0] = (sx + randCont * sinf(m_XZr + D3DX_PI / 2));
-		m_Bezier.P2[1] = pos.y + m_ControlBezier.y;
-		m_Bezier.P2[2] = (sz + randCont * cosf(m_XZr + D3DX_PI / 2));
+		m_Bezier.P2[0] = (sx + randCont + m_ControlBezier.y * sinf(m_XZr + (Angle) + D3DX_PI * 2) * cosf(m_XZr + (Angle) + D3DX_PI * 2));
+		m_Bezier.P2[1] = pos.y + m_ControlBezier.y * sinf((Angle) + D3DX_PI / 2 );
+		m_Bezier.P2[2] = (sz + randCont + m_ControlBezier.y * sinf(m_XZr + (Angle) + D3DX_PI * 2)* cosf(m_XZr + (Angle) + D3DX_PI * 2));
+
+		if (m_Bezier.P1[1] <= -1)
+		{
+			m_Bezier.P1[1] *= -1;
+		}
+		if (m_Bezier.P2[1] <= -1)
+		{
+			m_Bezier.P2[1] *= -1;
+		}
 
 		//目標地点
 		m_Bezier.P3[0] = m_Target.x;
@@ -259,7 +268,7 @@ void CBezierBill::Update()
 
 		m_Bezier.Counter++;
 		// もしカウンターが分割数に達していたら０に戻す
-		if (m_Bezier.Counter == m_Bezier.DivNum + 1)
+		if (m_Bezier.Counter >= m_Bezier.DivNum)
 		{
 			m_Bezier.Counter = 0;
 			m_Bezier.f = false;//削除

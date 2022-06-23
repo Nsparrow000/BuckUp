@@ -403,7 +403,7 @@ void CRenderer::DrawText()
 				break;
 			case(8):
 				nNum += sprintf(&str[nNum], "制御点 X[+][-]：%.1f\n", CControl::GetContorolBezierX());
-				nNum += sprintf(&str[nNum], "制御点 Y[+][-]：%.1f\n", CControl::GetContorolBezierY());
+				nNum += sprintf(&str[nNum], "制御点 Y[+][-]：%.3f\n", CControl::GetContorolBezierY());
 				nNum += sprintf(&str[nNum], "制御点 Z[+][-]：%.1f\n", CControl::GetContorolBezierZ());
 				nNum += sprintf(&str[nNum], "移動(通過点の数) [+][-]：%.0f\n", CControl::Getmove3d().x);
 

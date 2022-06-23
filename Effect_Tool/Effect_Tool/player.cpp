@@ -474,11 +474,11 @@ void CPlayer::CreateEffect(int nPattern)
 				D3DXVECTOR2(CControl::GetTexMoveU(), CControl::GetTexMoveV()),
 				CControl::GetAnimCont(),
 				D3DXVECTOR2(CControl::GetSplitU(), CControl::GetSplitV()),
-				D3DXVECTOR3(pos.x, pos.y + 2000, pos.z),
+				D3DXVECTOR3(pos.x, pos.y + 20, pos.z),
 				D3DXVECTOR3(
-					pos.x + sinf(m_pCamera->GetRotY()) * 0.0f,
 					0.0f,
-					pos.z + cosf(m_pCamera->GetRotY()) * 0.0f),
+					0.0f,
+					0.0f),
 
 				CControl::Getmove3d().x,
 
