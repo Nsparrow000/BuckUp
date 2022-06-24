@@ -441,3 +441,17 @@ void CButten::SetButten(int nPatten)
 			ButtenState[nPatten][nCnt].Pattrn);
 	}
 }
+
+//*****************************************************************************
+//ボタンのリセット
+//*****************************************************************************
+void CButten::ReSetButten()
+{
+	for (int n = 0; n < MAX_BUTTENPATTERN; n++)
+	{
+		for (int n2 = 0; n2 < MAX_BUTTEN; n2++)
+		{
+			ButtenState[n][n2] = {};
+		}
+	}
+}

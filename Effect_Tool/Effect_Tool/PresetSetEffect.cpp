@@ -81,7 +81,12 @@ void CPresetEffect::SetEffectState2D(int nPattern,
 	bool bMousePos,
 	int Synthetic,
 	int Texture,
-	float Distance)
+	float Distance,
+	D3DXVECTOR2 m_TexMove,
+	D3DXVECTOR2 m_TexNum,
+	int AnimPatternType,
+	D3DXVECTOR2 TexSplit,
+	int AnimCnt)
 {
 	m_EffectState2D[m_nEffectPattern].m_nPattern = nPattern + 1;
 	m_EffectState2D[m_nEffectPattern].m_pos = pos;
@@ -103,6 +108,11 @@ void CPresetEffect::SetEffectState2D(int nPattern,
 	m_EffectState2D[m_nEffectPattern].Synthetic = Synthetic;
 	m_EffectState2D[m_nEffectPattern].nTexture = Texture;
 	m_EffectState2D[m_nEffectPattern].m_Distance = Distance;
+	m_EffectState2D[m_nEffectPattern].m_TexMove = m_TexMove;
+	m_EffectState2D[m_nEffectPattern].m_TexNum = m_TexNum;
+	m_EffectState2D[m_nEffectPattern].m_AnimPatternType = AnimPatternType;
+	m_EffectState2D[m_nEffectPattern].m_TexSplit = TexSplit;
+	m_EffectState2D[m_nEffectPattern].AnimCnt = AnimCnt;
 
 	m_nEffectPattern++;
 }
@@ -254,7 +264,12 @@ void CPresetEffect::SetEffect2D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 				D3DXVECTOR2(m_EffectState2D[nPattern].m_fAddSize, m_EffectState2D[nPattern].m_fAddSize),
 				m_EffectState2D[nPattern].m_nLife, m_EffectState2D[nPattern].nTexture,
 				m_EffectState2D[nPattern].m_Addmove,
-				m_EffectState2D[nPattern].Synthetic);
+				m_EffectState2D[nPattern].Synthetic,
+				m_EffectState3D[nPattern].m_TexMove,
+				m_EffectState3D[nPattern].m_TexNum,
+				m_EffectState3D[nPattern].AnimCnt,
+				m_EffectState3D[nPattern].m_TexSplit,
+				(CEffect::ANIMPATTERN)m_EffectState3D[nPattern].m_AnimPatternType);
 		}
 		break;
 	case(2):
@@ -291,7 +306,12 @@ void CPresetEffect::SetEffect2D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 				m_EffectState2D[nPattern].Synthetic,
 				m_EffectState2D[nPattern].m_Distance,
 				PlayerPos,
-				rot);
+				rot,
+				m_EffectState3D[nPattern].m_TexMove,
+				m_EffectState3D[nPattern].m_TexNum,
+				m_EffectState3D[nPattern].AnimCnt,
+				m_EffectState3D[nPattern].m_TexSplit,
+				(CEffect::ANIMPATTERN)m_EffectState3D[nPattern].m_AnimPatternType);
 		}
 		break;
 	case(3):
@@ -321,7 +341,12 @@ void CPresetEffect::SetEffect2D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 				m_EffectState2D[nPattern].m_nLife,
 				m_EffectState2D[nPattern].nTexture,
 				m_EffectState2D[nPattern].m_fRotate,
-				m_EffectState2D[nPattern].Synthetic);
+				m_EffectState2D[nPattern].Synthetic,
+				m_EffectState3D[nPattern].m_TexMove,
+				m_EffectState3D[nPattern].m_TexNum,
+				m_EffectState3D[nPattern].AnimCnt,
+				m_EffectState3D[nPattern].m_TexSplit,
+				(CEffect::ANIMPATTERN)m_EffectState3D[nPattern].m_AnimPatternType);
 		}
 		break;
 	case(4):
@@ -351,7 +376,12 @@ void CPresetEffect::SetEffect2D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 				m_EffectState2D[nPattern].m_nLife,
 				m_EffectState2D[nPattern].nTexture,
 				m_EffectState2D[nPattern].m_fRotate,
-				m_EffectState2D[nPattern].Synthetic);
+				m_EffectState2D[nPattern].Synthetic,
+				m_EffectState3D[nPattern].m_TexMove,
+				m_EffectState3D[nPattern].m_TexNum,
+				m_EffectState3D[nPattern].AnimCnt,
+				m_EffectState3D[nPattern].m_TexSplit,
+				(CEffect::ANIMPATTERN)m_EffectState3D[nPattern].m_AnimPatternType);
 		}
 		break;
 

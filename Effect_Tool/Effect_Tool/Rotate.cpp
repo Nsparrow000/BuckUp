@@ -36,9 +36,14 @@ HRESULT CRotate::Init(D3DXVECTOR3 pos,
 	int nLife,
 	int nType,
 	float AddRotate,
-	int Synthetic)
+	int Synthetic,
+	D3DXVECTOR2 TexNum,
+	D3DXVECTOR2 TexMove,
+	int nAnimCounter,
+	D3DXVECTOR2 nSplit,
+	ANIMPATTERN AnimPattern)
 {
-	CEffect::Init(pos, color, Mincolor, Size, MinSize, nLife, nType,Synthetic);
+	CEffect::Init(pos, color, Mincolor, Size, MinSize, nLife, nType,Synthetic, TexNum, TexMove, nAnimCounter, nSplit, AnimPattern);
 	m_Size = Size;
 	m_MinSize = MinSize;
 	m_Angle = 0;
@@ -92,14 +97,19 @@ CRotate *CRotate::Create(D3DXVECTOR3 pos,
 	int nLife,
 	int nType,
 	float AddRotate,
-	int Synthetic)
+	int Synthetic,
+	D3DXVECTOR2 TexNum,
+	D3DXVECTOR2 TexMove,
+	int nAnimCounter,
+	D3DXVECTOR2 nSplit,
+	ANIMPATTERN AnimPattern)
 {
 	CRotate *pRotate = NULL;
 	pRotate = new CRotate(CManager::PRIORITY_EFFECT);		//メモリ確保
 																//NULLチェック
 	if (pRotate != NULL)
 	{
-		pRotate->Init(pos, move, color, Mincolor, Size, MinSize, nLife, nType, AddRotate,Synthetic);
+		pRotate->Init(pos, move, color, Mincolor, Size, MinSize, nLife, nType, AddRotate,Synthetic, TexNum, TexMove, nAnimCounter, nSplit, AnimPattern);
 	}
 
 	return pRotate;

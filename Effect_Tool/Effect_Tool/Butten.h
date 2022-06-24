@@ -147,6 +147,7 @@ public:
 		DISPLAY_PATTERN Pattern);
 
 	static void SetButten(int nPatten);	//ボタン配置
+	static void ReSetButten();	//ボタン配置リセット
 
 
 	static void AddTotal(int nTotal) { m_nButtenTotal = nTotal;}	//パターンの変更

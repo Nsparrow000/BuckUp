@@ -62,12 +62,20 @@ public:
 
 	void FadeColorChange(int Alpha);		//フェード用α変更
 
-	void SetTex(int Texpos, float TexSize);						//テクスチャパターン番号、パターン１つのサイズ
-	void TexMove(float TexMoveU, float TexMoveV);				//テクスチャ座標の更新
+	void SetTexAnim(D3DXVECTOR2 TexPattern, D3DXVECTOR2 TexAnimSize, D3DXVECTOR2 MoveTex);						//テクスチャパターン番号、パターン１つのサイズ
+	void TexMove(D3DXVECTOR2 MoveTex);				//テクスチャ座標の更新
 
 	void SetGaugeScele(float Whidth, float Hight);				//ゲージタイプのスケール変更
 	void SetRotate(D3DXVECTOR3 pos, float Rotate, float Rotate2, float Vectol);			//回転
 
+protected:
+	int m_nAnimCount;
+	int m_nSetAnimCnt;
+	D3DXVECTOR2 m_nSplit;
+	D3DXVECTOR2 m_MaxSplit;
+	D3DXVECTOR2 m_PatternSize;
+	D3DXVECTOR2 m_TexSize;				//テクスチャサイズ
+	D3DXVECTOR2 m_TexNum;
 
 private:
 
@@ -83,13 +91,8 @@ private:
 	int m_nType;					//種類
 
 	int m_Texpos;					//テクスチャ座標
-	float m_TexSize;				//テクスチャサイズ
 
-	float m_TexMoveU;				//テクスチャ移動値
-	float m_TexMoveV;				//テクスチャ移動値
-
-	float m_PosTexU;				//テクスチャU座標
-	float m_PosTexV;				//テクスチャV座標
+	D3DXVECTOR2 m_TexMove;
 
 									//カラー値
 };

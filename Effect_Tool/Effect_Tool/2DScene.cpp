@@ -83,7 +83,10 @@ void C2DScene::Update()
 	{
 		if (m_pKeyboard->GetKey(DIK_RETURN) == true)
 		{
+
 			CFade::SetFade(CManager::MODE_3D);
+			CButten::ReSetButten();
+
 			CButten::ResetPatten();
 			CControl::SetPattern(0);
 		}

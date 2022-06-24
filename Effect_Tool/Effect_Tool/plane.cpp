@@ -340,6 +340,25 @@ void CPlane::TexturMove(D3DXVECTOR2 MoveTex)
 {
 	VERTEX_3D*pVtx;//頂点情報へのポインタ
 	m_TexMove += MoveTex;
+
+	if (m_TexMove.x >= 1.0f)
+	{
+		m_TexMove.x -= 1.0f;
+	}
+	else if (m_TexMove.x < 0.0f)
+	{
+		m_TexMove.x += 1.0f;
+	}
+
+	if (m_TexMove.y >= 1.0f)
+	{
+		m_TexMove.y -= 1.0f;
+	}
+	else if (m_TexNum.y < 0.0f)
+	{
+		m_TexMove.y += 1.0f;
+	}
+
 	//頂点バッファをロックし、頂点データへのポインタを取得
 	m_pVtxBuff->Lock(0, 0, (void**)&pVtx, 0);
 

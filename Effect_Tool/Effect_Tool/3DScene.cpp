@@ -119,7 +119,10 @@ void C3DScene::Update()
 		if (m_pKeyboard->GetKey(DIK_RETURN) == true)
 		{
 			CControl::SetPlayerMode(true);
+
 			CFade::SetFade(CManager::MODE_2D);
+			CButten::ReSetButten();
+
 			CControl::SetPattern(0);
 			CButten::ResetPatten();
 		}

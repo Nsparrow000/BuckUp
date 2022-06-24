@@ -6,7 +6,7 @@
 
 EFFECTSTATE2D
 	PATTERN = 0				//動きのパターン
-	POS = 640.0 360.0				//座標
+	POS = 1041.0 0.0				//座標
 	MOVE = 1.0 1.0					//動き
 	ADDMOVE = 0.0 0.0				//動き加算値
 	SIZE = 20.0						//大きさ

@@ -34,9 +34,14 @@ HRESULT CMovement::Init(D3DXVECTOR3 pos,
 	int nLife,
 	int nType,
 	D3DXVECTOR2 AddMovement,
-	int nSynthetic)
+	int nSynthetic,
+	D3DXVECTOR2 TexNum,
+	D3DXVECTOR2 TexMove,
+	int nAnimCounter,
+	D3DXVECTOR2 nSplit,
+	ANIMPATTERN AnimPattern)
 {
-	CEffect::Init(pos, color, Mincolor, Size, MinSize, nLife, nType,nSynthetic);
+	CEffect::Init(pos, color, Mincolor, Size, MinSize, nLife, nType,nSynthetic, TexNum, TexMove, nAnimCounter, nSplit, AnimPattern);
 
 	m_Addpos = AddMovement;
 	m_move = move;
@@ -88,14 +93,19 @@ CMovement *CMovement::Create(D3DXVECTOR3 pos,
 	int nLife,
 	int nType,
 	D3DXVECTOR2 AddMovement,
-	int nSynthetic)
+	int nSynthetic,
+	D3DXVECTOR2 TexNum,
+	D3DXVECTOR2 TexMove,
+	int nAnimCounter,
+	D3DXVECTOR2 nSplit,
+	ANIMPATTERN AnimPattern)
 {
 	CMovement *pMovement = NULL;
 	pMovement = new CMovement(CManager::PRIORITY_EFFECT);		//メモリ確保
 	//NULLチェック
 	if (pMovement != NULL)
 	{
-		pMovement->Init(pos, move, color, Mincolor, Size, MinSize, nLife, nType, AddMovement, nSynthetic);
+		pMovement->Init(pos, move, color, Mincolor, Size, MinSize, nLife, nType, AddMovement, nSynthetic, TexNum, TexMove, nAnimCounter, nSplit, AnimPattern);
 	}
 
 	return pMovement;

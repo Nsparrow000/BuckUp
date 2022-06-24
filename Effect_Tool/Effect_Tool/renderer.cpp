@@ -463,38 +463,38 @@ void CRenderer::DrawTextLeft()
 
 	int nNum = sprintf(&str[0], "\n");
 
+	nNum += sprintf(&str[nNum], "テクスチャ移動 U [+][-]：%.3f\n", CControl::GetTexMoveU());
+	nNum += sprintf(&str[nNum], "テクスチャ移動 V [+][-]：%.3f\n", CControl::GetTexMoveV());
+	nNum += sprintf(&str[nNum], "テクスチャ枚数 U [+][-]：%.1f\n", CControl::GetTexNum().x);
+	nNum += sprintf(&str[nNum], "テクスチャ枚数 V [+][-]：%.1f\n", CControl::GetTexNum().y);
+
+	nNum += sprintf(&str[nNum], "テクスチャ分割数 U [+][-]：%.0f\n", CControl::GetSplitU());
+	nNum += sprintf(&str[nNum], "テクスチャ分割数 V [+][-]：%.0f\n", CControl::GetSplitV());
+	nNum += sprintf(&str[nNum], "パターンカウント  [+][-]：%d\n", CControl::GetAnimCont());
+	nNum += sprintf(&str[nNum], "ランダム化  [+][-]：%d\n", CControl::GetAnimPatternType());
+
 	if (CManager::MODE mode = CManager::GetMode())
 	{
-		nNum += sprintf(&str[nNum], "テクスチャ移動 U [+][-]：%.3f\n", CControl::GetTexMoveU());
-		nNum += sprintf(&str[nNum], "テクスチャ移動 V [+][-]：%.3f\n", CControl::GetTexMoveV());
-		nNum += sprintf(&str[nNum], "テクスチャ枚数 U [+][-]：%.1f\n", CControl::GetTexNum().x);
-		nNum += sprintf(&str[nNum], "テクスチャ枚数 V [+][-]：%.1f\n", CControl::GetTexNum().y);
 
-		nNum += sprintf(&str[nNum], "テクスチャ分割数 U [+][-]：%.0f\n", CControl::GetSplitU());
-		nNum += sprintf(&str[nNum], "テクスチャ分割数 V [+][-]：%.0f\n", CControl::GetSplitV());
-		nNum += sprintf(&str[nNum], "パターンカウント  [+][-]：%d\n", CControl::GetAnimCont());
-		nNum += sprintf(&str[nNum], "ランダム化  [+][-]：%d\n", CControl::GetAnimPatternType());
+	nNum += sprintf(&str[nNum], "プリセット再生[F1]\n");
+	nNum += sprintf(&str[nNum], "全てのプリセット再生[F2]\n");
+	nNum += sprintf(&str[nNum], "時間差付きでプリセット再生[F3]\n");
 
+	switch (CControl::GetPattern())
+	{
 
-		nNum += sprintf(&str[nNum], "プリセット再生[F1]\n");
-		nNum += sprintf(&str[nNum], "全てのプリセット再生[F2]\n");
-		nNum += sprintf(&str[nNum], "時間差付きでプリセット再生[F3]\n");
+	case(1):
+		break;
+	case(2):
+		break;
+	case(3):
+	case(4):
+		nNum += sprintf(&str[nNum], "再生[SPACE]\n");
 
-		switch (CControl::GetPattern())
-		{
-
-		case(1):
-			break;
-		case(2):
-			break;
-		case(3):
-		case(4):
-			nNum += sprintf(&str[nNum], "再生[SPACE]\n");
-
-			break;
-		default:
-			break;
-		}
+		break;
+	default:
+		break;
+	}
 	}
 
 	// テキストの描画

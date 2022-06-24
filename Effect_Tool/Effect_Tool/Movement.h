@@ -22,7 +22,12 @@ public:
 		int nLife,
 		int nType,
 		D3DXVECTOR2 AddMovement,
-		int nSynthetic);
+		int nSynthetic,
+		D3DXVECTOR2 TexNum,
+		D3DXVECTOR2 TexMove,
+		int nAnimCounter,
+		D3DXVECTOR2 nSplit,
+		ANIMPATTERN AnimPattern);
 
 	void Uninit();
 	void Update();
@@ -37,7 +42,12 @@ public:
 		int nLife,
 		int nType,
 		D3DXVECTOR2 AddMovement,
-		int nSynthetic);
+		int nSynthetic,
+		D3DXVECTOR2 TexNum,
+		D3DXVECTOR2 TexMove,
+		int nAnimCounter,
+		D3DXVECTOR2 nSplit,
+		ANIMPATTERN AnimPattern);
 private:
 	D3DXVECTOR2 m_move;			//à⁄ìÆ
 	D3DXVECTOR2 m_Addpos;		//äµê´

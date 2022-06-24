@@ -472,7 +472,9 @@ void CLoadEffect::EffectStateLoad(const char *aFileName)
 			{
 				bEffectState2D = false;
 				CPresetEffect::SetEffectState2D(nPattern, pos, fRotate, move, Addmove, Diffusion, Destroyvec, fSize, fAddSize, col, ChangeColor, nLife, Density,
-					(bool)bRandColR, (bool)bRandColG, (bool)bRandColB, bMousePos, nSynthetic, nTexture, (float)Distance);
+					(bool)bRandColR, (bool)bRandColG, (bool)bRandColB, bMousePos, nSynthetic, nTexture, (float)Distance,
+					TexMove, TexNum, AnimPatternType, TexSplit,
+					nAnimCont);
 			}
 
 			//3Dエフェクト情報セット
