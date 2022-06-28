@@ -22,7 +22,6 @@ public:
 	typedef struct
 	{
 		int m_nPattern;			//動きのパターン
-		D3DXVECTOR3 m_pos;		//位置
 		float m_fRotate;		//回転
 		D3DXVECTOR3 m_Endpos;	//向かうべき位置
 		D3DXVECTOR2 m_move;		//移動量
@@ -47,6 +46,9 @@ public:
 		int m_AnimPatternType;
 		D3DXVECTOR2 m_TexSplit;	//分割数
 		int AnimCnt;	//アニメーションカウント
+		int m_nType;	//パターン
+		int m_fHigth;	//高さ
+		float m_SecondSize;
 	} EFFECT_STATE2D;
 
 	//3Dの情報
@@ -81,7 +83,6 @@ public:
 		int Synthetic;	//合成
 		int nTexture;	//テクスチャ
 		int ParticleTime;
-		D3DXVECTOR3 pos;	//位置
 		float m_fActiveAddSize;	//アクティブ中の大きさ変更
 		int m_FieldTime;	//フィールド生成間隔
 		bool m_fieldCreate;	//フィールド生成するか
@@ -110,7 +111,6 @@ public:
 	//読み込んだエフェクトの情報を格納するやつ
 	static void SetEffectState2D(
 		int nPattern,
-		D3DXVECTOR3 pos,
 		float fRotate,
 		D3DXVECTOR2 move,
 		D3DXVECTOR2 Addmove,
@@ -125,7 +125,6 @@ public:
 		bool bColorRandR,
 		bool bColorRandG,
 		bool bColorRandB,
-		bool bMousePos,
 		int Synthetic,
 		int Texture,
 		float Distance,
@@ -133,7 +132,10 @@ public:
 		D3DXVECTOR2 m_TexNum,
 		int m_AnimPatternType,
 		D3DXVECTOR2 m_TexSplit,
-		int AnimCnt);
+		int AnimCnt,
+		int nType,
+		float fHigth,
+		float SecondSize);
 
 	//読み込んだエフェクトの情報を格納するやつ3D
 	static void SetEffectState3D(
@@ -166,7 +168,6 @@ public:
 		int Texture,
 		int nDistance,
 		int ParticleTime,
-		D3DXVECTOR3 pos,
 		float m_fActiveAddSize,
 		int m_FieldTime,
 		bool m_fieldCreate,

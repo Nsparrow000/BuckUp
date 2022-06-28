@@ -69,6 +69,8 @@ void CRotate::Update()
 {
 	D3DXVECTOR3 pos = GetPosition();
 	m_Vectl = sqrtf(m_Size.x * m_Size.x + m_Size.y * m_Size.y);
+	m_Size += m_MinSize;
+
 	pos += D3DXVECTOR3(m_move.x, m_move.y, 0.0f);
 	m_Angle += m_AddAngle;
 	CScene2D::SetRotate(pos, m_Angle, -m_Angle, m_Vectl);

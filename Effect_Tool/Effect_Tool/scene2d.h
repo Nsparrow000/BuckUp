@@ -53,8 +53,6 @@ public:
 
 	float GetHight() { return  m_Size.y; }			//pos更新するためにゲット
 	float GetWhidth() { return  m_Size.x; }			//pos更新するためにゲッ
-	void SetHight(float Hight);		//大きさ更新
-	void SetWhidth(float Whidth);	//大きさ更新
 
 	void SetTexture(int nTex) { m_nType = nTex; }		//テクスチャタイプ
 
@@ -67,6 +65,7 @@ public:
 
 	void SetGaugeScele(float Whidth, float Hight);				//ゲージタイプのスケール変更
 	void SetRotate(D3DXVECTOR3 pos, float Rotate, float Rotate2, float Vectol);			//回転
+	void SetfleeSizePos(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2, D3DXVECTOR3 pos3, D3DXVECTOR3 pos4);	//自由な座標指定
 
 protected:
 	int m_nAnimCount;
@@ -76,6 +75,7 @@ protected:
 	D3DXVECTOR2 m_PatternSize;
 	D3DXVECTOR2 m_TexSize;				//テクスチャサイズ
 	D3DXVECTOR2 m_TexNum;
+	D3DXVECTOR2 m_Size;				//サイズ
 
 private:
 
@@ -86,7 +86,6 @@ private:
 
 	D3DXVECTOR3 m_pos;				//位置
 
-	D3DXVECTOR2 m_Size;				//サイズ
 
 	int m_nType;					//種類
 

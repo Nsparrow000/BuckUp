@@ -268,6 +268,12 @@ void CRenderer::DrawText()
 			nNum += sprintf(&str[nNum], "移動値Y [+][-] : (%.1f) \n", CControl::GetMove().y);
 			nNum += sprintf(&str[nNum], "移動加算値 X[+][-]：(%.1f)\n", CControl::GetAddMove().x);
 			nNum += sprintf(&str[nNum], "移動加算値 Y[+][-]：(%.1f)\n", CControl::GetAddMove().y);
+			nNum += sprintf(&str[nNum], "形タイプ [+][-]：(%d)\n", CControl::GetType());
+			nNum += sprintf(&str[nNum], "高さ [+][-]：(%.1f)\n", CControl::GetHigth());
+			nNum += sprintf(&str[nNum], "上部分位置 [+][-]：(%.1f)\n", CControl::GetDistance());
+			nNum += sprintf(&str[nNum], "上部分サイズ [+][-]：(%.1f)\n", CControl::GetParticleSize());
+
+
 			break;
 		case(1):
 			nNum += sprintf(&str[nNum], "移動値 [+][-]：(%.1f)\n", CControl::GetMove().x);

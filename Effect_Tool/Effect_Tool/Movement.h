@@ -10,6 +10,13 @@
 class CMovement : public CEffect
 {
 public:
+	typedef enum
+	{
+		SHAPE_SQUARE,
+		SHAPE_FREE,
+		SHAPE_MAX,
+	} SHAPE_TYPE;
+
 	CMovement(int nPriority);
 	~CMovement();
 
@@ -27,7 +34,11 @@ public:
 		D3DXVECTOR2 TexMove,
 		int nAnimCounter,
 		D3DXVECTOR2 nSplit,
-		ANIMPATTERN AnimPattern);
+		ANIMPATTERN AnimPattern,
+		SHAPE_TYPE Shapetype,
+		float fHight,
+		float HigthPos,
+		float HigthSize);
 
 	void Uninit();
 	void Update();
@@ -47,10 +58,19 @@ public:
 		D3DXVECTOR2 TexMove,
 		int nAnimCounter,
 		D3DXVECTOR2 nSplit,
-		ANIMPATTERN AnimPattern);
+		ANIMPATTERN AnimPattern,
+		SHAPE_TYPE Shapetype,
+		float fHight,
+		float HigthPos,
+		float HigthSize);
 private:
 	D3DXVECTOR2 m_move;			//à⁄ìÆ
 	D3DXVECTOR2 m_Addpos;		//äµê´
+
+	SHAPE_TYPE m_ShapeType;	//å`
+	float m_fHigth;
+	float m_HigthPos;
+	float m_HigthSize;
 };
 
 #endif // !_MOVEMENT_H_

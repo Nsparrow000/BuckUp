@@ -84,8 +84,6 @@ HRESULT CEffect::Init(D3DXVECTOR3 pos,
 	ColorChange(m_Color);
 
 	CScene2D::SetTexture(nType);	//選択した番号のテクスチャを貼る
-	CScene2D::SetWhidth(m_Size.x);
-	CScene2D::SetHight(m_Size.y);
 	SetTexAnim(m_nSplit, m_PatternSize, m_TexMove);
 
 	return S_OK;
@@ -106,11 +104,6 @@ void CEffect::Update()
 {
 	D3DXVECTOR3 pos = GetPosition();
 
-	m_Size += m_MinSize;
-
-	//サイズ変更
-	SetWhidth(m_Size.x);
-	SetHight(m_Size.y);
 
 	m_nLife--;		//ライフ減算
 

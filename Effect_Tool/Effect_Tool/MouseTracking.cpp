@@ -44,7 +44,6 @@ HRESULT CMouseTracking::Init(D3DXVECTOR3 pos,
 	D3DXVECTOR2 nSplit,
 	ANIMPATTERN AnimPattern)
 {
-
 	CEffect::Init(pos, color, Mincolor, Size, MinSize, nLife, nType, Synthetic, TexNum, TexMove, nAnimCounter, nSplit, AnimPattern);
 	m_Endpos = pos;
 	m_Vec = Playerpos - Endpos;
@@ -53,7 +52,7 @@ HRESULT CMouseTracking::Init(D3DXVECTOR3 pos,
 
 	m_UninitVectl = UninitVectl;
 	m_SerectRot = rot;
-	//ç≈í·ï€è·
+	//randÇ≈éÄÇ Ç©ÇÁç≈í·ï€è·
 	int Lowest = Diffusion;
 	if (Lowest <= 0)
 	{
@@ -97,7 +96,8 @@ void CMouseTracking::Update()
 	}
 
 	//m_pos += D3DXVECTOR3(sinf(-m_fAngle + m_SerectRot.y) * - m_move.x, cosf(-m_fAngle + m_SerectRot.y) * m_move.x, 0.0f);
-	
+	m_Size += m_MinSize;
+
 
 	SetPosition(m_pos);
 	CScene2D::SetRotate(m_pos, -m_fAngle + D3DX_PI / 4 + m_SerectRot.y, -m_fAngle + D3DX_PI / 4 + m_SerectRot.y, m_Size.x);

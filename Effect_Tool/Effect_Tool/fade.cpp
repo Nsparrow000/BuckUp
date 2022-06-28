@@ -40,9 +40,9 @@ HRESULT CFade::Init(D3DXVECTOR3 pos, float SizeX, float SizeY, int nType)
 	m_afade = CFade::FADE_IN;
 	m_bUninit = false;
 
+	m_Size = D3DXVECTOR2(SizeX, SizeY);
+
 	CScene2D::SetTexture(nType);
-	CScene2D::SetWhidth(SizeX);
-	CScene2D::SetHight(SizeY);
 
 	CScene2D::Update();
 	return S_OK;

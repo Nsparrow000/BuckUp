@@ -39,12 +39,21 @@ HRESULT CMovement::Init(D3DXVECTOR3 pos,
 	D3DXVECTOR2 TexMove,
 	int nAnimCounter,
 	D3DXVECTOR2 nSplit,
-	ANIMPATTERN AnimPattern)
+	ANIMPATTERN AnimPattern,
+	SHAPE_TYPE Shapetype,
+	float fHight,
+	float HigthPos,
+	float HigthSize)
 {
 	CEffect::Init(pos, color, Mincolor, Size, MinSize, nLife, nType,nSynthetic, TexNum, TexMove, nAnimCounter, nSplit, AnimPattern);
 
 	m_Addpos = AddMovement;
 	m_move = move;
+
+	m_ShapeType = Shapetype;
+	m_fHigth = fHight;
+	m_HigthPos = HigthPos;
+	m_HigthSize = HigthSize;
 	return S_OK;
 }
 
@@ -61,14 +70,28 @@ void CMovement::Uninit()
 //*****************************************************************************
 void CMovement::Update()
 {
-
 	D3DXVECTOR3 pos = GetPosition();
+	m_Size += m_MinSize;
 
 	m_move += m_Addpos;	//移動値に慣性を加算
-
 	pos += D3DXVECTOR3(m_move.x, m_move.y, 0.0f);
 
-	SetPosition(pos);
+
+	switch (m_ShapeType)
+	{
+	case(SHAPE_SQUARE):
+		SetPosition(pos);
+		break;
+	case(SHAPE_FREE):
+		SetfleeSizePos(
+			D3DXVECTOR3(pos.x + m_HigthPos - m_HigthSize, pos.y - m_fHigth, 0.0f),
+			D3DXVECTOR3(pos.x + m_HigthPos + m_HigthSize, pos.y - m_fHigth, 0.0f),
+			D3DXVECTOR3(pos.x - m_Size.x, pos.y, 0.0f),
+			D3DXVECTOR3(pos.x + m_Size.x, pos.y, 0.0f));
+			break;
+	default:
+		break;
+	}
 
 	CEffect::Update();
 }
@@ -98,14 +121,28 @@ CMovement *CMovement::Create(D3DXVECTOR3 pos,
 	D3DXVECTOR2 TexMove,
 	int nAnimCounter,
 	D3DXVECTOR2 nSplit,
-	ANIMPATTERN AnimPattern)
+	ANIMPATTERN AnimPattern,
+	SHAPE_TYPE Shapetype,
+	float fHight,
+	float HigthPos,
+	float HigthSize)
 {
 	CMovement *pMovement = NULL;
 	pMovement = new CMovement(CManager::PRIORITY_EFFECT);		//メモリ確保
 	//NULLチェック
 	if (pMovement != NULL)
 	{
-		pMovement->Init(pos, move, color, Mincolor, Size, MinSize, nLife, nType, AddMovement, nSynthetic, TexNum, TexMove, nAnimCounter, nSplit, AnimPattern);
+		pMovement->Init(pos, move, color,
+			Mincolor,
+			Size,
+			MinSize,
+			nLife, nType,
+			AddMovement, nSynthetic,
+			TexNum, TexMove,
+			nAnimCounter, nSplit,
+			AnimPattern, Shapetype, fHight,
+			HigthPos,
+			HigthSize);
 	}
 
 	return pMovement;

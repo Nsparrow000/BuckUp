@@ -83,8 +83,6 @@ HRESULT CSetEffect::Init(D3DXVECTOR3 pos, float SizeX, float SizeY, int nType)
 
 
 	CScene2D::SetTexture(nType);	//選択した番号のテクスチャを貼る
-	CScene2D::SetWhidth(SizeX);		//サイズの適応
-	CScene2D::SetHight(SizeY);
 	return S_OK;
 }
 
@@ -197,7 +195,11 @@ void CSetEffect::SetEffect(int nPatern)
 				D3DXVECTOR2(CControl::GetTexNum().x, CControl::GetTexNum().y),
 				CControl::GetAnimCont(),
 				D3DXVECTOR2(CControl::GetSplitU(), CControl::GetSplitV()),
-				(CEffect::ANIMPATTERN)CControl::GetAnimPatternType());
+				(CEffect::ANIMPATTERN)CControl::GetAnimPatternType(),
+				(CMovement::SHAPE_TYPE)CControl::GetType(),
+				CControl::GetHigth(),
+				CControl::GetDistance(),
+				CControl::GetParticleSize());
 			break;
 		case(1):
 			CMouseTracking::Create(D3DXVECTOR3(m_pos.x, m_pos.y, 0.0f),

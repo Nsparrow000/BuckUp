@@ -369,6 +369,12 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 			case(0):
 				fprintf(pFile, "	MOVE = %.1f %.1f					//動き\n", m_move.x, m_move.y);
 				fprintf(pFile, "	ADDMOVE = %.1f %.1f				//動き加算値\n", m_Addmove.x, m_Addmove.y);
+
+				fprintf(pFile, "	TYPE = %d					//パーティクル(0)or軌跡(1)\n", CControl::GetType());
+				fprintf(pFile, "	HIGTH = %.1f						//上距離\n", CControl::GetHigth());
+				fprintf(pFile, "	DISTANCE = %.1f					//左右距離\n", CControl::GetDistance());
+				fprintf(pFile, "	PARTICLESIZE = %.1f						//上サイズ\n", CControl::GetParticleSize());
+
 				break;
 			case(1):
 				fprintf(pFile, "	MOVE = %.1f					//スピード\n", m_move.x);
@@ -541,8 +547,6 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 				assert(false);
 				break;
 			}
-			fprintf(pFile, "	POS = 0.0 0.0 0.0			//出現位置\n");
-
 			fprintf(pFile, "	COLOR = %d %d %d %d			//カラー\n", (int)CControl::GetControlCoror(1), (int)CControl::GetControlCoror(2), (int)CControl::GetControlCoror(3), (int)CControl::GetControlCoror(4));
 			fprintf(pFile, "	CHANGECOLOR = %d %d %d %d			//カラー変動値\n", (int)CControl::GetChangeCol(1), (int)CControl::GetChangeCol(2), (int)CControl::GetChangeCol(3), (int)CControl::GetChangeCol(4));
 			fprintf(pFile, "	LIFE = %d						//ライフ\n", CControl::GetLife());

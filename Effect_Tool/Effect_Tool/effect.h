@@ -42,7 +42,6 @@ public:
 protected:
 	bool m_bUninit;
 	int m_nLife;
-	D3DXVECTOR2 m_Size;			//大きさ
 	D3DXVECTOR2 m_MinSize;		//大きさ変動
 	ANIMPATTERN m_AnimPattern;	//アニメーションパターンの動き
 

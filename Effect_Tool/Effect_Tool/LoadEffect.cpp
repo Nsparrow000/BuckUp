@@ -49,7 +49,6 @@ void CLoadEffect::EffectStateLoad(const char *aFileName)
 	bool bEffectState3D = false;
 
 	int nPattern = 0;
-	D3DXVECTOR3 pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	D3DXVECTOR2 move = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	D3DXVECTOR2 Addmove = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	int Diffusion = 1;
@@ -64,7 +63,6 @@ void CLoadEffect::EffectStateLoad(const char *aFileName)
 	int bRandColR = 0;
 	int bRandColG = 0;
 	int bRandColB = 0;
-	int bMousePos = 0;
 	int nSynthetic = 0;
 	int nTexture = 0;
 
@@ -115,11 +113,6 @@ void CLoadEffect::EffectStateLoad(const char *aFileName)
 				{
 					fscanf(pFile, "%s", &aFile[0]);
 					fscanf(pFile, "%d", &nPattern);
-				}
-				if (strcmp(&aFile[0], "POS") == 0)	//出現位置
-				{
-					fscanf(pFile, "%s", &aFile[0]);
-					fscanf(pFile, "%f %f %f", &pos.x, &pos.y, &pos.z);
 				}
 				if (strcmp(&aFile[0], "ROTATE") == 0)	//回転
 				{
@@ -191,11 +184,6 @@ void CLoadEffect::EffectStateLoad(const char *aFileName)
 					fscanf(pFile, "%s", &aFile[0]);
 					fscanf(pFile, "%d", &bRandColB);
 				}
-				if (strcmp(&aFile[0], "MOUSEPOS") == 0)		//マウス追従(プレイヤー追従だったり)
-				{
-					fscanf(pFile, "%s", &aFile[0]);
-					fscanf(pFile, "%d", &bMousePos);
-				}
 				if (strcmp(&aFile[0], "SYNTHETIC") == 0)		//合成
 				{
 					fscanf(pFile, "%s", &aFile[0]);
@@ -211,6 +199,21 @@ void CLoadEffect::EffectStateLoad(const char *aFileName)
 					fscanf(pFile, "%s", &aFile[0]);
 					fscanf(pFile, "%d", &Distance);
 				}
+				if (strcmp(&aFile[0], "TYPE") == 0)	//タイプ
+				{
+					fscanf(pFile, "%s", &aFile[0]);
+					fscanf(pFile, "%d", &nType);
+				}
+				if (strcmp(&aFile[0], "HIGTH") == 0)	//高さ
+				{
+					fscanf(pFile, "%s", &aFile[0]);
+					fscanf(pFile, "%f", &fHigth);
+				}
+				if (strcmp(&aFile[0], "PARTICLESIZE") == 0)	//最大の大きさ
+				{
+					fscanf(pFile, "%s", &aFile[0]);
+					fscanf(pFile, "%f", &ParticleSize);
+				}
 
 			}
 
@@ -220,11 +223,6 @@ void CLoadEffect::EffectStateLoad(const char *aFileName)
 				{
 					fscanf(pFile, "%s", &aFile[0]);
 					fscanf(pFile, "%d", &nPattern);
-				}
-				if (strcmp(&aFile[0], "POS") == 0)	//出現位置
-				{
-					fscanf(pFile, "%s", &aFile[0]);
-					fscanf(pFile, "%f %f %f", &pos.x, &pos.y, &pos.z);
 				}
 				if (strcmp(&aFile[0], "ROTATE") == 0)	//回転
 				{
@@ -471,10 +469,10 @@ void CLoadEffect::EffectStateLoad(const char *aFileName)
 			if (strcmp(&aFile[0], "END_EFFECTSTATE2D") == 0)
 			{
 				bEffectState2D = false;
-				CPresetEffect::SetEffectState2D(nPattern, pos, fRotate, move, Addmove, Diffusion, Destroyvec, fSize, fAddSize, col, ChangeColor, nLife, Density,
-					(bool)bRandColR, (bool)bRandColG, (bool)bRandColB, bMousePos, nSynthetic, nTexture, (float)Distance,
+				CPresetEffect::SetEffectState2D(nPattern, fRotate, move, Addmove, Diffusion, Destroyvec, fSize, fAddSize, col, ChangeColor, nLife, Density,
+					(bool)bRandColR, (bool)bRandColG, (bool)bRandColB, nSynthetic, nTexture, (float)Distance,
 					TexMove, TexNum, AnimPatternType, TexSplit,
-					nAnimCont);
+					nAnimCont, nType, fHigth,ParticleSize);
 			}
 
 			//3Dエフェクト情報セット
@@ -488,7 +486,7 @@ void CLoadEffect::EffectStateLoad(const char *aFileName)
 				CPresetEffect::SetEffectState3D(nPattern, fRotate, move3d, Addmove3d, Diffusion, fSize, fAddSize, MaxSize, ParticleSize,
 					ParticleAddSize, Active, col, ChangeColor, Secondcol, SecondChangeColor, SecondSynthetic, nLife, Density, TrajectTop, TrajectCur, Move3D, RandMove,
 					(bool)bRandColR, (bool)bRandColG, (bool)bRandColB,
-					nSynthetic, nTexture, Distance, ParticleTime, pos, fActiveAddSize,
+					nSynthetic, nTexture, Distance, ParticleTime, fActiveAddSize,
 					FieldTime, (bool)FieldCreate, CreatePreset,
 					nSecondTime, nVtx, nType, TexMove, TexNum, nSecondType, TexSplit,
 					nAnimCont, fHigth, AnimPatternType,

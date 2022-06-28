@@ -174,7 +174,6 @@ private:
 
 	static POINT m_po;					//マウス座標
 
-	D3DXVECTOR2 m_Size;		//サイズ
 	static D3DXVECTOR2 m_Mousepos;		//マウス座標
 
 	bool m_bUninit;		//消す
