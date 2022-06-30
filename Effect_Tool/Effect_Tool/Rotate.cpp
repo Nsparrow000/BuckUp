@@ -75,6 +75,7 @@ void CRotate::Update()
 	m_Angle += m_AddAngle;
 	CScene2D::SetRotate(pos, m_Angle, -m_Angle, m_Vectl);
 
+	ColorChange(m_Color);
 
 	CEffect::Update();
 }

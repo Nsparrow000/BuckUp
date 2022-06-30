@@ -45,15 +45,16 @@ protected:
 	D3DXVECTOR2 m_MinSize;		//大きさ変動
 	ANIMPATTERN m_AnimPattern;	//アニメーションパターンの動き
 
-private:
-
-	D3DXVECTOR2 m_TexMove;
-
 	//カラー値
 	D3DCOLORVALUE m_Color;
 
 	//減らすカラー値
 	D3DCOLORVALUE m_MinColor;
+
+private:
+
+	D3DXVECTOR2 m_TexMove;
+
 
 	D3DXVECTOR2 m_move;			//移動
 

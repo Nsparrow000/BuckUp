@@ -190,7 +190,7 @@ void CSetEffect::SetEffect(int nPatern)
 				D3DXVECTOR2(CControl::GetSize(), CControl::GetSize()),
 				D3DXVECTOR2(CControl::GetChangeSize(), CControl::GetChangeSize()),
 				CControl::GetLife(), CControl::GetTex(),
-				CControl::GetAddMove(),CControl::GetSynthetic(),
+				CControl::GetAddMove(), CControl::GetSynthetic(),
 				D3DXVECTOR2(CControl::GetTexMoveU(), CControl::GetTexMoveV()),
 				D3DXVECTOR2(CControl::GetTexNum().x, CControl::GetTexNum().y),
 				CControl::GetAnimCont(),
@@ -199,8 +199,10 @@ void CSetEffect::SetEffect(int nPatern)
 				(CMovement::SHAPE_TYPE)CControl::GetType(),
 				CControl::GetHigth(),
 				CControl::GetDistance(),
-				CControl::GetParticleSize());
-			break;
+				CControl::GetParticleSize(),
+				D3DXCOLOR((float)CControl::GetParticleColor(1), (float)CControl::GetParticleColor(2), (float)CControl::GetParticleColor(3), (float)CControl::GetParticleColor(4)),
+				D3DXCOLOR((float)CControl::GetParticleAddCol(1), (float)CControl::GetParticleAddCol(2), (float)CControl::GetParticleAddCol(3), (float)CControl::GetParticleAddCol(4)));
+				break;
 		case(1):
 			CMouseTracking::Create(D3DXVECTOR3(m_pos.x, m_pos.y, 0.0f),
 				move,

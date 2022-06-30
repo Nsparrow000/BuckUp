@@ -49,6 +49,8 @@ public:
 		int m_nType;	//パターン
 		int m_fHigth;	//高さ
 		float m_SecondSize;
+		D3DCOLORVALUE m_SecondCol;			//2番目カラー
+		D3DCOLORVALUE m_SecondChangecolor;	//2番目カラー加算
 	} EFFECT_STATE2D;
 
 	//3Dの情報
@@ -135,7 +137,9 @@ public:
 		int AnimCnt,
 		int nType,
 		float fHigth,
-		float SecondSize);
+		float SecondSize,
+		D3DCOLORVALUE m_SecondCol,
+		D3DCOLORVALUE m_SecondChangecolor);
 
 	//読み込んだエフェクトの情報を格納するやつ3D
 	static void SetEffectState3D(

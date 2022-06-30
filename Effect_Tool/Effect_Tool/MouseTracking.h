@@ -61,13 +61,14 @@ private:
 	D3DXVECTOR3 m_pos;
 	D3DXVECTOR2 m_move;
 	D3DXVECTOR3 m_Vec;
-	D3DXVECTOR3 m_Endpos;
-	D3DXVECTOR3 m_PlayerPos;
+	D3DXVECTOR3 m_Endpos;	//èoåªà íu
+	D3DXVECTOR3 m_PlayerPos;	//åªç›à íu
 	D3DXVECTOR3 m_SerectRot;
 
 	float m_fAngle;
 	float m_Vectl;
 	int m_UninitVectl;
+	float m_Distance;
 };
 
 #endif // !_MOUSETRACKING_H_

@@ -43,7 +43,9 @@ HRESULT CMovement::Init(D3DXVECTOR3 pos,
 	SHAPE_TYPE Shapetype,
 	float fHight,
 	float HigthPos,
-	float HigthSize)
+	float HigthSize,
+	D3DCOLORVALUE Secondcolor,
+	D3DCOLORVALUE SecondMincolor)
 {
 	CEffect::Init(pos, color, Mincolor, Size, MinSize, nLife, nType,nSynthetic, TexNum, TexMove, nAnimCounter, nSplit, AnimPattern);
 
@@ -54,6 +56,10 @@ HRESULT CMovement::Init(D3DXVECTOR3 pos,
 	m_fHigth = fHight;
 	m_HigthPos = HigthPos;
 	m_HigthSize = HigthSize;
+
+	m_SecondColor = Secondcolor;
+	m_SecondMinColor = SecondMincolor;
+
 	return S_OK;
 }
 
@@ -76,11 +82,54 @@ void CMovement::Update()
 	m_move += m_Addpos;	//移動値に慣性を加算
 	pos += D3DXVECTOR3(m_move.x, m_move.y, 0.0f);
 
+	//カラー変更
+	m_SecondColor.r += m_SecondMinColor.r;
+	m_SecondColor.g += m_SecondMinColor.g;
+	m_SecondColor.b += m_SecondMinColor.b;
+	m_SecondColor.a += m_SecondMinColor.a;
+
+	//カラーが0以下の時
+	if (m_SecondColor.r < 0)
+	{
+		m_SecondColor.r = 0;
+	}
+	if (m_SecondColor.g < 0)
+	{
+		m_SecondColor.g = 0;
+	}
+	if (m_SecondColor.b < 0)
+	{
+		m_SecondColor.b = 0;
+	}
+	if (m_SecondColor.a < 0)
+	{
+		m_SecondColor.a = 0;
+	}
+
+	//カラーが255以上の時
+	if (m_SecondColor.r > 255)
+	{
+		m_SecondColor.r = 255;
+	}
+	if (m_SecondColor.g > 255)
+	{
+		m_SecondColor.g = 255;
+	}
+	if (m_SecondColor.b > 255)
+	{
+		m_SecondColor.b = 255;
+	}
+	if (m_SecondColor.a > 255)
+	{
+		m_SecondColor.a = 255;
+	}
+
 
 	switch (m_ShapeType)
 	{
 	case(SHAPE_SQUARE):
 		SetPosition(pos);
+
 		break;
 	case(SHAPE_FREE):
 		SetfleeSizePos(
@@ -88,6 +137,8 @@ void CMovement::Update()
 			D3DXVECTOR3(pos.x + m_HigthPos + m_HigthSize, pos.y - m_fHigth, 0.0f),
 			D3DXVECTOR3(pos.x - m_Size.x, pos.y, 0.0f),
 			D3DXVECTOR3(pos.x + m_Size.x, pos.y, 0.0f));
+
+		SecondColorChange(m_Color, m_SecondColor);
 			break;
 	default:
 		break;
@@ -125,7 +176,9 @@ CMovement *CMovement::Create(D3DXVECTOR3 pos,
 	SHAPE_TYPE Shapetype,
 	float fHight,
 	float HigthPos,
-	float HigthSize)
+	float HigthSize,
+	D3DCOLORVALUE Secondcolor,
+	D3DCOLORVALUE SecondMincolor)
 {
 	CMovement *pMovement = NULL;
 	pMovement = new CMovement(CManager::PRIORITY_EFFECT);		//メモリ確保
@@ -142,7 +195,9 @@ CMovement *CMovement::Create(D3DXVECTOR3 pos,
 			nAnimCounter, nSplit,
 			AnimPattern, Shapetype, fHight,
 			HigthPos,
-			HigthSize);
+			HigthSize,
+			Secondcolor,
+			SecondMincolor);
 	}
 
 	return pMovement;

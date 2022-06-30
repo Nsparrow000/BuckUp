@@ -87,7 +87,9 @@ void CPresetEffect::SetEffectState2D(int nPattern,
 	int AnimCnt,
 	int nType,
 	float fHigth,
-	float SecondSize)
+	float SecondSize,
+	D3DCOLORVALUE SecondCol,
+	D3DCOLORVALUE SecondChangecolor)
 {
 	m_EffectState2D[m_nEffectPattern].m_nPattern = nPattern + 1;
 	m_EffectState2D[m_nEffectPattern].m_fRotate = fRotate;
@@ -115,6 +117,8 @@ void CPresetEffect::SetEffectState2D(int nPattern,
 	m_EffectState2D[m_nEffectPattern].m_nType = nType;
 	m_EffectState2D[m_nEffectPattern].m_fHigth = fHigth;
 	m_EffectState2D[m_nEffectPattern].m_SecondSize = SecondSize;
+	m_EffectState2D[m_nEffectPattern].m_SecondCol = SecondCol;
+	m_EffectState2D[m_nEffectPattern].m_SecondChangecolor = SecondChangecolor;
 
 	m_nEffectPattern++;
 }
@@ -266,7 +270,9 @@ void CPresetEffect::SetEffect2D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 				(CMovement::SHAPE_TYPE)m_EffectState2D[nPattern].m_nType,
 				m_EffectState2D[nPattern].m_fHigth,
 				m_EffectState2D[nPattern].m_Distance,
-				m_EffectState2D[nPattern].m_SecondSize);
+				m_EffectState2D[nPattern].m_SecondSize,
+				m_EffectState2D[nPattern].m_SecondCol,
+				m_EffectState2D[nPattern].m_SecondChangecolor);
 		}
 		break;
 	case(2):

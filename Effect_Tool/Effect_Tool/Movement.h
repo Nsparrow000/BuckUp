@@ -38,7 +38,9 @@ public:
 		SHAPE_TYPE Shapetype,
 		float fHight,
 		float HigthPos,
-		float HigthSize);
+		float HigthSize,
+		D3DCOLORVALUE Secondcolor,
+		D3DCOLORVALUE SecondMincolor);
 
 	void Uninit();
 	void Update();
@@ -62,7 +64,10 @@ public:
 		SHAPE_TYPE Shapetype,
 		float fHight,
 		float HigthPos,
-		float HigthSize);
+		float HigthSize,
+		D3DCOLORVALUE Secondcolor,
+		D3DCOLORVALUE SecondMincolor
+		);
 private:
 	D3DXVECTOR2 m_move;			//移動
 	D3DXVECTOR2 m_Addpos;		//慣性
@@ -71,6 +76,12 @@ private:
 	float m_fHigth;
 	float m_HigthPos;
 	float m_HigthSize;
+
+	//カラー値
+	D3DCOLORVALUE m_SecondColor;
+	//減らすカラー値
+	D3DCOLORVALUE m_SecondMinColor;
+
 };
 
 #endif // !_MOVEMENT_H_

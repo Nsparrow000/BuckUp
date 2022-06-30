@@ -354,7 +354,7 @@ void CPlane::TexturMove(D3DXVECTOR2 MoveTex)
 	{
 		m_TexMove.y -= 1.0f;
 	}
-	else if (m_TexNum.y < 0.0f)
+	else if (m_TexMove.y < 0.0f)
 	{
 		m_TexMove.y += 1.0f;
 	}

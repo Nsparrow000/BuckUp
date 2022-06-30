@@ -57,9 +57,9 @@ HRESULT CEffect::Init(D3DXVECTOR3 pos,
 	m_nSetAnimCnt = nAnimCounter;
 	m_AnimPattern = AnimPattern;
 	m_MaxSplit = nSplit;
-	m_TexNum = TexNum;
+	m_TexNum = TexMove;
 	m_TexMove = TexNum;
-	m_PatternSize = D3DXVECTOR2(1.0f + m_TexSize.x / m_MaxSplit.x, 1.0f + m_TexSize.y / m_MaxSplit.y);
+	m_PatternSize = D3DXVECTOR2(1.0f / m_MaxSplit.x, 1.0f / m_MaxSplit.y);
 
 	if (m_MaxSplit.x <= 0)
 	{
@@ -84,7 +84,7 @@ HRESULT CEffect::Init(D3DXVECTOR3 pos,
 	ColorChange(m_Color);
 
 	CScene2D::SetTexture(nType);	//選択した番号のテクスチャを貼る
-	SetTexAnim(m_nSplit, m_PatternSize, m_TexMove);
+	SetTexAnim(m_nSplit, m_PatternSize);
 
 	return S_OK;
 }
@@ -178,7 +178,6 @@ void CEffect::Update()
 	{
 		m_Color.a = 255;
 	}
-	ColorChange(m_Color);
 
 
 	switch (m_AnimPattern)
@@ -239,7 +238,26 @@ void CEffect::Update()
 		}
 		break;
 	}
-	SetTexAnim(m_nSplit, m_PatternSize, m_TexMove);
+
+	if (m_TexMove.x >= 1.0f)
+	{
+		m_TexMove.x -= 1.0f;
+	}
+	else if (m_TexMove.x < 0.0f)
+	{
+		m_TexMove.x += 1.0f;
+	}
+
+	if (m_TexMove.y >= 1.0f)
+	{
+		m_TexMove.y -= 1.0f;
+	}
+	else if (m_TexMove.y < 0.0f)
+	{
+		m_TexMove.y += 1.0f;
+	}
+	TexMove(m_TexMove);
+	SetTexAnim(m_nSplit, m_PatternSize);
 
 	//破棄
 	if (m_bUninit == true)

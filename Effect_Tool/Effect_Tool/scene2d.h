@@ -60,12 +60,13 @@ public:
 
 	void FadeColorChange(int Alpha);		//フェード用α変更
 
-	void SetTexAnim(D3DXVECTOR2 TexPattern, D3DXVECTOR2 TexAnimSize, D3DXVECTOR2 MoveTex);						//テクスチャパターン番号、パターン１つのサイズ
+	void SetTexAnim(D3DXVECTOR2 TexPattern, D3DXVECTOR2 TexAnimSize);						//テクスチャパターン番号、パターン１つのサイズ
 	void TexMove(D3DXVECTOR2 MoveTex);				//テクスチャ座標の更新
 
 	void SetGaugeScele(float Whidth, float Hight);				//ゲージタイプのスケール変更
 	void SetRotate(D3DXVECTOR3 pos, float Rotate, float Rotate2, float Vectol);			//回転
 	void SetfleeSizePos(D3DXVECTOR3 pos1, D3DXVECTOR3 pos2, D3DXVECTOR3 pos3, D3DXVECTOR3 pos4);	//自由な座標指定
+	void SecondColorChange(D3DCOLORVALUE color, D3DCOLORVALUE Secondcolor);	//２点変更
 
 protected:
 	int m_nAnimCount;
@@ -85,13 +86,13 @@ private:
 	LPDIRECT3DVERTEXBUFFER9 m_pVtxBuff = NULL;	//頂点バッファへのポインタ
 
 	D3DXVECTOR3 m_pos;				//位置
+	D3DXVECTOR2 m_TexMove;
 
 
 	int m_nType;					//種類
 
 	int m_Texpos;					//テクスチャ座標
 
-	D3DXVECTOR2 m_TexMove;
 
 									//カラー値
 };

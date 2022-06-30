@@ -272,6 +272,8 @@ void CRenderer::DrawText()
 			nNum += sprintf(&str[nNum], "高さ [+][-]：(%.1f)\n", CControl::GetHigth());
 			nNum += sprintf(&str[nNum], "上部分位置 [+][-]：(%.1f)\n", CControl::GetDistance());
 			nNum += sprintf(&str[nNum], "上部分サイズ [+][-]：(%.1f)\n", CControl::GetParticleSize());
+			nNum += sprintf(&str[nNum], "下部分色 [+][-]：(%d %d %d %d)\n", CControl::GetParticleColor(1), CControl::GetParticleColor(2), CControl::GetParticleColor(3), CControl::GetParticleColor(4));
+			nNum += sprintf(&str[nNum], "下部分増減 [+][-]：(%d %d %d %d)\n", CControl::GetParticleAddCol(1), CControl::GetParticleAddCol(2), CControl::GetParticleAddCol(3), CControl::GetParticleAddCol(4));
 
 
 			break;

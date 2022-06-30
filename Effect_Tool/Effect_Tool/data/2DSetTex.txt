@@ -571,7 +571,7 @@ END_BUTTENSET
 
 //合成
 BUTTENSET
-	POS = 56.0 634.0 0.0	//座標
+	POS = 56.0 670.0 0.0	//座標
 	SIZE = 18.0 18.0	//サイズ
 	TEXTURE = -1		//テクスチャ
 	OPERATION = 26		//設定内容
@@ -581,7 +581,7 @@ BUTTENSET
 END_BUTTENSET
 
 BUTTENSET
-	POS = 88.0 634.0 0.0	//座標
+	POS = 88.0 670.0 0.0	//座標
 	SIZE = 18.0 18.0	//サイズ
 	TEXTURE = -1		//テクスチャ
 	OPERATION = 26		//設定内容
@@ -589,6 +589,49 @@ BUTTENSET
 	DISPLAY = 1	//表示
 	PATTERN = 1
 END_BUTTENSET
+
+//色１
+BUTTENSET
+	POS = 85.0 560.0 0.0	//座標
+	SIZE = 18.0 18.0	//サイズ
+	TEXTURE = -1		//テクスチャ
+	OPERATION = 33		//設定内容
+	INDENUM = 5	//増減する数値
+	DISPLAY = 1	//表示
+	PATTERN = 1
+END_BUTTENSET
+
+BUTTENSET
+	POS = 108.0 560.0 0.0	//座標
+	SIZE = 18.0 18.0	//サイズ
+	TEXTURE = -1		//テクスチャ
+	OPERATION = 33		//設定内容
+	INDENUM = -5	//増減する数値
+	DISPLAY = 1	//表示
+	PATTERN = 1
+END_BUTTENSET
+
+//色１増減
+BUTTENSET
+	POS = 101.0 579.0 0.0	//座標
+	SIZE = 18.0 18.0	//サイズ
+	TEXTURE = -1		//テクスチャ
+	OPERATION = 34		//設定内容
+	INDENUM = 1	//増減する数値
+	DISPLAY = 1	//表示
+	PATTERN = 1
+END_BUTTENSET
+
+BUTTENSET
+	POS = 124.0 579.0 0.0	//座標
+	SIZE = 18.0 18.0	//サイズ
+	TEXTURE = -1		//テクスチャ
+	OPERATION = 34		//設定内容
+	INDENUM = -1	//増減する数値
+	DISPLAY = 1	//表示
+	PATTERN = 1
+END_BUTTENSET
+
 #*********************************************************
 #*********************************************************
 #ボタンステータス情報
@@ -749,9 +792,47 @@ BUTTENPATTENSET
 		PATTERN = 1
 	END_BUTTENSTATE
 	
+	//軌跡１色
+	BUTTENSTATE
+		POS = 85.0 560.0 0.0	//座標
+		SIZE = 18.0 18.0	//サイズ
+		TEXTURE = -1		//テクスチャ
+		OPERATION = 33		//設定内容
+		INDENUM = 5	//増減する数値
+		PATTERN = 1
+	END_BUTTENSTATE
+	
+	BUTTENSTATE
+		POS = 108.0 560.0 0.0	//座標
+		SIZE = 18.0 18.0	//サイズ
+		TEXTURE = -1		//テクスチャ
+		OPERATION = 33		//設定内容
+		INDENUM = -5	//増減する数値
+		PATTERN = 1
+	END_BUTTENSTATE
+
+	//軌跡１色増減
+	BUTTENSTATE
+		POS = 101.0 579.0 0.0	//座標
+		SIZE = 18.0 18.0	//サイズ
+		TEXTURE = -1		//テクスチャ
+		OPERATION = 34		//設定内容
+		INDENUM = 1	//増減する数値
+		PATTERN = 1
+	END_BUTTENSTATE
+	
+	BUTTENSTATE
+		POS = 124.0 579.0 0.0	//座標
+		SIZE = 18.0 18.0	//サイズ
+		TEXTURE = -1		//テクスチャ
+		OPERATION = 34		//設定内容
+		INDENUM = -1	//増減する数値
+		PATTERN = 1
+	END_BUTTENSTATE
+	
 	//合成
 	BUTTENSTATE
-		POS = 56.0 634.0 0.0	//座標
+		POS = 56.0 670.0 0.0	//座標
 		SIZE = 18.0 18.0	//サイズ
 		TEXTURE = -1		//テクスチャ
 		OPERATION = 26		//設定内容
@@ -760,7 +841,7 @@ BUTTENPATTENSET
 	END_BUTTENSTATE
 	
 	BUTTENSTATE
-		POS = 88.0 634.0 0.0	//座標
+		POS = 88.0 670.0 0.0	//座標
 		SIZE = 18.0 18.0	//サイズ
 		TEXTURE = -1		//テクスチャ
 		OPERATION = 26		//設定内容

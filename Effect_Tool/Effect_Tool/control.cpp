@@ -374,6 +374,8 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 				fprintf(pFile, "	HIGTH = %.1f						//上距離\n", CControl::GetHigth());
 				fprintf(pFile, "	DISTANCE = %.1f					//左右距離\n", CControl::GetDistance());
 				fprintf(pFile, "	PARTICLESIZE = %.1f						//上サイズ\n", CControl::GetParticleSize());
+				fprintf(pFile, "	SECONDCOLOR = %d %d %d %d			//下部分の色１\n", (int)CControl::GetParticleColor(1), (int)CControl::GetParticleColor(2), (int)CControl::GetParticleColor(3), (int)CControl::GetParticleColor(4));
+				fprintf(pFile, "	SECONDADDCOLOR = %d %d %d %d			//下部分の色１増減\n", (int)CControl::GetParticleAddCol(1), (int)CControl::GetParticleAddCol(2), (int)CControl::GetParticleAddCol(3), (int)CControl::GetParticleAddCol(4));
 
 				break;
 			case(1):
@@ -411,6 +413,14 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 			fprintf(pFile, "	MOUSEPOS = %d						//マウス追従ON 1だと有効\n", m_bMouseCursor);
 			fprintf(pFile, "	TEXTURE = %d						//テクスチャ\n", CControl::GetTex());
 			fprintf(pFile, "	SYNTHETIC = %d						//合成\n", CControl::GetSynthetic());
+
+			fprintf(pFile, "	TEXMOVE = %.3f %.3f					//テクスチャ移動\n", CControl::GetTexMoveU(), CControl::GetTexMoveV());
+			fprintf(pFile, "	TEXNUM = %.1f %.1f					//テクスチャ枚数\n", CControl::GetTexNum().x, CControl::GetTexNum().y);
+
+			fprintf(pFile, "	TEXANIMCOUNT = %d					//テクスチャアニメーションカウント\n", CControl::GetAnimCont());
+			fprintf(pFile, "	TEXSPLIT = %.0f %.0f					//テクスチャ分割数\n", CControl::GetSplitU(), CControl::GetSplitV());
+			fprintf(pFile, "	ANIMPATTERNTYPE = %d					//アニメーションパターンタイプ\n", CControl::GetAnimPatternType());
+
 
 
 			fprintf(pFile, "END_EFFECTSTATE2D\n\n");
