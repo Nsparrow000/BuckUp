@@ -65,7 +65,7 @@ HRESULT CMouseTracking::Init(D3DXVECTOR3 pos,
 	m_fAngle = (float)atan2(m_Vec.x, m_Vec.y);		//Šp“x
 
 	m_fAngle += randAngle;
-	m_pos += D3DXVECTOR3(pos.x + sinf(-m_fAngle + m_SerectRot.y) * m_Distance, pos.y + cosf(-m_fAngle + m_SerectRot.y) * m_Distance, 0.0f);
+	m_pos += D3DXVECTOR3(pos.x + sinf(-m_fAngle + m_SerectRot.y) * m_Distance, pos.y + cosf(-m_fAngle + m_SerectRot.y) * -m_Distance, 0.0f);
 	SetPosition(m_pos);
 	CScene2D::SetRotate(m_pos, -m_fAngle + D3DX_PI / 4 + m_SerectRot.y, -m_fAngle  + D3DX_PI / 4 + m_SerectRot.y, m_Size.x);
 
@@ -88,7 +88,7 @@ void CMouseTracking::Update()
 	D3DXVECTOR3 pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_Distance += m_move.x;
 
-	pos += D3DXVECTOR3(m_pos.x + sinf(-m_fAngle + m_SerectRot.y) * m_Distance, m_pos.y + cosf(-m_fAngle + m_SerectRot.y) * m_Distance, 0.0f);
+	pos += D3DXVECTOR3(m_pos.x + sinf(-m_fAngle + m_SerectRot.y) * m_Distance, m_pos.y + cosf(-m_fAngle + m_SerectRot.y) * -m_Distance, 0.0f);
 	m_Size += m_MinSize;
 
 	m_Vec = pos - m_Endpos;

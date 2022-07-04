@@ -8,25 +8,25 @@
 #エフェクトパターン ()番目
 #メモ：(このエフェクトの使い道等、書いてください)
 #========================================================================
-EFFECTSTATE2D
-	PATTERN = 1				//動きのパターン
-	POS = 640.0 360.0				//座標
-	MOVE = 4.0					//スピード
-	DIFFUSION = 356					//拡散率
-	DESTROYVEC = 40					//消えるベクトル
-	DISTANCE = 11.0					//距離
-	SIZE = 5.0						//大きさ
+EFFECTSTATE3D
+	PATTERN = 8				//動きのパターン
+	SIZE = 0.0						//大きさ
 	ADDSIZE = 0.0					//大きさ変動
-	COLOR = 255 120 0 255			//カラー
-	CHANGECOLOR = 0 -30 0 0			//カラー変動値
+	DENSITY = 20						//密度
+	CONTROLBEZIER = 471.0 1251.0 1.1						//ベジェ制御点
+	MOVE = 71.0						//移動（制御点の数）
+	SECONDCOLOR = 255 180 0 255			//軌跡の色１
+	SECONDADDCOLOR = 0 -20 0 0			//軌跡の色１増減
+	THERDCOLOR = 255 180 0 255				//軌跡の色２
+	THERDADDCOLOR = 0 -20 0 0				//軌跡の色２増減
+	MAXSIZE = 10.0						//軌跡サイズ
+	SECONDTEX = 3						//軌跡テクスチャ
+	PARTICLETIME = 8						//軌跡寿命
+	DISTANCE = 1.0						//ターゲットからのランダム距離
+	SECONDSYNTHETIC = 0			//軌跡合成
+	COLOR = 255 255 255 255			//カラー
+	CHANGECOLOR = 0 0 0 0			//カラー変動値
 	LIFE = 100						//ライフ
-	DENSITY = 7						//密度
-	COLORRANDR = 0						//カラーランダム赤 1だと有効
-	COLORRANDG = 0						//カラーランダム緑 1だと有効
-	COLORRANDB = 0						//カラーランダム青 1だと有効
-	MOVERANDX = 0						//移動ランダムX 1だと有効
-	MOVERANDY = 0						//移動ランダムY 1だと有効
-	MOUSEPOS = 0						//マウス追従ON 1だと有効
 	TEXTURE = 1						//テクスチャ
 	SYNTHETIC = 0						//合成
 	TEXMOVE = 0.000 0.000					//テクスチャ移動
@@ -34,5 +34,5 @@ EFFECTSTATE2D
 	TEXANIMCOUNT = -1					//テクスチャアニメーションカウント
 	TEXSPLIT = 1 1					//テクスチャ分割数
 	ANIMPATTERNTYPE = 0					//アニメーションパターンタイプ
-END_EFFECTSTATE2D
+END_EFFECTSTATE3D
 
