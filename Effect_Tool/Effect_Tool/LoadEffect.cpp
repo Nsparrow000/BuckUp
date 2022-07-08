@@ -11,7 +11,9 @@
 //=============================================================================
 // 静的
 //=============================================================================
-int CLoadEffect::m_Total = 0;
+int CLoadEffect::m_Total3d = 0;
+int CLoadEffect::m_Total2d = 0;
+
 int CLoadEffect::m_OrderTotal = 0;
 int CLoadEffect::m_FullOrder = 0;
 
@@ -43,7 +45,8 @@ void CLoadEffect::EffectStateLoad(const char *aFileName)
 
 	//変数定義
 #if 1
-	m_Total = 0;
+	m_Total3d = 0;
+	m_Total2d = 0;
 
 	bool bEffectState2D = false;
 	bool bEffectState3D = false;
@@ -513,6 +516,9 @@ void CLoadEffect::EffectStateLoad(const char *aFileName)
 					(bool)bRandColR, (bool)bRandColG, (bool)bRandColB, nSynthetic, nTexture, (float)Distance,
 					TexMove, TexNum, AnimPatternType, TexSplit,
 					nAnimCont, nType, fHigth,ParticleSize, Secondcol, SecondChangeColor);
+
+				m_Total2d++;
+
 			}
 
 			//3Dエフェクト情報セット
@@ -534,7 +540,7 @@ void CLoadEffect::EffectStateLoad(const char *aFileName)
 					TherdChangeColor,
 					SecondTex);
 
-				m_Total++;
+				m_Total3d++;
 			}
 
 			//終わり

@@ -82,10 +82,10 @@ private:
 
 	static LPDIRECT3DTEXTURE9 m_Texture[MAX_TEXTURE];				//テクスチャーポインタ
 	static int m_nMaxTex;											//使用する最大テクスチャ
+	D3DXVECTOR3 m_pos;				//位置
 
 	LPDIRECT3DVERTEXBUFFER9 m_pVtxBuff = NULL;	//頂点バッファへのポインタ
 
-	D3DXVECTOR3 m_pos;				//位置
 	D3DXVECTOR2 m_TexMove;
 
 

@@ -17,6 +17,9 @@
 
 #include "Butten.h"
 
+#include "LoadEffect.h"
+#include "PresetSetEffect.h"
+
 #endif
 
 //*****************************************************************************
@@ -90,6 +93,16 @@ void C2DScene::Update()
 			CButten::ResetPatten();
 			CControl::SetPattern(0);
 		}
+
+		if (m_pKeyboard->GetKey(DIK_F2) == true)
+		{
+			for (int nCnt = 0; nCnt < CLoadEffect::GetPresetTotal2D(); nCnt++)
+			{
+
+				CPresetEffect::SetEffect2D(nCnt, D3DXVECTOR3(0.0f, 50.0f, 0.0f), D3DXVECTOR3(0.0f, 0.0f, 0.0f), {}, {});
+			}
+		}
+
 	}
 
 }

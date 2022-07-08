@@ -30,6 +30,8 @@ public:
 	CSetEffect *GetSetEffect() { return m_Set; }
 
 private:
+	static POINT m_po;					//マウス座標
+
 	static int m_SerectNam;
 	static bool m_bFade;
 	CKeyboard *m_pKeyboard;

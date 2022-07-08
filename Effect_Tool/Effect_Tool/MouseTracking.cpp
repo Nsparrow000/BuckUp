@@ -44,7 +44,10 @@ HRESULT CMouseTracking::Init(D3DXVECTOR3 pos,
 	D3DXVECTOR2 nSplit,
 	ANIMPATTERN AnimPattern)
 {
-	CEffect::Init(pos, color, Mincolor, Size, MinSize, nLife, nType, Synthetic, TexNum, TexMove, nAnimCounter, nSplit, AnimPattern);
+	CEffect::Init(pos,
+		color,
+		Mincolor, Size, MinSize, nLife, nType, Synthetic, TexNum, TexMove, nAnimCounter, nSplit, AnimPattern);
+
 	m_Endpos = pos;
 	m_PlayerPos = Playerpos;
 	m_Vec = pos - Endpos;
