@@ -7,7 +7,6 @@
 
 #include "main.h"
 #include "plane.h"
-#define MAX_TEX (32)
 
 class CMeshEffect : public CScene3D
 {
@@ -39,7 +38,7 @@ protected:
 	int m_Synthetic;
 
 private:
-	static LPDIRECT3DTEXTURE9 m_pTexture[MAX_TEX];
+	static LPDIRECT3DTEXTURE9 m_pTexture[MAX_TEXTURE];
 	LPDIRECT3DVERTEXBUFFER9 m_pVtxBuff = NULL;	//頂点バッファへのポインタ
 	LPDIRECT3DINDEXBUFFER9 m_pIdxBuff = NULL;	//インデックスバッファ
 	D3DXMATRIX m_mtxWorld;	//ワールドマトリックス

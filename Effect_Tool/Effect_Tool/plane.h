@@ -9,7 +9,6 @@
 #include "scene3d.h"
 
 //マクロ定義
-#define MAX_TEXTURE_FILED (24)
 
 class CPlane : public CScene3D
 {
@@ -56,7 +55,7 @@ private:
 	D3DXVECTOR3 m_rot;
 
 protected:
-	static LPDIRECT3DTEXTURE9 m_pTexture[MAX_TEXTURE_FILED];	//テクスチャへのポインタ
+	static LPDIRECT3DTEXTURE9 m_pTexture[MAX_TEXTURE];	//テクスチャへのポインタ
 
 	int m_nTexType;												//貼るテクスチャ
 	D3DXVECTOR2 m_TexNum;

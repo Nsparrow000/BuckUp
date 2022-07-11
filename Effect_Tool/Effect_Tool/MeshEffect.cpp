@@ -9,7 +9,7 @@
 
 //マクロ定義
 #define TEXTURE_FILENAME_MESH "data/Tex3DNameRead.txt"
-LPDIRECT3DTEXTURE9 CMeshEffect::m_pTexture[MAX_TEX] = {};
+LPDIRECT3DTEXTURE9 CMeshEffect::m_pTexture[MAX_TEXTURE] = {};
 int CMeshEffect::m_nMaxTex = 0;
 //=============================================================================
 // コンストラクタ

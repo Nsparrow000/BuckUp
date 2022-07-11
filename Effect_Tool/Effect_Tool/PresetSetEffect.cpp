@@ -34,7 +34,9 @@
 //*****************************************************************************
 // 静的
 //***************************************************************************** 
-int CPresetEffect::m_nEffectPattern = 0;
+int CPresetEffect::m_nEffectPattern2d = 0;
+int CPresetEffect::m_nEffectPattern3d = 0;
+
 int CPresetEffect::m_nMaxOrderCount = 0;	//呼び出す最大数カウント
 
 CPresetEffect::EFFECT_STATE2D CPresetEffect::m_EffectState2D[MAX_EFFECTPATTERN_2D] = {};
@@ -91,36 +93,36 @@ void CPresetEffect::SetEffectState2D(int nPattern,
 	D3DCOLORVALUE SecondCol,
 	D3DCOLORVALUE SecondChangecolor)
 {
-	m_EffectState2D[m_nEffectPattern].m_nPattern = nPattern + 1;
-	m_EffectState2D[m_nEffectPattern].m_fRotate = fRotate;
-	m_EffectState2D[m_nEffectPattern].m_move = move;
-	m_EffectState2D[m_nEffectPattern].m_Addmove = Addmove;
-	m_EffectState2D[m_nEffectPattern].m_nDiffusion = Diffusion;
-	m_EffectState2D[m_nEffectPattern].m_nDestroyvec = Destroyvec;
-	m_EffectState2D[m_nEffectPattern].m_fSize = fSize;
-	m_EffectState2D[m_nEffectPattern].m_fAddSize = fAddSize;
-	m_EffectState2D[m_nEffectPattern].m_Col = col;
-	m_EffectState2D[m_nEffectPattern].m_Changecolor = Changecolor;
-	m_EffectState2D[m_nEffectPattern].m_nLife = nLife;
-	m_EffectState2D[m_nEffectPattern].m_nDensity = nDensity;
-	m_EffectState2D[m_nEffectPattern].m_bColorRandR = bColorRandR;
-	m_EffectState2D[m_nEffectPattern].m_bColorRandG = bColorRandG;
-	m_EffectState2D[m_nEffectPattern].m_bColorRandB = bColorRandB;
-	m_EffectState2D[m_nEffectPattern].Synthetic = Synthetic;
-	m_EffectState2D[m_nEffectPattern].nTexture = Texture;
-	m_EffectState2D[m_nEffectPattern].m_Distance = Distance;
-	m_EffectState2D[m_nEffectPattern].m_TexMove = m_TexMove;
-	m_EffectState2D[m_nEffectPattern].m_TexNum = m_TexNum;
-	m_EffectState2D[m_nEffectPattern].m_AnimPatternType = AnimPatternType;
-	m_EffectState2D[m_nEffectPattern].m_TexSplit = TexSplit;
-	m_EffectState2D[m_nEffectPattern].AnimCnt = AnimCnt;
-	m_EffectState2D[m_nEffectPattern].m_nType = nType;
-	m_EffectState2D[m_nEffectPattern].m_fHigth = fHigth;
-	m_EffectState2D[m_nEffectPattern].m_SecondSize = SecondSize;
-	m_EffectState2D[m_nEffectPattern].m_SecondCol = SecondCol;
-	m_EffectState2D[m_nEffectPattern].m_SecondChangecolor = SecondChangecolor;
+	m_EffectState2D[m_nEffectPattern2d].m_nPattern = nPattern + 1;
+	m_EffectState2D[m_nEffectPattern2d].m_fRotate = fRotate;
+	m_EffectState2D[m_nEffectPattern2d].m_move = move;
+	m_EffectState2D[m_nEffectPattern2d].m_Addmove = Addmove;
+	m_EffectState2D[m_nEffectPattern2d].m_nDiffusion = Diffusion;
+	m_EffectState2D[m_nEffectPattern2d].m_nDestroyvec = Destroyvec;
+	m_EffectState2D[m_nEffectPattern2d].m_fSize = fSize;
+	m_EffectState2D[m_nEffectPattern2d].m_fAddSize = fAddSize;
+	m_EffectState2D[m_nEffectPattern2d].m_Col = col;
+	m_EffectState2D[m_nEffectPattern2d].m_Changecolor = Changecolor;
+	m_EffectState2D[m_nEffectPattern2d].m_nLife = nLife;
+	m_EffectState2D[m_nEffectPattern2d].m_nDensity = nDensity;
+	m_EffectState2D[m_nEffectPattern2d].m_bColorRandR = bColorRandR;
+	m_EffectState2D[m_nEffectPattern2d].m_bColorRandG = bColorRandG;
+	m_EffectState2D[m_nEffectPattern2d].m_bColorRandB = bColorRandB;
+	m_EffectState2D[m_nEffectPattern2d].Synthetic = Synthetic;
+	m_EffectState2D[m_nEffectPattern2d].nTexture = Texture;
+	m_EffectState2D[m_nEffectPattern2d].m_Distance = Distance;
+	m_EffectState2D[m_nEffectPattern2d].m_TexMove = m_TexMove;
+	m_EffectState2D[m_nEffectPattern2d].m_TexNum = m_TexNum;
+	m_EffectState2D[m_nEffectPattern2d].m_AnimPatternType = AnimPatternType;
+	m_EffectState2D[m_nEffectPattern2d].m_TexSplit = TexSplit;
+	m_EffectState2D[m_nEffectPattern2d].AnimCnt = AnimCnt;
+	m_EffectState2D[m_nEffectPattern2d].m_nType = nType;
+	m_EffectState2D[m_nEffectPattern2d].m_fHigth = fHigth;
+	m_EffectState2D[m_nEffectPattern2d].m_SecondSize = SecondSize;
+	m_EffectState2D[m_nEffectPattern2d].m_SecondCol = SecondCol;
+	m_EffectState2D[m_nEffectPattern2d].m_SecondChangecolor = SecondChangecolor;
 
-	m_nEffectPattern++;
+	m_nEffectPattern2d++;
 }
 
 //=============================================================================
@@ -175,57 +177,57 @@ void CPresetEffect::SetEffectState3D(
 	D3DCOLORVALUE TherdChangecolor,
 	int SecondTex)
 {
-	m_EffectState3D[m_nEffectPattern].m_nPattern = nPattern;
-	m_EffectState3D[m_nEffectPattern].m_fRotate = m_fRotate;
-	m_EffectState3D[m_nEffectPattern].m_move = m_move;
-	m_EffectState3D[m_nEffectPattern].m_Addmove = m_Addmove;
-	m_EffectState3D[m_nEffectPattern].m_nDiffusion = m_nDiffusion;
-	m_EffectState3D[m_nEffectPattern].m_fSize = m_fSize;
-	m_EffectState3D[m_nEffectPattern].m_fAddSize = m_fAddSize;
-	m_EffectState3D[m_nEffectPattern].m_MaxSize = m_MaxSize;
-	m_EffectState3D[m_nEffectPattern].m_fParticleSize = m_fParticleSize;
-	m_EffectState3D[m_nEffectPattern].m_fParticleAddSize = m_fParticleAddSize;
-	m_EffectState3D[m_nEffectPattern].m_Col = m_Col;
-	m_EffectState3D[m_nEffectPattern].m_Changecolor = m_Changecolor;
-	m_EffectState3D[m_nEffectPattern].m_SecondCol = m_SecondCol;
-	m_EffectState3D[m_nEffectPattern].m_SecondChangecolor = m_SecondChangecolor;
-	m_EffectState3D[m_nEffectPattern].m_ParticleSynthetic = m_ParticleSynthetic;
-	m_EffectState3D[m_nEffectPattern].m_nLife = m_nLife;
-	m_EffectState3D[m_nEffectPattern].m_nDensity = m_nDensity;
-	m_EffectState3D[m_nEffectPattern].TrajectTop = TrajectTop;
-	m_EffectState3D[m_nEffectPattern].TrajectCur = TrajectCur;
-	m_EffectState3D[m_nEffectPattern].move3d = move3d;
-	m_EffectState3D[m_nEffectPattern].RandMove = RandMove;
-	m_EffectState3D[m_nEffectPattern].m_bColorRandR = bColorRandR;
-	m_EffectState3D[m_nEffectPattern].m_bColorRandG = bColorRandG;
-	m_EffectState3D[m_nEffectPattern].m_bColorRandB = bColorRandB;
-	m_EffectState3D[m_nEffectPattern].Synthetic = Synthetic;
-	m_EffectState3D[m_nEffectPattern].nTexture = Texture;
-	m_EffectState3D[m_nEffectPattern].m_Active = m_Active;
-	m_EffectState3D[m_nEffectPattern].m_nDistance = nDistance;
-	m_EffectState3D[m_nEffectPattern].ParticleTime = ParticleTime;
-	m_EffectState3D[m_nEffectPattern].m_fActiveAddSize = m_fActiveAddSize;
-	m_EffectState3D[m_nEffectPattern].m_FieldTime = m_FieldTime;
-	m_EffectState3D[m_nEffectPattern].m_fieldCreate = m_fieldCreate;
-	m_EffectState3D[m_nEffectPattern].mCreatePreset = mCreatePreset;
-	m_EffectState3D[m_nEffectPattern].m_nSecondTime = m_nSecondTime;
-	m_EffectState3D[m_nEffectPattern].m_nVtx = m_nVtx;
-	m_EffectState3D[m_nEffectPattern].m_nType = m_nType;
-	m_EffectState3D[m_nEffectPattern].m_TexMove = m_TexMove;
-	m_EffectState3D[m_nEffectPattern].m_TexNum = m_TexNum;
-	m_EffectState3D[m_nEffectPattern].m_SecondType = m_nSecondType;
-	m_EffectState3D[m_nEffectPattern].m_TexSplit = m_TexSplit;
-	m_EffectState3D[m_nEffectPattern].AnimCnt = AnimCnt;
-	m_EffectState3D[m_nEffectPattern].m_fHigth = fHigth;
-	m_EffectState3D[m_nEffectPattern].m_AnimPatternType = AnimPatternType;
-	m_EffectState3D[m_nEffectPattern].m_ControlBezier = ControlBezier;
-	m_EffectState3D[m_nEffectPattern].m_TherdCol = TherdCol;
-	m_EffectState3D[m_nEffectPattern].m_TherdChangecolor = TherdChangecolor;
-	m_EffectState3D[m_nEffectPattern].m_SecondTex = SecondTex;
+	m_EffectState3D[m_nEffectPattern3d].m_nPattern = nPattern;
+	m_EffectState3D[m_nEffectPattern3d].m_fRotate = m_fRotate;
+	m_EffectState3D[m_nEffectPattern3d].m_move = m_move;
+	m_EffectState3D[m_nEffectPattern3d].m_Addmove = m_Addmove;
+	m_EffectState3D[m_nEffectPattern3d].m_nDiffusion = m_nDiffusion;
+	m_EffectState3D[m_nEffectPattern3d].m_fSize = m_fSize;
+	m_EffectState3D[m_nEffectPattern3d].m_fAddSize = m_fAddSize;
+	m_EffectState3D[m_nEffectPattern3d].m_MaxSize = m_MaxSize;
+	m_EffectState3D[m_nEffectPattern3d].m_fParticleSize = m_fParticleSize;
+	m_EffectState3D[m_nEffectPattern3d].m_fParticleAddSize = m_fParticleAddSize;
+	m_EffectState3D[m_nEffectPattern3d].m_Col = m_Col;
+	m_EffectState3D[m_nEffectPattern3d].m_Changecolor = m_Changecolor;
+	m_EffectState3D[m_nEffectPattern3d].m_SecondCol = m_SecondCol;
+	m_EffectState3D[m_nEffectPattern3d].m_SecondChangecolor = m_SecondChangecolor;
+	m_EffectState3D[m_nEffectPattern3d].m_ParticleSynthetic = m_ParticleSynthetic;
+	m_EffectState3D[m_nEffectPattern3d].m_nLife = m_nLife;
+	m_EffectState3D[m_nEffectPattern3d].m_nDensity = m_nDensity;
+	m_EffectState3D[m_nEffectPattern3d].TrajectTop = TrajectTop;
+	m_EffectState3D[m_nEffectPattern3d].TrajectCur = TrajectCur;
+	m_EffectState3D[m_nEffectPattern3d].move3d = move3d;
+	m_EffectState3D[m_nEffectPattern3d].RandMove = RandMove;
+	m_EffectState3D[m_nEffectPattern3d].m_bColorRandR = bColorRandR;
+	m_EffectState3D[m_nEffectPattern3d].m_bColorRandG = bColorRandG;
+	m_EffectState3D[m_nEffectPattern3d].m_bColorRandB = bColorRandB;
+	m_EffectState3D[m_nEffectPattern3d].Synthetic = Synthetic;
+	m_EffectState3D[m_nEffectPattern3d].nTexture = Texture;
+	m_EffectState3D[m_nEffectPattern3d].m_Active = m_Active;
+	m_EffectState3D[m_nEffectPattern3d].m_nDistance = nDistance;
+	m_EffectState3D[m_nEffectPattern3d].ParticleTime = ParticleTime;
+	m_EffectState3D[m_nEffectPattern3d].m_fActiveAddSize = m_fActiveAddSize;
+	m_EffectState3D[m_nEffectPattern3d].m_FieldTime = m_FieldTime;
+	m_EffectState3D[m_nEffectPattern3d].m_fieldCreate = m_fieldCreate;
+	m_EffectState3D[m_nEffectPattern3d].mCreatePreset = mCreatePreset;
+	m_EffectState3D[m_nEffectPattern3d].m_nSecondTime = m_nSecondTime;
+	m_EffectState3D[m_nEffectPattern3d].m_nVtx = m_nVtx;
+	m_EffectState3D[m_nEffectPattern3d].m_nType = m_nType;
+	m_EffectState3D[m_nEffectPattern3d].m_TexMove = m_TexMove;
+	m_EffectState3D[m_nEffectPattern3d].m_TexNum = m_TexNum;
+	m_EffectState3D[m_nEffectPattern3d].m_SecondType = m_nSecondType;
+	m_EffectState3D[m_nEffectPattern3d].m_TexSplit = m_TexSplit;
+	m_EffectState3D[m_nEffectPattern3d].AnimCnt = AnimCnt;
+	m_EffectState3D[m_nEffectPattern3d].m_fHigth = fHigth;
+	m_EffectState3D[m_nEffectPattern3d].m_AnimPatternType = AnimPatternType;
+	m_EffectState3D[m_nEffectPattern3d].m_ControlBezier = ControlBezier;
+	m_EffectState3D[m_nEffectPattern3d].m_TherdCol = TherdCol;
+	m_EffectState3D[m_nEffectPattern3d].m_TherdChangecolor = TherdChangecolor;
+	m_EffectState3D[m_nEffectPattern3d].m_SecondTex = SecondTex;
 
 
 
-	m_nEffectPattern++;
+	m_nEffectPattern3d++;
 }
 
 

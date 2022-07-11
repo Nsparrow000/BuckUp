@@ -8,7 +8,6 @@
 #include "main.h"
 #include "plane.h"
 
-#define MAX_TEXTURE (16)
 
 class CSphere : public CScene3D
 {

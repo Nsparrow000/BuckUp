@@ -468,7 +468,7 @@ void CRenderer::DrawTextLeft()
 
 	RECT rect = { 900, 30, SCREEN_WIDTH, SCREEN_HEIGHT };
 	char str[1024];
-
+	CManager::MODE mode = CManager::GetMode();
 	int nNum = sprintf(&str[0], "\n");
 
 	nNum += sprintf(&str[nNum], "テクスチャ移動 U [+][-]：%.3f\n", CControl::GetTexMoveU());
@@ -480,12 +480,15 @@ void CRenderer::DrawTextLeft()
 	nNum += sprintf(&str[nNum], "テクスチャ分割数 V [+][-]：%.0f\n", CControl::GetSplitV());
 	nNum += sprintf(&str[nNum], "パターンカウント  [+][-]：%d\n", CControl::GetAnimCont());
 	nNum += sprintf(&str[nNum], "ランダム化  [+][-]：%d\n", CControl::GetAnimPatternType());
+	nNum += sprintf(&str[nNum], "プリセット再生[F2]\n");
+	if (mode == CManager::MODE_2D)
+	{
+		nNum += sprintf(&str[nNum], "プリセットロード[　]\n");
 
-	if (CManager::MODE mode = CManager::GetMode())
+	}
+	else if (mode == CManager::MODE_3D)
 	{
 
-	nNum += sprintf(&str[nNum], "プリセット再生[F1]\n");
-	nNum += sprintf(&str[nNum], "全てのプリセット再生[F2]\n");
 	nNum += sprintf(&str[nNum], "時間差付きでプリセット再生[F3]\n");
 
 	switch (CControl::GetPattern())

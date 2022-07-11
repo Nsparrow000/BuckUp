@@ -10,7 +10,7 @@
 #define TEXTURE_FILENAME_3D "data/Tex3DNameRead.txt"
 
 //ê√ìIÉÅÉìÉoïœêî
-LPDIRECT3DTEXTURE9 CPlane::m_pTexture[MAX_TEXTURE_FILED] = {};
+LPDIRECT3DTEXTURE9 CPlane::m_pTexture[MAX_TEXTURE] = {};
 int CPlane::m_nMaxTex = 0;
 
 CPlane::CPlane(int nPriority) : CScene3D::CScene3D(nPriority)

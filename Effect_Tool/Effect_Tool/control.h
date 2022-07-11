@@ -7,6 +7,7 @@
 #include "main.h"
 #include "manager.h"
 
+#include "scene.h"
 //=============================================================================
 //ƒ}ƒNƒ
 //=============================================================================
@@ -186,7 +187,19 @@ public:
 			m_nLife = 0;
 		}
 	}
-	static void AddTexture(int nTex) { m_nTex += nTex; }
+	static void AddTexture(int nTex) { 
+		m_nTex += nTex;
+		if (m_nTex >= MAX_TEXTURE)
+		{
+			m_nTex = MAX_TEXTURE;
+		}
+		else if (m_nTex <= 0)
+		{
+			m_nTex = 0;
+		}
+
+
+	}
 	static void AddDensity(int nDensity) { m_nDensity += nDensity;}
 	static void AddRotateAdd(float fAddRotate) { m_fAddRotate += fAddRotate; }
 	static void AddDiffusion(int Diffusion) { m_Diffusion += Diffusion; }

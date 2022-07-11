@@ -18,5 +18,5 @@ TEXTURE_FILENAME = data/Texture/2D/star.png					//４星
 TEXTURE_FILENAME = data/Texture/2D/HitDamage.png					//５ヒットエフェクト
 TEXTURE_FILENAME = data/Texture/2D/BulletHoll.png					//６弾痕
 TEXTURE_FILENAME = data/Texture/2D/Smoke.png					//7煙
-
+TEXTURE_FILENAME = data/Texture/2D/Muzzleflash.png			//８マズルフラッシュ
 END_SCRIPT
