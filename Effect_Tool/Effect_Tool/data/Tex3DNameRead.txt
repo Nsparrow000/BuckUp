@@ -30,5 +30,6 @@ TEXTURE_FILENAME = data/TEXTURE/3DEffect/Test.png			//21頂点テスト
 TEXTURE_FILENAME = data/TEXTURE/3DEffect/BulletHoll.png			//22弾痕
 TEXTURE_FILENAME = data/TEXTURE/3DEffect/smoke3.png			//23煙３
 TEXTURE_FILENAME = data/TEXTURE/3DEffect/blood2.png			//24血
+TEXTURE_FILENAME = data/TEXTURE/3DEffect/BrownSmoke.png			//25茶色
 
 END_SCRIPT
