@@ -3,11 +3,6 @@
 #*********************************************************
 
 #*********************************************************
-#最大テクスチャ数
-#*********************************************************
-NUM_TEXTURE = 3
-
-#*********************************************************
 # テクスチャファイル名
 #*********************************************************
 TEXTURE_FILENAME = data/TEXTURE/3DEffect/field000.jpg				//０地面
@@ -33,5 +28,7 @@ TEXTURE_FILENAME = data/TEXTURE/3DEffect/Thunder5.png			//１９アニメーションサン
 TEXTURE_FILENAME = data/TEXTURE/3DEffect/MuzzleflashLow.png			//20マズルフラッシュ
 TEXTURE_FILENAME = data/TEXTURE/3DEffect/Test.png			//21頂点テスト
 TEXTURE_FILENAME = data/TEXTURE/3DEffect/BulletHoll.png			//22弾痕
+TEXTURE_FILENAME = data/TEXTURE/3DEffect/smoke3.png			//23煙３
+TEXTURE_FILENAME = data/TEXTURE/3DEffect/blood2.png			//24血
 
 END_SCRIPT

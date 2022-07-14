@@ -267,6 +267,10 @@ void CBillEffect::Draw()
 		pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
 		pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ONE);
 	}
+	else if (m_nSynthenic == 2)
+	{
+		//合成使用無し
+	}
 	//それ以外の数値は加算合成に
 	else
 	{
