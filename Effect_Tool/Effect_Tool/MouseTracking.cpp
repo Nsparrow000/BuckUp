@@ -103,7 +103,7 @@ void CMouseTracking::Update()
 		m_bUninit = true;
 	}
 
-
+	m_fAngle = 0.0f;
 	CScene2D::SetRotate(pos, -m_fAngle + D3DX_PI / 4 + m_SerectRot.y, -m_fAngle + D3DX_PI / 4 + m_SerectRot.y, m_Size.x);
 	ColorChange(m_Color);
 

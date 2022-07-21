@@ -294,6 +294,10 @@ void CEffect::Draw()
 		pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
 		pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ONE);
 	}
+	else if (m_nSynthetic == 2)
+	{
+
+	}
 	//‚»‚êˆÈŠO‚Ì”’l‚Í‰ÁZ‡¬‚É
 	else
 	{
