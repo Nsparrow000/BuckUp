@@ -207,6 +207,9 @@
     <ClCompile Include="BulletHoll.cpp">
       <Filter>ソース ファイル\3D\Effect</Filter>
     </ClCompile>
+    <ClCompile Include="Fountain.cpp">
+      <Filter>ソース ファイル\3D\Effect\BillBoard</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="control.h">
@@ -340,6 +343,9 @@
     </ClInclude>
     <ClInclude Include="BulletHoll.h">
       <Filter>ヘッダー ファイル\3D\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Fountain.h">
+      <Filter>ヘッダー ファイル\3D\Effect\BillBoard</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

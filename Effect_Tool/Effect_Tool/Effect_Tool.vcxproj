@@ -32,6 +32,7 @@
     <ClCompile Include="fade.cpp" />
     <ClCompile Include="field.cpp" />
     <ClCompile Include="FieldEffect.cpp" />
+    <ClCompile Include="Fountain.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="IntermediateSave.cpp" />
     <ClCompile Include="keyboard.cpp" />
@@ -78,6 +79,7 @@
     <ClInclude Include="fade.h" />
     <ClInclude Include="field.h" />
     <ClInclude Include="FieldEffect.h" />
+    <ClInclude Include="Fountain.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="IntermediateSave.h" />
     <ClInclude Include="keyboard.h" />
