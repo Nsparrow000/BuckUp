@@ -553,6 +553,16 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 				fprintf(pFile, "	DENSITY = %d						//密度\n", CControl::GetDensity());
 
 				break;
+			case(10):
+				fprintf(pFile, "	SIZE = %.1f						//大きさ\n", CControl::GetSize());
+				fprintf(pFile, "	ADDSIZE = %.1f					//大きさ変動\n", CControl::GetChangeSize());
+				fprintf(pFile, "	DENSITY = %d						//密度\n", CControl::GetDensity());
+
+				fprintf(pFile, "	MOVE = %.1f %.1f %.1f						//移動関係(移動速度、上昇、重力)\n", CControl::Getmove3d().x, CControl::Getmove3d().y, CControl::Getmove3d().z);
+				fprintf(pFile, "	DIFFUSION = %d					//拡散率\n", m_Diffusion);
+				fprintf(pFile, "	TYPE = %d					//上昇量ランダム\n", CControl::GetType());
+
+				break;
 			default:
 				assert(false);
 				break;

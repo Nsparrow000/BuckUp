@@ -36,18 +36,47 @@ HRESULT CFountain::Init(D3DXVECTOR3 pos,
 	D3DXVECTOR2 nSplit,
 	ANIMPATTERN AnimPattern,
 	D3DXVECTOR3 move,
-	D3DXVECTOR3 Target)
+	D3DXVECTOR3 Target,
+	int Diffusion,
+	int Synhetic,
+	HIGHT_PATTERN HigthPattrn)
 {
 	CBillEffect::Init(Size, MinSize, color, Mincolor, nTex, nLife, TexNum, TexMove, nAnimCounter, nSplit, AnimPattern);
 
-	D3DXVECTOR3 Target = Target;
+	D3DXVECTOR3 T = Target;
 	D3DXVECTOR3 V = pos - Target;
+
+
 
 	m_fAngle = atan2(V.x, V.z);
 
-	m_pos = pos;
-	m_move = move;
+	//ƒ‰ƒ“ƒ_ƒ€ŠgŽU—¦
+	int Lowest = Diffusion;
+	if (Lowest <= 0)
+	{
+		Lowest = 1;
+	}
+	float randAngle = float(rand() % Lowest) - float(rand() % Lowest);
+	randAngle /= 100.0f;
+	m_fAngle += randAngle;
 
+	if (HigthPattrn == HIGHT_RAND)
+	{
+		move.y * 100;
+
+		float randHight = float(rand() % (int)move.y) - float(rand() % (int)move.y);
+		move.y = randHight;
+
+		m_move = move;
+	}
+	else
+	{
+		m_move = move;
+	}
+	m_pos = pos;
+
+	m_nSynthenic = Synhetic;
+	SetPos(m_pos);
 	return S_OK;
 }
 
@@ -64,7 +93,12 @@ void CFountain::Uninit()
 //=============================================================================
 void CFountain::Update()
 {
+	m_pos += D3DXVECTOR3(sinf(m_fAngle) *m_move.x, m_move.y, cosf(m_fAngle) * m_move.x);
 
+	m_move.y += m_move.z;
+
+	SetPos(m_pos);
+	CBillEffect::Update();
 }
 
 //=============================================================================
@@ -90,13 +124,19 @@ CFountain *CFountain::Create(D3DXVECTOR3 pos,
 	D3DXVECTOR2 nSplit,
 	ANIMPATTERN AnimPattern,
 	D3DXVECTOR3 move,
-	D3DXVECTOR3 Target)
+	D3DXVECTOR3 Target,
+	int Diffusion,
+	int Synhetic,
+	HIGHT_PATTERN HigthPattrn)
 {
 	CFountain *pFountain = new CFountain(CManager::PRIORITY_EFFECT);
 
 	if (pFountain != NULL)
 	{
-		pFountain->Init(pos, Size, MinSize, color, Mincolor, nTex, nLife, TexNum, TexMove, nAnimCounter, nSplit, AnimPattern, move, Target);
+		pFountain->Init(pos, Size, MinSize, color, Mincolor, nTex, nLife, TexNum,
+			TexMove, nAnimCounter, nSplit,
+			AnimPattern, move, Target,
+			Diffusion, Synhetic, HigthPattrn);
 	}
 
 	return pFountain;

@@ -114,7 +114,7 @@ HRESULT CRenderer::Init(HWND hWnd, bool bWindow)
 	D3DXCreateFont(m_pD3DDevice, 20, 0, 0, 0, FALSE, SHIFTJIS_CHARSET,
 		OUT_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH, "Terminal", &m_pFont);		//文字の大きさ
 
-	m_pCamera = CCamera::Create(D3DXVECTOR3(0.0f, 200.0f, -300.0f), 700.0f, D3DXVECTOR3(0.0f, 0.0f, 0.0f));
+	m_pCamera = CCamera::Create(D3DXVECTOR3(0.0f, 200.0f, -300.0f), 900.0f, D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 	
 
 	return S_OK;
@@ -427,6 +427,15 @@ void CRenderer::DrawText()
 				nNum += sprintf(&str[nNum], "軌跡合成 [+][-]：%d\n", CControl::GetParticleSynthetic());
 				break;
 			case(9):
+				break;
+			case(10):
+				nNum += sprintf(&str[nNum], "移動 [+][-]：%.1f\n", CControl::Getmove3d().x);
+				nNum += sprintf(&str[nNum], "上昇 [+][-]：%.1f\n", CControl::Getmove3d().y);
+				nNum += sprintf(&str[nNum], "重力 [+][-]：%.1f\n", CControl::Getmove3d().z);
+
+				nNum += sprintf(&str[nNum], "拡散率 [+][-]：(%.2f)\n", (float)CControl::GetDiffusion() / 100);
+				nNum += sprintf(&str[nNum], "上昇ランダム [+][-]：(%d)\n", CControl::GetType());
+
 				break;
 			default:
 				break;

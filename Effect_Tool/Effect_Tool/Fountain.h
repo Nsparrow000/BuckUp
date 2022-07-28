@@ -11,6 +11,14 @@
 class CFountain : public CBillEffect
 {
 public:
+	typedef enum
+	{
+		HIGHT_NOMAL,
+		HIGHT_RAND,
+		HIGHT_MAX,
+	} HIGHT_PATTERN;
+
+
 	CFountain(int nPriority);
 	~CFountain();
 
@@ -26,7 +34,10 @@ public:
 		D3DXVECTOR2 nSplit,
 		ANIMPATTERN AnimPattern,
 		D3DXVECTOR3 move,
-		D3DXVECTOR3 Target);
+		D3DXVECTOR3 Target,
+		int Diffusion,
+		int Synhetic,
+		HIGHT_PATTERN HigthPattrn);
 
 	void Uninit();
 	void Update();
@@ -44,12 +55,14 @@ public:
 		D3DXVECTOR2 nSplit,
 		ANIMPATTERN AnimPattern,
 		D3DXVECTOR3 move,
-		D3DXVECTOR3 Target);
+		D3DXVECTOR3 Target,
+		int Diffusion,
+		int Synhetic,
+		HIGHT_PATTERN HigthPattrn);
 
 private:
 	D3DXVECTOR3 m_pos;	//èoåªà íu
 	D3DXVECTOR3 m_move;	//à⁄ìÆíl
-
 	float m_fAngle;
 };
 #endif

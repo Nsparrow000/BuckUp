@@ -133,7 +133,7 @@ void CButten::Update()
 				if (m_PushDeley == true)
 				{
 					m_DeleyTime++;
-					if (m_DeleyTime > 5)
+					if (m_DeleyTime > 2)
 					{
 						m_DeleyTime = 0;
 						m_fAlpha = 150.0f;

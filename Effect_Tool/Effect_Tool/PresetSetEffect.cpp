@@ -386,7 +386,6 @@ void CPresetEffect::SetEffect2D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 		break;
 
 	default:
-		assert(false);
 		break;
 	}
 }

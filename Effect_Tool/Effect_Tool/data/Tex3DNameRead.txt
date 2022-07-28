@@ -31,5 +31,6 @@ TEXTURE_FILENAME = data/TEXTURE/3DEffect/BulletHoll.png			//22íeç≠
 TEXTURE_FILENAME = data/TEXTURE/3DEffect/smoke3.png			//23âåÇR
 TEXTURE_FILENAME = data/TEXTURE/3DEffect/blood2.png			//24åå
 TEXTURE_FILENAME = data/TEXTURE/3DEffect/BrownSmoke.png			//25íÉêF
+TEXTURE_FILENAME = data/TEXTURE/3DEffect/blood3.png			//26åå
 
 END_SCRIPT

@@ -17,6 +17,7 @@
 #include "SphereEffect.h"
 #include "ThunderBill.h"
 #include "BulletHoll.h"
+#include "Fountain.h"
 
 #include <assert.h>
 //*****************************************************************************
@@ -267,6 +268,20 @@ void CSetEffect3D::SetEffect()
 				CControl::GetSynthetic(),
 				(CBillEffect::ANIMPATTERN)CControl::GetAnimPatternType()
 			);
+			break;
+		case(10):
+			CFountain::Create(D3DXVECTOR3(0.0f, 50.0f, 0.0f),
+				D3DXVECTOR3(CControl::GetSize(), CControl::GetSize(), 0.0f),
+				D3DXVECTOR3(CControl::GetChangeSize(), CControl::GetChangeSize(), 0.0f),
+				D3DXCOLOR((float)CControl::GetControlCoror(1), (float)CControl::GetControlCoror(2), (float)CControl::GetControlCoror(3), (float)CControl::GetControlCoror(4)),
+				D3DXCOLOR((float)CControl::GetChangeCol(1), (float)CControl::GetChangeCol(2), (float)CControl::GetChangeCol(3), (float)CControl::GetChangeCol(4)),
+				CControl::GetTex(),
+				CControl::GetLife(), CControl::GetTexNum(),
+				D3DXVECTOR2(CControl::GetTexMoveU(), CControl::GetTexMoveV()), CControl::GetAnimCont(),
+				D3DXVECTOR2(CControl::GetSplitU(), CControl::GetSplitV()),
+				(CBillEffect::ANIMPATTERN)CControl::GetAnimPatternType(),
+				CControl::Getmove3d(), D3DXVECTOR3(100.0f, 100.0f, 100.0f), CControl::GetDiffusion(),CControl::GetSynthetic(),
+				(CFountain::HIGHT_PATTERN)CControl::GetType());
 			break;
 		default:
 			assert(false);

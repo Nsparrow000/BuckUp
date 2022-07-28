@@ -217,6 +217,17 @@ void CIntermeiateSave::IntermeiateSave(CManager::MODE mode, int nPattern, const 
 				fprintf(pFile, "	DENSITY = %d						//–§“x\n", CControl::GetDensity());
 
 				break;
+			case(10):
+				fprintf(pFile, "	SIZE = %.1f						//‘å‚«‚³\n", CControl::GetSize());
+				fprintf(pFile, "	ADDSIZE = %.1f					//‘å‚«‚³•Ï“®\n", CControl::GetChangeSize());
+				fprintf(pFile, "	DENSITY = %d						//–§“x\n", CControl::GetDensity());
+
+				fprintf(pFile, "	MOVE = %.1f %.1f %.1f						//ˆÚ“®ŠÖŒW\n", CControl::Getmove3d().x, CControl::Getmove3d().y, CControl::Getmove3d().z);
+				fprintf(pFile, "	DIFFUSION = %d					//ŠgU—¦\n", CControl::GetDiffusion());
+
+				fprintf(pFile, "	TYPE = %d					//ã¸—Êƒ‰ƒ“ƒ_ƒ€\n", CControl::GetType());
+
+				break;
 			default:
 				break;
 			}
