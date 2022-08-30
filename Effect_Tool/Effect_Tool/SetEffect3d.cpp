@@ -31,6 +31,8 @@ int CSetEffect3D::m_MousePushTime = 0.0f;
 bool CSetEffect3D::m_PushDeley = false;
 int CSetEffect3D::m_DeleyTime = 0.0f;
 
+D3DXVECTOR3 CSetEffect3D::m_Targetpos = {};
+
 //*****************************************************************************
 //マクロ
 //*****************************************************************************
@@ -97,6 +99,17 @@ void CSetEffect3D::Update()
 		}
 	}
 
+	CScene *pScene = GetScene(CManager::PRIORITY_SET);
+	while (pScene)
+	{
+		CScene *pSceneNext;
+		pSceneNext = pScene->GetNext();
+		if (pScene->GetObjType() == CScene::OBJECTTYPE_PLAYER)
+		{
+			m_Targetpos = pScene->GetPos();
+		}
+		pScene = pSceneNext;
+	}
 
 	//エフェクト発生
 	if (m_pMouse->GetMouseButton(CMouse::DIM_L) == true)
@@ -280,7 +293,7 @@ void CSetEffect3D::SetEffect()
 				D3DXVECTOR2(CControl::GetTexMoveU(), CControl::GetTexMoveV()), CControl::GetAnimCont(),
 				D3DXVECTOR2(CControl::GetSplitU(), CControl::GetSplitV()),
 				(CBillEffect::ANIMPATTERN)CControl::GetAnimPatternType(),
-				CControl::Getmove3d(), D3DXVECTOR3(100.0f, 100.0f, 100.0f), CControl::GetDiffusion(),CControl::GetSynthetic(),
+				CControl::Getmove3d(), m_Targetpos, CControl::GetDiffusion(),CControl::GetSynthetic(),
 				(CFountain::HIGHT_PATTERN)CControl::GetType());
 			break;
 		default:

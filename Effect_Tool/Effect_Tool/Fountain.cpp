@@ -44,7 +44,7 @@ HRESULT CFountain::Init(D3DXVECTOR3 pos,
 	CBillEffect::Init(Size, MinSize, color, Mincolor, nTex, nLife, TexNum, TexMove, nAnimCounter, nSplit, AnimPattern);
 
 	D3DXVECTOR3 T = Target;
-	D3DXVECTOR3 V = pos - Target;
+	D3DXVECTOR3 V = Target - pos;
 
 
 

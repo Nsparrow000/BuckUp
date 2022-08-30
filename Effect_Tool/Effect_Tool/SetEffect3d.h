@@ -34,6 +34,7 @@ private:
 	CKeyboard *m_pKeyboard;
 	bool m_bOne;
 	int m_ParticleTime;
+	static D3DXVECTOR3 m_Targetpos;
 
 	static bool m_MouseButtenPush;	//ƒ{ƒ^ƒ“‰Ÿ‚µ‚Ä‚é‚©
 	static int m_MousePushTime;	//‰Ÿ‚µ‚Ä‚éŽžŠÔ
