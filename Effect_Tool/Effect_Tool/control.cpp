@@ -21,7 +21,6 @@
 #define RAND_COLOR (float(rand()% 255) + 5)	//ランダムカラー
 
 #define BUTTEN_SIZE (18)	//ボタンサイズ
-
 #define SAVE_TEXT "data/SaveText.txt"	//セーブするテキストファイル
 
 //*****************************************************************************

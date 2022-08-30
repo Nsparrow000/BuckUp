@@ -681,24 +681,27 @@ void CPresetEffect::SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 			(CBillEffect::ANIMPATTERN)m_EffectState3D[nPattern].m_AnimPatternType);
 		break;
 	case(10):
-		CFountain::Create(pos,
-			D3DXVECTOR3(m_EffectState3D[nPattern].m_fSize, m_EffectState3D[nPattern].m_fSize, 0.0f),
-			D3DXVECTOR3(m_EffectState3D[nPattern].m_fAddSize, m_EffectState3D[nPattern].m_fAddSize, 0.0f),
-			m_EffectState3D[nPattern].m_Col,
-			m_EffectState3D[nPattern].m_Changecolor,
-			m_EffectState3D[nPattern].nTexture,
-			m_EffectState3D[nPattern].m_nLife,
-			m_EffectState3D[nPattern].m_TexNum,
-			m_EffectState3D[nPattern].m_TexMove,
-			m_EffectState3D[nPattern].AnimCnt,
-			m_EffectState3D[nPattern].m_TexSplit,
-			(CBillEffect::ANIMPATTERN)m_EffectState3D[nPattern].m_AnimPatternType,
-			m_EffectState3D[nPattern].move3d,
-			Endpos,
-			m_EffectState3D[nPattern].m_nDiffusion,
-			m_EffectState3D[nPattern].Synthetic,
-			(CFountain::HIGHT_PATTERN)m_EffectState3D[nPattern].m_nType
-		);
+		for (int nCnt = 0; nCnt < m_EffectState3D[nPattern].m_nDensity; nCnt++)
+		{
+			CFountain::Create(pos,
+				D3DXVECTOR3(m_EffectState3D[nPattern].m_fSize, m_EffectState3D[nPattern].m_fSize, 0.0f),
+				D3DXVECTOR3(m_EffectState3D[nPattern].m_fAddSize, m_EffectState3D[nPattern].m_fAddSize, 0.0f),
+				m_EffectState3D[nPattern].m_Col,
+				m_EffectState3D[nPattern].m_Changecolor,
+				m_EffectState3D[nPattern].nTexture,
+				m_EffectState3D[nPattern].m_nLife,
+				m_EffectState3D[nPattern].m_TexNum,
+				m_EffectState3D[nPattern].m_TexMove,
+				m_EffectState3D[nPattern].AnimCnt,
+				m_EffectState3D[nPattern].m_TexSplit,
+				(CBillEffect::ANIMPATTERN)m_EffectState3D[nPattern].m_AnimPatternType,
+				m_EffectState3D[nPattern].move3d,
+				Endpos,
+				m_EffectState3D[nPattern].m_nDiffusion,
+				m_EffectState3D[nPattern].Synthetic,
+				(CFountain::HIGHT_PATTERN)m_EffectState3D[nPattern].m_nType
+			);
+		}
 		break;
 	}
 }
