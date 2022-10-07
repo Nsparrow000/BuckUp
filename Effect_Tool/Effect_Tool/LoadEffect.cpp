@@ -58,6 +58,8 @@ void CLoadEffect::EffectStateLoad(const char *aFileName)
 	int Destroyvec = 0;
 	float fSize = 0;
 	float fAddSize = 0;
+	float fSizeY = 0;
+	float fAddSizeY = 0;
 	float fRotate = 0;
 	D3DCOLORVALUE col;
 	D3DCOLORVALUE ChangeColor;
@@ -297,6 +299,17 @@ void CLoadEffect::EffectStateLoad(const char *aFileName)
 					fscanf(pFile, "%s", &aFile[0]);
 					fscanf(pFile, "%f", &fAddSize);
 				}
+				if (strcmp(&aFile[0], "SIZEY") == 0)	//大きさ
+				{
+					fscanf(pFile, "%s", &aFile[0]);
+					fscanf(pFile, "%f", &fSizeY);
+				}
+				if (strcmp(&aFile[0], "ADDSIZEY") == 0)	//大きさ加算
+				{
+					fscanf(pFile, "%s", &aFile[0]);
+					fscanf(pFile, "%f", &fAddSizeY);
+				}
+
 				if (strcmp(&aFile[0], "MAXSIZE") == 0)	//最大の大きさ
 				{
 					fscanf(pFile, "%s", &aFile[0]);
@@ -529,7 +542,7 @@ void CLoadEffect::EffectStateLoad(const char *aFileName)
 			if (strcmp(&aFile[0], "END_EFFECTSTATE3D") == 0)
 			{
 				bEffectState3D = false;
-				CPresetEffect::SetEffectState3D(nPattern, fRotate, move3d, Addmove3d, Diffusion, fSize, fAddSize, MaxSize, ParticleSize,
+				CPresetEffect::SetEffectState3D(nPattern, fRotate, move3d, Addmove3d, Diffusion, fSize, fAddSize,fSizeY,fAddSizeY, MaxSize, ParticleSize,
 					ParticleAddSize, Active, col, ChangeColor, Secondcol, SecondChangeColor, SecondSynthetic, nLife, Density, TrajectTop, TrajectCur, Move3D, RandMove,
 					(bool)bRandColR, (bool)bRandColG, (bool)bRandColB,
 					nSynthetic, nTexture, Distance, ParticleTime, fActiveAddSize,
@@ -589,17 +602,17 @@ void CLoadEffect::EffectOrder(const char *aFileName)	//エフェクトオーダー
 			{
 				if (bLodeOrder == true)
 				{
-					if (strcmp(&aFile[0], "DELEY") == 0)		//発生距離
+					if (strcmp(&aFile[0], "DELEY") == 0)		//発生ディレイ
 					{
 						fscanf(pFile, "%s", &aFile[0]);
 						fscanf(pFile, "%d", &nDeley);
 					}
-					if (strcmp(&aFile[0], "PRESETNUM") == 0)		//発生距離
+					if (strcmp(&aFile[0], "PRESETNUM") == 0)		//発生プリセット
 					{
 						fscanf(pFile, "%s", &aFile[0]);
 						fscanf(pFile, "%d", &nPatternNum);
 					}
-					if (strcmp(&aFile[0], "ORDER") == 0)		//発生距離
+					if (strcmp(&aFile[0], "ORDER") == 0)		//発生プリセット
 					{
 						fscanf(pFile, "%s", &aFile[0]);
 						fscanf(pFile, "%d %d %d %d %d %d %d %d", &nOrder[0], &nOrder[1], &nOrder[2], &nOrder[3], &nOrder[4], &nOrder[5], &nOrder[6], &nOrder[7]);

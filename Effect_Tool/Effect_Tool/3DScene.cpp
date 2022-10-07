@@ -137,7 +137,7 @@ void C3DScene::Update()
 			for (int nCnt = 0; nCnt < CLoadEffect::GetPresetTotal3D(); nCnt++)
 			{
 
-				CPresetEffect::SetEffect3D(nCnt, D3DXVECTOR3(0.0f, 50.0f, 0.0f), D3DXVECTOR3(0.0f, 0.0f, 0.0f), {});
+				CPresetEffect::SetEffect3D(nCnt, D3DXVECTOR3(0.0f, 50.0f, 0.0f), D3DXVECTOR3(100.0f, 0.0f, 100.0f), {});
 			}
 		}
 		if (m_pKeyboard->GetKey(DIK_F3) == true)

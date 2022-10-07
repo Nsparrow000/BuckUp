@@ -38,6 +38,11 @@ D3DCOLORVALUE CControl::m_ControlChangeCol = {};
 
 float CControl::m_ControlSize = 0;
 float CControl::m_ControlChangeSize = 0;
+float CControl::m_ControlSizeY = 0;
+float CControl::m_ControlChangeSizeY = 0;
+
+
+
 int CControl::m_nLife = 0;
 int CControl::m_nTex = 0;
 
@@ -100,7 +105,6 @@ D3DXVECTOR3 CControl::m_ContorolBezier = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
 int CControl::m_SecondTex = 1;
 int CControl::m_AnimPatternType = 0;
 
-
 //*****************************************************************************
 //コンストラクタ
 //*****************************************************************************
@@ -158,6 +162,9 @@ HRESULT CControl::Init()
 
 	m_ControlSize = 20;
 	m_ControlChangeSize = 0;
+	m_ControlSizeY = 20;
+	m_ControlChangeSizeY = 0;
+
 	m_nLife = 100;
 	m_nTex = 1;
 	m_nDensity = 1;
@@ -441,6 +448,9 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 			case(1):
 				fprintf(pFile, "	SIZE = %.1f						//大きさ\n", CControl::GetSize());
 				fprintf(pFile, "	ADDSIZE = %.1f					//大きさ変動\n", CControl::GetChangeSize());
+				fprintf(pFile, "	SIZEY = %.1f						//Y大きさ\n", CControl::GetSizeY());
+				fprintf(pFile, "	ADDSIZEY = %.1f					//Y大きさ変動\n", CControl::GetChangeSizeY());
+
 				fprintf(pFile, "	DENSITY = %d						//密度\n", CControl::GetDensity());
 
 				fprintf(pFile, "	MOVE3D = %.1f %.1f %.1f					//移動\n", CControl::Getmove3d().x, CControl::Getmove3d().y, CControl::Getmove3d().z);
@@ -454,6 +464,9 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 			case(2):
 				fprintf(pFile, "	SIZE = %.1f						//大きさ\n", CControl::GetSize());
 				fprintf(pFile, "	ADDSIZE = %.1f					//大きさ変動\n", CControl::GetChangeSize());
+				fprintf(pFile, "	SIZEY = %.1f						//Y大きさ\n", CControl::GetSizeY());
+				fprintf(pFile, "	ADDSIZEY = %.1f					//Y大きさ変動\n", CControl::GetChangeSizeY());
+
 				fprintf(pFile, "	DENSITY = %d						//密度\n", CControl::GetDensity());
 
 				fprintf(pFile, "	RANDMOVE = %d				//移動値\n", CControl::GetRandMove1());
@@ -466,6 +479,9 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 				fprintf(pFile, "	MOVE = %.1f						//移動\n", CControl::Getmove3d().x);
 				fprintf(pFile, "	SIZE = %.1f						//大きさ\n", CControl::GetSize());
 				fprintf(pFile, "	ADDSIZE = %.1f					//大きさ変動\n", CControl::GetChangeSize());
+				fprintf(pFile, "	SIZEY = %.1f						//Y大きさ\n", CControl::GetSizeY());
+				fprintf(pFile, "	ADDSIZEY = %.1f					//Y大きさ変動\n", CControl::GetChangeSizeY());
+
 				fprintf(pFile, "	DENSITY = %d						//粒密度\n", CControl::GetDensity());
 
 				fprintf(pFile, "	PARTICLESIZE = %.1f						//粒サイズ\n", CControl::GetParticleSize());
@@ -484,6 +500,9 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 				fprintf(pFile, "	FIELDTIME = 10			//フィールド生成間隔\n");
 				fprintf(pFile, "	FIELDCREATE = 0			//フィールド生成するか\n");
 				fprintf(pFile, "	CREATEPRESET = 0					//生成プリセット\n");
+
+				fprintf(pFile, "	SECONDTIME = %d						//フィールドが消える時間\n", CControl::GetSecondTime());
+
 				break;
 			case(4):
 
@@ -496,6 +515,9 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 			case(5):
 				fprintf(pFile, "	SIZE = %.1f						//大きさ\n", CControl::GetSize());
 				fprintf(pFile, "	ADDSIZE = %.1f					//大きさ変動\n", CControl::GetChangeSize());
+				fprintf(pFile, "	SIZEY = %.1f						//Y大きさ\n", CControl::GetSizeY());
+				fprintf(pFile, "	ADDSIZEY = %.1f					//Y大きさ変動\n", CControl::GetChangeSizeY());
+
 				fprintf(pFile, "	DENSITY = %d						//粒密度\n", CControl::GetDensity());
 				fprintf(pFile, "	ROTATE = %.2f						//回転\n", CControl::GetRotate());
 				fprintf(pFile, "	DISTANCE = %.1f						//粒の発生距離\n", CControl::GetDistance());
@@ -510,6 +532,8 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 			case(6):
 				fprintf(pFile, "	SIZE = %.1f						//大きさ\n", CControl::GetSize());
 				fprintf(pFile, "	ADDSIZE = %.1f					//大きさ変動\n", CControl::GetChangeSize());
+				fprintf(pFile, "	SIZEY = %.1f						//Y大きさ\n", CControl::GetSizeY());
+				fprintf(pFile, "	ADDSIZEY = %.1f					//Y大きさ変動\n", CControl::GetChangeSizeY());
 
 				fprintf(pFile, "	ROTATE = %.2f						//回転\n", CControl::GetRotate());
 				fprintf(pFile, "	VTX = %d						//頂点数\n", CControl::GetVtx());
@@ -520,6 +544,8 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 			case(7):
 				fprintf(pFile, "	SIZE = %.1f						//大きさ\n", CControl::GetSize());
 				fprintf(pFile, "	ADDSIZE = %.1f					//大きさ変動\n", CControl::GetChangeSize());
+				fprintf(pFile, "	SIZEY = %.1f						//Y大きさ\n", CControl::GetSizeY());
+				fprintf(pFile, "	ADDSIZEY = %.1f					//Y大きさ変動\n", CControl::GetChangeSizeY());
 
 				fprintf(pFile, "	DISTANCE = %.1f						//上発生距離\n", CControl::GetDistance());
 				fprintf(pFile, "	HIGTH = %.1f						//上距離\n", CControl::GetHigth());
@@ -528,6 +554,9 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 			case(8):
 				fprintf(pFile, "	SIZE = %.1f						//大きさ\n", CControl::GetSize());
 				fprintf(pFile, "	ADDSIZE = %.1f					//大きさ変動\n", CControl::GetChangeSize());
+				fprintf(pFile, "	SIZEY = %.1f						//Y大きさ\n", CControl::GetSizeY());
+				fprintf(pFile, "	ADDSIZEY = %.1f					//Y大きさ変動\n", CControl::GetChangeSizeY());
+
 				fprintf(pFile, "	DENSITY = %d						//密度\n", CControl::GetDensity());
 
 				fprintf(pFile, "	CONTROLBEZIER = %.1f %.1f %.1f						//ベジェ制御点\n", CControl::GetContorolBezierX(), CControl::GetContorolBezierY(), CControl::GetContorolBezierZ());
@@ -549,15 +578,21 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 			case(9):
 				fprintf(pFile, "	SIZE = %.1f						//大きさ\n", CControl::GetSize());
 				fprintf(pFile, "	ADDSIZE = %.1f					//大きさ変動\n", CControl::GetChangeSize());
+				fprintf(pFile, "	SIZEY = %.1f						//Y大きさ\n", CControl::GetSizeY());
+				fprintf(pFile, "	ADDSIZEY = %.1f					//Y大きさ変動\n", CControl::GetChangeSizeY());
+
 				fprintf(pFile, "	DENSITY = %d						//密度\n", CControl::GetDensity());
 
 				break;
 			case(10):
 				fprintf(pFile, "	SIZE = %.1f						//大きさ\n", CControl::GetSize());
 				fprintf(pFile, "	ADDSIZE = %.1f					//大きさ変動\n", CControl::GetChangeSize());
+				fprintf(pFile, "	SIZEY = %.1f						//Y大きさ\n", CControl::GetSizeY());
+				fprintf(pFile, "	ADDSIZEY = %.1f					//Y大きさ変動\n", CControl::GetChangeSizeY());
+
 				fprintf(pFile, "	DENSITY = %d						//密度\n", CControl::GetDensity());
 
-				fprintf(pFile, "	MOVE = %.1f %.1f %.1f						//移動関係(移動速度、上昇、重力)\n", CControl::Getmove3d().x, CControl::Getmove3d().y, CControl::Getmove3d().z);
+				fprintf(pFile, "	MOVE3D = %.2f %.2f %.2f						//移動関係(移動速度、上昇、重力)\n", CControl::Getmove3d().x, CControl::Getmove3d().y, CControl::Getmove3d().z);
 				fprintf(pFile, "	DIFFUSION = %d					//拡散率\n", m_Diffusion);
 				fprintf(pFile, "	TYPE = %d					//上昇量ランダム\n", CControl::GetType());
 
@@ -569,7 +604,7 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 			fprintf(pFile, "	COLOR = %d %d %d %d			//カラー\n", (int)CControl::GetControlCoror(1), (int)CControl::GetControlCoror(2), (int)CControl::GetControlCoror(3), (int)CControl::GetControlCoror(4));
 			fprintf(pFile, "	CHANGECOLOR = %d %d %d %d			//カラー変動値\n", (int)CControl::GetChangeCol(1), (int)CControl::GetChangeCol(2), (int)CControl::GetChangeCol(3), (int)CControl::GetChangeCol(4));
 			fprintf(pFile, "	LIFE = %d						//ライフ\n", CControl::GetLife());
-			fprintf(pFile, "	TEXTURE = %d						//テクスチャ\n", CControl::GetTex());
+			fprintf(pFile, "	TEXTURE = %d						//テクスチャ  ()\n", CControl::GetTex());
 			fprintf(pFile, "	SYNTHETIC = %d						//合成\n", CControl::GetSynthetic());
 			fprintf(pFile, "	TEXMOVE = %.3f %.3f					//テクスチャ移動\n", CControl::GetTexMoveU(), CControl::GetTexMoveV());
 			fprintf(pFile, "	TEXNUM = %.1f %.1f					//テクスチャ枚数\n", CControl::GetTexNum().x, CControl::GetTexNum().y);

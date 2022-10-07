@@ -161,8 +161,8 @@ void CSetEffect3D::SetEffect()
 			break;
 		case(1):
 			CStraight3D::Create(pos,
-				D3DXVECTOR3(CControl::GetSize(), CControl::GetSize(), 0.0f),
-				D3DXVECTOR3(CControl::GetChangeSize(), CControl::GetChangeSize(), 0.0f),
+				D3DXVECTOR3(CControl::GetSize(), CControl::GetSizeY(), 0.0f),
+				D3DXVECTOR3(CControl::GetChangeSize(), CControl::GetChangeSizeY(), 0.0f),
 				CControl::Getmove3d(),
 				D3DXCOLOR((float)CControl::GetControlCoror(1), (float)CControl::GetControlCoror(2), (float)CControl::GetControlCoror(3), (float)CControl::GetControlCoror(4)),
 				D3DXCOLOR((float)CControl::GetChangeCol(1), (float)CControl::GetChangeCol(2), (float)CControl::GetChangeCol(3), (float)CControl::GetChangeCol(4)),
@@ -181,7 +181,7 @@ void CSetEffect3D::SetEffect()
 			bOne = false;
 			break;
 		case(3):
-				CFieldEffect::Create(D3DXVECTOR3(CControl::GetSize(), 0.0f, CControl::GetSize()),
+				CFieldEffect::Create(D3DXVECTOR3(CControl::GetSize(), 0.0f, CControl::GetSizeY()),
 					D3DXVECTOR3(0.0f, 0.5f, 0.0f),
 					CControl::GetColor(),
 					CControl::GetChangeColor(),
@@ -199,12 +199,13 @@ void CSetEffect3D::SetEffect()
 					CControl::GetParticleSize(),
 					CControl::GetParticleTime(),
 					CControl::GetAvctiveAddSize(), 0, (bool)0, 0,
-					CControl::GetAnimPatternType());
+					CControl::GetAnimPatternType(),
+					CControl::GetSecondTime());
 			break;
 		case(4):
 				CActiveBillBoard::Create(D3DXVECTOR3(0.0f, 100.0f, 0.0f),
-					D3DXVECTOR3(CControl::GetSize(), 0.0f, CControl::GetSize()),
-					D3DXVECTOR3(CControl::GetChangeSize(), CControl::GetChangeSize(), 0.0f),
+					D3DXVECTOR3(CControl::GetSize(), 0.0f, CControl::GetSizeY()),
+					D3DXVECTOR3(CControl::GetChangeSize(), CControl::GetChangeSizeY(), 0.0f),
 					CControl::Getmove3d(),
 					D3DXCOLOR((float)CControl::GetControlCoror(1), (float)CControl::GetControlCoror(2), (float)CControl::GetControlCoror(3), (float)CControl::GetControlCoror(4)),
 					D3DXCOLOR((float)CControl::GetChangeCol(1), (float)CControl::GetChangeCol(2), (float)CControl::GetChangeCol(3), (float)CControl::GetChangeCol(4)),
@@ -221,8 +222,8 @@ void CSetEffect3D::SetEffect()
 				RandAngle = CIRCLE;
 
 				CRotate3D::Create(D3DXVECTOR3(0.0f, 0.0f, 0.0f), D3DXVECTOR3(0.0f, 50.0f, 0.0f), {},
-					D3DXVECTOR3(CControl::GetSize(), CControl::GetSize(), 0.0f),
-					D3DXVECTOR3(CControl::GetChangeSize(), CControl::GetChangeSize(), 0.0f),
+					D3DXVECTOR3(CControl::GetSize(), CControl::GetSizeY(), 0.0f),
+					D3DXVECTOR3(CControl::GetChangeSize(), CControl::GetChangeSizeY(), 0.0f),
 					D3DXCOLOR((float)CControl::GetControlCoror(1), (float)CControl::GetControlCoror(2), (float)CControl::GetControlCoror(3), (float)CControl::GetControlCoror(4)),
 					D3DXCOLOR((float)CControl::GetChangeCol(1), (float)CControl::GetChangeCol(2), (float)CControl::GetChangeCol(3), (float)CControl::GetChangeCol(4)),
 					CControl::GetDistance(),
@@ -249,8 +250,8 @@ void CSetEffect3D::SetEffect()
 			break;
 		case(7):
 				CThunderBill::Create(D3DXVECTOR3(0.0f, 0.0f, 0.0f),
-					D3DXVECTOR3(CControl::GetSize(), CControl::GetSize(), 0.0f),
-					D3DXVECTOR3(CControl::GetChangeSize(), CControl::GetChangeSize(), 0.0f),
+					D3DXVECTOR3(CControl::GetSize(), CControl::GetSizeY(), 0.0f),
+					D3DXVECTOR3(CControl::GetChangeSize(), CControl::GetChangeSizeY(), 0.0f),
 					D3DXCOLOR((float)CControl::GetControlCoror(1), (float)CControl::GetControlCoror(2), (float)CControl::GetControlCoror(3), (float)CControl::GetControlCoror(4)),
 					D3DXCOLOR((float)CControl::GetChangeCol(1), (float)CControl::GetChangeCol(2), (float)CControl::GetChangeCol(3), (float)CControl::GetChangeCol(4)),
 					CControl::GetTex(), CControl::GetLife(),
@@ -267,7 +268,7 @@ void CSetEffect3D::SetEffect()
 			break;
 		case(9):
 			CBulletHoll::Create(D3DXVECTOR3(CControl::GetSize(), CControl::GetHigth(), 0.0f),
-				D3DXVECTOR3(CControl::GetChangeSize(), CControl::GetChangeSize(), 0.0f),
+				D3DXVECTOR3(CControl::GetChangeSize(), CControl::GetChangeSizeY(), 0.0f),
 				D3DXVECTOR3(100.0f, 100.0f, 100.0f),
 				D3DXCOLOR((float)CControl::GetControlCoror(1), (float)CControl::GetControlCoror(2), (float)CControl::GetControlCoror(3), (float)CControl::GetControlCoror(4)),
 				D3DXCOLOR((float)CControl::GetChangeCol(1), (float)CControl::GetChangeCol(2), (float)CControl::GetChangeCol(3), (float)CControl::GetChangeCol(4)),
@@ -284,8 +285,8 @@ void CSetEffect3D::SetEffect()
 			break;
 		case(10):
 			CFountain::Create(D3DXVECTOR3(0.0f, 50.0f, 0.0f),
-				D3DXVECTOR3(CControl::GetSize(), CControl::GetSize(), 0.0f),
-				D3DXVECTOR3(CControl::GetChangeSize(), CControl::GetChangeSize(), 0.0f),
+				D3DXVECTOR3(CControl::GetSize(), CControl::GetSizeY(), 0.0f),
+				D3DXVECTOR3(CControl::GetChangeSize(), CControl::GetChangeSizeY(), 0.0f),
 				D3DXCOLOR((float)CControl::GetControlCoror(1), (float)CControl::GetControlCoror(2), (float)CControl::GetControlCoror(3), (float)CControl::GetControlCoror(4)),
 				D3DXCOLOR((float)CControl::GetChangeCol(1), (float)CControl::GetChangeCol(2), (float)CControl::GetChangeCol(3), (float)CControl::GetChangeCol(4)),
 				CControl::GetTex(),

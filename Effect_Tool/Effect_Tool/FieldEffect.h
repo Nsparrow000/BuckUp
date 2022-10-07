@@ -46,7 +46,8 @@ public:
 		int FieldTime,
 		bool FieldCreate,
 		int CreatePreset,
-		int AnimPatternType);
+		int AnimPatternType,
+		int FiledLife);
 
 	void Uninit();
 	void Update();
@@ -76,7 +77,8 @@ public:
 		int FieldTime,
 		bool FieldCreate,
 		int CreatePreset,
-		int AnimPatternType);
+		int AnimPatternType,
+		int FiledLife);
 
 private:
 	EFFECT_TIME EffectTime;	//エフェクトの今の状態

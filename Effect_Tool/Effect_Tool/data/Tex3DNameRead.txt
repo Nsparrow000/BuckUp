@@ -24,13 +24,13 @@ TEXTURE_FILENAME = data/TEXTURE/3DEffect/Thunder3.png			//１５斜めサンダー
 TEXTURE_FILENAME = data/TEXTURE/3DEffect/Crater.png			//１６クレーター
 TEXTURE_FILENAME = data/TEXTURE/3DEffect/ExplosionRing.png		//１７爆発リング
 TEXTURE_FILENAME = data/TEXTURE/3DEffect/Thunder4.png			//１８斜めサンダー
-TEXTURE_FILENAME = data/TEXTURE/3DEffect/Thunder5.png			//１９アニメーションサンダー
-TEXTURE_FILENAME = data/TEXTURE/3DEffect/MuzzleflashLow.png			//20マズルフラッシュ
+TEXTURE_FILENAME = data/TEXTURE/3DEffect/wind_cut.png			//１９アニメーションサンダー
+TEXTURE_FILENAME = data/TEXTURE/3DEffect/ster.png			//20星
 TEXTURE_FILENAME = data/TEXTURE/3DEffect/Test.png			//21頂点テスト
-TEXTURE_FILENAME = data/TEXTURE/3DEffect/BulletHoll.png			//22弾痕
+TEXTURE_FILENAME = data/TEXTURE/3DEffect/Uzumaki.png			//22うずまき
 TEXTURE_FILENAME = data/TEXTURE/3DEffect/smoke3.png			//23煙３
-TEXTURE_FILENAME = data/TEXTURE/3DEffect/blood2.png			//24血
-TEXTURE_FILENAME = data/TEXTURE/3DEffect/BrownSmoke.png			//25茶色
-TEXTURE_FILENAME = data/TEXTURE/3DEffect/blood3.png			//26血
+TEXTURE_FILENAME = data/TEXTURE/3DEffect/BrownSmokeSphere.png			//24茶丸
+TEXTURE_FILENAME = data/TEXTURE/3DEffect/GraySmoke.png			//25灰色
+TEXTURE_FILENAME = data/TEXTURE/3DEffect/BrownSmoke2.png			//26茶の埃
 
 END_SCRIPT

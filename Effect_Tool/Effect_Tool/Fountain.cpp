@@ -47,7 +47,6 @@ HRESULT CFountain::Init(D3DXVECTOR3 pos,
 	D3DXVECTOR3 V = Target - pos;
 
 
-
 	m_fAngle = atan2(V.x, V.z);
 
 	//ƒ‰ƒ“ƒ_ƒ€ŠgŽU—¦
@@ -60,18 +59,22 @@ HRESULT CFountain::Init(D3DXVECTOR3 pos,
 	randAngle /= 100.0f;
 	m_fAngle += randAngle;
 
-	if (HigthPattrn == HIGHT_RAND)
-	{
-		move.y * 100;
 
-		float randHight = float(rand() % (int)move.y) - float(rand() % (int)move.y);
-		move.y = randHight;
-
-		m_move = move;
-	}
-	else
+	if (move.y > 0)
 	{
-		m_move = move;
+		if (HigthPattrn == HIGHT_RAND)
+		{
+			move.y * 100;
+
+			float randHight = float(rand() % (int)move.y) - float(rand() % (int)move.y);
+			move.y = randHight;
+
+			m_move = move;
+		}
+		else
+		{
+			m_move = move;
+		}
 	}
 	m_pos = pos;
 
@@ -95,9 +98,12 @@ void CFountain::Update()
 {
 	m_pos += D3DXVECTOR3(sinf(m_fAngle) *m_move.x, m_move.y, cosf(m_fAngle) * m_move.x);
 
+	m_Size += m_MinSize;
+
 	m_move.y += m_move.z;
 
 	SetPos(m_pos);
+	ChangeSize(m_Size);
 	CBillEffect::Update();
 }
 

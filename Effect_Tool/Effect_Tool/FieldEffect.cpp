@@ -45,12 +45,13 @@ HRESULT CFieldEffect::Init(D3DXVECTOR3 size,
 	int FieldTime,
 	bool FieldCreate,
 	int CreatePreset,
-	int AnimPatternType)
+	int AnimPatternType,
+	int FiledLife)
 {
 	CPlane::Init(size, pos, D3DXVECTOR2(1.0f, 1.0f));
 	CScene::SetObjType(OBJECTTYPE_EFFECT);
 
-	nLife = 600;
+	nLife = FiledLife;
 
 	EffectTime = START;
 
@@ -407,7 +408,8 @@ CFieldEffect *CFieldEffect::Create(D3DXVECTOR3 size,
 	int FieldTime,
 	bool FieldCreate,
 	int CreatePreset,
-	int AnimPatternType)
+	int AnimPatternType,
+	int FiledLife)
 {
 	CFieldEffect *pFieldEffect;
 	pFieldEffect = new CFieldEffect(CManager::PRIORITY_EFFECT);
@@ -437,7 +439,8 @@ CFieldEffect *CFieldEffect::Create(D3DXVECTOR3 size,
 			FieldTime,
 			FieldCreate,
 			CreatePreset,
-			AnimPatternType);
+			AnimPatternType,
+			FiledLife);
 
 		pFieldEffect->SetTexture(nParticleTex);
 	}

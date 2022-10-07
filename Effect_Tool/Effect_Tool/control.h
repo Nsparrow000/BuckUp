@@ -39,6 +39,9 @@ public:
 	static int GetSerectColor() { return m_SerectColor; }	//色選択番号
 	static const float GetSize() { return m_ControlSize; }	//サイズ
 	static const float GetChangeSize() { return m_ControlChangeSize; }	//サイズ増減
+	static const float GetSizeY() { return m_ControlSizeY; }	//サイズ
+	static const float GetChangeSizeY() { return m_ControlChangeSizeY; }	//サイズ増減
+
 	static const int GetLife() { return m_nLife; }			//寿命
 	static const int GetTex() { return m_nTex; }				//テクスチャ
 	static const int GetDensity() { return m_nDensity; }		//密度
@@ -97,7 +100,6 @@ public:
 	static int GetSecondTex() { return m_SecondTex; }
 	static int GetAnimPatternType() { return m_AnimPatternType; }
 
-
 	//テキストセーブ
 	static void SaveEffect(CManager::MODE mode, int nPattern);
 	static void SetButten(int nPattern);
@@ -108,6 +110,9 @@ public:
 	static void SetChangeColor(D3DCOLORVALUE ChangeColor) { m_ControlChangeCol = ChangeColor; }
 	static void SetSize(float Size) { m_ControlSize = Size; }
 	static void SetChangeSize(float ChangeSize) { m_ControlChangeSize = ChangeSize; }
+	static void SetSizeY(float SizeY) { m_ControlSizeY = SizeY; }
+	static void SetChangeSizeY(float ChangeSizeY) { m_ControlChangeSizeY = ChangeSizeY; }
+
 	static void SetLife(int nLife) { m_nLife = nLife; }
 	static void SetTexture(int nTex) { m_nTex = nTex; }
 	static void SetDensity(int nDensity) { m_nDensity = nDensity; }
@@ -171,11 +176,18 @@ public:
 	{
 		m_ControlSize = 0;
 	}
+	}
+	static void AddChangeSize(float ChangeSize) {m_ControlChangeSize += ChangeSize;}
+	static void AddSizeY(float SizeY) {
+		m_ControlSizeY += SizeY;
+		if (m_ControlSizeY <= 0)
+		{
+			m_ControlSizeY = 0;
+		}
+	}
+	static void AddChangeSizeY(float ChangeSizeY) { m_ControlChangeSizeY += ChangeSizeY; }
 
-	}
-	static void AddChangeSize(float ChangeSize) {
-		m_ControlChangeSize += ChangeSize;
-	}
+
 	static void AddLife(int nLife) {
 		m_nLife += nLife;
 		if (m_nLife >= MAX_LIFE)
@@ -295,6 +307,7 @@ public:
 	static void AddSplitV(float SplitU) { m_nSplit.y += SplitU; }	//テクスチャV
 	static void AddHigth(float Higth) { m_fHigth += Higth; }	//高さ
 	
+
 	static void AddContorolBezierX(float NumX) { m_ContorolBezier.x += NumX;}	//制御点
 	static void AddContorolBezierY(float NumY) { m_ContorolBezier.y += NumY;}	//制御点
 	static void AddContorolBezierZ(float NumZ) { m_ContorolBezier.z += NumZ;}	//制御点
@@ -309,8 +322,12 @@ private:
 	static bool m_bTap;	//タップで出すかどうか
 	static D3DCOLORVALUE m_ControlColor;		//色変更
 	static D3DCOLORVALUE m_ControlChangeCol;	//増減値
-	static float m_ControlSize;			//サイズ
-	static float m_ControlChangeSize;		//サイズ増減
+	static float m_ControlSize;			//サイズX
+	static float m_ControlChangeSize;		//サイズX増減
+
+	static float m_ControlSizeY;			//サイズY
+	static float m_ControlChangeSizeY;		//サイズY増減
+
 	static int m_nLife;	//寿命
 	static int m_nTex;	//テクスチャ選択
 	static int m_nDensity;	//密度

@@ -137,6 +137,8 @@ void CPresetEffect::SetEffectState3D(
 	int m_nDiffusion,
 	float m_fSize,
 	float m_fAddSize,
+	float m_fSizeY,
+	float m_fAddSizeY,
 	float m_MaxSize,
 	float m_fParticleSize,
 	float m_fParticleAddSize,
@@ -185,6 +187,8 @@ void CPresetEffect::SetEffectState3D(
 	m_EffectState3D[m_nEffectPattern3d].m_nDiffusion = m_nDiffusion;
 	m_EffectState3D[m_nEffectPattern3d].m_fSize = m_fSize;
 	m_EffectState3D[m_nEffectPattern3d].m_fAddSize = m_fAddSize;
+	m_EffectState3D[m_nEffectPattern3d].m_fSizeY = m_fSizeY;
+	m_EffectState3D[m_nEffectPattern3d].m_fAddSizeY = m_fAddSizeY;
 	m_EffectState3D[m_nEffectPattern3d].m_MaxSize = m_MaxSize;
 	m_EffectState3D[m_nEffectPattern3d].m_fParticleSize = m_fParticleSize;
 	m_EffectState3D[m_nEffectPattern3d].m_fParticleAddSize = m_fParticleAddSize;
@@ -426,8 +430,8 @@ void CPresetEffect::SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 		for (int nCnt = 0; nCnt < m_EffectState3D[nPattern].m_nDensity; nCnt++)
 		{
 			CStraight3D::Create(pos,
-				D3DXVECTOR3(m_EffectState3D[nPattern].m_fSize, m_EffectState3D[nPattern].m_fSize, 0.0f),
-				D3DXVECTOR3(m_EffectState3D[nPattern].m_fAddSize, m_EffectState3D[nPattern].m_fAddSize, 0.0f),
+				D3DXVECTOR3(m_EffectState3D[nPattern].m_fSize, m_EffectState3D[nPattern].m_fSizeY, 0.0f),
+				D3DXVECTOR3(m_EffectState3D[nPattern].m_fAddSize, m_EffectState3D[nPattern].m_fAddSizeY, 0.0f),
 				move,
 				m_EffectState3D[nPattern].m_Col,
 				m_EffectState3D[nPattern].m_Changecolor,
@@ -515,8 +519,8 @@ void CPresetEffect::SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 
 			//粒の発生
 			CStraight3D::Create(D3DXVECTOR3(Endpos.x + Rx, Endpos.y + Ry, Endpos.z + Rz),
-				D3DXVECTOR3(m_EffectState3D[nPattern].m_fSize, m_EffectState3D[nPattern].m_fAddSize, 0.0f),
-				D3DXVECTOR3(m_EffectState3D[nPattern].m_fAddSize, m_EffectState3D[nPattern].m_fAddSize, 0.0f),
+				D3DXVECTOR3(m_EffectState3D[nPattern].m_fSize, m_EffectState3D[nPattern].m_fAddSizeY, 0.0f),
+				D3DXVECTOR3(m_EffectState3D[nPattern].m_fAddSize, m_EffectState3D[nPattern].m_fAddSizeY, 0.0f),
 				D3DXVECTOR3(sinf(fA) * x, cosf(fAY) * y, cosf(fA) * z),
 				m_EffectState3D[nPattern].m_Col,
 				m_EffectState3D[nPattern].m_Changecolor,
@@ -533,7 +537,7 @@ void CPresetEffect::SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 		break;
 	case(3):	//フィールド
 		CFieldEffect::Create(
-			D3DXVECTOR3(m_EffectState3D[nPattern].m_fSize, 0.0f, m_EffectState3D[nPattern].m_fSize),
+			D3DXVECTOR3(m_EffectState3D[nPattern].m_fSize, 0.0f, m_EffectState3D[nPattern].m_fSizeY),
 			pos,
 			m_EffectState3D[nPattern].m_Col,
 			m_EffectState3D[nPattern].m_Changecolor,
@@ -557,7 +561,8 @@ void CPresetEffect::SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 			m_EffectState3D[nPattern].m_FieldTime,
 			m_EffectState3D[nPattern].m_fieldCreate,
 			m_EffectState3D[nPattern].mCreatePreset,
-			(CBillEffect::ANIMPATTERN)m_EffectState3D[nPattern].m_AnimPatternType);
+			(CBillEffect::ANIMPATTERN)m_EffectState3D[nPattern].m_AnimPatternType,
+			m_EffectState3D[nPattern].m_nSecondTime);
 
 		break;
 	case(4):
@@ -572,8 +577,8 @@ void CPresetEffect::SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 			CRotate3D::Create(
 				D3DXVECTOR3(0.0f, 0.0f, 0.0f),
 				D3DXVECTOR3(pos.x, pos.y, pos.z), {},
-				D3DXVECTOR3(m_EffectState3D[nPattern].m_fSize, m_EffectState3D[nPattern].m_fSize, 0.0f),
-				D3DXVECTOR3(m_EffectState3D[nPattern].m_fAddSize, m_EffectState3D[nPattern].m_fAddSize, 0.0f),
+				D3DXVECTOR3(m_EffectState3D[nPattern].m_fSize, m_EffectState3D[nPattern].m_fSizeY, 0.0f),
+				D3DXVECTOR3(m_EffectState3D[nPattern].m_fAddSize, m_EffectState3D[nPattern].m_fAddSizeY, 0.0f),
 				m_EffectState3D[nPattern].m_Col,
 				m_EffectState3D[nPattern].m_Changecolor,
 				m_EffectState3D[nPattern].m_nDistance,
@@ -614,8 +619,8 @@ void CPresetEffect::SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 		{
 			CThunderBill::Create(
 				D3DXVECTOR3(0.0f, 0.0f, 0.0f),
-				D3DXVECTOR3(m_EffectState3D[nPattern].m_fSize, m_EffectState3D[nPattern].m_fSize, 0.0f),
-				D3DXVECTOR3(m_EffectState3D[nPattern].m_fAddSize, m_EffectState3D[nPattern].m_fAddSize, 0.0f),
+				D3DXVECTOR3(m_EffectState3D[nPattern].m_fSize, m_EffectState3D[nPattern].m_fSizeY, 0.0f),
+				D3DXVECTOR3(m_EffectState3D[nPattern].m_fAddSize, m_EffectState3D[nPattern].m_fAddSizeY, 0.0f),
 				m_EffectState3D[nPattern].m_Col,
 				m_EffectState3D[nPattern].m_Changecolor,
 				m_EffectState3D[nPattern].nTexture,
@@ -635,8 +640,8 @@ void CPresetEffect::SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 		for (int nCnt = 0; nCnt < m_EffectState3D[nPattern].m_nDensity; nCnt++)
 		{
 			CBezierBill::Create(
-				D3DXVECTOR3(m_EffectState3D[nPattern].m_fSize, m_EffectState3D[nPattern].m_fSize, 0.0f),
-				D3DXVECTOR3(m_EffectState3D[nPattern].m_fAddSize, m_EffectState3D[nPattern].m_fAddSize, 0.0f),
+				D3DXVECTOR3(m_EffectState3D[nPattern].m_fSize, m_EffectState3D[nPattern].m_fSizeY, 0.0f),
+				D3DXVECTOR3(m_EffectState3D[nPattern].m_fAddSize, m_EffectState3D[nPattern].m_fAddSizeY, 0.0f),
 				m_EffectState3D[nPattern].m_Col,
 				m_EffectState3D[nPattern].m_Changecolor,
 				m_EffectState3D[nPattern].nTexture,
@@ -665,8 +670,8 @@ void CPresetEffect::SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 		}
 		break;
 	case(9):
-		CBulletHoll::Create(D3DXVECTOR3(m_EffectState3D[nPattern].m_fSize, m_EffectState3D[nPattern].m_fSize, 0.0f),
-			D3DXVECTOR3(m_EffectState3D[nPattern].m_fAddSize, m_EffectState3D[nPattern].m_fAddSize, 0.0f),
+		CBulletHoll::Create(D3DXVECTOR3(m_EffectState3D[nPattern].m_fSize, m_EffectState3D[nPattern].m_fSizeY, 0.0f),
+			D3DXVECTOR3(m_EffectState3D[nPattern].m_fAddSize, m_EffectState3D[nPattern].m_fAddSizeY, 0.0f),
 			pos,
 			m_EffectState3D[nPattern].m_Col,
 			m_EffectState3D[nPattern].m_Changecolor,
@@ -684,8 +689,8 @@ void CPresetEffect::SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 		for (int nCnt = 0; nCnt < m_EffectState3D[nPattern].m_nDensity; nCnt++)
 		{
 			CFountain::Create(pos,
-				D3DXVECTOR3(m_EffectState3D[nPattern].m_fSize, m_EffectState3D[nPattern].m_fSize, 0.0f),
-				D3DXVECTOR3(m_EffectState3D[nPattern].m_fAddSize, m_EffectState3D[nPattern].m_fAddSize, 0.0f),
+				D3DXVECTOR3(m_EffectState3D[nPattern].m_fSize, m_EffectState3D[nPattern].m_fSizeY, 0.0f),
+				D3DXVECTOR3(m_EffectState3D[nPattern].m_fAddSize, m_EffectState3D[nPattern].m_fAddSizeY, 0.0f),
 				m_EffectState3D[nPattern].m_Col,
 				m_EffectState3D[nPattern].m_Changecolor,
 				m_EffectState3D[nPattern].nTexture,

@@ -111,6 +111,9 @@ void CIntermeiateSave::IntermeiateSave(CManager::MODE mode, int nPattern, const 
 			case(1):
 				fprintf(pFile, "	SIZE = %.1f						//大きさ\n", CControl::GetSize());
 				fprintf(pFile, "	ADDSIZE = %.1f					//大きさ変動\n", CControl::GetChangeSize());
+				fprintf(pFile, "	SIZEY = %.1f						//Y大きさ\n", CControl::GetSizeY());
+				fprintf(pFile, "	ADDSIZEY = %.1f					//Y大きさ変動\n", CControl::GetChangeSizeY());
+
 				fprintf(pFile, "	DENSITY = %d						//密度\n", CControl::GetDensity());
 
 				fprintf(pFile, "	MOVE3D = %.1f %.1f %.1f					//移動\n", CControl::Getmove3d().x, CControl::Getmove3d().y, CControl::Getmove3d().z);
@@ -134,6 +137,9 @@ void CIntermeiateSave::IntermeiateSave(CManager::MODE mode, int nPattern, const 
 				fprintf(pFile, "	MOVE = %.1f						//移動\n", CControl::Getmove3d().x);
 				fprintf(pFile, "	SIZE = %.1f						//大きさ\n", CControl::GetSize());
 				fprintf(pFile, "	ADDSIZE = %.1f					//大きさ変動\n", CControl::GetChangeSize());
+				fprintf(pFile, "	SIZEY = %.1f						//Y大きさ\n", CControl::GetSizeY());
+				fprintf(pFile, "	ADDSIZEY = %.1f					//Y大きさ変動\n", CControl::GetChangeSizeY());
+
 				fprintf(pFile, "	DENSITY = %d						//粒密度\n", CControl::GetDensity());
 
 				fprintf(pFile, "	PARTICLESIZE = %.1f						//粒サイズ\n", CControl::GetParticleSize());
@@ -149,6 +155,13 @@ void CIntermeiateSave::IntermeiateSave(CManager::MODE mode, int nPattern, const 
 				fprintf(pFile, "	SECONDSYNTHETIC = %d			//パーティクル合成\n", (int)CControl::GetParticleSynthetic());
 				fprintf(pFile, "	ACTIVEADDSIZE = %.1f					//稼働中の稼働時間\n", CControl::GetAvctiveAddSize());
 
+				fprintf(pFile, "	FIELDTIME = 10			//フィールド生成間隔\n");
+				fprintf(pFile, "	FIELDCREATE = 0			//フィールド生成するか\n");
+				fprintf(pFile, "	CREATEPRESET = 0					//生成プリセット\n");
+
+				fprintf(pFile, "	SECONDTIME = %d						//フィールドが消える時間\n", CControl::GetSecondTime());
+
+
 				break;
 			case(4):
 				fprintf(pFile, "	MOVE3D = %.1f %.1f %.1f					//移動\n", CControl::Getmove3d().x, CControl::Getmove3d().y, CControl::Getmove3d().z);
@@ -160,6 +173,9 @@ void CIntermeiateSave::IntermeiateSave(CManager::MODE mode, int nPattern, const 
 			case(5):
 				fprintf(pFile, "	SIZE = %.1f						//大きさ\n", CControl::GetSize());
 				fprintf(pFile, "	ADDSIZE = %.1f					//大きさ変動\n", CControl::GetChangeSize());
+				fprintf(pFile, "	SIZEY = %.1f						//Y大きさ\n", CControl::GetSizeY());
+				fprintf(pFile, "	ADDSIZEY = %.1f					//Y大きさ変動\n", CControl::GetChangeSizeY());
+
 				fprintf(pFile, "	DENSITY = %d						//粒密度\n", CControl::GetDensity());
 
 				fprintf(pFile, "	ROTATE = %.2f						//回転\n", CControl::GetRotate());
@@ -175,6 +191,9 @@ void CIntermeiateSave::IntermeiateSave(CManager::MODE mode, int nPattern, const 
 			case(6):
 				fprintf(pFile, "	SIZE = %.1f						//大きさ\n", CControl::GetSize());
 				fprintf(pFile, "	ADDSIZE = %.1f					//大きさ変動\n", CControl::GetChangeSize());
+				fprintf(pFile, "	SIZEY = %.1f						//Y大きさ\n", CControl::GetSizeY());
+				fprintf(pFile, "	ADDSIZEY = %.1f					//Y大きさ変動\n", CControl::GetChangeSizeY());
+
 
 				fprintf(pFile, "	ROTATE = %.2f						//回転\n", CControl::GetRotate());
 				fprintf(pFile, "	VTX = %d						//頂点数\n", CControl::GetVtx());
@@ -184,6 +203,8 @@ void CIntermeiateSave::IntermeiateSave(CManager::MODE mode, int nPattern, const 
 			case(7):
 				fprintf(pFile, "	SIZE = %.1f						//大きさ\n", CControl::GetSize());
 				fprintf(pFile, "	ADDSIZE = %.1f					//大きさ変動\n", CControl::GetChangeSize());
+				fprintf(pFile, "	SIZEY = %.1f						//Y大きさ\n", CControl::GetSizeY());
+				fprintf(pFile, "	ADDSIZEY = %.1f					//Y大きさ変動\n", CControl::GetChangeSizeY());
 
 				fprintf(pFile, "	DISTANCE = %.1f						//上発生距離\n", CControl::GetDistance());
 				fprintf(pFile, "	HIGTH = %.1f						//上距離\n", CControl::GetHigth());
@@ -193,6 +214,9 @@ void CIntermeiateSave::IntermeiateSave(CManager::MODE mode, int nPattern, const 
 			case(8):
 				fprintf(pFile, "	SIZE = %.1f						//大きさ\n", CControl::GetSize());
 				fprintf(pFile, "	ADDSIZE = %.1f					//大きさ変動\n", CControl::GetChangeSize());
+				fprintf(pFile, "	SIZEY = %.1f						//Y大きさ\n", CControl::GetSizeY());
+				fprintf(pFile, "	ADDSIZEY = %.1f					//Y大きさ変動\n", CControl::GetChangeSizeY());
+
 				fprintf(pFile, "	DENSITY = %d						//密度\n", CControl::GetDensity());
 
 				fprintf(pFile, "	CONTROLBEZIER = %.1f %.1f %.1f						//ベジェ制御点\n", CControl::GetContorolBezierX(), CControl::GetContorolBezierY(), CControl::GetContorolBezierZ());
@@ -214,15 +238,21 @@ void CIntermeiateSave::IntermeiateSave(CManager::MODE mode, int nPattern, const 
 			case(9):
 				fprintf(pFile, "	SIZE = %.1f						//大きさ\n", CControl::GetSize());
 				fprintf(pFile, "	ADDSIZE = %.1f					//大きさ変動\n", CControl::GetChangeSize());
+				fprintf(pFile, "	SIZEY = %.1f						//Y大きさ\n", CControl::GetSizeY());
+				fprintf(pFile, "	ADDSIZEY = %.1f					//Y大きさ変動\n", CControl::GetChangeSizeY());
+
 				fprintf(pFile, "	DENSITY = %d						//密度\n", CControl::GetDensity());
 
 				break;
 			case(10):
 				fprintf(pFile, "	SIZE = %.1f						//大きさ\n", CControl::GetSize());
 				fprintf(pFile, "	ADDSIZE = %.1f					//大きさ変動\n", CControl::GetChangeSize());
+				fprintf(pFile, "	SIZEY = %.1f						//Y大きさ\n", CControl::GetSizeY());
+				fprintf(pFile, "	ADDSIZEY = %.1f					//Y大きさ変動\n", CControl::GetChangeSizeY());
+
 				fprintf(pFile, "	DENSITY = %d						//密度\n", CControl::GetDensity());
 
-				fprintf(pFile, "	MOVE = %.1f %.1f %.1f						//移動関係\n", CControl::Getmove3d().x, CControl::Getmove3d().y, CControl::Getmove3d().z);
+				fprintf(pFile, "	MOVE3D = %.2f %.2f %.2f						//移動関係\n", CControl::Getmove3d().x, CControl::Getmove3d().y, CControl::Getmove3d().z);
 				fprintf(pFile, "	DIFFUSION = %d					//拡散率\n", CControl::GetDiffusion());
 
 				fprintf(pFile, "	TYPE = %d					//上昇量ランダム\n", CControl::GetType());
@@ -276,6 +306,9 @@ void CIntermeiateSave::IntermeiateLoad(CManager::MODE mode, const char *aModelNa
 	int Destroyvec = 0;
 	float fSize = 0;
 	float fAddSize = 0;
+	float fSizeY = 0;
+	float fAddSizeY = 0;
+
 	D3DCOLORVALUE col;
 	D3DCOLORVALUE ChangeColor;
 	int nLife = 0;
@@ -365,6 +398,7 @@ void CIntermeiateSave::IntermeiateLoad(CManager::MODE mode, const char *aModelNa
 						fscanf(pFile, "%s", &aFile[0]);
 						fscanf(pFile, "%f", &fAddSize);
 					}
+
 					if (strcmp(&aFile[0], "COLOR") == 0)	//カラー
 					{
 						fscanf(pFile, "%s", &aFile[0]);
@@ -561,6 +595,18 @@ void CIntermeiateSave::IntermeiateLoad(CManager::MODE mode, const char *aModelNa
 						fscanf(pFile, "%s", &aFile[0]);
 						fscanf(pFile, "%f", &fAddSize);
 					}
+					if (strcmp(&aFile[0], "SIZEY") == 0)	//大きさ
+					{
+						fscanf(pFile, "%s", &aFile[0]);
+						fscanf(pFile, "%f", &fSizeY);
+					}
+					if (strcmp(&aFile[0], "ADDSIZEY") == 0)	//大きさ加算
+					{
+						fscanf(pFile, "%s", &aFile[0]);
+						fscanf(pFile, "%f", &fAddSizeY);
+					}
+
+
 					if (strcmp(&aFile[0], "PARTICLESIZE") == 0)	//粒サイズ
 					{
 						fscanf(pFile, "%s", &aFile[0]);
@@ -708,6 +754,8 @@ void CIntermeiateSave::IntermeiateLoad(CManager::MODE mode, const char *aModelNa
 					CControl::SetRandMove(RandMove);
 					CControl::SetSize(fSize);
 					CControl::SetChangeSize(fAddSize);
+					CControl::SetSizeY(fSizeY);
+					CControl::SetChangeSizeY(fAddSizeY);
 					CControl::SetAddRotate(fRotate);
 					CControl::SetParticleSize(ParticleSize);
 					CControl::SetParticleTime(ParticleTime);

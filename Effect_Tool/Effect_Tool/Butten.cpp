@@ -392,7 +392,12 @@ void CButten::Set(OPERATION Operation, float nIndeNum)
 	case(ANIMPATTERNTYPE):
 		CControl::AddAnimPatternType(nIndeNum);
 		break;
-
+	case(SIZEY):
+		CControl::AddSizeY(nIndeNum);
+		break;
+	case(ADDSIZEY):
+		CControl::AddChangeSizeY(nIndeNum);
+		break;
 	default:
 		assert(false);
 		break;

@@ -63,6 +63,8 @@ public:
 		int m_nDiffusion;		//拡散率
 		float m_fSize;			//サイズ
 		float m_fAddSize;		//サイズ加算
+		float m_fSizeY;			//サイズ
+		float m_fAddSizeY;		//サイズ加算
 		float m_MaxSize;		//最大サイズ
 		float m_fParticleSize;			//サイズ
 		float m_fParticleAddSize;		//サイズ加算
@@ -150,6 +152,9 @@ public:
 		int m_nDiffusion,
 		float m_fSize,
 		float m_fAddSize,
+		float m_fSizeY,
+		float m_fAddSizeY,
+
 		float m_MaxSize,
 		float m_fParticleSize,
 		float m_fParticleAddSize,
