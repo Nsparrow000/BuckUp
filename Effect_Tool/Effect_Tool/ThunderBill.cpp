@@ -47,16 +47,18 @@ HRESULT CThunderBill::Init(D3DXVECTOR3 pos,
 	float fRandAngle = CIRCLE2;
 	float fRandAngle2 = CIRCLE2;
 	float fRandDistance = float(rand() % fDistance) - float(rand() % fDistance);
+	float fRandDistance2 = float(rand() % fDistance) - float(rand() % fDistance);
+
 	m_orizinSize = orizinSize;
 
 	m_nSynthenic = Synthetic;
 	m_Size = Size;
 	m_posorizin1 = D3DXVECTOR3(
-		pos.x * sinf(fRandAngle)  * cosf(fRandAngle2) + m_orizinSize.x,
+		pos.x + fRandDistance2 * sinf(fRandAngle)  * cosf(fRandAngle2) + m_orizinSize.x,
 		0.0f,
 		{});
 	m_posorizin2 = D3DXVECTOR3(
-		pos.x * sinf(fRandAngle) * cosf(fRandAngle2) - m_orizinSize.x,
+		pos.x + fRandDistance2 * sinf(fRandAngle) * cosf(fRandAngle2) - m_orizinSize.x,
 		0.0f,
 		{});
 	m_posHigth1 = D3DXVECTOR3(

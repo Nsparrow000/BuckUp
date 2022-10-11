@@ -550,6 +550,8 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 				fprintf(pFile, "	DISTANCE = %.1f						//ã”­¶‹——£\n", CControl::GetDistance());
 				fprintf(pFile, "	HIGTH = %.1f						//ã‹——£\n", CControl::GetHigth());
 				fprintf(pFile, "	PARTICLESIZE = %.1f						//‰º•”•ª‚Ì•\n", CControl::GetParticleSize());
+				fprintf(pFile, "	DENSITY = %d						//–§“x\n", CControl::GetDensity());
+
 				break;
 			case(8):
 				fprintf(pFile, "	SIZE = %.1f						//‘å‚«‚³\n", CControl::GetSize());
@@ -582,6 +584,7 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 				fprintf(pFile, "	ADDSIZEY = %.1f					//Y‘å‚«‚³•Ï“®\n", CControl::GetChangeSizeY());
 
 				fprintf(pFile, "	DENSITY = %d						//–§“x\n", CControl::GetDensity());
+				fprintf(pFile, "	DISTANCE = %.1f						//”­¶‹——£\n", CControl::GetDistance());
 
 				break;
 			case(10):

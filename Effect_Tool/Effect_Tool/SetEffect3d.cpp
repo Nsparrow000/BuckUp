@@ -267,9 +267,9 @@ void CSetEffect3D::SetEffect()
 		case(8):
 			break;
 		case(9):
-			CBulletHoll::Create(D3DXVECTOR3(CControl::GetSize(), CControl::GetHigth(), 0.0f),
+			CBulletHoll::Create(D3DXVECTOR3(CControl::GetSize(), CControl::GetSizeY(), 0.0f),
 				D3DXVECTOR3(CControl::GetChangeSize(), CControl::GetChangeSizeY(), 0.0f),
-				D3DXVECTOR3(100.0f, 100.0f, 100.0f),
+				D3DXVECTOR3(0.0f, 50.0f, 0.0f),
 				D3DXCOLOR((float)CControl::GetControlCoror(1), (float)CControl::GetControlCoror(2), (float)CControl::GetControlCoror(3), (float)CControl::GetControlCoror(4)),
 				D3DXCOLOR((float)CControl::GetChangeCol(1), (float)CControl::GetChangeCol(2), (float)CControl::GetChangeCol(3), (float)CControl::GetChangeCol(4)),
 				CControl::GetLife(),
@@ -280,7 +280,8 @@ void CSetEffect3D::SetEffect()
 				D3DXVECTOR2(CControl::GetSplitU(), CControl::GetSplitV()),
 				D3DXVECTOR3(m_pCamera->GetRotX(), m_pCamera->GetRotY(), {}),
 				CControl::GetSynthetic(),
-				(CBillEffect::ANIMPATTERN)CControl::GetAnimPatternType()
+				(CBillEffect::ANIMPATTERN)CControl::GetAnimPatternType(),
+				CControl::GetDistance()
 			);
 			break;
 		case(10):

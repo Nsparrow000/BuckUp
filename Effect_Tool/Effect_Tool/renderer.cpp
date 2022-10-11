@@ -429,6 +429,8 @@ void CRenderer::DrawText()
 				nNum += sprintf(&str[nNum], "‹OÕ‡¬ [+][-]F%d\n", CControl::GetParticleSynthetic());
 				break;
 			case(9):
+				nNum += sprintf(&str[nNum], "‹——£ [+][-]F%.1f\n", CControl::GetDistance());
+
 				break;
 			case(10):
 				nNum += sprintf(&str[nNum], "ˆÚ“® [+][-]F%.1f\n", CControl::Getmove3d().x);

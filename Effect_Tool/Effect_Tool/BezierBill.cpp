@@ -126,7 +126,7 @@ HRESULT CBezierBill::Init(D3DXVECTOR3 Size,
 		//m_Bezier.P1[1] = pos.y + m_ControlBezier.y;
 		//m_Bezier.P1[2] = pos.z + cosf(m_XZr) * m_ControlBezier.z - randCont;
 
-		//3éüå≥êßå‰ÇÁÇµÇ¢
+		//3éüå≥êßå‰
 		m_Bezier.P1[0] = (sx + randCont + m_ControlBezier.y * sinf(m_XZr + (Angle) + D3DX_PI * 2) * cosf(m_XZr + (Angle) + D3DX_PI * 2));
 		m_Bezier.P1[1] = pos.y + m_ControlBezier.y * sinf((Angle) + D3DX_PI / 2);
 		m_Bezier.P1[2] = (sz + randCont + m_ControlBezier.y * sinf(m_XZr + (Angle) + D3DX_PI * 2)* cosf(m_XZr + (Angle) + D3DX_PI * 2));

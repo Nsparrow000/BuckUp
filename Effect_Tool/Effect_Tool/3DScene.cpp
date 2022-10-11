@@ -142,7 +142,7 @@ void C3DScene::Update()
 		}
 		if (m_pKeyboard->GetKey(DIK_F3) == true)
 		{
-			CPresetEffect::CallOrder3D(0, D3DXVECTOR3(0.0f, 50.0f, 0.0f), {});
+			CPresetEffect::CallOrder3D(0, D3DXVECTOR3(0.0f, 5.0f, 0.0f), {});
 		}
 		if (m_pKeyboard->GetKey(DIK_F4) == true)
 		{

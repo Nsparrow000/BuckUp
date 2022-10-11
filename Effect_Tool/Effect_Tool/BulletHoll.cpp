@@ -39,12 +39,20 @@ HRESULT CBulletHoll::Init(D3DXVECTOR3 size,
 	D3DXVECTOR2 nSplit,
 	D3DXVECTOR3 rot,
 	int Synthetic,
-	ANIMPATTERN AnimPattern)
+	ANIMPATTERN AnimPattern,
+	float Distance)
 {
 	CBillEffect::Init(size, Addsize, color, Mincolor, nTex, nLife, TexNum, TexMove, nAnimCounter, nSplit, AnimPattern);
 	m_nSynthenic = Synthetic;
 	m_Size = size;
 	m_Rot = rot;
+
+	int fDistance = (int)Distance;
+	float fRandDistance = float(rand() % fDistance) - float(rand() % fDistance);
+	float fRandDistance2 = float(rand() % fDistance) - float(rand() % fDistance);
+
+
+	m_pos = D3DXVECTOR3(pos.x + cosf(CIRCLE) *  fRandDistance, m_Size.y / 2, pos.z + cosf(CIRCLE) * fRandDistance2);
 
 	//m_pos1 = D3DXVECTOR3(
 	//	pos.x + size.x * (cosf(m_Rot.y)),
@@ -64,21 +72,21 @@ HRESULT CBulletHoll::Init(D3DXVECTOR3 size,
 	//	pos.z - (sinf(-m_Rot.y))* size.x);
 
 	m_pos1 = D3DXVECTOR3(
-		pos.x - (cosf(-m_Rot.y) * size.x / 2),
-		pos.y + size.x / 2,
-		pos.z - (sinf(-m_Rot.y) * size.x / 2));
+		m_pos.x - (cosf(-m_Rot.y) * m_Size.x / 2),
+		m_pos.y + m_Size.y / 2,
+		m_pos.z - (sinf(-m_Rot.y) * m_Size.x / 2));
 	m_pos2 = D3DXVECTOR3(
-		pos.x + (cosf(-m_Rot.y)) * size.x / 2,
-		pos.y + size.x / 2,
-		pos.z + (sinf(-m_Rot.y)) * size.x / 2);
+		m_pos.x + (cosf(-m_Rot.y)) * m_Size.x / 2,
+		m_pos.y + m_Size.y / 2,
+		m_pos.z + (sinf(-m_Rot.y)) * m_Size.x / 2);
 	m_pos3 = D3DXVECTOR3(
-		pos.x - (cosf(-m_Rot.y) * size.x / 2),
-		pos.y - size.x / 2,
-		pos.z - (sinf(-m_Rot.y) * size.x / 2));
+		m_pos.x - (cosf(-m_Rot.y) * m_Size.x / 2),
+		m_pos.y - m_Size.y / 2,
+		m_pos.z - (sinf(-m_Rot.y) * m_Size.x / 2));
 	m_pos4 = D3DXVECTOR3(
-		pos.x + (cosf(-m_Rot.y)) * size.x / 2,
-		pos.y - size.x / 2,
-		pos.z + (sinf(-m_Rot.y)) * size.x / 2);
+		m_pos.x + (cosf(-m_Rot.y)) * m_Size.x / 2,
+		m_pos.y - m_Size.y / 2,
+		m_pos.z + (sinf(-m_Rot.y)) * m_Size.x / 2);
 
 	//m_pos1 = D3DXVECTOR3(
 	//	pos.x + size.x,
@@ -208,14 +216,15 @@ CBulletHoll *CBulletHoll::Create(D3DXVECTOR3 size,
 	D3DXVECTOR2 nSplit,
 	D3DXVECTOR3 rot,
 	int Synthetic,
-	ANIMPATTERN AnimPattern)
+	ANIMPATTERN AnimPattern,
+	float Distance)
 {
 	CBulletHoll *pBulletHoll = new CBulletHoll(CManager::PRIORITY_EFFECT);
 
 	if (pBulletHoll != NULL)
 	{
 		pBulletHoll->Init(size, Addsize, pos, color, Mincolor, nLife, nTex, TexMove, TexNum, nAnimCounter, nSplit,
-			rot, Synthetic, AnimPattern);
+			rot, Synthetic, AnimPattern, Distance);
 	}
 
 	return pBulletHoll;

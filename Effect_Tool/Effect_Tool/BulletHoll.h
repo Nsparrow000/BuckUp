@@ -28,7 +28,8 @@ public:
 		D3DXVECTOR2 nSplit,
 		D3DXVECTOR3 rot,
 		int Synthetic,
-		ANIMPATTERN AnimPattern);
+		ANIMPATTERN AnimPattern,
+		float Distance);
 
 	void Uninit();
 	void Update();
@@ -48,13 +49,15 @@ public:
 		D3DXVECTOR2 nSplit,
 		D3DXVECTOR3 rot,
 		int Synthetic,
-		ANIMPATTERN AnimPattern);
+		ANIMPATTERN AnimPattern,
+		float Distance);
 
 private:
 	int nLife;	//寿命
 	bool bUninit;
 	D3DXVECTOR3 m_pos;
 	float m_size;		//現在の大きさ
+	float m_distance;
 
 	D3DXVECTOR3 m_pos1;	//出現位置
 	D3DXVECTOR3 m_pos2;	//出現位置
