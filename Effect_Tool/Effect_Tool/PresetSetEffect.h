@@ -10,10 +10,10 @@
 //*****************************************************************************
 // É}ÉNÉç
 //*****************************************************************************
-#define MAX_EFFECTPATTERN_2D (8)
-#define MAX_EFFECTPATTERN_3D (8)
+#define MAX_EFFECTPATTERN_2D (16)
+#define MAX_EFFECTPATTERN_3D (16)
 
-#define MAX_ORDER_3D (8)
+#define MAX_ORDER_3D (16)
 
 class CPresetEffect : CScene
 {

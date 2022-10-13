@@ -615,7 +615,8 @@ void CLoadEffect::EffectOrder(const char *aFileName)	//エフェクトオーダー
 					if (strcmp(&aFile[0], "ORDER") == 0)		//発生プリセット
 					{
 						fscanf(pFile, "%s", &aFile[0]);
-						fscanf(pFile, "%d %d %d %d %d %d %d %d", &nOrder[0], &nOrder[1], &nOrder[2], &nOrder[3], &nOrder[4], &nOrder[5], &nOrder[6], &nOrder[7]);
+						fscanf(pFile, "%d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d", &nOrder[0], &nOrder[1], &nOrder[2], &nOrder[3], &nOrder[4], &nOrder[5], &nOrder[6], &nOrder[7],
+							&nOrder[8],&nOrder[9],&nOrder[10],&nOrder[11],&nOrder[12],&nOrder[13],&nOrder[14],nOrder[15]);
 					}
 				}
 				//オーダー情報
