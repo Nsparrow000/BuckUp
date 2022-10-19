@@ -40,7 +40,8 @@ HRESULT CBulletHoll::Init(D3DXVECTOR3 size,
 	D3DXVECTOR3 rot,
 	int Synthetic,
 	ANIMPATTERN AnimPattern,
-	float Distance)
+	float Distance,
+	HEIGHT_TYPE Type)
 {
 	CBillEffect::Init(size, Addsize, color, Mincolor, nTex, nLife, TexNum, TexMove, nAnimCounter, nSplit, AnimPattern);
 	m_nSynthenic = Synthetic;
@@ -51,7 +52,7 @@ HRESULT CBulletHoll::Init(D3DXVECTOR3 size,
 	float fRandDistance = float(rand() % fDistance) - float(rand() % fDistance);
 	float fRandDistance2 = float(rand() % fDistance) - float(rand() % fDistance);
 
-
+	m_Height_Type = Type;
 	m_pos = D3DXVECTOR3(pos.x + cosf(CIRCLE) *  fRandDistance, m_Size.y / 2, pos.z + cosf(CIRCLE) * fRandDistance2);
 
 	//m_pos1 = D3DXVECTOR3(
@@ -71,22 +72,66 @@ HRESULT CBulletHoll::Init(D3DXVECTOR3 size,
 	//	pos.y /*- size.x / 2*/,
 	//	pos.z - (sinf(-m_Rot.y))* size.x);
 
-	m_pos1 = D3DXVECTOR3(
-		m_pos.x - (cosf(-m_Rot.y) * m_Size.x / 2),
-		m_pos.y + m_Size.y / 2,
-		m_pos.z - (sinf(-m_Rot.y) * m_Size.x / 2));
-	m_pos2 = D3DXVECTOR3(
-		m_pos.x + (cosf(-m_Rot.y)) * m_Size.x / 2,
-		m_pos.y + m_Size.y / 2,
-		m_pos.z + (sinf(-m_Rot.y)) * m_Size.x / 2);
-	m_pos3 = D3DXVECTOR3(
-		m_pos.x - (cosf(-m_Rot.y) * m_Size.x / 2),
-		m_pos.y - m_Size.y / 2,
-		m_pos.z - (sinf(-m_Rot.y) * m_Size.x / 2));
-	m_pos4 = D3DXVECTOR3(
-		m_pos.x + (cosf(-m_Rot.y)) * m_Size.x / 2,
-		m_pos.y - m_Size.y / 2,
-		m_pos.z + (sinf(-m_Rot.y)) * m_Size.x / 2);
+	if (m_Height_Type == TYPE_NOMAL)
+	{
+		m_pos1 = D3DXVECTOR3(
+			m_pos.x - (cosf(-m_Rot.y) * m_Size.x / 2),
+			m_pos.y + m_Size.y / 2,
+			m_pos.z - (sinf(-m_Rot.y) * m_Size.x / 2));
+		m_pos2 = D3DXVECTOR3(
+			m_pos.x + (cosf(-m_Rot.y)) * m_Size.x / 2,
+			m_pos.y + m_Size.y / 2,
+			m_pos.z + (sinf(-m_Rot.y)) * m_Size.x / 2);
+		m_pos3 = D3DXVECTOR3(
+			m_pos.x - (cosf(-m_Rot.y) * m_Size.x / 2),
+			m_pos.y - m_Size.y / 2,
+			m_pos.z - (sinf(-m_Rot.y) * m_Size.x / 2));
+		m_pos4 = D3DXVECTOR3(
+			m_pos.x + (cosf(-m_Rot.y)) * m_Size.x / 2,
+			m_pos.y - m_Size.y / 2,
+			m_pos.z + (sinf(-m_Rot.y)) * m_Size.x / 2);
+
+	}
+	else if (m_Height_Type == TYPE_CYCLE)
+	{
+		m_pos1 = D3DXVECTOR3(
+			m_pos.x - (cosf(-m_Rot.y) * m_Size.x / 2),
+			m_pos.y + m_Size.y / 2,
+			m_pos.z - (sinf(-m_Rot.y) * m_Size.x / 2));
+		m_pos2 = D3DXVECTOR3(
+			m_pos.x + (cosf(-m_Rot.y)) * m_Size.x / 2,
+			m_pos.y + m_Size.y / 2,
+			m_pos.z + (sinf(-m_Rot.y)) * m_Size.x / 2);
+		m_pos3 = D3DXVECTOR3(
+			m_pos.x - (cosf(-m_Rot.y) * m_Size.x / 2),
+			m_pos.y - m_Size.y / 2,
+			m_pos.z - (sinf(-m_Rot.y) * m_Size.x / 2));
+		m_pos4 = D3DXVECTOR3(
+			m_pos.x + (cosf(-m_Rot.y)) * m_Size.x / 2,
+			m_pos.y - m_Size.y / 2,
+			m_pos.z + (sinf(-m_Rot.y)) * m_Size.x / 2);
+
+	}
+	else  //‚O‚Æ“¯‚¶—áŠO
+	{
+		m_pos1 = D3DXVECTOR3(
+			m_pos.x - (cosf(-m_Rot.y) * m_Size.x / 2),
+			m_pos.y + m_Size.y / 2,
+			m_pos.z - (sinf(-m_Rot.y) * m_Size.x / 2));
+		m_pos2 = D3DXVECTOR3(
+			m_pos.x + (cosf(-m_Rot.y)) * m_Size.x / 2,
+			m_pos.y + m_Size.y / 2,
+			m_pos.z + (sinf(-m_Rot.y)) * m_Size.x / 2);
+		m_pos3 = D3DXVECTOR3(
+			m_pos.x - (cosf(-m_Rot.y) * m_Size.x / 2),
+			m_pos.y - m_Size.y / 2,
+			m_pos.z - (sinf(-m_Rot.y) * m_Size.x / 2));
+		m_pos4 = D3DXVECTOR3(
+			m_pos.x + (cosf(-m_Rot.y)) * m_Size.x / 2,
+			m_pos.y - m_Size.y / 2,
+			m_pos.z + (sinf(-m_Rot.y)) * m_Size.x / 2);
+	}
+
 
 	//m_pos1 = D3DXVECTOR3(
 	//	pos.x + size.x,
@@ -217,14 +262,15 @@ CBulletHoll *CBulletHoll::Create(D3DXVECTOR3 size,
 	D3DXVECTOR3 rot,
 	int Synthetic,
 	ANIMPATTERN AnimPattern,
-	float Distance)
+	float Distance,
+	HEIGHT_TYPE Type)
 {
 	CBulletHoll *pBulletHoll = new CBulletHoll(CManager::PRIORITY_EFFECT);
 
 	if (pBulletHoll != NULL)
 	{
 		pBulletHoll->Init(size, Addsize, pos, color, Mincolor, nLife, nTex, TexMove, TexNum, nAnimCounter, nSplit,
-			rot, Synthetic, AnimPattern, Distance);
+			rot, Synthetic, AnimPattern, Distance, Type);
 	}
 
 	return pBulletHoll;

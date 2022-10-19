@@ -687,7 +687,8 @@ void CPresetEffect::SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 				rot,
 				m_EffectState3D[nPattern].Synthetic,
 				(CBillEffect::ANIMPATTERN)m_EffectState3D[nPattern].m_AnimPatternType,
-				m_EffectState3D[nPattern].m_nDistance);
+				m_EffectState3D[nPattern].m_nDistance,
+				(CBulletHoll::HEIGHT_TYPE)0);
 		}
 		break;
 	case(10):

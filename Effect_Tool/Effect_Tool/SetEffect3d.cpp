@@ -281,7 +281,8 @@ void CSetEffect3D::SetEffect()
 				D3DXVECTOR3(m_pCamera->GetRotX(), m_pCamera->GetRotY(), {}),
 				CControl::GetSynthetic(),
 				(CBillEffect::ANIMPATTERN)CControl::GetAnimPatternType(),
-				CControl::GetDistance()
+				CControl::GetDistance(),
+				(CBulletHoll::HEIGHT_TYPE)0
 			);
 			break;
 		case(10):

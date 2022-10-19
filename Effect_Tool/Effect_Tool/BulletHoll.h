@@ -12,6 +12,13 @@ class CBulletHoll : public CBillEffect
 {
 public:
 
+	typedef enum
+	{
+		TYPE_NOMAL,
+		TYPE_CYCLE,
+		TYPE_MAX,
+	} HEIGHT_TYPE;
+
 	CBulletHoll(int nPriority);
 	~CBulletHoll();
 
@@ -29,7 +36,8 @@ public:
 		D3DXVECTOR3 rot,
 		int Synthetic,
 		ANIMPATTERN AnimPattern,
-		float Distance);
+		float Distance,
+		HEIGHT_TYPE Type);
 
 	void Uninit();
 	void Update();
@@ -50,7 +58,8 @@ public:
 		D3DXVECTOR3 rot,
 		int Synthetic,
 		ANIMPATTERN AnimPattern,
-		float Distance);
+		float Distance,
+		HEIGHT_TYPE Type);
 
 private:
 	int nLife;	//寿命
@@ -59,6 +68,7 @@ private:
 	float m_size;		//現在の大きさ
 	float m_distance;
 
+	HEIGHT_TYPE m_Height_Type;
 	D3DXVECTOR3 m_pos1;	//出現位置
 	D3DXVECTOR3 m_pos2;	//出現位置
 	D3DXVECTOR3 m_pos3;	//出現位置

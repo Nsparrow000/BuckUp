@@ -9,21 +9,32 @@
 #メモ：(このエフェクトの使い道等、書いてください)
 #========================================================================
 EFFECTSTATE3D
-	PATTERN = 1				//動きのパターン
-	SIZE = 10.0						//大きさ
+	PATTERN = 3				//動きのパターン
+	ROTATE = 0.16						//回転
+	MOVE = 1.0						//移動
+	SIZE = 100.0						//大きさ
 	ADDSIZE = 0.0					//大きさ変動
-	SIZEY = 10.0						//Y大きさ
+	SIZEY = 20.0						//Y大きさ
 	ADDSIZEY = 0.0					//Y大きさ変動
-	DENSITY = 20						//密度
-	MOVE3D = 0.0 4.0 -0.0					//移動
-	DISTANCE = 611.0						//発生距離
-	TYPE = 4					//出現位置のパターン
-	SECONDTYPE = 1					//ランダム移動のパターン
+	DENSITY = 1						//粒密度
+	PARTICLESIZE = 0.0						//粒サイズ
 	PARTICLETIME = 1						//粒発生間隔
-	COLOR = 255 130 0 255			//カラー
+	DISTANCE = 1.0						//粒の発生距離
+	ACTIVE = 400						//稼働時間
+	PARTICLEADDSIZE = 0.0						//粒サイズ変更
+	MAXSIZE = 0.0						//フィールド最大サイズ
+	SECONDCOLOR = 255 255 255 255			//パーティクルカラー
+	SECONDADDCOLOR = 0 0 0 0			//パーティクルカラー増減
+	SECONDSYNTHETIC = 0			//パーティクル合成
+	ACTIVEADDSIZE = 0.0					//稼働中の稼働時間
+	FIELDTIME = 10			//フィールド生成間隔
+	FIELDCREATE = 0			//フィールド生成するか
+	CREATEPRESET = 0					//生成プリセット
+	SECONDTIME = 153						//フィールドが消える時間
+	COLOR = 255 255 255 255			//カラー
 	CHANGECOLOR = 0 0 0 0			//カラー変動値
 	LIFE = 100						//ライフ
-	TEXTURE = 1						//テクスチャ  ()
+	TEXTURE = 8						//テクスチャ  ()
 	SYNTHETIC = 0						//合成
 	TEXMOVE = 0.000 0.000					//テクスチャ移動
 	TEXNUM = 1.0 1.0					//テクスチャ枚数
