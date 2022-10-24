@@ -48,6 +48,7 @@
     <ClCompile Include="object.cpp" />
     <ClCompile Include="plane.cpp" />
     <ClCompile Include="player.cpp" />
+    <ClCompile Include="PresetDelaySet.cpp" />
     <ClCompile Include="PresetSetEffect.cpp" />
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="Rotate.cpp" />
@@ -95,6 +96,7 @@
     <ClInclude Include="object.h" />
     <ClInclude Include="plane.h" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="PresetDelaySet.h" />
     <ClInclude Include="PresetSetEffect.h" />
     <ClInclude Include="renderer.h" />
     <ClInclude Include="Rotate.h" />
@@ -189,7 +191,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

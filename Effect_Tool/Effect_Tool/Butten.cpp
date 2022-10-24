@@ -337,7 +337,7 @@ void CButten::Set(OPERATION Operation, float nIndeNum)
 		CControl::AddAvctiveAddSize(nIndeNum);
 		break;
 	case(PRESETLOAD):
-		CLoadEffect::EffectOrder(LOAD_PRESET_TEXT);
+		//CLoadEffect::EffectOrder(LOAD_PRESET_TEXT);
 		CLoadEffect::EffectStateLoad(LOAD_PRESET_TEXT);
 
 		break;

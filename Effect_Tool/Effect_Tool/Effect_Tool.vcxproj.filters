@@ -73,15 +73,18 @@
     <Filter Include="ヘッダー ファイル\3D\Effect\Traject">
       <UniqueIdentifier>{36dcda4a-6473-44d4-8c8c-8eadcb4bb790}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Load">
+      <UniqueIdentifier>{bd0bf68f-52c6-44b0-946d-dacd511124a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\load">
+      <UniqueIdentifier>{b76d4d61-5985-4707-9018-205a4b9d552d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="control.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="fade.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="load.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
@@ -162,9 +165,6 @@
     <ClCompile Include="FieldEffect.cpp">
       <Filter>ソース ファイル\3D\Effect</Filter>
     </ClCompile>
-    <ClCompile Include="LoadEffect.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="PresetSetEffect.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -210,15 +210,21 @@
     <ClCompile Include="Fountain.cpp">
       <Filter>ソース ファイル\3D\Effect\BillBoard</Filter>
     </ClCompile>
+    <ClCompile Include="load.cpp">
+      <Filter>ソース ファイル\load</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadEffect.cpp">
+      <Filter>ソース ファイル\load</Filter>
+    </ClCompile>
+    <ClCompile Include="PresetDelaySet.cpp">
+      <Filter>ソース ファイル\load</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="control.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="fade.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="load.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="main.h">
@@ -299,9 +305,6 @@
     <ClInclude Include="FieldEffect.h">
       <Filter>ヘッダー ファイル\3D\Effect</Filter>
     </ClInclude>
-    <ClInclude Include="LoadEffect.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="PresetSetEffect.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
@@ -346,6 +349,15 @@
     </ClInclude>
     <ClInclude Include="Fountain.h">
       <Filter>ヘッダー ファイル\3D\Effect\BillBoard</Filter>
+    </ClInclude>
+    <ClInclude Include="load.h">
+      <Filter>ヘッダー ファイル\Load</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadEffect.h">
+      <Filter>ヘッダー ファイル\Load</Filter>
+    </ClInclude>
+    <ClInclude Include="PresetDelaySet.h">
+      <Filter>ヘッダー ファイル\Load</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -58,7 +58,6 @@ HRESULT C2DScene::Init(D3DXVECTOR3 /*pos*/)
 	//m_pGamePad = CManager::GetGamepad();
 
 	m_Set = CSetEffect::Create(D3DXVECTOR3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0),10, 10, -1);
-	CLoadEffect::EffectStateLoad(LOAD_PRESET_TEXT);
 
 
 	CLoad::LoadButten(SET_TEXT_2D);

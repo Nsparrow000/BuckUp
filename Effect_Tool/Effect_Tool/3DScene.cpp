@@ -20,6 +20,7 @@
 
 #include "LoadEffect.h"
 #include "PresetSetEffect.h"
+#include "PresetDelaySet.h"
 #include "Butten.h"
 
 #include "Player.h"
@@ -68,8 +69,9 @@ HRESULT C3DScene::Init(D3DXVECTOR3 /*pos*/)
 	CLoad::Load(FILE3D);
 	CLoad::LoadButten(SET_TEXT_3D);
 
-	CLoadEffect::EffectOrder(LOAD_PRESET_TEXT);
+	//CLoadEffect::EffectOrder(LOAD_PRESET_TEXT);
 	CLoadEffect::EffectStateLoad(LOAD_PRESET_TEXT);
+
 
 	CControl::SetPlayerMode(true);
 	//フェード
@@ -142,7 +144,7 @@ void C3DScene::Update()
 		}
 		if (m_pKeyboard->GetKey(DIK_F3) == true)
 		{
-			CPresetEffect::CallOrder3D(0, D3DXVECTOR3(0.0f, 5.0f, 0.0f), {});
+			CPresetDelaySet::Create(0, D3DXVECTOR3(0.0f, 5.0f, 0.0f));
 		}
 		if (m_pKeyboard->GetKey(DIK_F4) == true)
 		{
