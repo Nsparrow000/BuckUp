@@ -316,6 +316,15 @@ public:
 
 	static void AddAnimPatternType(int AnimPatternType) { m_AnimPatternType += AnimPatternType; }	//制御点
 
+	//ディレイ
+	static int GetDeleyPattern() { return m_DeleyPattern; }
+	static void AddDeleyPattern(int AddPattern) { 
+		m_DeleyPattern += AddPattern;
+		if (m_DeleyPattern < 0)
+		{
+			m_DeleyPattern = 0;
+		}
+	}
 private:
 	static CKeyboard *m_pKeyboard;
 	static int m_SerectColor;		//色選択
@@ -346,7 +355,7 @@ private:
 
 	static D3DXVECTOR2 m_TexMove;	//テクスチャ座標
 
-	//２D
+	//2D
 	static bool m_bMouseCursor;			//カーソル追従
 	static D3DXVECTOR2 m_move;	//初期の移動値
 	//固有
@@ -392,6 +401,8 @@ private:
 	static int m_SecondTex;
 
 	static int m_AnimPatternType;
+
+	static int m_DeleyPattern;
 
 };
 

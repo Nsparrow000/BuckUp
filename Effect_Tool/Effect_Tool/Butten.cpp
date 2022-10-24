@@ -398,6 +398,9 @@ void CButten::Set(OPERATION Operation, float nIndeNum)
 	case(ADDSIZEY):
 		CControl::AddChangeSizeY(nIndeNum);
 		break;
+	case(PATTTERNSERECT):
+		CControl::AddDeleyPattern(nIndeNum);
+		break;
 	default:
 		assert(false);
 		break;

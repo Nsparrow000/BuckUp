@@ -144,7 +144,7 @@ void C3DScene::Update()
 		}
 		if (m_pKeyboard->GetKey(DIK_F3) == true)
 		{
-			CPresetDelaySet::Create(0, D3DXVECTOR3(0.0f, 5.0f, 0.0f));
+			CPresetDelaySet::Create(CControl::GetDeleyPattern(), D3DXVECTOR3(0.0f, 3.0f, 0.0f));
 		}
 		if (m_pKeyboard->GetKey(DIK_F4) == true)
 		{

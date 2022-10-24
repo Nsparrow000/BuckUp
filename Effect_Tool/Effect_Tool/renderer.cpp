@@ -102,7 +102,7 @@ HRESULT CRenderer::Init(HWND hWnd, bool bWindow)
 	m_pD3DDevice->SetSamplerState(0, D3DSAMP_MINFILTER, D3DTEXF_LINEAR);	// テクスチャ縮小フィルタモードを設定
 	m_pD3DDevice->SetSamplerState(0, D3DSAMP_MAGFILTER, D3DTEXF_LINEAR);	// テクスチャ拡大フィルタモードを設定
 
-																			// テクスチャステージステートの設定
+	// テクスチャステージステートの設定
 	m_pD3DDevice->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_MODULATE);
 	m_pD3DDevice->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE);
 	m_pD3DDevice->SetTextureStageState(0, D3DTSS_ALPHAARG2, D3DTA_DIFFUSE);
@@ -178,6 +178,8 @@ void CRenderer::Draw()
 
 		DrawText();
 		DrawTextLeft();
+
+		DrawTextUnderLeft();
 
 		// Direct3Dによる描画の終了
 		m_pD3DDevice->EndScene();
@@ -521,6 +523,33 @@ void CRenderer::DrawTextLeft()
 	}
 	}
 
+	// テキストの描画
+	m_pFont->DrawText(
+		NULL,
+		&str[0],
+		-1,
+		&rect,
+		DT_LEFT,
+		D3DCOLOR_RGBA(255, 255, 255, 255));
+
+}
+
+//*****************************************************************************
+//画面テキスト表示（右下）
+//*****************************************************************************
+void CRenderer::DrawTextUnderLeft()
+{
+
+	RECT rect = { 900, 320, SCREEN_WIDTH, SCREEN_HEIGHT };
+	char str[64];
+	CManager::MODE mode = CManager::GetMode();
+	int nNum = sprintf(&str[0], "\n");
+
+	//とりあえず3D限定
+	if (mode == CManager::MODE_3D)
+	{
+		nNum += sprintf(&str[nNum], "再生パターン [+][-]：%d\n", CControl::GetDeleyPattern());
+	}
 	// テキストの描画
 	m_pFont->DrawText(
 		NULL,

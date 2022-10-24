@@ -105,6 +105,7 @@ D3DXVECTOR3 CControl::m_ContorolBezier = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
 int CControl::m_SecondTex = 1;
 int CControl::m_AnimPatternType = 0;
 
+int CControl::m_DeleyPattern = 0;
 //*****************************************************************************
 //コンストラクタ
 //*****************************************************************************

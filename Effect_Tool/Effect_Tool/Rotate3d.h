@@ -32,6 +32,14 @@ public:
 		MOVETYPE_MAX,
 	} MOVE_TYPE;
 
+	typedef enum
+	{
+		TYPE_EIGHT,	//八の字
+		TYPE_VERTICAL,	//縦回転
+		TYPE_BESIDE,	//横回転
+		MOVINGTYPE_MAX,
+	} TYPE_MOVING;
+
 	CRotate3D(int nPriority);
 	~CRotate3D();
 
@@ -54,7 +62,8 @@ public:
 		float fActive,
 		int AnimPattern,
 		EFFECT_TYPE EffectType,
-		MOVE_TYPE MoveType);
+		MOVE_TYPE MoveType,
+		TYPE_MOVING MovingType);
 
 	void Uninit();
 	void Update();
@@ -78,12 +87,14 @@ public:
 		float fActive,
 		int AnimPattern,
 		EFFECT_TYPE EffectType,
-		MOVE_TYPE MoveType);
+		MOVE_TYPE MoveType,
+		TYPE_MOVING MovingType);
 
 private:
 	EFFECT_TIME m_EffectTime;
 	EFFECT_TYPE m_EffectType;
 	MOVE_TYPE m_MoveType;
+	TYPE_MOVING m_MoveingType;	//動きタイプ
 
 	bool m_bUninit;
 
@@ -111,6 +122,8 @@ private:
 	int m_nLife;
 	int m_ParticleLife;
 	int m_PatternAnim;
+
+	int m_MovePattern;	//動きパターン
 };
 
 #endif

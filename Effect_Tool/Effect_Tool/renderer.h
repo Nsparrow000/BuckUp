@@ -25,6 +25,7 @@ public:
 	void DrawFPS();
 	void DrawText();
 	void DrawTextLeft();
+	void DrawTextUnderLeft();
 
 
 	static HWND GetWnd() { return m_wnd; }

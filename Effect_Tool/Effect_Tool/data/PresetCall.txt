@@ -10,26 +10,34 @@ PRESETCALL
 
 	CALLSET
 		DELEY = 0 			//何フレーム後に呼び出すか(親)
-		PRESETNUM = 6		//呼び出すエフェクト総数
-		TYPE = 0 1 2 3 4 5 		//エフェクトパターン
+		PRESETNUM = 2		//呼び出すエフェクト総数
+		TYPE = 0 0  		//エフェクトパターン
 	END_CALLSET
 	
 	CALLSET
-		DELEY = 40 //40
-		PRESETNUM = 3
-		TYPE = 1 3 6	
+		DELEY = 4 //4
+		PRESETNUM = 1
+		TYPE = 1 	
 	END_CALLSET
 	
 	CALLSET
-		DELEY = 60 		//何フレーム後に呼び出すか(60フレーム後)
+		DELEY = 6 		//何フレーム後に呼び出すか(60フレーム後)
 		PRESETNUM = 2   //呼び出すエフェクト総数
-		TYPE = 1 3   	//エフェクトパターン
+		TYPE = 2 3   	//エフェクトパターン
 	END_CALLSET
 	
+END_PRESETCALL
+
+#========================================================================
+# 爆発
+#========================================================================
+PRESETCALL
+	NAME = EXPLOSIONTEST	// プリセットの名前
+
 	CALLSET
-		DELEY = 80 		//何フレーム後に呼び出すか(80フレーム後)
-		PRESETNUM = 3   //呼び出すエフェクト総数
-		TYPE = 1 3 6   	//エフェクトパターン
+		DELEY = 0 			//何フレーム後に呼び出すか(親)
+		PRESETNUM = 2		//呼び出すエフェクト総数
+		TYPE = 0 0  		//エフェクトパターン
 	END_CALLSET
 	
 END_PRESETCALL

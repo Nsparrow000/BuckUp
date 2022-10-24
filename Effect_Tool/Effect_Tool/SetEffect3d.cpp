@@ -234,7 +234,8 @@ void CSetEffect3D::SetEffect()
 					CControl::GetMaxSize(),
 					(CBillEffect::ANIMPATTERN)CControl::GetAnimPatternType(),
 					(CRotate3D::EFFECT_TYPE)CControl::GetType(),
-					(CRotate3D::MOVE_TYPE)CControl::GetSecondType());
+					(CRotate3D::MOVE_TYPE)CControl::GetSecondType(),
+					(CRotate3D::TYPE_MOVING)CControl::GetSecondType());
 
 			break;
 		case(6):
