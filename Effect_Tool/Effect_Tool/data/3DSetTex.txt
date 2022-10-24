@@ -1695,7 +1695,7 @@ END_BUTTENPATTENSET
 BUTTENPATTENSET
 	//サイズ
 	BUTTENSTATE
-		POS = 69.0 217.0 0.0	//座標
+		POS = 76.0 217.0 0.0	//座標
 		SIZE = 18.0 18.0	//サイズ
 		TEXTURE = -1		//テクスチャ
 		OPERATION = 4		//設定内容
@@ -1704,7 +1704,7 @@ BUTTENPATTENSET
 	END_BUTTENSTATE
 	
 	BUTTENSTATE
-		POS = 93.0 217.0 0.0	//座標
+		POS = 100.0 217.0 0.0	//座標
 		SIZE = 18.0 18.0	//サイズ
 		TEXTURE = -1		//テクスチャ
 		OPERATION = 4		//設定内容
@@ -1714,7 +1714,7 @@ BUTTENPATTENSET
 
 	//サイズ増減
 	BUTTENSTATE
-		POS = 102.0 237.0 0.0	//座標
+		POS = 113.0 237.0 0.0	//座標
 		SIZE = 18.0 18.0	//サイズ
 		TEXTURE = -1		//テクスチャ
 		OPERATION = 5		//設定内容
@@ -1723,10 +1723,48 @@ BUTTENPATTENSET
 	END_BUTTENSTATE
 	
 	BUTTENSTATE
-		POS = 124.0 237.0 0.0	//座標
+		POS = 134.0 237.0 0.0	//座標
 		SIZE = 18.0 18.0	//サイズ
 		TEXTURE = -1		//テクスチャ
 		OPERATION = 5		//設定内容
+		INDENUM = -0.1	//増減する数値
+		PATTERN = 6
+	END_BUTTENSTATE
+
+	//サイズY
+	BUTTENSTATE
+		POS = 141.0 217.0 0.0	//座標
+		SIZE = 18.0 18.0	//サイズ
+		TEXTURE = -1		//テクスチャ
+		OPERATION = 55		//設定内容
+		INDENUM = 1	//増減する数値
+		PATTERN = 6
+	END_BUTTENSTATE
+	
+	BUTTENSTATE
+		POS = 164.0 217.0 0.0	//座標
+		SIZE = 18.0 18.0	//サイズ
+		TEXTURE = -1		//テクスチャ
+		OPERATION = 55		//設定内容
+		INDENUM = -1	//増減する数値
+		PATTERN = 6
+	END_BUTTENSTATE
+
+	//サイズ増減Y
+	BUTTENSTATE
+		POS = 173.0 237.0 0.0	//座標
+		SIZE = 18.0 18.0	//サイズ
+		TEXTURE = -1		//テクスチャ
+		OPERATION = 56		//設定内容
+		INDENUM = 0.1	//増減する数値
+		PATTERN = 6
+	END_BUTTENSTATE
+	
+	BUTTENSTATE
+		POS = 197.0 237.0 0.0	//座標
+		SIZE = 18.0 18.0	//サイズ
+		TEXTURE = -1		//テクスチャ
+		OPERATION = 56		//設定内容
 		INDENUM = -0.1	//増減する数値
 		PATTERN = 6
 	END_BUTTENSTATE
