@@ -57,23 +57,29 @@ HRESULT CRotate3D::Init(D3DXVECTOR3 SetSize,
 	m_AddSize = AddSize;
 	m_Color = Color;
 	m_MinColor = AddColor;
-	m_nDistanse = Distance;
-	m_nBuckDistanse = -Distance;
+	m_nDistanse = 0;
+	m_nDefaultDistanse = Distance;
 	m_MoveingType = MovingType;
-	switch (MoveType)
-	{
-	case(TYPE_NOMAL):
-		m_nAddDistance = AddDistance;
-		break;
-	case(TYPE_MOVERAND):
-		m_nAddDistance = float(rand() % (int)AddDistance) + 1.0f;
-		break;
-	default:
-		//m_nAddDistance = AddDistance;		
-		m_nAddDistance = AddDistance;
 
-		break;
-	}
+	//switch (MoveType)//ˆÚ“®—Ê‚Ìƒ‰ƒ“ƒ_ƒ€‰»
+	//{
+	//case(TYPE_NOMAL):
+	//	m_nAddDistance = AddDistance;
+	//	break;
+	//case(TYPE_MOVERAND):
+	//	m_nAddDistance = AddDistance;
+
+	//	//m_nAddDistance = float(rand() % (int)AddDistance) + 1.0f;
+	//	break;
+	//default:
+	//	//m_nAddDistance = AddDistance;		
+	//	m_nAddDistance = AddDistance;
+
+	//	break;
+	//}
+
+	m_nAddDistance = AddDistance;
+
 	m_fAngle = fAngle;
 	m_fAddAngle = fAddAngle;
 	m_nTex = nTex;
@@ -87,7 +93,6 @@ HRESULT CRotate3D::Init(D3DXVECTOR3 SetSize,
 	m_fRandAngle2 = CIRCLE2;
 	m_EffectType = EffectType;
 	m_PatternAnim = AnimPattern;
-
 	m_pos = D3DXVECTOR3(
 		pos.x + m_nDistanse * sinf(m_fRandAngle + m_fAngle) * cosf(m_fRandAngle2 + m_fAngle),
 		pos.y + m_nDistanse * cosf(m_fRandAngle + m_fAngle),
@@ -95,6 +100,7 @@ HRESULT CRotate3D::Init(D3DXVECTOR3 SetSize,
 
 	m_Oldpos = m_pos;
 
+	m_nDistanse += m_nDefaultDistanse;
 	SetPos(m_pos);
 	return S_OK;
 }
@@ -154,7 +160,7 @@ void CRotate3D::Update()
 	{
 		m_pos = D3DXVECTOR3(
 			pos.x + m_nDistanse * sinf(m_fRandAngle + m_fAngle) * cosf(m_fRandAngle2),
-			pos.y + m_nDistanse * cosf(m_fRandAngle),
+			pos.y + m_nDistanse * cosf(m_fRandAngle + m_fAngle),
 			pos.z + m_nDistanse * sinf(m_fRandAngle + m_fAngle) * sinf(m_fRandAngle2));
 	}
 	else if (m_MoveingType == CRotate3D::TYPE_BESIDE)

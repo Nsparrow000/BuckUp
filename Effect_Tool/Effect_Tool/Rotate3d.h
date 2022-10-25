@@ -99,6 +99,7 @@ private:
 	bool m_bUninit;
 
 	D3DXVECTOR3 m_pos;
+	D3DXVECTOR3 m_Defaultpos;
 	D3DXVECTOR3 m_Oldpos;
 
 	D3DXVECTOR3 m_Size;
@@ -106,8 +107,8 @@ private:
 	D3DCOLORVALUE m_Color;
 	D3DCOLORVALUE m_MinColor;
 
-	float m_nDistanse;
-	float m_nBuckDistanse;
+	float m_nDistanse;	//現在の離れてる値
+	float m_nDefaultDistanse;	//デフォルト
 
 	float m_nAddDistance;
 	float m_fAngle;

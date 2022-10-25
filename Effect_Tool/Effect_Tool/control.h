@@ -86,7 +86,7 @@ public:
 	static float GetTexMoveU() { return m_TexMove.x; }	
 	static float GetTexMoveV() { return m_TexMove.y; }
 	static D3DXVECTOR2 GetTexNum() { return m_TexNum; }	//テクスチャ枚数
-	static int GetSecondType() { return m_nSecondTime; }
+	static int GetSecondType() { return m_SecndType; }
 	static float GetTexPatternU() { return m_TexPattern.x; }
 	static float GetTexPatternV() { return m_TexPattern.y; }
 	static int GetAnimCont() { return m_nAnimCont; }
@@ -143,7 +143,7 @@ public:
 	static void SetType(int nType) { m_nType = nType;}	//球タイプ
 	static void SetTexMoveUV(D3DXVECTOR2 TexMove) { m_TexMove = TexMove; }	//テクスチャ
 	static void SetTexNum(D3DXVECTOR2 Num) { m_TexNum = Num; }	//テクスチャ
-	static void SetSecondType(int SecondType) { m_nSecondTime = SecondType; }
+	static void SetSecondType(int SecondType) { m_SecndType = SecondType; }
 	static void SetTexPattern(D3DXVECTOR2 TexPattern) { m_TexPattern = TexPattern; }	//テクスチャ
 	static void SetnAnimCont(int nAnimCont) { m_nAnimCont = nAnimCont; }	//テクスチャ
 	static void SetnSplit(D3DXVECTOR2 nSplit) { m_nSplit = nSplit; }	//テクスチャ
@@ -298,7 +298,7 @@ public:
 	static void AddTexNumU(float NumU) { m_TexNum.x += NumU; }	//テクスチャ枚数
 	static void AddTexNumV(float NumV) { m_TexNum.y += NumV; }	//テクスチャ枚数
 
-	static void AddSecondType(int SecondType) { m_nSecondTime += SecondType; }
+	static void AddSecondType(int SecondType) { m_SecndType += SecondType; }
 
 	static void AddTexPatternU(float PatternU) {m_TexPattern.x += PatternU;}	//テクスチャU
 	static void AddTexPatternV(float PatternV) { m_TexPattern.y += PatternV; }	//テクスチャV

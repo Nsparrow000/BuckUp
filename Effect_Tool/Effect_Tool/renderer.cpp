@@ -400,7 +400,8 @@ void CRenderer::DrawText()
 				nNum += sprintf(&str[nNum], "アクティブになるまでの大きさ [+][-]：%.1f\n", CControl::GetMaxSize());
 				nNum += sprintf(&str[nNum], "移動値[+][-]：%.1f\n", CControl::Getmove3d().x);
 				nNum += sprintf(&str[nNum], "エフェクトタイプ[+][-]：%d\n", CControl::GetType());
-				nNum += sprintf(&str[nNum], "移動タイプ[+][-]：%d\n", CControl::GetSecondType());
+				nNum += sprintf(&str[nNum], "移動ランダム[+][-]：%d\n", CControl::GetSecondType());
+				nNum += sprintf(&str[nNum], "動き方[+][-]：%d\n", CControl::GetSecondType());
 
 				break;
 			case(6):

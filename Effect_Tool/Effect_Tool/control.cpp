@@ -522,7 +522,7 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 				fprintf(pFile, "	DENSITY = %d						//粒密度\n", CControl::GetDensity());
 				fprintf(pFile, "	ROTATE = %.2f						//回転\n", CControl::GetRotate());
 				fprintf(pFile, "	DISTANCE = %.1f						//粒の発生距離\n", CControl::GetDistance());
-				fprintf(pFile, "	PARTICLETIME = %d						//粒発生間隔\n", CControl::GetParticleTime());
+				fprintf(pFile, "	PARTICLETIME = %d						//粒寿命\n", CControl::GetParticleTime());
 				fprintf(pFile, "	SECONDTIME = %d						//近づくまでの時間\n", CControl::GetSecondTime());
 				fprintf(pFile, "	MAXSIZE = %.1f						//アクティブサイズ\n", CControl::GetMaxSize());
 				fprintf(pFile, "	MOVE = %.1f						//距離加算\n", CControl::Getmove3d().x);
@@ -608,7 +608,7 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 			fprintf(pFile, "	COLOR = %d %d %d %d			//カラー\n", (int)CControl::GetControlCoror(1), (int)CControl::GetControlCoror(2), (int)CControl::GetControlCoror(3), (int)CControl::GetControlCoror(4));
 			fprintf(pFile, "	CHANGECOLOR = %d %d %d %d			//カラー変動値\n", (int)CControl::GetChangeCol(1), (int)CControl::GetChangeCol(2), (int)CControl::GetChangeCol(3), (int)CControl::GetChangeCol(4));
 			fprintf(pFile, "	LIFE = %d						//ライフ\n", CControl::GetLife());
-			fprintf(pFile, "	TEXTURE = %d						//テクスチャ  ()\n", CControl::GetTex());
+			fprintf(pFile, "	TEXTURE = %d						//テクスチャ  () 球は＋１の番号\n", CControl::GetTex());
 			fprintf(pFile, "	SYNTHETIC = %d						//合成\n", CControl::GetSynthetic());
 			fprintf(pFile, "	TEXMOVE = %.3f %.3f					//テクスチャ移動\n", CControl::GetTexMoveU(), CControl::GetTexMoveV());
 			fprintf(pFile, "	TEXNUM = %.1f %.1f					//テクスチャ枚数\n", CControl::GetTexNum().x, CControl::GetTexNum().y);
