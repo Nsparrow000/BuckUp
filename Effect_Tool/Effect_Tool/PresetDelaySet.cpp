@@ -84,7 +84,7 @@ void CPresetDelaySet::Draw()
 //=============================================================================
 // ê∂ê¨
 //=============================================================================
-CPresetDelaySet* CPresetDelaySet::Create(int nArray, D3DXVECTOR3 pos)
+CPresetDelaySet* CPresetDelaySet::Create(int nArray, D3DXVECTOR3 pos, D3DXVECTOR3 Endpos, D3DXVECTOR3 rot)
 {
 	// ÉÅÉÇÉäämï€
 	CPresetDelaySet *pPresetDelay = nullptr;
@@ -102,7 +102,7 @@ CPresetDelaySet* CPresetDelaySet::Create(int nArray, D3DXVECTOR3 pos)
 //=============================================================================
 // ê∂ê¨
 //=============================================================================
-CPresetDelaySet* CPresetDelaySet::Create(std::string sName, D3DXVECTOR3 pos)
+CPresetDelaySet* CPresetDelaySet::Create(std::string sName, D3DXVECTOR3 pos, D3DXVECTOR3 Endpos, D3DXVECTOR3 rot)
 {
-	return Create(CLoadEffect::GetPresetName(sName), pos);
+	return Create(CLoadEffect::GetPresetName(sName), pos, Endpos, rot);
 }

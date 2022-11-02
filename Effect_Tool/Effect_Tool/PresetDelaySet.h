@@ -22,8 +22,8 @@ public:
 	void Update();					 // çXêV
 	void Draw();					 // ï`âÊ
 
-	static CPresetDelaySet *Create(int nArray, D3DXVECTOR3 pos);
-	static CPresetDelaySet *Create(std::string sName, D3DXVECTOR3 pos);
+	static CPresetDelaySet *Create(int nArray, D3DXVECTOR3 pos, D3DXVECTOR3 Endpos, D3DXVECTOR3 rot);
+	static CPresetDelaySet *Create(std::string sName, D3DXVECTOR3 pos, D3DXVECTOR3 Endpos, D3DXVECTOR3 rot);
 
 private:
 	D3DXVECTOR3 m_pos;

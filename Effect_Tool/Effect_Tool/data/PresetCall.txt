@@ -11,7 +11,7 @@ PRESETCALL
 	CALLSET
 		DELEY = 0 			//何フレーム後に呼び出すか(親)
 		PRESETNUM = 3		//呼び出すエフェクト総数
-		TYPE = 0 0 5  		//エフェクトパターン
+		TYPE = 9 9 14  		//エフェクトパターン
 	END_CALLSET
 	
 	CALLSET

@@ -37,6 +37,9 @@ public:
 		TYPE_EIGHT,	//”ª‚ÌŽš
 		TYPE_VERTICAL,	//c‰ñ“]
 		TYPE_BESIDE,	//‰¡‰ñ“]
+		TYPE_DIAGONAL_RIGHT,	//ŽÎ‚ß‰E
+		TYPE_DIAGONAL_LEFT,	//ŽÎ‚ß¶
+		TYPE_BESIDE_NO_RAND,	//‚‚³ƒ‰ƒ“ƒh–³‚µ‰¡‰ñ“]
 		MOVINGTYPE_MAX,
 	} TYPE_MOVING;
 
@@ -99,7 +102,6 @@ private:
 	bool m_bUninit;
 
 	D3DXVECTOR3 m_pos;
-	D3DXVECTOR3 m_Defaultpos;
 	D3DXVECTOR3 m_Oldpos;
 
 	D3DXVECTOR3 m_Size;

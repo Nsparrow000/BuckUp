@@ -58,7 +58,8 @@ public:
 		float DistanceTarget,
 		int Synthetic,
 		int TrajectSynthetic,
-		ANIMPATTERN AnimPattern);
+		ANIMPATTERN AnimPattern,
+		bool bHoming);
 
 	void Uninit();
 	void Update();
@@ -89,7 +90,8 @@ public:
 		float DistanceTarget,
 		int Synthetic,
 		int TrajectSynthetic,
-		ANIMPATTERN AnimPattern);
+		ANIMPATTERN AnimPattern,
+		bool bHoming);
 
 	void PredictTraject();
 
@@ -115,12 +117,12 @@ private:
 	D3DXVECTOR3 m_ControlBezier;	//制御点
 	int m_Speed;	//スピード(ベジェの通過点数)
 
-	float m_fRandAngle;
-	float m_fRandAngle2;
 	float m_nDistanse;
 	float m_XZr;	//角度xz
 
 	int m_TrajectSynthetic;
+
+	bool m_bHoming;	//ホーミングあり
 };
 
 #endif // !_BEZIERBILL_H_

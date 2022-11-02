@@ -593,14 +593,17 @@ void CLoadEffect::PresetCallLoad(const char *aFileName)
 		if (!m_CallPreset[i].m_nDelay.empty())	//ディレイNULLチェック
 		{
 			m_CallPreset[i].m_nDelay.clear();
+			m_CallPreset[i].m_nDelay.shrink_to_fit();
 		}
 		if (!m_CallPreset[i].m_nPresetNum.empty())	//プリセット数NULLチェック
 		{
 			m_CallPreset[i].m_nPresetNum.clear();
+			m_CallPreset[i].m_nPresetNum.shrink_to_fit();
 		}
 		if (!m_CallPreset[i].m_nType.empty())	//呼び出しエフェクトNULLチェック
 		{
 			m_CallPreset[i].m_nType.clear();
+			m_CallPreset[i].m_nType.shrink_to_fit();
 		}
 		if (m_CallPreset[i].m_CallMax != NULL)
 		{
@@ -648,7 +651,7 @@ void CLoadEffect::PresetCallLoad(const char *aFileName)
 							}
 
 							// エフェクトのタイプ
-							if (strncmp(aData, "TYPE", 16) == 0)
+							if (strncmp(aData, "TYPE", 4) == 0)
 							{
 								fscanf(pFile, "%*s");
 

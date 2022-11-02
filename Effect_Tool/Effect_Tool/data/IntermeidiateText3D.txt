@@ -5,25 +5,20 @@
 
 
 EFFECTSTATE3D
-	PATTERN = 5				//動きのパターン
-	COLOR = 255 255 255 255			//カラー
-	CHANGECOLOR = 0 0 0 0			//カラー変動値
-	LIFE = 100						//寿命
+	PATTERN = 10				//動きのパターン
+	COLOR = 255 125 0 255			//カラー
+	CHANGECOLOR = 0 -8 0 -3			//カラー変動値
+	LIFE = 25						//寿命
 	SIZE = 20.0						//大きさ
 	ADDSIZE = 0.0					//大きさ変動
 	SIZEY = 20.0						//Y大きさ
 	ADDSIZEY = 0.0					//Y大きさ変動
-	DENSITY = 20						//粒密度
-	ROTATE = 0.14						//回転
-	DISTANCE = 246.0						//粒の発生距離
-	PARTICLETIME = 6						//粒発生間隔
-	SECONDTIME = 0						//近づくまでの時間
-	MAXSIZE = 90.0						//アクティブサイズ
-	MOVE = 17.0						//距離加算
-	TYPE = 0					//パーティクル(0)or軌跡(1)
-	SECONDTYPE = 2					//移動ランダム
-	COLOR = 255 255 255 255			//カラー
-	CHANGECOLOR = 0 0 0 0			//カラー変動値
+	DENSITY = 10						//密度
+	MOVE3D = 19.00 24.00 -1.39						//移動関係
+	DIFFUSION = 421					//拡散率
+	TYPE = 1					//上昇量ランダム
+	COLOR = 255 125 0 255			//カラー
+	CHANGECOLOR = 0 -8 0 -3			//カラー変動値
 	TEXTURE = 1						//テクスチャ
 	SYNTHETIC = 0						//合成
 	TEXMOVE = 0.000 0.000					//テクスチャ移動

@@ -474,11 +474,11 @@ void CPlayer::CreateEffect(int nPattern)
 				D3DXVECTOR2(CControl::GetTexMoveU(), CControl::GetTexMoveV()),
 				CControl::GetAnimCont(),
 				D3DXVECTOR2(CControl::GetSplitU(), CControl::GetSplitV()),
-				D3DXVECTOR3(pos.x, pos.y + 20, pos.z),
 				D3DXVECTOR3(
 					0.0f,
 					0.0f,
 					0.0f),
+				D3DXVECTOR3(pos.x, pos.y + 20, pos.z),
 
 				CControl::Getmove3d().x,
 
@@ -497,7 +497,8 @@ void CPlayer::CreateEffect(int nPattern)
 				CControl::GetDistance(),
 				CControl::GetSynthetic(),
 				CControl::GetParticleSynthetic(),
-				(CBillEffect::ANIMPATTERN)CControl::GetAnimPatternType()); 
+				(CBillEffect::ANIMPATTERN)CControl::GetAnimPatternType(),
+				true); 
 		}
 		break;
 	default:

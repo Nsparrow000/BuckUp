@@ -55,7 +55,8 @@ HRESULT CBezierBill::Init(D3DXVECTOR3 Size,
 	float DistanceTarget,
 	int Synthetic,
 	int TrajectSynthetic,
-	ANIMPATTERN AnimPattern)
+	ANIMPATTERN AnimPattern,
+	bool bHoming)
 {
 	CBillEffect::Init(Size, MinSize, color, Mincolor, nTex, nLife, TexNum, TexMove, nAnimCounter, nSplit, AnimPattern);
 
@@ -65,8 +66,6 @@ HRESULT CBezierBill::Init(D3DXVECTOR3 Size,
 	m_Size = Size;
 	m_ControlBezier = ControlBezier;
 	m_Speed = Speed;
-	m_fRandAngle = CIRCLE2;
-	m_fRandAngle2 = CIRCLE2;
 
 	m_TrajectSize = TrajectSize;
 	m_TrajectAddSize = TrajectMinSize;
@@ -89,9 +88,11 @@ HRESULT CBezierBill::Init(D3DXVECTOR3 Size,
 	m_nDistanse = float(rand() % (int)DistanceTarget) - float(rand() % (int)DistanceTarget);
 	float d = float(rand() % (int)DistanceTarget) - float(rand() % (int)DistanceTarget);
 
-	m_Target = D3DXVECTOR3(Target.x + cosf(CIRCLE) *  m_nDistanse, Target.y, Target.z + cosf(CIRCLE) * d);
+	m_Target = D3DXVECTOR3(Target.x + cosf(CIRCLE) *  m_nDistanse, Target.y, Target.z + cosf(CIRCLE) * m_nDistanse);
 
 	D3DXVECTOR3 a = m_Target - pos;
+
+	m_bHoming = bHoming;
 
 	m_XZr = (float)atan2(a.x, a.z);		//角度ｘｚ
 
@@ -127,13 +128,13 @@ HRESULT CBezierBill::Init(D3DXVECTOR3 Size,
 		//m_Bezier.P1[2] = pos.z + cosf(m_XZr) * m_ControlBezier.z - randCont;
 
 		//3次元制御
-		m_Bezier.P1[0] = (sx + randCont + m_ControlBezier.y * sinf(m_XZr + (Angle) + D3DX_PI * 2) * cosf(m_XZr + (Angle) + D3DX_PI * 2));
-		m_Bezier.P1[1] = pos.y + m_ControlBezier.y * sinf((Angle) + D3DX_PI / 2);
-		m_Bezier.P1[2] = (sz + randCont + m_ControlBezier.y * sinf(m_XZr + (Angle) + D3DX_PI * 2)* cosf(m_XZr + (Angle) + D3DX_PI * 2));
+		m_Bezier.P1[0] = sx + randCont * sinf((Angle) + m_XZr) * cosf((Angle)+m_XZr);
+		m_Bezier.P1[1] = pos.y + m_ControlBezier.y;
+		m_Bezier.P1[2] = sz + randCont * sinf((Angle) + m_XZr)* sinf((Angle) + m_XZr);
 
-		m_Bezier.P2[0] = (sx + randCont + m_ControlBezier.y * sinf(m_XZr + (Angle) + D3DX_PI * 2) * cosf(m_XZr + (Angle) + D3DX_PI * 2));
-		m_Bezier.P2[1] = pos.y + m_ControlBezier.y * sinf((Angle) + D3DX_PI / 2 );
-		m_Bezier.P2[2] = (sz + randCont + m_ControlBezier.y * sinf(m_XZr + (Angle) + D3DX_PI * 2)* cosf(m_XZr + (Angle) + D3DX_PI * 2));
+		m_Bezier.P2[0] = sx + randCont * sinf((Angle)+m_XZr) * cosf ((Angle)+m_XZr);
+		m_Bezier.P2[1] = pos.y + m_ControlBezier.y;
+		m_Bezier.P2[2] = sz + randCont * sinf((Angle)+m_XZr)* sinf((Angle)+m_XZr);
 
 		if (m_Bezier.P1[1] <= -1)
 		{
@@ -212,17 +213,27 @@ void CBezierBill::Update()
 	D3DXVECTOR3 pos;
 	m_TrajectSize += m_TrajectAddSize;
 
-	//CScene *pScene = GetScene(CManager::PRIORITY_SET);
-	//while (pScene)
-	//{
-	//	CScene *pSceneNext;
-	//	pSceneNext = pScene->GetNext();
-	//	if (pScene->GetObjType() == CScene::OBJECTTYPE_PLAYER)
-	//	{
-	//		pos = pScene->GetPos();
-	//	}
-	//	pScene = pSceneNext;
-	//}
+	//リアルタイム更新
+	if (m_bHoming == true)
+	{
+		CScene *pScene = GetScene(CManager::PRIORITY_SET);
+		while (pScene)
+		{
+			CScene *pSceneNext;
+			pSceneNext = pScene->GetNext();
+			if (pScene->GetObjType() == CScene::OBJECTTYPE_PLAYER)
+			{
+				pos = pScene->GetPos();
+			}
+			pScene = pSceneNext;
+		}
+
+		//目標地点
+		m_Bezier.P3[0] = pos.x;
+		m_Bezier.P3[1] = pos.y;
+		m_Bezier.P3[2] = pos.z;
+
+	}
 
 	double P01[3], P12[3], P23[3];
 	double P02[3], P13[3];
@@ -268,7 +279,7 @@ void CBezierBill::Update()
 
 		m_Bezier.Counter++;
 		// もしカウンターが分割数に達していたら０に戻す
-		if (m_Bezier.Counter >= m_Bezier.DivNum)
+		if (m_Bezier.Counter >= m_Bezier.DivNum + 2)
 		{
 			m_Bezier.Counter = 0;
 			m_Bezier.f = false;//削除
@@ -333,7 +344,8 @@ CBezierBill *CBezierBill::Create(D3DXVECTOR3 Size,
 	float DistanceTarget,
 	int Synthetic,
 	int TrajectSynthetic,
-	ANIMPATTERN AnimPattern)
+	ANIMPATTERN AnimPattern,
+	bool bHoming)
 {
 	CBezierBill * pBezierBill = NULL;
 	pBezierBill = new CBezierBill(CManager::PRIORITY_EFFECT);
@@ -358,7 +370,8 @@ CBezierBill *CBezierBill::Create(D3DXVECTOR3 Size,
 			DistanceTarget,
 			Synthetic,
 			TrajectSynthetic,
-			AnimPattern);
+			AnimPattern,
+			bHoming);
 	}
 	return pBezierBill;
 

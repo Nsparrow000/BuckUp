@@ -88,7 +88,6 @@ HRESULT CRotate3D::Init(D3DXVECTOR3 SetSize,
 	m_ParticleLife = nParticleLife;
 	m_nBuckTime = nBuckTime;
 	m_fActive = fActive;
-
 	m_fRandAngle = CIRCLE2;
 	m_fRandAngle2 = CIRCLE2;
 	m_EffectType = EffectType;
@@ -149,25 +148,46 @@ void CRotate3D::Update()
 	}
 
 	m_fAngle += m_fAddAngle;
-	if (m_MoveingType == CRotate3D::TYPE_EIGHT)
+	if (m_MoveingType == CRotate3D::TYPE_EIGHT)	//î™ÇÃéö
 	{
 		m_pos = D3DXVECTOR3(
 			pos.x + m_nDistanse * sinf(m_fRandAngle + m_fAngle) * cosf(m_fRandAngle2 + m_fAngle),
 			pos.y + m_nDistanse * cosf(m_fRandAngle + m_fAngle),
 			pos.z + m_nDistanse * sinf(m_fRandAngle + m_fAngle) * sinf(m_fRandAngle2 + m_fAngle));
 	}
-	else if (m_MoveingType == CRotate3D::TYPE_VERTICAL)
+	else if (m_MoveingType == CRotate3D::TYPE_VERTICAL)	//ècâÒì]
 	{
 		m_pos = D3DXVECTOR3(
 			pos.x + m_nDistanse * sinf(m_fRandAngle + m_fAngle) * cosf(m_fRandAngle2),
 			pos.y + m_nDistanse * cosf(m_fRandAngle + m_fAngle),
 			pos.z + m_nDistanse * sinf(m_fRandAngle + m_fAngle) * sinf(m_fRandAngle2));
 	}
-	else if (m_MoveingType == CRotate3D::TYPE_BESIDE)
+	else if (m_MoveingType == CRotate3D::TYPE_BESIDE)	//â°âÒì]
 	{
 		m_pos = D3DXVECTOR3(
 			pos.x + m_nDistanse * sinf(m_fRandAngle) * cosf(m_fRandAngle2 + m_fAngle),
 			pos.y + m_nDistanse * cosf(m_fRandAngle),
+			pos.z + m_nDistanse * sinf(m_fRandAngle) * sinf(m_fRandAngle2 + m_fAngle));
+	}
+	else if (m_MoveingType == CRotate3D::TYPE_DIAGONAL_RIGHT)	//éŒÇﬂâE
+	{
+		m_pos = D3DXVECTOR3(
+			pos.x + m_nDistanse * sinf(m_fRandAngle) * cosf(m_fRandAngle2 + m_fAngle),
+			pos.y + m_nDistanse * cosf(m_fRandAngle + m_fAngle),
+			pos.z + m_nDistanse * sinf(m_fRandAngle + m_fAngle) * sinf(m_fRandAngle2));
+	}
+	else if (m_MoveingType == CRotate3D::TYPE_DIAGONAL_LEFT)	//éŒÇﬂç∂
+	{
+		m_pos = D3DXVECTOR3(
+			pos.x + m_nDistanse * sinf(m_fRandAngle) * cosf(m_fRandAngle2 + m_fAngle),
+			pos.y + m_nDistanse * cosf(m_fRandAngle + m_fAngle),
+			pos.z + m_nDistanse * sinf(m_fRandAngle) * sinf(m_fRandAngle2 + m_fAngle));
+	}
+	else if (m_MoveingType == CRotate3D::TYPE_BESIDE_NO_RAND)	//çÇÇ≥ÉâÉìÉhñ≥Çµâ°âÒì]
+	{
+		m_pos = D3DXVECTOR3(
+			pos.x + m_nDistanse * sinf(m_fRandAngle) * cosf(m_fRandAngle2 + m_fAngle),
+			pos.y + 0.0f * cosf(m_fRandAngle),
 			pos.z + m_nDistanse * sinf(m_fRandAngle) * sinf(m_fRandAngle2 + m_fAngle));
 	}
 	else

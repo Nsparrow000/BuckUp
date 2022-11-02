@@ -667,7 +667,8 @@ void CPresetEffect::SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 				m_EffectState3D[nPattern].m_nDistance,
 				m_EffectState3D[nPattern].Synthetic,
 				m_EffectState3D[nPattern].m_ParticleSynthetic,
-				(CBillEffect::ANIMPATTERN)m_EffectState3D[nPattern].m_AnimPatternType);
+				(CBillEffect::ANIMPATTERN)m_EffectState3D[nPattern].m_AnimPatternType,
+				false);
 		}
 		break;
 	case(9):
