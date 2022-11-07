@@ -15,9 +15,7 @@
 //=============================================================================
 int CLoadEffect::m_Total3d = 0;
 int CLoadEffect::m_Total2d = 0;
-
-int CLoadEffect::m_OrderTotal = 0;
-int CLoadEffect::m_FullOrder = 0;
+int CLoadEffect::m_CallMax = 0;
 
 CLoadEffect::CALL_PRESET CLoadEffect::m_CallPreset[MAX_PRESET] = {};
 std::map<std::string, int> CLoadEffect::m_Name;
@@ -27,7 +25,7 @@ std::map<std::string, int> CLoadEffect::m_Name;
 //=============================================================================
 CLoadEffect::CLoadEffect()
 {
-
+	m_CallMax = 0;
 }
 
 //=============================================================================
@@ -617,7 +615,7 @@ void CLoadEffect::PresetCallLoad(const char *aFileName)
 		{
 			fscanf(pFile, "%s", aData);						// 一単語保存
 
-															// パターン生成開始
+			// パターン生成開始
 			if (strncmp(aData, "PRESETCALL", 11) == 0)
 			{
 				while (fgets(aData, 128, pFile))					// 一行ずつ読み込む
@@ -636,7 +634,7 @@ void CLoadEffect::PresetCallLoad(const char *aFileName)
 						{
 							fscanf(pFile, "%s", aData);						// 一単語保存
 
-																			// 呼び出してから何フレーム後に生成するか
+							// 呼び出してから何フレーム後に生成するか
 							if (strncmp(aData, "DELEY", 6) == 0)
 							{
 								fscanf(pFile, "%*s%d", &nDelay);
@@ -678,6 +676,7 @@ void CLoadEffect::PresetCallLoad(const char *aFileName)
 					if (strncmp(aData, "END_PRESETCALL", 8) == 0)
 					{
 						nArray++;		// 配列を進める
+						m_CallMax++;
 						nTypeArray = 0;	// エフェクトタイプの配列を初期化
 						break;
 					}

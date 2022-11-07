@@ -16,7 +16,7 @@
 #define MAX_SERECT_COLOR (5)	//最大選択色
 #define MAX_COLOR (255)			//最大色値
 
-#define MAX_CHANGECOL (30)		//最大増減色値
+#define MAX_CHANGECOL (255)		//最大増減色値
 
 #define RAND_COLOR (float(rand()% 255) + 5)	//ランダムカラー
 

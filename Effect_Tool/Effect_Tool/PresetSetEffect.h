@@ -13,7 +13,7 @@
 #define MAX_EFFECTPATTERN_2D (16)
 #define MAX_EFFECTPATTERN_3D (16)
 
-#define MAX_ORDER_3D (16)
+//#define MAX_ORDER_3D (16)
 
 class CPresetEffect : CScene
 {
@@ -196,54 +196,55 @@ public:
 		D3DCOLORVALUE TherdChangecolor,
 		int SecondTex);
 
-	//オーダー処理
-	typedef struct
-	{
-		int nDeley;
-		int nPresetNum;
-		int m_nOrder[MAX_ORDER_3D];
-		D3DXVECTOR3 pos[MAX_ORDER_3D];
-		D3DXVECTOR3 Endpos[MAX_ORDER_3D];
-		bool bOne[MAX_ORDER_3D];
-	} ORDER_PRESET;
+	////オーダー処理
+	//typedef struct
+	//{
+	//	int nDeley;
+	//	int nPresetNum;
+	//	int m_nOrder[MAX_ORDER_3D];
+	//	D3DXVECTOR3 pos[MAX_ORDER_3D];
+	//	D3DXVECTOR3 Endpos[MAX_ORDER_3D];
+	//	bool bOne[MAX_ORDER_3D];
+	//} ORDER_PRESET;
 
 	static void SetEffect2D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpos, D3DXVECTOR3 PlayerPos, D3DXVECTOR3 rot);	//パターン番号、出現位置、比較位置、位置
 	static void SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpos, D3DXVECTOR3 rot);	//パターン、出現位置、目標地点、回転
 
+	static void ResetPattern() {
+		m_nEffectPattern2d = 0;
+		m_nEffectPattern3d = 0;
+	}
 
 	//ディレイ付き再生
-	void SetOrderPreset(int nDeley, int nPresetNum);
-	static void CallOrder3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpos);
+	//void SetOrderPreset(int nDeley, int nPresetNum);
+	//static void CallOrder3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpos);
 	//void DeleySet(int nPattern);
 
-	void CPresetEffect::SetOrder(int nOrder, int nPattern);
+	//void CPresetEffect::SetOrder(int nOrder, int nPattern);
 
-	static CPresetEffect *CreateOrderMenu(int nDeley, int nPresetNum, int nOrder[MAX_ORDER_3D]);
+	//static CPresetEffect *CreateOrderMenu(int nDeley, int nPresetNum, int nOrder[MAX_ORDER_3D]);
 
-	static void ResetPattern() { 
-		m_nEffectPattern2d = 0;
-		m_nEffectPattern3d = 0;}
-	static void ResetOrder() { m_nMaxOrderCount = 0; }
+		//static void ResetOrder() { m_nMaxOrderCount = 0; }
 
-	HRESULT Init(D3DXVECTOR3 pos);
-	void Uninit();
-	void Update();
-	void Draw();
+	//HRESULT Init(D3DXVECTOR3 pos);
+	//void Uninit();
+	//void Update();
+	//void Draw();
 
-	void ResetDeley(int n) { nCntDeley[n]= 0; }
+	//void ResetDeley(int n) { nCntDeley[n]= 0; }
 private:
 	static EFFECT_STATE2D m_EffectState2D[MAX_EFFECTPATTERN_2D];
 	static EFFECT_STATE3D m_EffectState3D[MAX_EFFECTPATTERN_3D];
-	static ORDER_PRESET m_Order3D[MAX_ORDER_3D][MAX_ORDER_3D];
+	//static ORDER_PRESET m_Order3D[MAX_ORDER_3D][MAX_ORDER_3D];
 
 	static int m_nEffectPattern2d;	//複数のやつ読み込めるようにするやつ
 	static int m_nEffectPattern3d;	//複数のやつ読み込めるようにするやつ
 
-	static int m_nMaxOrderCount;	//呼び出す最大数カウント
-	static int m_PrticleCreateTime;	//パーティクル生成間隔計算
+	//static int m_nMaxOrderCount;	//呼び出す最大数カウント
+	//static int m_PrticleCreateTime;	//パーティクル生成間隔計算
 
-	D3DXVECTOR3 m_pos;
-	D3DXVECTOR3 m_EndPos;
-	int nCntDeley[MAX_ORDER_3D];
+	//D3DXVECTOR3 m_pos;
+	//D3DXVECTOR3 m_EndPos;
+	//int nCntDeley[MAX_ORDER_3D];
 };
 #endif // !_PRESETEFFECT_H_

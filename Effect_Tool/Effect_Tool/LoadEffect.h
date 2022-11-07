@@ -12,7 +12,7 @@
 //=============================================================================
 // マクロ定義
 //=============================================================================
-#define MAX_PRESET (3)
+#define MAX_PRESET (6)
 #define PRESETCALL_TEXT ("data/PresetCall.txt")
 
 class CLoadEffect
@@ -25,10 +25,6 @@ public:
 
 	static int GetPresetTotal2D() { return m_Total2d; }
 	static int GetPresetTotal3D() { return m_Total3d; }
-
-	//static void EffectOrder(const char *aFileName);	//エフェクトオーダー
-	static int GetOrderTotal() { return m_OrderTotal; }
-	static int GetFullOrder() { return m_FullOrder; }
 
 	//------------------------------------------
 	// プリセット呼び出し構造体
@@ -52,11 +48,10 @@ private:
 	static int m_Total2d;
 	static int m_Total3d;
 
-	static int m_OrderTotal;
-	static int m_FullOrder;
-
 	static CALL_PRESET m_CallPreset[MAX_PRESET];			// プリセットの呼び出し構造体
 	static std::map<std::string, int> m_Name;				// プリセットの名前
+	static int m_CallMax;				// プリセット総数
+
 };
 
 #endif // !_LOADEFFECT_H_

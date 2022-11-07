@@ -38,12 +38,12 @@
 int CPresetEffect::m_nEffectPattern2d = 0;
 int CPresetEffect::m_nEffectPattern3d = 0;
 
-int CPresetEffect::m_nMaxOrderCount = 0;	//呼び出す最大数カウント
+//int CPresetEffect::m_nMaxOrderCount = 0;	//呼び出す最大数カウント
 
 CPresetEffect::EFFECT_STATE2D CPresetEffect::m_EffectState2D[MAX_EFFECTPATTERN_2D] = {};
 CPresetEffect::EFFECT_STATE3D CPresetEffect::m_EffectState3D[MAX_EFFECTPATTERN_3D] = {};
 
-CPresetEffect::ORDER_PRESET CPresetEffect::m_Order3D[MAX_ORDER_3D][MAX_ORDER_3D] = {};
+//CPresetEffect::ORDER_PRESET CPresetEffect::m_Order3D[MAX_ORDER_3D][MAX_ORDER_3D] = {};
 
 //=============================================================================
 // コンストラクタ
@@ -51,7 +51,7 @@ CPresetEffect::ORDER_PRESET CPresetEffect::m_Order3D[MAX_ORDER_3D][MAX_ORDER_3D]
 CPresetEffect::CPresetEffect()
 {
 	m_EffectState2D[MAX_EFFECTPATTERN_2D] = {};
-	m_Order3D[MAX_ORDER_3D][MAX_ORDER_3D] = {};
+	//m_Order3D[MAX_ORDER_3D][MAX_ORDER_3D] = {};
 }
 
 //=============================================================================
@@ -719,128 +719,128 @@ void CPresetEffect::SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 	}
 }
 
-//=============================================================================
-// オーダーセット(3D)
-//=============================================================================
-void CPresetEffect::SetOrderPreset(int nDeley, int nPresetNum)
-{
-	m_Order3D[CLoadEffect::GetFullOrder()][CLoadEffect::GetOrderTotal()].nDeley = nDeley;
-	m_Order3D[CLoadEffect::GetFullOrder()][CLoadEffect::GetOrderTotal()].nPresetNum = nPresetNum;
-
-	m_nMaxOrderCount++;
-
-}
-
-
-//=============================================================================
-// オーダー呼び出し(3D)
-//=============================================================================
-void CPresetEffect::CallOrder3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpos)
-{
-	for (int i = 0; i < MAX_ORDER_3D; i++)
-	{
-		for (int i2 = 0; i2 < m_Order3D[nPattern][i].nPresetNum; i2++)
-		{
-			m_Order3D[nPattern][i].pos[i2] = pos;
-			m_Order3D[nPattern][i].Endpos[i2] = Endpos;
-			m_Order3D[nPattern][i].bOne[i2] = false;
-
-		}
-	}
-
-}
-
-//=============================================================================
-// 初期化
-//=============================================================================
-HRESULT CPresetEffect::Init(D3DXVECTOR3 /*pos*/)
-{
-	for (int i3 = 0; i3 < MAX_ORDER_3D; i3++)
-	{
-		for (int i = 0; i < MAX_ORDER_3D; i++)
-		{
-			nCntDeley[i] = 0;
-			for (int i2 = 0; i2 < m_Order3D[i3][i].nPresetNum; i2++)
-			{
-				m_Order3D[i3][i].bOne[i2] = true;
-			}
-		}
-	}
-
-
-	return S_OK;
-}
-
-//=============================================================================
-// 終了
-//=============================================================================
-void CPresetEffect::Uninit()
-{
-	Release();
-}
-
-//=============================================================================
-// 更新
-//=============================================================================
-void CPresetEffect::Update()
-{
-	for (int i3 = 0; i3 < MAX_ORDER_3D; i3++)
-	{
-		for (int i = 0; i < MAX_ORDER_3D; i++)
-		{
-			for (int i2 = 0; i2 < m_Order3D[i3][i].nPresetNum; i2++)
-			{
-
-				nCntDeley[i]++;
-				if (m_Order3D[i3][i].bOne[i2] == false)
-				{
-					if (m_Order3D[i3][i].nDeley < nCntDeley[i])
-					{
-						SetEffect3D(m_Order3D[i3][i].m_nOrder[i2], m_Order3D[i3][i].pos[i2], m_Order3D[i3][i].Endpos[i2], {});
-						m_Order3D[i3][i].bOne[i2] = true;
-					}
-				}
-				else if (m_Order3D[i3][i].bOne[i2] == true)
-				{
-					ResetDeley(i);
-				}
-			}
-		}
-	}
-}
-
-//=============================================================================
-// 描画
-//=============================================================================
-void CPresetEffect::Draw()
-{
-
-}
-
-//=============================================================================
-// オーダーメニューの作成
-//=============================================================================
-CPresetEffect *CPresetEffect::CreateOrderMenu(int nDeley, int nPresetNum, int nOrder[MAX_ORDER_3D])
-{
-	CPresetEffect *pPresetEffect = new CPresetEffect();
-
-	if (pPresetEffect != NULL)
-	{
-		for (int nCnt = {}; nCnt < MAX_ORDER_3D; nCnt++)
-		{
-			pPresetEffect->Init({});
-			pPresetEffect->SetOrder(nOrder[nCnt], nCnt);
-		}
-		pPresetEffect->SetOrderPreset(nDeley, nPresetNum);
- 	}
-
-	return pPresetEffect;
-}
-
-//=============================================================================
-// オーダーの作成
-//=============================================================================
-void CPresetEffect::SetOrder(int nOrder, int nPattern)
-{
-	m_Order3D[CLoadEffect::GetFullOrder()][CLoadEffect::GetOrderTotal()].m_nOrder[nPattern] = nOrder;
-}
+////=============================================================================
+//// オーダーセット(3D)
+////=============================================================================
+//void CPresetEffect::SetOrderPreset(int nDeley, int nPresetNum)
+//{
+//	m_Order3D[CLoadEffect::GetFullOrder()][CLoadEffect::GetOrderTotal()].nDeley = nDeley;
+//	m_Order3D[CLoadEffect::GetFullOrder()][CLoadEffect::GetOrderTotal()].nPresetNum = nPresetNum;
+//
+//	m_nMaxOrderCount++;
+//
+//}
+//
+//
+////=============================================================================
+//// オーダー呼び出し(3D)
+////=============================================================================
+//void CPresetEffect::CallOrder3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpos)
+//{
+//	for (int i = 0; i < MAX_ORDER_3D; i++)
+//	{
+//		for (int i2 = 0; i2 < m_Order3D[nPattern][i].nPresetNum; i2++)
+//		{
+//			m_Order3D[nPattern][i].pos[i2] = pos;
+//			m_Order3D[nPattern][i].Endpos[i2] = Endpos;
+//			m_Order3D[nPattern][i].bOne[i2] = false;
+//
+//		}
+//	}
+//
+//}
+//
+////=============================================================================
+//// 初期化
+////=============================================================================
+//HRESULT CPresetEffect::Init(D3DXVECTOR3 /*pos*/)
+//{
+//	for (int i3 = 0; i3 < MAX_ORDER_3D; i3++)
+//	{
+//		for (int i = 0; i < MAX_ORDER_3D; i++)
+//		{
+//			nCntDeley[i] = 0;
+//			for (int i2 = 0; i2 < m_Order3D[i3][i].nPresetNum; i2++)
+//			{
+//				m_Order3D[i3][i].bOne[i2] = true;
+//			}
+//		}
+//	}
+//
+//
+//	return S_OK;
+//}
+//
+////=============================================================================
+//// 終了
+////=============================================================================
+//void CPresetEffect::Uninit()
+//{
+//	Release();
+//}
+//
+////=============================================================================
+//// 更新
+////=============================================================================
+//void CPresetEffect::Update()
+//{
+//	for (int i3 = 0; i3 < MAX_ORDER_3D; i3++)
+//	{
+//		for (int i = 0; i < MAX_ORDER_3D; i++)
+//		{
+//			for (int i2 = 0; i2 < m_Order3D[i3][i].nPresetNum; i2++)
+//			{
+//
+//				nCntDeley[i]++;
+//				if (m_Order3D[i3][i].bOne[i2] == false)
+//				{
+//					if (m_Order3D[i3][i].nDeley < nCntDeley[i])
+//					{
+//						SetEffect3D(m_Order3D[i3][i].m_nOrder[i2], m_Order3D[i3][i].pos[i2], m_Order3D[i3][i].Endpos[i2], {});
+//						m_Order3D[i3][i].bOne[i2] = true;
+//					}
+//				}
+//				else if (m_Order3D[i3][i].bOne[i2] == true)
+//				{
+//					ResetDeley(i);
+//				}
+//			}
+//		}
+//	}
+//}
+//
+////=============================================================================
+//// 描画
+////=============================================================================
+//void CPresetEffect::Draw()
+//{
+//
+//}
+//
+////=============================================================================
+//// オーダーメニューの作成
+////=============================================================================
+//CPresetEffect *CPresetEffect::CreateOrderMenu(int nDeley, int nPresetNum, int nOrder[MAX_ORDER_3D])
+//{
+//	CPresetEffect *pPresetEffect = new CPresetEffect();
+//
+//	if (pPresetEffect != NULL)
+//	{
+//		for (int nCnt = {}; nCnt < MAX_ORDER_3D; nCnt++)
+//		{
+//			pPresetEffect->Init({});
+//			pPresetEffect->SetOrder(nOrder[nCnt], nCnt);
+//		}
+//		pPresetEffect->SetOrderPreset(nDeley, nPresetNum);
+// 	}
+//
+//	return pPresetEffect;
+//}
+//
+////=============================================================================
+//// オーダーの作成
+////=============================================================================
+//void CPresetEffect::SetOrder(int nOrder, int nPattern)
+//{
+//	m_Order3D[CLoadEffect::GetFullOrder()][CLoadEffect::GetOrderTotal()].m_nOrder[nPattern] = nOrder;
+//}
