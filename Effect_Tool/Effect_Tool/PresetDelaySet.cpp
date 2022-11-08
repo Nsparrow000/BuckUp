@@ -30,10 +30,11 @@ CPresetDelaySet::~CPresetDelaySet()
 //=============================================================================
 // èâä˙âª
 //=============================================================================
-HRESULT CPresetDelaySet::Init(D3DXVECTOR3 pos)
+HRESULT CPresetDelaySet::Init(D3DXVECTOR3 pos, D3DXVECTOR3 Endpos, D3DXVECTOR3 rot)
 {
 	m_pos = pos;	// à íu
-
+	m_Endpos = Endpos;	//î‰är
+	m_rot = rot;	//âÒì]
 	return S_OK;
 }
 
@@ -58,7 +59,7 @@ void CPresetDelaySet::Update()
 	{
 		for (int nCnt = 0; nCnt < CallPreset.m_nPresetNum[m_nCallCnt]; nCnt++)
 		{
-			CPresetEffect::SetEffect3D(CallPreset.m_nType[m_nCallCnt].at(nCnt), m_pos, {}, {});
+			CPresetEffect::SetEffect3D(CallPreset.m_nType[m_nCallCnt].at(nCnt), m_pos, m_Endpos, m_rot);
 		}
 		m_nCallCnt++;
 	}
@@ -93,7 +94,7 @@ CPresetDelaySet* CPresetDelaySet::Create(int nArray, D3DXVECTOR3 pos, D3DXVECTOR
 	if (pPresetDelay)
 	{
 		pPresetDelay->m_nArray = nArray;
-		pPresetDelay->Init(pos);
+		pPresetDelay->Init(pos, Endpos, rot);
 	}
 
 	return pPresetDelay;

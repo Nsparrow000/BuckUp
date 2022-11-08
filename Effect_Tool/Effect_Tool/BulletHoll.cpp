@@ -45,14 +45,15 @@ HRESULT CBulletHoll::Init(D3DXVECTOR3 size,
 {
 	CBillEffect::Init(size, Addsize, color, Mincolor, nTex, nLife, TexNum, TexMove, nAnimCounter, nSplit, AnimPattern);
 	m_nSynthenic = Synthetic;
-	m_Size = size;
 	m_Rot = rot;
 
 	int fDistance = (int)Distance;
 	float fRandDistance = float(rand() % fDistance) - float(rand() % fDistance);
 	float fRandDistance2 = float(rand() % fDistance) - float(rand() % fDistance);
-
+	m_MinSize = Addsize;
 	m_Height_Type = Type;
+	m_Size += m_MinSize;
+
 	m_pos = D3DXVECTOR3(pos.x + cosf(CIRCLE) *  fRandDistance, m_Size.y / 2, pos.z + cosf(CIRCLE) * fRandDistance2);
 
 	//m_pos1 = D3DXVECTOR3(
@@ -171,6 +172,68 @@ void CBulletHoll::Uninit()
 //=============================================================================
 void CBulletHoll::Update()
 {
+	m_Size += m_MinSize;
+
+	if (m_Height_Type == TYPE_NOMAL)
+	{
+		m_pos1 = D3DXVECTOR3(
+			m_pos.x - (cosf(-m_Rot.y) * m_Size.x / 2),
+			m_pos.y + m_Size.y / 2,
+			m_pos.z - (sinf(-m_Rot.y) * m_Size.x / 2));
+		m_pos2 = D3DXVECTOR3(
+			m_pos.x + (cosf(-m_Rot.y)) * m_Size.x / 2,
+			m_pos.y + m_Size.y / 2,
+			m_pos.z + (sinf(-m_Rot.y)) * m_Size.x / 2);
+		m_pos3 = D3DXVECTOR3(
+			m_pos.x - (cosf(-m_Rot.y) * m_Size.x / 2),
+			m_pos.y - m_Size.y / 2,
+			m_pos.z - (sinf(-m_Rot.y) * m_Size.x / 2));
+		m_pos4 = D3DXVECTOR3(
+			m_pos.x + (cosf(-m_Rot.y)) * m_Size.x / 2,
+			m_pos.y - m_Size.y / 2,
+			m_pos.z + (sinf(-m_Rot.y)) * m_Size.x / 2);
+
+	}
+	else if (m_Height_Type == TYPE_CYCLE)
+	{
+		m_pos1 = D3DXVECTOR3(
+			m_pos.x - (cosf(-m_Rot.y) * m_Size.x / 2),
+			m_pos.y + m_Size.y / 2,
+			m_pos.z - (sinf(-m_Rot.y) * m_Size.x / 2));
+		m_pos2 = D3DXVECTOR3(
+			m_pos.x + (cosf(-m_Rot.y)) * m_Size.x / 2,
+			m_pos.y + m_Size.y / 2,
+			m_pos.z + (sinf(-m_Rot.y)) * m_Size.x / 2);
+		m_pos3 = D3DXVECTOR3(
+			m_pos.x - (cosf(-m_Rot.y) * m_Size.x / 2),
+			m_pos.y - m_Size.y / 2,
+			m_pos.z - (sinf(-m_Rot.y) * m_Size.x / 2));
+		m_pos4 = D3DXVECTOR3(
+			m_pos.x + (cosf(-m_Rot.y)) * m_Size.x / 2,
+			m_pos.y - m_Size.y / 2,
+			m_pos.z + (sinf(-m_Rot.y)) * m_Size.x / 2);
+
+	}
+	else  //‚O‚Æ“¯‚¶—áŠO
+	{
+		m_pos1 = D3DXVECTOR3(
+			m_pos.x - (cosf(-m_Rot.y) * m_Size.x / 2),
+			m_pos.y + m_Size.y / 2,
+			m_pos.z - (sinf(-m_Rot.y) * m_Size.x / 2));
+		m_pos2 = D3DXVECTOR3(
+			m_pos.x + (cosf(-m_Rot.y)) * m_Size.x / 2,
+			m_pos.y + m_Size.y / 2,
+			m_pos.z + (sinf(-m_Rot.y)) * m_Size.x / 2);
+		m_pos3 = D3DXVECTOR3(
+			m_pos.x - (cosf(-m_Rot.y) * m_Size.x / 2),
+			m_pos.y - m_Size.y / 2,
+			m_pos.z - (sinf(-m_Rot.y) * m_Size.x / 2));
+		m_pos4 = D3DXVECTOR3(
+			m_pos.x + (cosf(-m_Rot.y)) * m_Size.x / 2,
+			m_pos.y - m_Size.y / 2,
+			m_pos.z + (sinf(-m_Rot.y)) * m_Size.x / 2);
+	}
+
 	CPlane::SetPosBill(m_pos1, m_pos2, m_pos3, m_pos4);
 	CBillEffect::Update();
 }

@@ -65,7 +65,6 @@ private:
 	int nLife;	//õ–½
 	bool bUninit;
 	D3DXVECTOR3 m_pos;
-	float m_size;		//Œ»İ‚Ì‘å‚«‚³
 	float m_distance;
 
 	HEIGHT_TYPE m_Height_Type;

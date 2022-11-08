@@ -655,7 +655,6 @@ void CPresetEffect::SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 				Endpos,
 				m_EffectState3D[nPattern].m_move,
 				m_EffectState3D[nPattern].m_ControlBezier,
-				{},
 				m_EffectState3D[nPattern].m_MaxSize,
 				m_EffectState3D[nPattern].m_SecondCol,
 				m_EffectState3D[nPattern].m_SecondChangecolor,

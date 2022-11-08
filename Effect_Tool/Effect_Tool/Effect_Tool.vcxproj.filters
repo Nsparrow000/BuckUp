@@ -67,9 +67,6 @@
     <Filter Include="ヘッダー ファイル\3D\Effect\Cylinder">
       <UniqueIdentifier>{4673f44a-7498-41d8-8b6c-c99605bb0b74}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\3D\Effect\Traject">
-      <UniqueIdentifier>{33cfcaf9-d920-4e0e-92cf-16f5a6654d71}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ヘッダー ファイル\3D\Effect\Traject">
       <UniqueIdentifier>{36dcda4a-6473-44d4-8c8c-8eadcb4bb790}</UniqueIdentifier>
     </Filter>
@@ -78,6 +75,9 @@
     </Filter>
     <Filter Include="ソース ファイル\load">
       <UniqueIdentifier>{b76d4d61-5985-4707-9018-205a4b9d552d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\3D\Effect\Traject">
+      <UniqueIdentifier>{33cfcaf9-d920-4e0e-92cf-16f5a6654d71}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -165,9 +165,6 @@
     <ClCompile Include="FieldEffect.cpp">
       <Filter>ソース ファイル\3D\Effect</Filter>
     </ClCompile>
-    <ClCompile Include="PresetSetEffect.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Sphere.cpp">
       <Filter>ソース ファイル\3D\Effect\Sphere</Filter>
     </ClCompile>
@@ -217,6 +214,9 @@
       <Filter>ソース ファイル\load</Filter>
     </ClCompile>
     <ClCompile Include="PresetDelaySet.cpp">
+      <Filter>ソース ファイル\load</Filter>
+    </ClCompile>
+    <ClCompile Include="PresetSetEffect.cpp">
       <Filter>ソース ファイル\load</Filter>
     </ClCompile>
   </ItemGroup>
@@ -305,9 +305,6 @@
     <ClInclude Include="FieldEffect.h">
       <Filter>ヘッダー ファイル\3D\Effect</Filter>
     </ClInclude>
-    <ClInclude Include="PresetSetEffect.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Sphere.h">
       <Filter>ヘッダー ファイル\3D\Effect\Sphere</Filter>
     </ClInclude>
@@ -357,6 +354,9 @@
       <Filter>ヘッダー ファイル\Load</Filter>
     </ClInclude>
     <ClInclude Include="PresetDelaySet.h">
+      <Filter>ヘッダー ファイル\Load</Filter>
+    </ClInclude>
+    <ClInclude Include="PresetSetEffect.h">
       <Filter>ヘッダー ファイル\Load</Filter>
     </ClInclude>
   </ItemGroup>

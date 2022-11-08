@@ -485,7 +485,6 @@ void CPlayer::CreateEffect(int nPattern)
 				D3DXVECTOR3(CControl::GetContorolBezierX(),
 					CControl::GetContorolBezierY(),
 					CControl::GetContorolBezierZ()),
-					{},
 				CControl::GetMaxSize(),
 				D3DXCOLOR((float)CControl::GetParticleColor(1), (float)CControl::GetParticleColor(2), (float)CControl::GetParticleColor(3), (float)CControl::GetParticleColor(4)),
 				D3DXCOLOR((float)CControl::GetParticleAddCol(1), (float)CControl::GetParticleAddCol(2), (float)CControl::GetParticleAddCol(3), (float)CControl::GetParticleAddCol(4)),
