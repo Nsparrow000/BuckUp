@@ -13,6 +13,8 @@
 CPresetDelaySet::CPresetDelaySet(int nPriority) : CScene3D(nPriority)
 {
 	m_pos = {};			// 位置
+	m_Endpos = {};
+	m_rot = {};
 	m_nDelay = 0;		// ディレイ
 	m_nCallCnt = 0;		// 呼び出しカウント 
 	m_nArray = 0;		// 番号
