@@ -362,7 +362,7 @@ void CControl::SaveEffect(CManager::MODE mode, int nPattern)
 		fprintf(pFile, "#メモ：(このエフェクトの使い道等、書いてください)\n");
 		fprintf(pFile, "#========================================================================\n");
 
-
+		//2Dセーブ
 		if (mode == CManager::MODE_2D)
 		{
 			fprintf(pFile, "EFFECTSTATE2D\n");
