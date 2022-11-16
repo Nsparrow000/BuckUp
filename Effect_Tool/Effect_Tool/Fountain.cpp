@@ -60,10 +60,11 @@ HRESULT CFountain::Init(D3DXVECTOR3 pos,
 	m_fAngle += randAngle;
 
 
-	if (move.y > 0)
+	if (HigthPattrn == HIGHT_RAND)
 	{
-		if (HigthPattrn == HIGHT_RAND)
+		if (move.y > 0)
 		{
+
 			move.y * 100;
 
 			float randHight = float(rand() % (int)move.y) - float(rand() % (int)move.y);
@@ -71,10 +72,10 @@ HRESULT CFountain::Init(D3DXVECTOR3 pos,
 
 			m_move = move;
 		}
-		else
-		{
-			m_move = move;
-		}
+	}
+	else
+	{
+		m_move = move;
 	}
 	m_pos = pos;
 

@@ -9,17 +9,24 @@
 #メモ：(このエフェクトの使い道等、書いてください)
 #========================================================================
 EFFECTSTATE3D
-	PATTERN = 9				//動きのパターン
-	SIZE = 40.0						//大きさ
-	ADDSIZE = 6.0					//大きさ変動
-	SIZEY = 40.0						//Y大きさ
-	ADDSIZEY = 45.6					//Y大きさ変動
-	DENSITY = 1						//密度
-	DISTANCE = 1.0						//発生距離
-	COLOR = 255 255 130 255			//カラー
-	CHANGECOLOR = 0 0 0 -4			//カラー変動値
-	LIFE = 100						//ライフ
-	TEXTURE = 3						//テクスチャ  () 球は＋１の番号
+	PATTERN = 5				//動きのパターン
+	SIZE = 16.0						//大きさ
+	ADDSIZE = 0.0					//大きさ変動
+	SIZEY = 16.0						//Y大きさ
+	ADDSIZEY = 0.0					//Y大きさ変動
+	DENSITY = 5						//粒密度
+	ROTATE = 0.00						//回転
+	DISTANCE = 106.0						//粒の発生距離
+	PARTICLETIME = 51						//粒寿命
+	SECONDTIME = 0						//近づくまでの時間
+	MAXSIZE = 100.0						//アクティブサイズ
+	MOVE = 0.0						//距離加算
+	TYPE = 0					//パーティクル(0)or軌跡(1)
+	SECONDTYPE = 0					//動き方
+	COLOR = 255 140 0 255			//カラー
+	CHANGECOLOR = 0 -2 0 -2			//カラー変動値
+	LIFE = 0						//ライフ
+	TEXTURE = 1						//テクスチャ  () 球は＋１の番号
 	SYNTHETIC = 0						//合成
 	TEXMOVE = 0.000 0.000					//テクスチャ移動
 	TEXNUM = 1.0 1.0					//テクスチャ枚数

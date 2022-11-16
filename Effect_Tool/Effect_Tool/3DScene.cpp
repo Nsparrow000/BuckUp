@@ -116,6 +116,7 @@ void C3DScene::Update()
 		pScene = pSceneNext;
 	}
 
+	//プリセット呼び出し
 	if (m_pKeyboard != NULL)
 	{
 		if (m_pKeyboard->GetKey(DIK_RETURN) == true)
@@ -146,9 +147,9 @@ void C3DScene::Update()
 		{
 			CPresetDelaySet::Create(CControl::GetDeleyPattern(), D3DXVECTOR3(0.0f, 3.0f, 0.0f), pos, D3DXVECTOR3(0.0f, m_pCamera->GetRotY(), 0.0f));
 		}
-		if (m_pKeyboard->GetKey(DIK_F4) == true)
+		if (m_pKeyboard->GetPress(DIK_F4) == true)
 		{
-			CPresetEffect::SetEffect2D(0, D3DXVECTOR3(640.0f, 360.0f, 0.0f), D3DXVECTOR3(1000.0f, 1000.0f, 0.0f), D3DXVECTOR3(pos.x, pos.z, {}), D3DXVECTOR3(0.0f, m_pCamera->GetRotY(), 0.0f));
+			CPresetDelaySet::Create(CControl::GetDeleyPattern(), D3DXVECTOR3(pos.x, pos.y + 20, pos.z), D3DXVECTOR3(0.0f, 3.0f, 0.0f), D3DXVECTOR3(0.0f, m_pCamera->GetRotY(), 0.0f));
 		}
 
 
