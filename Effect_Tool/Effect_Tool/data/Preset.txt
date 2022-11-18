@@ -18,7 +18,7 @@ EFFECTSTATE3D
 	COLOR = 255 90 0 255			//カラー
 	CHANGECOLOR = 0 -4 0 0			//カラー変動値
 	LIFE = 45						//ライフ
-	TEXTURE = 1						//テクスチャ  () 球は＋１の番号
+	TEXTURE = 1						//テクスチャ  (Effect000.jpg) 球は＋１の番号
 	SYNTHETIC = 0						//合成
 	TEXMOVE = 0.000 0.000					//テクスチャ移動
 	TEXNUM = 1.0 1.0					//テクスチャ枚数
@@ -49,7 +49,7 @@ EFFECTSTATE3D
 	COLOR = 255 140 0 255			//カラー
 	CHANGECOLOR = 0 -2 0 -4			//カラー変動値
 	LIFE = 0						//ライフ
-	TEXTURE = 1						//テクスチャ  () 球は＋１の番号
+	TEXTURE = 1						//テクスチャ  (Effect000.jpg) 球は＋１の番号
 	SYNTHETIC = 0						//合成
 	TEXMOVE = 0.000 0.000					//テクスチャ移動
 	TEXNUM = 1.0 1.0					//テクスチャ枚数
