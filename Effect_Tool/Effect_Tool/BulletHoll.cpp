@@ -54,7 +54,7 @@ HRESULT CBulletHoll::Init(D3DXVECTOR3 size,
 	m_Height_Type = Type;
 	m_Size += m_MinSize;
 
-	m_pos = D3DXVECTOR3(pos.x + cosf(CIRCLE) *  fRandDistance, m_Size.y / 2, pos.z + cosf(CIRCLE) * fRandDistance2);
+	m_pos = D3DXVECTOR3(pos.x + cosf(CIRCLE) *  fRandDistance, pos.y +  m_Size.y / 2, pos.z + cosf(CIRCLE) * fRandDistance2);
 
 	//m_pos1 = D3DXVECTOR3(
 	//	pos.x + size.x * (cosf(m_Rot.y)),

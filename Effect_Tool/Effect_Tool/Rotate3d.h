@@ -67,7 +67,8 @@ public:
 		int AnimPattern,
 		EFFECT_TYPE EffectType,
 		MOVE_TYPE MoveType,
-		TYPE_MOVING MovingType);
+		TYPE_MOVING MovingType,
+		D3DXVECTOR3 rot);
 
 	void Uninit();
 	void Update();
@@ -92,7 +93,8 @@ public:
 		int AnimPattern,
 		EFFECT_TYPE EffectType,
 		MOVE_TYPE MoveType,
-		TYPE_MOVING MovingType);
+		TYPE_MOVING MovingType,
+		D3DXVECTOR3 rot);
 
 private:
 	EFFECT_TIME m_EffectTime;
@@ -121,6 +123,7 @@ private:
 	int m_nBuckTime;	//距離が縮まるまでの時間
 	float m_fActive;	//アクティブになるまでの距離
 
+	bool m_bSpecify;	//角度と発生点指定
 	int m_nTex;
 	int m_nSynthetic;
 	int m_nLife;

@@ -166,6 +166,9 @@ HRESULT CStraight3D::Init(D3DXVECTOR3 pos,
 	case(OTHERS):
 		m_pos = pos;
 		break;
+	default:
+
+		break;
 	}
 
 	SetPos(m_pos);

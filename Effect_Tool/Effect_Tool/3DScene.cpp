@@ -139,7 +139,6 @@ void C3DScene::Update()
 		{
 			for (int nCnt = 0; nCnt < CLoadEffect::GetPresetTotal3D(); nCnt++)
 			{
-
 				CPresetEffect::SetEffect3D(nCnt, D3DXVECTOR3(0.0f, 50.0f, 0.0f), D3DXVECTOR3(100.0f, 0.0f, 100.0f), D3DXVECTOR3(0.0f, m_pCamera->GetRotY(), 0.0f));
 			}
 		}
@@ -151,10 +150,7 @@ void C3DScene::Update()
 		{
 			CPresetDelaySet::Create(CControl::GetDeleyPattern(), D3DXVECTOR3(pos.x, pos.y + 20, pos.z), D3DXVECTOR3(0.0f, 3.0f, 0.0f), D3DXVECTOR3(0.0f, m_pCamera->GetRotY(), 0.0f));
 		}
-
-
 	}
-
 }
 
 #if 1

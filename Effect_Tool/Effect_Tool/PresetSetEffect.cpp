@@ -441,7 +441,7 @@ void CPresetEffect::SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 				m_EffectState3D[nPattern].Synthetic,
 				m_EffectState3D[nPattern].m_nDistance,
 				(CStraight3D::RAND_PATTEN)m_EffectState3D[nPattern].m_nType,
-				(CStraight3D::POS_PATTERN)m_EffectState3D[nPattern].m_nSecondTime,
+				(CStraight3D::POS_PATTERN)m_EffectState3D[nPattern].m_SecondType,
 				m_EffectState3D[nPattern].m_TexMove,
 				m_EffectState3D[nPattern].m_TexNum,
 				m_EffectState3D[nPattern].AnimCnt,
@@ -594,7 +594,8 @@ void CPresetEffect::SetEffect3D(int nPattern, D3DXVECTOR3 pos, D3DXVECTOR3 Endpo
 				(CBillEffect::ANIMPATTERN)m_EffectState3D[nPattern].m_AnimPatternType,
 				(CRotate3D::EFFECT_TYPE)m_EffectState3D[nPattern].m_nType,
 				(CRotate3D::MOVE_TYPE)m_EffectState3D[nPattern].m_SecondType,
-				(CRotate3D::TYPE_MOVING)m_EffectState3D[nPattern].m_SecondType);
+				(CRotate3D::TYPE_MOVING)m_EffectState3D[nPattern].m_SecondType,
+				{});
 		}
 		break;
 	case(6):

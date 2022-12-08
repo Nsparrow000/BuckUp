@@ -14,6 +14,7 @@
 //*****************************************************************************
 CRotate3D::CRotate3D(int nPriority) : CPlane(nPriority)
 {
+	m_bSpecify == false;
 
 }
 
@@ -48,7 +49,8 @@ HRESULT CRotate3D::Init(D3DXVECTOR3 SetSize,
 	int AnimPattern,
 	EFFECT_TYPE EffectType,
 	MOVE_TYPE MoveType,
-	TYPE_MOVING MovingType)
+	TYPE_MOVING MovingType,
+	D3DXVECTOR3 rot)
 {
 	CPlane::Init(SetSize, pos, Tex);
 
@@ -60,6 +62,17 @@ HRESULT CRotate3D::Init(D3DXVECTOR3 SetSize,
 	m_nDistanse = 0;
 	m_nDefaultDistanse = Distance;
 	m_MoveingType = MovingType;
+
+	//角度指定するのかのやつ
+	switch (m_MoveingType)
+	{
+	case(CRotate3D::TYPE_BESIDE_NO_RAND):
+		m_bSpecify == true;
+		break;
+	default:
+		m_bSpecify == false;
+		break;
+	}
 
 	//switch (MoveType)//移動量のランダム化
 	//{
@@ -88,14 +101,30 @@ HRESULT CRotate3D::Init(D3DXVECTOR3 SetSize,
 	m_ParticleLife = nParticleLife;
 	m_nBuckTime = nBuckTime;
 	m_fActive = fActive;
-	m_fRandAngle = CIRCLE2;
-	m_fRandAngle2 = CIRCLE2;
 	m_EffectType = EffectType;
 	m_PatternAnim = AnimPattern;
-	m_pos = D3DXVECTOR3(
-		pos.x + m_nDistanse * sinf(m_fRandAngle + m_fAngle) * cosf(m_fRandAngle2 + m_fAngle),
-		pos.y + m_nDistanse * cosf(m_fRandAngle + m_fAngle),
-		pos.z + m_nDistanse * sinf(m_fRandAngle + m_fAngle) * sinf(m_fRandAngle2 + m_fAngle));
+
+	if (m_bSpecify == true)
+	{
+		m_fRandAngle = rot.y;
+		m_fRandAngle2 = rot.y;
+
+		m_pos = D3DXVECTOR3(
+			pos.x + m_nDistanse * sinf(m_fRandAngle) * cosf(m_fRandAngle + m_fAngle),
+			pos.y + 0.0f,
+			pos.z + m_nDistanse * sinf(m_fRandAngle) * sinf(m_fRandAngle + m_fAngle));
+
+	}
+	else
+	{
+		m_fRandAngle = CIRCLE2;
+		m_fRandAngle2 = CIRCLE2;
+
+		m_pos = D3DXVECTOR3(
+			pos.x + m_nDistanse * sinf(m_fRandAngle + m_fAngle) * cosf(m_fRandAngle2 + m_fAngle),
+			pos.y + m_nDistanse * cosf(m_fRandAngle + m_fAngle),
+			pos.z + m_nDistanse * sinf(m_fRandAngle + m_fAngle) * sinf(m_fRandAngle2 + m_fAngle));
+	}
 
 	m_Oldpos = m_pos;
 
@@ -186,9 +215,9 @@ void CRotate3D::Update()
 	else if (m_MoveingType == CRotate3D::TYPE_BESIDE_NO_RAND)	//高さランド無し横回転
 	{
 		m_pos = D3DXVECTOR3(
-			pos.x + m_nDistanse * sinf(m_fRandAngle) * cosf(m_fRandAngle2 + m_fAngle),
-			pos.y + 0.0f * cosf(m_fRandAngle),
-			pos.z + m_nDistanse * sinf(m_fRandAngle) * sinf(m_fRandAngle2 + m_fAngle));
+			pos.x + m_nDistanse * sinf(m_fRandAngle) * cosf(m_fRandAngle + m_fAngle),
+			pos.y + 0.0f,
+			pos.z + m_nDistanse * sinf(m_fRandAngle) * sinf(m_fRandAngle + m_fAngle));
 	}
 	else
 	{
@@ -278,7 +307,8 @@ CRotate3D *CRotate3D::Create(D3DXVECTOR3 SetSize,
 	int AnimPattern,
 	EFFECT_TYPE EffectType,
 	MOVE_TYPE MoveType,
-	TYPE_MOVING MovingType)
+	TYPE_MOVING MovingType,
+	D3DXVECTOR3 rot)
 {
 	CRotate3D * pRotate3D = NULL;
 	pRotate3D = new CRotate3D(CManager::PRIORITY_EFFECT);
@@ -301,7 +331,8 @@ CRotate3D *CRotate3D::Create(D3DXVECTOR3 SetSize,
 			AnimPattern,
 			EffectType,
 			MoveType,
-			MovingType);
+			MovingType,
+			rot);
 	}
 	return pRotate3D;
 }
